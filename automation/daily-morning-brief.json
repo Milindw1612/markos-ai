@@ -65,7 +65,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ model: \"claude-haiku-4-5-20251001\", max_tokens: 400, messages: [ { role: \"user\", content: `Write a short (120-160 word) morning marketing brief for a Digital Marketing Director, in a direct, confident tone. Today's metrics: spend ₹${$json.spend}, revenue ₹${$json.revenue}, blended ROAS ${$json.roas}x (${$json.roas_delta_pct}% vs yesterday), ${$json.leads} leads, budget pacing at ${$json.budget_pacing_pct}% of plan. Anomalies: ${$json.anomalies.length ? $json.anomalies.join('; ') : 'none detected'}. End with exactly 3 numbered recommended actions.` } ] }) }}"
+        "jsonBody": "={{ JSON.stringify({ model: \"claude-haiku-4-5\", max_tokens: 400, messages: [ { role: \"user\", content: `Write a short (120-160 word) morning marketing brief for a Digital Marketing Director, in a direct, confident tone. Today's metrics: spend ₹${$json.spend}, revenue ₹${$json.revenue}, blended ROAS ${$json.roas}x (${$json.roas_delta_pct}% vs yesterday), ${$json.leads} leads, budget pacing at ${$json.budget_pacing_pct}% of plan. Anomalies: ${$json.anomalies.length ? $json.anomalies.join('; ') : 'none detected'}. End with exactly 3 numbered recommended actions.` } ] }) }}"
       },
       "id": "8b1f0f2a-0004-4a11-9c2e-000000000004",
       "name": "Generate AI Narrative (Claude)",
