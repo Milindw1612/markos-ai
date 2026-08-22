@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarkOS AI — Module Specifications</title>
+<meta name="description" content="Full specification for all 14 MarkOS AI modules, from campaign intelligence to marketing mix modelling.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/theme.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">MarkOS<span class="dot">.</span>AI</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html" class="active">Modules</a>
+      <a href="demos.html">Live Demos</a>
+      <a href="automation/SETUP_GUIDE.md" target="_blank">Automation</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+      <a href="https://milindw1612.github.io/" target="_blank">Portfolio ↩</a>
+      <button class="theme-toggle">● Dark</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding:56px 0 36px;">
+  <div class="wrap">
+    <div class="eyebrow">Full Specification</div>
+    <h1 style="font-size:clamp(28px,4.5vw,42px);">14 modules, spec'd end to end</h1>
+    <p class="lede">Everything a Digital Marketing Director's command centre needs to cover — from campaign planning to marketing mix modelling. Four modules (marked <span class="badge" style="margin:0 4px;">flagship</span>) have a working interactive demo; the rest are specified here at design depth.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="module-block" id="m01">
+  <div class="module-head"><span class="module-num">01</span><h3>Campaign Intelligence Engine</h3></div>
+  <ul>
+    <li>Campaign planning wizard with AI brief generation from a one-line goal</li>
+    <li>Visual campaign calendar with conflict detection and seasonal intelligence</li>
+    <li><strong>Channel Fit Scorer</strong> — AI recommends the optimal channel mix per campaign, product, and audience</li>
+    <li>A/B test framework with auto-pause on losing variants</li>
+    <li>AI-generated media plan on request: reach, frequency, GRPs, and weekly budget phasing, exportable as a PDF for the CEO or agency partners</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m02">
+  <div class="module-head"><span class="module-num">02</span><h3>Performance Marketing Hub</h3></div>
+  <ul>
+    <li>Unified KPI dashboard: ROAS, ROI, CAC, LTV, MQLs, SQLs in one view</li>
+    <li>Multi-touch attribution (Last Click, Linear, Data-Driven, MTA)</li>
+    <li>Bid strategy advisor with an automated bid-rules engine, plus dayparting control per platform</li>
+    <li><strong>Creative fatigue detection</strong> — auto-flags when ad frequency crosses 3.5–5x on Meta / 4–6x on LinkedIn and queues a replacement from the Content Studio</li>
+    <li><strong>Audience saturation monitor</strong> — recommends lookalike expansion once reach passes 60–70% of the defined audience</li>
+    <li>Landing page quality-score tracker with automatic A/B test suggestions when CVR drops</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m03">
+  <div class="module-head"><span class="module-num">03</span><h3>Budget &amp; Finance Control</h3></div>
+  <ul>
+    <li>Annual budget builder with channel-level allocation</li>
+    <li>Real-time budget pacing with overspend/underspend alerts</li>
+    <li>One-click budget reallocation between campaigns</li>
+    <li>Automated pacing rules — e.g. if a channel overspends 10% by day 15, excess is redistributed to the highest-ROAS alternative automatically</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m04">
+  <div class="module-head"><span class="module-num">04</span><h3>Built-in CRM + CDP</h3></div>
+  <ul>
+    <li>Full CRM: contacts, pipeline, lead scoring, lifecycle stages</li>
+    <li>Email + WhatsApp automation with a drip sequence builder</li>
+    <li><strong>Intent data overlay</strong> — B2B intent signals surfaced directly on CRM contacts, so in-market accounts get flagged to Sales before they've raised a hand</li>
+    <li>Review management — Google/Trustpilot/marketplace reviews pulled in with a sentiment score per product line and AI-drafted responses for negative reviews</li>
+    <li><strong>Competitor-triggered nurture</strong> — when a known contact starts researching a competitor, MarkOS auto-fires a comparison-focused sequence and flags the account "at risk" to Sales</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m05">
+  <div class="module-head"><span class="module-num">05</span><h3>AI Content Studio</h3></div>
+  <ul>
+    <li>AI copywriter for ads, email, landing pages, blogs, and social captions with brand-voice training</li>
+    <li>Dynamic landing page builder with real-time personalisation by UTM, device, and known lead score — a B2B CFO and an SME founder can see different copy from the same ad</li>
+    <li>Image/video generation stack for brand assets, product photography, and short-form video, plus multilingual AI voiceover</li>
+    <li><strong>AI presentation builder</strong> — a brief in, a polished CEO update deck or campaign-results presentation out, exportable as PPTX/PDF</li>
+    <li>Podcast/audio ad creator: script → AI voice → scheduled distribution, with the transcript auto-repurposed into blog and social content</li>
+    <li><strong>Creative fatigue → auto content request</strong> — a declining creative doesn't just get flagged, it opens a pre-filled brief with AI-generated replacement variants ready for approval</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m06">
+  <div class="module-head"><span class="module-num">06</span><h3>Social Automation Layer</h3></div>
+  <ul>
+    <li>Multi-platform publishing: LinkedIn, Instagram, Facebook, YouTube, Pinterest, Threads, Bluesky, Snapchat</li>
+    <li>n8n workflow export for every social campaign — this is the one module with a real, running automation on this site (see the <a href="demos.html#dashboard" style="color:var(--accent);">Reporting demo</a> and the <a href="automation/SETUP_GUIDE.md" target="_blank" style="color:var(--accent);">automation setup guide</a>)</li>
+    <li>LinkedIn automation and employee-advocacy module</li>
+    <li>Reels/Shorts script-to-publish pipeline</li>
+    <li><strong>Social listening layer</strong> — daily brand and competitor sentiment score surfaced directly on the Director's morning brief</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m07">
+  <div class="module-head"><span class="module-num">07</span><h3>Team &amp; Resource Management</h3></div>
+  <ul>
+    <li>Org chart, role management, and RBAC permissions</li>
+    <li>Campaign-linked task boards, AI task generator, and a workload view</li>
+    <li>OKR tracking wired to live CRM and campaign data — not a static spreadsheet</li>
+    <li>Agency and freelancer management with invoice tracking</li>
+    <li><strong>AI weekly debrief</strong> — every Monday, each team member gets a personalised summary of what mattered in their lane; the Director gets the cross-team roll-up. No status meeting required</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m08">
+  <div class="module-head"><span class="module-num">08</span><h3>AI Recommendation Engine <span class="badge">Flagship — live demo</span></h3></div>
+  <ul>
+    <li>Live campaign alerts: <strong>SCALE, PAUSE, SHIFT, BID, ALERT</strong> — one-click approve/snooze/dismiss with a confidence score and estimated impact</li>
+    <li>Full audit trail of every AI suggestion and what happened after it was actioned</li>
+    <li><strong>Competitive response alerts</strong> — a competitor's major launch or price drop is detected via ad-library monitoring and a counter-strategy is surfaced within the hour</li>
+    <li><strong>Funnel leak detector</strong> — when any funnel stage conversion drops &gt;15% week-over-week, the AI diagnoses whether it's a demand, lead-quality, or sales-response problem and proposes a specific fix</li>
+  </ul>
+  <a class="demo-link" href="demos.html#recommendations">Try the live recommendation feed →</a>
+</div>
+
+<div class="module-block" id="m09">
+  <div class="module-head"><span class="module-num">09</span><h3>Channel Intelligence &amp; Audience Mapping</h3></div>
+  <ul>
+    <li>Channel Fit Matrix — product × audience × goal → a ranked channel recommendation</li>
+    <li>Lookalike seed-audience builder for Meta, Google, and LinkedIn</li>
+    <li>Audience overlap detector across concurrent campaigns, to catch internal cannibalisation before it wastes spend</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m10">
+  <div class="module-head"><span class="module-num">10</span><h3>Competitive Intelligence Engine <span class="badge">Flagship — live demo</span></h3></div>
+  <ul>
+    <li>Daily competitor ad-creative tracking across Meta, Google, and LinkedIn ad libraries</li>
+    <li>Estimated competitor media spend by channel and Share of Voice (SOV) across paid and organic</li>
+    <li>Weekly AI-written competitive brief: what launched, what's working, and a recommended response</li>
+    <li>Competitive traffic intelligence — estimated traffic, sources, and audience overlap for any competitor's site</li>
+  </ul>
+  <a class="demo-link" href="demos.html#competitive">Try the competitive intelligence demo →</a>
+</div>
+
+<div class="module-block" id="m11">
+  <div class="module-head"><span class="module-num">11</span><h3>Reporting &amp; Dashboard Engine <span class="badge">Flagship — live demo</span></h3></div>
+  <ul>
+    <li><strong>Director's Command Centre</strong> — Revenue, Blended ROAS, Spend, MQLs, Pipeline Value, CAC, LTV, and Budget Remaining on one screen with green/amber/red status vs. target</li>
+    <li>On-demand reports in plain English — "Show me ROAS by channel for July" generates the chart and narrative instantly; exportable as PDF, PPTX, Excel, or an embeddable link</li>
+    <li>Scheduled reports — daily morning brief, Monday weekly report, and an auto-generated monthly board deck, delivered by email, Slack, WhatsApp, or in-app</li>
+    <li>Multi-channel data aggregation into one normalised layer, refreshed every 4 hours, with history retained back to account inception (not just the last 90 days)</li>
+    <li>AI forecasting: 30/60/90-day and 12-month revenue forecasts, budget-to-revenue "what if" simulation, and cohort LTV forecasting</li>
+    <li><strong>This is the module with a real working automation on this site</strong> — a daily n8n-generated morning brief. See it below.</li>
+  </ul>
+  <a class="demo-link" href="demos.html#dashboard">Try the live dashboard demo →</a>
+</div>
+
+<div class="module-block" id="m12">
+  <div class="module-head"><span class="module-num">12</span><h3>ROI / ROAS Intelligence &amp; Marketing Mix Modeling <span class="badge">Flagship — live demo</span></h3></div>
+  <ul>
+    <li><strong>True ROI engine</strong> — nets out agency fees, content production cost, tool cost, and team time against ad spend, and factors in gross margin so ROI reflects actual profit, not just revenue</li>
+    <li><strong>Marketing Mix Modelling</strong> — a statistical layer (in the spirit of Google Meridian / Meta Robyn) estimating the true incremental contribution of each channel, controlling for seasonality and competitor activity — the thing last-click attribution can't answer</li>
+    <li>Saturation curves per channel, informing an explicit "you're overspending on X, underspending on Y" allocation call</li>
+    <li><strong>Incrementality testing</strong> — geo/audience holdouts and synthetic controls that can override last-click ROAS when they disagree</li>
+    <li><strong>Budget scenario simulator</strong> — target a revenue number, get the optimal channel allocation to hit it; run "what if CPMs rise 20%" style scenarios instantly</li>
+  </ul>
+  <a class="demo-link" href="demos.html#roi">Try the budget scenario simulator →</a>
+</div>
+
+<div class="module-block" id="m13">
+  <div class="module-head"><span class="module-num">13</span><h3>Sales Funnel Analytics</h3></div>
+  <ul>
+    <li>Tracks every stage from Awareness → Engagement → Lead → <strong>MQL → SAL/SQL</strong> → Opportunity → <strong>Revenue</strong>, with volume, conversion rate, and cost tracked at every stage</li>
+    <li>Auto-calculated KPIs: Lead→MQL rate, MQL→SQL rate, win rate, funnel velocity (days to close), cost per MQL, pipeline coverage ratio, and a single 0–100 Funnel Health Score</li>
+    <li><strong>MQL Velocity Watchdog</strong> — if Sales doesn't contact an MQL within SLA, MarkOS auto-nurtures the lead, escalates to the Sales Manager, and logs the breach — so a slow funnel gets correctly blamed on response time, not lead quality</li>
+    <li><strong>Closed-Won feedback loop</strong> — every won deal's profile feeds back into lead scoring and lookalike targeting automatically; every lost deal (with reason) suppresses that persona from future high-spend channels</li>
+    <li><strong>Revenue attribution waterfall</strong> — a live campaign-level P&amp;L (spend vs. attributed revenue), not just ROAS, so the Director can see which campaigns are actually in the black</li>
+  </ul>
+</div>
+
+<div class="module-block" id="m14">
+  <div class="module-head"><span class="module-num">14</span><h3>Live Campaign Dashboard</h3></div>
+  <ul>
+    <li>Per-campaign health indicator (🟢/🟡/🔴), spend-pacing bar, live ROAS gauge, and a running MQL counter — refreshed every 2–4 hours</li>
+    <li>Creative performance panel: top/bottom performing creatives ranked by CTR, conversion, and fatigue score, with one-click pause or refresh</li>
+    <li>Four display modes: <strong>Director Mode</strong> (all campaigns, one screen), <strong>Campaign Deep-Dive</strong> (full breakdown), <strong>War Room / TV Mode</strong> (rotating office-screen display), and a <strong>Mobile Morning Brief</strong> widget</li>
+  </ul>
+</div>
+
+</div>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eye">Signature Automations</div>
+      <h2 class="section-title">What no single MarTech tool does today</h2>
+      <p class="section-sub">A few of the automations from the full spec that were the actual motivation for designing MarkOS AI in the first place — none of these exist as a native feature in any one platform.</p>
+    </div>
+    <div class="card-grid">
+      <div class="tool-card">
+        <div class="tool-name">🚨 Funnel Leak Detector</div>
+        <div class="tool-desc">Diagnoses <em>why</em> a conversion rate dropped — demand, lead quality, or sales response — and drafts the fix, not just the alert.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">📊 Pipeline Coverage Auto-Alert</div>
+        <div class="tool-desc">Checks pipeline coverage every Monday; if it drops below 3x, drafts the recommended campaign brief to close the gap before the quarter is at risk.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">💰 Revenue Attribution Waterfall</div>
+        <div class="tool-desc">A live campaign P&amp;L — spend vs. attributed revenue — so budget decisions are made on profit contribution, not ROAS alone.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">📅 Auto-Scheduled Board Report</div>
+        <div class="tool-desc">Compiles the full monthly board deck automatically, delivered by 6 AM the Friday it's due — the same pattern this site's live n8n automation demonstrates at daily scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-note">MarkOS AI — a specification &amp; prototype, designed and built by Milind W.</div>
+    <div class="footer-links">
+      <a href="index.html">Overview</a>
+      <a href="demos.html">Demos</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+</body>
+</html>

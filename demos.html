@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarkOS AI — Live Demos</title>
+<meta name="description" content="Four interactive MarkOS AI demo panels: dashboard, ROI/MMM budget simulator, AI recommendation engine, and competitive intelligence.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/theme.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">MarkOS<span class="dot">.</span>AI</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="demos.html" class="active">Live Demos</a>
+      <a href="automation/SETUP_GUIDE.md" target="_blank">Automation</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+      <a href="https://milindw1612.github.io/" target="_blank">Portfolio ↩</a>
+      <button class="theme-toggle">● Dark</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding:56px 0 32px;">
+  <div class="wrap">
+    <div class="eyebrow">Interactive Prototypes</div>
+    <h1 style="font-size:clamp(28px,4.5vw,42px);">Four flagship modules, working</h1>
+    <p class="lede">All four run entirely in your browser on illustrative sample data — no backend, nothing sent anywhere. They're here to show how each module <em>behaves</em>, not to report on a real business.</p>
+    <div class="sample-banner">⚠ Sample data — illustrative only, not real company figures.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="demo-tabs">
+    <button class="demo-tab active" data-target="dashboard">📊 Dashboard &amp; Reporting</button>
+    <button class="demo-tab" data-target="roi">💰 ROI / ROAS / MMM</button>
+    <button class="demo-tab" data-target="recommendations">🤖 AI Recommendations</button>
+    <button class="demo-tab" data-target="competitive">🕵️ Competitive Intelligence</button>
+  </div>
+
+  <!-- (a) DASHBOARD / REPORTING -->
+  <div class="demo-view active" id="dashboard">
+    <div class="demo-panel">
+      <div class="demo-panel-head">
+        <div>
+          <h3>Director's Command Centre</h3>
+          <p>Module 11 — Reporting &amp; Dashboard Engine. One screen, every KPI vs. target.</p>
+        </div>
+        <span class="pill">Refreshes every 4 hrs (simulated)</span>
+      </div>
+
+      <div class="kpi-grid" id="kpi-grid"></div>
+
+      <div style="margin-top:26px;">
+        <canvas id="revenueChart" height="90"></canvas>
+      </div>
+
+      <div style="margin-top:26px;border-top:1px dashed var(--rule);padding-top:22px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Ask MarkOS</div>
+        <select id="askSelect" style="width:100%;max-width:420px;padding:9px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);color:var(--text-1);font-size:13px;margin-bottom:14px;">
+          <option value="0">Show me ROAS by channel for July</option>
+          <option value="1">Compare Q2 vs Q1 MQL volume by product line</option>
+          <option value="2">Which campaign has the best true ROI this month?</option>
+        </select>
+        <div id="askAnswer" style="background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;font-size:13px;color:var(--text-2);line-height:1.7;"></div>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-primary" style="border:none;cursor:pointer;" id="scheduleBtn">Schedule this report</button>
+          <button class="btn btn-ghost" style="cursor:pointer;" id="regenAsk">Regenerate answer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- (b) ROI / ROAS / MMM -->
+  <div class="demo-view" id="roi">
+    <div class="demo-panel">
+      <div class="demo-panel-head">
+        <div>
+          <h3>Budget Scenario Simulator</h3>
+          <p>Module 12 — reallocate ₹50L across channels and watch projected revenue, ROAS and CAC recompute live via a diminishing-returns model.</p>
+        </div>
+        <span class="pill">Illustrative model — not a validated MMM</span>
+      </div>
+
+      <div id="sliders"></div>
+
+      <div class="kpi-grid" style="margin-top:20px;">
+        <div class="kpi-tile"><div class="label">Projected Revenue</div><div class="value" id="roiRevenue">—</div></div>
+        <div class="kpi-tile"><div class="label">Blended ROAS</div><div class="value" id="roiRoas">—</div></div>
+        <div class="kpi-tile"><div class="label">Est. CAC</div><div class="value" id="roiCac">—</div></div>
+        <div class="kpi-tile"><div class="label">Total Budget</div><div class="value">₹50.0L</div></div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Saturation curves per channel (conceptual)</div>
+        <canvas id="saturationChart" height="90"></canvas>
+      </div>
+
+      <div style="margin-top:28px;border-top:1px dashed var(--rule);padding-top:22px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px;">True ROI vs. ROAS — why they disagree</div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead><tr><th>Campaign</th><th>Channel</th><th>ROAS</th><th>Agency + Content Cost</th><th>True ROI</th></tr></thead>
+            <tbody>
+              <tr><td>Diwali Collection Push</td><td>Search</td><td>5.2x</td><td>8% of spend</td><td>3.1x</td></tr>
+              <tr><td>Influencer Bundle Launch</td><td>Social</td><td>4.6x</td><td>34% of spend</td><td>1.8x</td></tr>
+              <tr><td>Retargeting — Video</td><td>Video</td><td>3.9x</td><td>18% of spend</td><td>2.4x</td></tr>
+              <tr><td>Always-On Brand</td><td>Influencer</td><td>2.1x</td><td>41% of spend</td><td>0.6x</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- (c) AI RECOMMENDATIONS -->
+  <div class="demo-view" id="recommendations">
+    <div class="demo-panel">
+      <div class="demo-panel-head">
+        <div>
+          <h3>Live Recommendation Feed</h3>
+          <p>Module 08 — SCALE / PAUSE / SHIFT / BID / ALERT nudges with a confidence score and estimated impact. Approve, snooze, or dismiss.</p>
+        </div>
+        <span class="pill" id="recCount">5 active</span>
+      </div>
+      <div id="recFeed"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:22px;">Audit trail (this session)</div>
+      <ul class="audit-list" id="auditList"><li>No actions yet — try Approve, Snooze, or Dismiss above.</li></ul>
+    </div>
+  </div>
+
+  <!-- (d) COMPETITIVE INTELLIGENCE -->
+  <div class="demo-view" id="competitive">
+    <div class="demo-panel">
+      <div class="demo-panel-head">
+        <div>
+          <h3>Share of Voice &amp; Competitor Watch</h3>
+          <p>Module 10 — ad-library monitoring, estimated spend share, and a weekly AI-written competitive brief.</p>
+        </div>
+        <span class="pill">Updated daily (simulated)</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:center;" id="sovLayout">
+        <canvas id="sovChart" height="220"></canvas>
+        <div class="card-grid" id="competitorAds"></div>
+      </div>
+
+      <div style="margin-top:28px;border-top:1px dashed var(--rule);padding-top:22px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:10px;">
+          <div style="font-size:13px;font-weight:600;">Weekly AI Competitive Brief</div>
+          <button class="btn btn-ghost" style="cursor:pointer;" id="regenBrief">Regenerate ↻</button>
+        </div>
+        <div id="briefText" style="background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;font-size:13px;color:var(--text-2);line-height:1.7;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-note">MarkOS AI — a specification &amp; prototype, designed and built by Milind W.</div>
+    <div class="footer-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/demos.js"></script>
+</body>
+</html>
