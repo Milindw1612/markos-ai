@@ -42,7 +42,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Groups rows by channel, computes today vs. yesterday deltas, flags simple anomalies,\n// and produces a compact metrics summary for the AI narrative step.\nconst rows = items.map(i => i.json);\n\nconst byDate = {};\nfor (const r of rows) {\n  const d = r.date;\n  byDate[d] = byDate[d] || [];\n  byDate[d].push(r);\n}\nconst dates = Object.keys(byDate).sort();\nconst latest = dates[dates.length - 1];\nconst prior = dates[dates.length - 2];\n\nfunction totals(dateRows) {\n  const t = { spend: 0, revenue: 0, leads: 0 };\n  for (const r of dateRows) {\n    t.spend += Number(r.spend);\n    t.revenue += Number(r.revenue);\n    t.leads += Number(r.leads);\n  }\n  t.roas = t.spend > 0 ? +(t.revenue / t.spend).toFixed(2) : 0;\n  return t;\n}\n\nconst todayTotals = totals(byDate[latest] || []);\nconst yestTotals = prior ? totals(byDate[prior] || []) : todayTotals;\n\nconst roasDeltaPct = yestTotals.roas > 0\n  ? +(((todayTotals.roas - yestTotals.roas) / yestTotals.roas) * 100).toFixed(1)\n  : 0;\n\nconst anomalies = [];\nfor (const r of byDate[latest] || []) {\n  if (Number(r.roas) < 2.2) {\n    anomalies.push(`${r.channel} ROAS at ${r.roas}x — below the 2.2x floor`);\n  }\n}\n\nconst monthlyBudget = 1500000; // illustrative — replace with your real monthly budget\nconst dayOfMonth = new Date(latest).getDate();\nconst expectedSpendToDate = (monthlyBudget / 30) * dayOfMonth;\nconst pacingPct = expectedSpendToDate > 0\n  ? +(( (todayTotals.spend * dayOfMonth) / expectedSpendToDate) * 100).toFixed(0)\n  : 100;\n\nreturn [{\n  json: {\n    date: latest,\n    spend: todayTotals.spend,\n    revenue: todayTotals.revenue,\n    leads: todayTotals.leads,\n    roas: todayTotals.roas,\n    roas_delta_pct: roasDeltaPct,\n    anomalies: anomalies,\n    budget_pacing_pct: pacingPct\n  }\n}];"
+        "jsCode": "// Groups rows by channel, computes today vs. yesterday deltas, flags simple anomalies,\n// and produces a compact metrics summary for the narrative step.\nconst rows = items.map(i => i.json);\n\nconst byDate = {};\nfor (const r of rows) {\n  const d = r.date;\n  byDate[d] = byDate[d] || [];\n  byDate[d].push(r);\n}\nconst dates = Object.keys(byDate).sort();\nconst latest = dates[dates.length - 1];\nconst prior = dates[dates.length - 2];\n\nfunction totals(dateRows) {\n  const t = { spend: 0, revenue: 0, leads: 0 };\n  for (const r of dateRows) {\n    t.spend += Number(r.spend);\n    t.revenue += Number(r.revenue);\n    t.leads += Number(r.leads);\n  }\n  t.roas = t.spend > 0 ? +(t.revenue / t.spend).toFixed(2) : 0;\n  return t;\n}\n\nconst todayTotals = totals(byDate[latest] || []);\nconst yestTotals = prior ? totals(byDate[prior] || []) : todayTotals;\n\nconst roasDeltaPct = yestTotals.roas > 0\n  ? +(((todayTotals.roas - yestTotals.roas) / yestTotals.roas) * 100).toFixed(1)\n  : 0;\n\nconst anomalies = [];\nfor (const r of byDate[latest] || []) {\n  if (Number(r.roas) < 2.2) {\n    anomalies.push({ channel: r.channel, roas: Number(r.roas) });\n  }\n}\n\nconst monthlyBudget = 1500000; // illustrative — replace with your real monthly budget\nconst dayOfMonth = new Date(latest).getDate();\nconst expectedSpendToDate = (monthlyBudget / 30) * dayOfMonth;\nconst pacingPct = expectedSpendToDate > 0\n  ? +(( (todayTotals.spend * dayOfMonth) / expectedSpendToDate) * 100).toFixed(0)\n  : 100;\n\nreturn [{\n  json: {\n    date: latest,\n    spend: todayTotals.spend,\n    revenue: todayTotals.revenue,\n    leads: todayTotals.leads,\n    roas: todayTotals.roas,\n    roas_delta_pct: roasDeltaPct,\n    anomalies: anomalies,\n    budget_pacing_pct: pacingPct\n  }\n}];"
       },
       "id": "8b1f0f2a-0003-4a11-9c2e-000000000003",
       "name": "Compute Metrics",
@@ -52,74 +52,27 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.anthropic.com/v1/messages",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            { "name": "anthropic-version", "value": "2023-06-01" },
-            { "name": "content-type", "value": "application/json" }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ model: \"claude-haiku-4-5\", max_tokens: 400, messages: [ { role: \"user\", content: `Write a short (120-160 word) morning marketing brief for a Digital Marketing Director, in a direct, confident tone. Today's metrics: spend ₹${$json.spend}, revenue ₹${$json.revenue}, blended ROAS ${$json.roas}x (${$json.roas_delta_pct}% vs yesterday), ${$json.leads} leads, budget pacing at ${$json.budget_pacing_pct}% of plan. Anomalies: ${$json.anomalies.length ? $json.anomalies.join('; ') : 'none detected'}. End with exactly 3 numbered recommended actions.` } ] }) }}"
+        "jsCode": "// Builds the morning brief text from the computed metrics — no external API,\n// no API key, no cost. Rule-based narrative instead of an LLM call.\nconst m = items[0].json;\n\nconst roasTrend = m.roas_delta_pct > 0 ? `up ${m.roas_delta_pct}%` : m.roas_delta_pct < 0 ? `down ${Math.abs(m.roas_delta_pct)}%` : 'flat';\nconst pacingWord = m.budget_pacing_pct > 110 ? 'ahead of pace' : m.budget_pacing_pct < 90 ? 'behind pace' : 'on pace';\n\nlet summary = `Yesterday (${m.date}): spend ₹${m.spend.toLocaleString('en-IN')}, revenue ₹${m.revenue.toLocaleString('en-IN')}, blended ROAS ${m.roas}x (${roasTrend} vs. the day before), ${m.leads} leads. Budget is ${pacingWord} at ${m.budget_pacing_pct}% of the expected monthly rate.`;\n\nif (m.anomalies.length) {\n  const names = m.anomalies.map(a => `${a.channel} (${a.roas}x)`).join(', ');\n  summary += ` ${m.anomalies.length} channel(s) below the 2.2x ROAS floor: ${names}.`;\n} else {\n  summary += ' No channels are below the ROAS floor today.';\n}\n\n// Build exactly 3 recommended actions, prioritized by what's actually flagged.\nconst candidates = [];\nif (m.anomalies.length) {\n  candidates.push(`Review or pause: ${m.anomalies.map(a => a.channel).join(', ')} — currently below the 2.2x ROAS floor.`);\n}\nif (m.budget_pacing_pct > 110) {\n  candidates.push('Budget is overpacing — rebalance excess spend toward the highest-ROAS channel today.');\n} else if (m.budget_pacing_pct < 90) {\n  candidates.push('Budget is underpacing — consider increasing spend on the best-performing channel to stay on track for the month.');\n}\nif (m.roas_delta_pct < -5) {\n  candidates.push('Blended ROAS dropped more than 5% day-over-day — check for a creative fatigue or audience saturation signal before scaling anything.');\n}\ncandidates.push('No anomalies beyond the above — hold current allocation and re-check tomorrow morning.');\ncandidates.push('Review the top 3 recommendation cards in the AI Recommendation Engine before 10 AM.');\ncandidates.push('Confirm yesterday\\'s leads have been picked up by Sales within SLA.');\n\nconst actions = candidates.slice(0, 3);\nconst actionsText = actions.map((a, i) => `${i + 1}. ${a}`).join('\\n');\n\nconst narrative = `${summary}\\n\\nRecommended actions:\\n${actionsText}`;\n\nreturn [{ json: { ...m, narrative } }];"
       },
       "id": "8b1f0f2a-0004-4a11-9c2e-000000000004",
-      "name": "Generate AI Narrative (Claude)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "name": "Generate Narrative (Template)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [-80, 0],
-      "notes": "Requires an HTTP Header Auth credential named 'Anthropic API' with header x-api-key = your Anthropic API key. See SETUP_GUIDE.md."
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
-          "conditions": [
-            {
-              "id": "cond-1",
-              "leftValue": "={{ $json.content ? $json.content[0].text : '' }}",
-              "rightValue": "",
-              "operator": { "type": "string", "operation": "notEmpty" }
-            }
-          ],
-          "combinator": "and"
-        }
-      },
-      "id": "8b1f0f2a-0005-4a11-9c2e-000000000005",
-      "name": "AI Call Succeeded?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [160, 0]
+      "notes": "Free, rule-based narrative generation — no external API, no API key required. See SETUP_GUIDE.md for how to swap in a real LLM call later if you want more natural phrasing."
     },
     {
       "parameters": {
         "sendTo": "REPLACE_WITH_YOUR_EMAIL@example.com",
-        "subject": "=MarkOS Morning Brief — {{ $('Compute Metrics').item.json.date }}",
-        "message": "={{ $json.content[0].text }}",
+        "subject": "=MarkOS Morning Brief — {{ $json.date }}",
+        "message": "={{ $json.narrative }}",
         "options": {}
       },
       "id": "8b1f0f2a-0006-4a11-9c2e-000000000006",
       "name": "Send Morning Brief Email",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [400, -100]
-    },
-    {
-      "parameters": {
-        "sendTo": "REPLACE_WITH_YOUR_EMAIL@example.com",
-        "subject": "=MarkOS Morning Brief (fallback) — {{ $('Compute Metrics').item.json.date }}",
-        "message": "=The AI narrative step failed this morning. Raw metrics for {{ $('Compute Metrics').item.json.date }}: spend ₹{{ $('Compute Metrics').item.json.spend }}, revenue ₹{{ $('Compute Metrics').item.json.revenue }}, ROAS {{ $('Compute Metrics').item.json.roas }}x, leads {{ $('Compute Metrics').item.json.leads }}, budget pacing {{ $('Compute Metrics').item.json.budget_pacing_pct }}%. Check the Anthropic API credential and node run history.",
-        "options": {}
-      },
-      "id": "8b1f0f2a-0007-4a11-9c2e-000000000007",
-      "name": "Send Fallback Email",
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [400, 120]
+      "position": [160, 0]
     }
   ],
   "connections": {
@@ -130,16 +83,10 @@
       "main": [[{ "node": "Compute Metrics", "type": "main", "index": 0 }]]
     },
     "Compute Metrics": {
-      "main": [[{ "node": "Generate AI Narrative (Claude)", "type": "main", "index": 0 }]]
+      "main": [[{ "node": "Generate Narrative (Template)", "type": "main", "index": 0 }]]
     },
-    "Generate AI Narrative (Claude)": {
-      "main": [[{ "node": "AI Call Succeeded?", "type": "main", "index": 0 }]]
-    },
-    "AI Call Succeeded?": {
-      "main": [
-        [{ "node": "Send Morning Brief Email", "type": "main", "index": 0 }],
-        [{ "node": "Send Fallback Email", "type": "main", "index": 0 }]
-      ]
+    "Generate Narrative (Template)": {
+      "main": [[{ "node": "Send Morning Brief Email", "type": "main", "index": 0 }]]
     }
   },
   "active": false,
@@ -147,6 +94,6 @@
     "executionOrder": "v1"
   },
   "meta": {
-    "description": "MarkOS AI Module 11 (Reporting & Dashboard Engine) — daily automated morning brief. Pulls sample marketing data, computes metrics, generates an AI narrative, and emails it. Built as a real, importable n8n workflow to accompany the MarkOS AI portfolio project."
+    "description": "MarkOS AI Module 11 (Reporting & Dashboard Engine) — daily automated morning brief. Pulls sample marketing data, computes metrics, generates a rule-based narrative (no external API/cost), and emails it. A real, importable n8n workflow accompanying the MarkOS AI portfolio project."
   }
 }
