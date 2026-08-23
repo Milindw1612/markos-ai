@@ -16,7 +16,10 @@
       "name": "Daily 7AM Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [-1400, 0]
+      "position": [
+        -1400,
+        0
+      ]
     },
     {
       "parameters": {
@@ -37,28 +40,37 @@
       "name": "Read Mock Marketing Data",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
-      "position": [-1160, 0],
-      "notes": "Point this at your own copy of automation/mock-marketing-data-template.csv (104 rows / 26 days) imported into Google Sheets. See SETUP_GUIDE.md."
+      "position": [
+        -1160,
+        0
+      ],
+      "notes": "Point this at your own copy of automation/mock-marketing-data-template.csv (512 rows: 4 products x 2 campaigns x 4 channels x 16 days) imported into Google Sheets. See SETUP_GUIDE.md."
     },
     {
       "parameters": {
-        "jsCode": "// Groups rows by date, computes today-vs-yesterday deltas per KPI, flags anomalies,\n// builds an 8-day trend series for the chart, and computes true month-to-date budget pacing.\nconst rows = items.map(i => i.json);\n\nconst byDate = {};\nfor (const r of rows) {\n  const d = r.date;\n  byDate[d] = byDate[d] || [];\n  byDate[d].push(r);\n}\nconst dates = Object.keys(byDate).sort();\nconst latest = dates[dates.length - 1];\nconst prior = dates[dates.length - 2];\n\nfunction totals(dateRows) {\n  const t = { spend: 0, revenue: 0, leads: 0 };\n  for (const r of dateRows) {\n    t.spend += Number(r.spend);\n    t.revenue += Number(r.revenue);\n    t.leads += Number(r.leads);\n  }\n  t.roas = t.spend > 0 ? +(t.revenue / t.spend).toFixed(2) : 0;\n  return t;\n}\n\nconst todayTotals = totals(byDate[latest] || []);\nconst yestTotals = prior ? totals(byDate[prior] || []) : todayTotals;\n\nfunction deltaPct(today, yest) {\n  return yest > 0 ? +(((today - yest) / yest) * 100).toFixed(1) : 0;\n}\nconst deltas = {\n  revenue: deltaPct(todayTotals.revenue, yestTotals.revenue),\n  spend: deltaPct(todayTotals.spend, yestTotals.spend),\n  leads: deltaPct(todayTotals.leads, yestTotals.leads),\n  roas: deltaPct(todayTotals.roas, yestTotals.roas)\n};\n\nconst anomalies = [];\nfor (const r of byDate[latest] || []) {\n  if (Number(r.roas) < 2.2) {\n    anomalies.push({ channel: r.channel, roas: Number(r.roas) });\n  }\n}\n\n// 8-day trend for the chart\nconst trendDates = dates.slice(-8);\nconst trend = trendDates.map(d => {\n  const t = totals(byDate[d] || []);\n  return { date: d, spend: t.spend, revenue: t.revenue, roas: t.roas };\n});\n\n// True month-to-date budget pacing (sums actual spend within the current calendar month)\nconst monthlyBudget = 6000000; // illustrative, sized to this mock data's ~₹2L/day spend rate — replace with your real monthly budget\nconst latestDateObj = new Date(latest);\nconst y = latestDateObj.getFullYear();\nconst mo = latestDateObj.getMonth();\nconst dayOfMonth = latestDateObj.getDate();\nconst daysInMonth = new Date(y, mo + 1, 0).getDate();\n\nlet mtdSpend = 0;\nfor (const d of dates) {\n  const dd = new Date(d);\n  if (dd.getFullYear() === y && dd.getMonth() === mo && dd <= latestDateObj) {\n    mtdSpend += totals(byDate[d]).spend;\n  }\n}\nconst expectedFraction = dayOfMonth / daysInMonth;\nconst pacingPct = expectedFraction > 0 ? Math.round((mtdSpend / monthlyBudget) / expectedFraction * 100) : 100;\n\nreturn [{\n  json: {\n    date: latest,\n    revenue: todayTotals.revenue,\n    spend: todayTotals.spend,\n    leads: todayTotals.leads,\n    roas: todayTotals.roas,\n    deltas,\n    anomalies,\n    trend,\n    budget_pacing_pct: pacingPct,\n    mtd_spend: mtdSpend,\n    monthly_budget: monthlyBudget\n  }\n}];"
+        "jsCode": "// Groups rows by date, computes today-vs-yesterday deltas per KPI, breaks down\n// revenue by product / spend by channel / performance by campaign, flags campaign-level\n// anomalies, builds an 8-day trend series for the charts, and computes true\n// month-to-date budget pacing.\nconst rows = items.map(i => i.json);\n\nconst byDate = {};\nfor (const r of rows) {\n  byDate[r.date] = byDate[r.date] || [];\n  byDate[r.date].push(r);\n}\nconst dates = Object.keys(byDate).sort();\nconst latest = dates[dates.length - 1];\nconst prior = dates[dates.length - 2];\n\nfunction totals(dateRows) {\n  const t = { spend: 0, revenue: 0, leads: 0 };\n  for (const r of dateRows) {\n    t.spend += Number(r.spend);\n    t.revenue += Number(r.revenue);\n    t.leads += Number(r.leads);\n  }\n  t.roas = t.spend > 0 ? +(t.revenue / t.spend).toFixed(2) : 0;\n  return t;\n}\n\nconst todayRows = byDate[latest] || [];\nconst todayTotals = totals(todayRows);\nconst yestTotals = prior ? totals(byDate[prior] || []) : todayTotals;\n\nfunction deltaPct(today, yest) {\n  return yest > 0 ? +(((today - yest) / yest) * 100).toFixed(1) : 0;\n}\nconst deltas = {\n  revenue: deltaPct(todayTotals.revenue, yestTotals.revenue),\n  spend: deltaPct(todayTotals.spend, yestTotals.spend),\n  leads: deltaPct(todayTotals.leads, yestTotals.leads),\n  roas: deltaPct(todayTotals.roas, yestTotals.roas)\n};\n\nfunction groupBy(rowsArr, keyFn) {\n  const map = {};\n  for (const r of rowsArr) {\n    const k = keyFn(r);\n    if (!map[k]) map[k] = { key: k, spend: 0, revenue: 0, leads: 0 };\n    map[k].spend += Number(r.spend);\n    map[k].revenue += Number(r.revenue);\n    map[k].leads += Number(r.leads);\n  }\n  return Object.values(map).map(g => ({ ...g, roas: g.spend > 0 ? +(g.revenue / g.spend).toFixed(2) : 0 }));\n}\n\nconst revenueByProduct = groupBy(todayRows, r => r.product).sort((a, b) => b.revenue - a.revenue);\nconst spendByChannel = groupBy(todayRows, r => r.channel).sort((a, b) => b.spend - a.spend);\n\nconst campaignPerformance = groupBy(todayRows, r => r.product + '::' + r.campaign)\n  .map(c => {\n    const [product, campaign] = c.key.split('::');\n    return { product, campaign, spend: c.spend, revenue: c.revenue, leads: c.leads, roas: c.roas };\n  })\n  .sort((a, b) => b.roas - a.roas);\n\nconst anomalies = campaignPerformance.filter(c => c.roas < 2.2).map(c => ({ product: c.product, campaign: c.campaign, roas: c.roas }));\nconst bestCampaign = campaignPerformance[0];\nconst worstCampaign = campaignPerformance[campaignPerformance.length - 1];\n\n// 8-day trend for the trend chart (blended across every product/channel/campaign)\nconst trendDates = dates.slice(-8);\nconst trend = trendDates.map(d => {\n  const t = totals(byDate[d] || []);\n  return { date: d, spend: t.spend, revenue: t.revenue, roas: t.roas };\n});\n\n// True month-to-date budget pacing (sums actual spend within the current calendar month)\nconst monthlyBudget = 10000000; // illustrative, sized to this mock data's ~₹3.2L/day spend rate — replace with your real monthly budget\nconst latestDateObj = new Date(latest);\nconst y = latestDateObj.getFullYear();\nconst mo = latestDateObj.getMonth();\nconst dayOfMonth = latestDateObj.getDate();\nconst daysInMonth = new Date(y, mo + 1, 0).getDate();\n\nlet mtdSpend = 0;\nfor (const d of dates) {\n  const dd = new Date(d);\n  if (dd.getFullYear() === y && dd.getMonth() === mo && dd <= latestDateObj) {\n    mtdSpend += totals(byDate[d]).spend;\n  }\n}\nconst expectedFraction = dayOfMonth / daysInMonth;\nconst pacingPct = expectedFraction > 0 ? Math.round((mtdSpend / monthlyBudget) / expectedFraction * 100) : 100;\n\nreturn [{\n  json: {\n    date: latest,\n    revenue: todayTotals.revenue,\n    spend: todayTotals.spend,\n    leads: todayTotals.leads,\n    roas: todayTotals.roas,\n    deltas,\n    revenueByProduct,\n    spendByChannel,\n    campaignPerformance,\n    anomalies,\n    bestCampaign,\n    worstCampaign,\n    trend,\n    budget_pacing_pct: pacingPct,\n    mtd_spend: mtdSpend,\n    monthly_budget: monthlyBudget,\n    product_count: revenueByProduct.length,\n    channel_count: spendByChannel.length,\n    campaign_count: campaignPerformance.length\n  }\n}];"
       },
       "id": "8b1f0f2a-0003-4a11-9c2e-000000000003",
       "name": "Compute Metrics",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-920, 0]
+      "position": [
+        -920,
+        0
+      ]
     },
     {
       "parameters": {
-        "jsCode": "// Always builds a usable executive summary + exactly 3 recommended actions from the metrics —\n// no external API. Used as-is if Gemini fails, and as the base object either way.\nconst m = items[0].json;\n\nconst roasTrend = m.deltas.roas > 0 ? `up ${m.deltas.roas}%` : m.deltas.roas < 0 ? `down ${Math.abs(m.deltas.roas)}%` : 'flat';\nconst pacingWord = m.budget_pacing_pct > 110 ? 'ahead of pace' : m.budget_pacing_pct < 90 ? 'behind pace' : 'on pace';\n\nlet summary = `Yesterday's numbers are in: spend ₹${m.spend.toLocaleString('en-IN')}, revenue ₹${m.revenue.toLocaleString('en-IN')}, blended ROAS ${m.roas}x (${roasTrend} day-over-day), ${m.leads} leads. Budget is ${pacingWord} at ${m.budget_pacing_pct}% of the expected month-to-date rate.`;\n\nif (m.anomalies.length) {\n  const names = m.anomalies.map(a => `${a.channel} (${a.roas}x)`).join(', ');\n  summary += ` ${m.anomalies.length} channel(s) are below the 2.2x ROAS floor: ${names}.`;\n} else {\n  summary += ' No channels are below the ROAS floor today.';\n}\n\nconst candidates = [];\nif (m.anomalies.length) {\n  candidates.push(`Review or pause: ${m.anomalies.map(a => a.channel).join(', ')} — below the 2.2x ROAS floor.`);\n}\nif (m.budget_pacing_pct > 110) {\n  candidates.push('Budget is overpacing — rebalance excess spend toward the highest-ROAS channel today.');\n} else if (m.budget_pacing_pct < 90) {\n  candidates.push('Budget is underpacing — consider increasing spend on the best-performing channel to stay on track for the month.');\n}\nif (m.deltas.roas < -5) {\n  candidates.push('Blended ROAS dropped more than 5% day-over-day — check for a creative fatigue or audience saturation signal before scaling anything.');\n}\ncandidates.push('No anomalies beyond the above — hold current allocation and re-check tomorrow morning.');\ncandidates.push('Review the top 3 recommendation cards in the AI Recommendation Engine before 10 AM.');\ncandidates.push(\"Confirm yesterday's leads have been picked up by Sales within SLA.\");\n\nconst actions = candidates.slice(0, 3);\n\nreturn [{ json: { ...m, summary_text: summary, summary_source: 'fallback', actions } }];"
+        "jsCode": "// Always builds a usable executive summary + exactly 3 recommended actions from the metrics —\n// no external API. Used as-is if Gemini fails, and as the base object either way.\nconst m = items[0].json;\n\nconst roasTrend = m.deltas.roas > 0 ? `up ${m.deltas.roas}%` : m.deltas.roas < 0 ? `down ${Math.abs(m.deltas.roas)}%` : 'flat';\nconst pacingWord = m.budget_pacing_pct > 110 ? 'ahead of pace' : m.budget_pacing_pct < 90 ? 'behind pace' : 'on pace';\n\nlet summary = `Yesterday's numbers are in across all ${m.product_count} product lines: spend ₹${m.spend.toLocaleString('en-IN')}, revenue ₹${m.revenue.toLocaleString('en-IN')}, blended ROAS ${m.roas}x (${roasTrend} day-over-day), ${m.leads} leads. Budget is ${pacingWord} at ${m.budget_pacing_pct}% of the expected month-to-date rate.`;\nsummary += ` ${m.bestCampaign.product} — ${m.bestCampaign.campaign} is leading at ${m.bestCampaign.roas}x ROAS.`;\n\nif (m.anomalies.length) {\n  const names = m.anomalies.map(a => `${a.product} — ${a.campaign} (${a.roas}x)`).join(', ');\n  summary += ` ${m.anomalies.length} campaign(s) are below the 2.2x ROAS floor: ${names}.`;\n} else {\n  summary += ` ${m.worstCampaign.product} — ${m.worstCampaign.campaign} is the one to watch at ${m.worstCampaign.roas}x.`;\n}\n\nconst candidates = [];\nif (m.anomalies.length) {\n  candidates.push(`Review or pause: ${m.anomalies.map(a => a.product + ' — ' + a.campaign).join(', ')} — below the 2.2x ROAS floor.`);\n}\nif (m.budget_pacing_pct > 110) {\n  candidates.push('Budget is overpacing — rebalance excess spend toward the highest-ROAS campaign today.');\n} else if (m.budget_pacing_pct < 90) {\n  candidates.push('Budget is underpacing — consider increasing spend on the best-performing campaign to stay on track for the month.');\n}\nif (m.deltas.roas < -5) {\n  candidates.push('Blended ROAS dropped more than 5% day-over-day — check for a creative fatigue or audience saturation signal before scaling anything.');\n}\ncandidates.push(`Scale ${m.bestCampaign.product} — ${m.bestCampaign.campaign} — currently the strongest performer at ${m.bestCampaign.roas}x.`);\ncandidates.push('Review the top 3 recommendation cards in the AI Recommendation Engine before 10 AM.');\ncandidates.push(\"Confirm yesterday's leads have been picked up by Sales within SLA.\");\n\nconst actions = candidates.slice(0, 3);\n\nreturn [{ json: { ...m, summary_text: summary, summary_source: 'fallback', actions } }];"
       },
       "id": "8b1f0f2a-0004-4a11-9c2e-000000000004",
       "name": "Build Fallback Narrative",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-680, 0],
+      "position": [
+        -680,
+        0
+      ],
       "notes": "Always runs before Gemini is even called — guarantees a usable summary + 3 actions with zero external dependency."
     },
     {
@@ -69,26 +81,36 @@
         "genericAuthType": "httpQueryAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: `Write a 2-3 sentence CEO-style executive summary of yesterday's marketing performance, direct and confident tone, no bullet points, no headings. Metrics: spend ₹${$json.spend}, revenue ₹${$json.revenue}, blended ROAS ${$json.roas}x (${$json.deltas.roas}% vs the day before), ${$json.leads} leads, budget pacing at ${$json.budget_pacing_pct}% of the month-to-date plan. Anomalies: ${$json.anomalies.length ? $json.anomalies.map(a => a.channel + ' at ' + a.roas + 'x').join('; ') : 'none detected'}.` } ] } ], generationConfig: { maxOutputTokens: 220 } }) }}",
+        "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: `Write a 2-3 sentence CEO-style executive summary of yesterday's marketing performance across ${$json.product_count} product lines, direct and confident tone, no bullet points, no headings. Metrics: spend ₹${$json.spend}, revenue ₹${$json.revenue}, blended ROAS ${$json.roas}x (${$json.deltas.roas}% vs the day before), ${$json.leads} leads, budget pacing at ${$json.budget_pacing_pct}% of the month-to-date plan. Best performing campaign: ${$json.bestCampaign.product} — ${$json.bestCampaign.campaign} at ${$json.bestCampaign.roas}x ROAS. Weakest: ${$json.worstCampaign.product} — ${$json.worstCampaign.campaign} at ${$json.worstCampaign.roas}x ROAS. Anomalies below the 2.2x floor: ${$json.anomalies.length ? $json.anomalies.map(a => a.product + ' — ' + a.campaign + ' at ' + a.roas + 'x').join('; ') : 'none detected'}.` } ] } ], generationConfig: { maxOutputTokens: 260 } }) }}",
         "options": {}
       },
       "id": "8b1f0f2a-0005-4a11-9c2e-000000000005",
       "name": "Ask Gemini for AI Narrative",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-440, 0],
+      "position": [
+        -440,
+        0
+      ],
       "notes": "Free tier — requires a Gemini API key from Google AI Studio (aistudio.google.com/apikey), no payment method needed. Requires an HTTP Query Auth credential named 'Gemini API' with query param name 'key' = your Gemini API key."
     },
     {
       "parameters": {
         "conditions": {
-          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
           "conditions": [
             {
               "id": "cond-1",
               "leftValue": "={{ $json.candidates ? $json.candidates[0].content.parts[0].text : '' }}",
               "rightValue": "",
-              "operator": { "type": "string", "operation": "notEmpty" }
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
             }
           ],
           "combinator": "and"
@@ -98,7 +120,10 @@
       "name": "Gemini Call Succeeded?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [-200, 0]
+      "position": [
+        -200,
+        0
+      ]
     },
     {
       "parameters": {
@@ -108,7 +133,10 @@
       "name": "Use AI Summary",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [40, -110]
+      "position": [
+        40,
+        -110
+      ]
     },
     {
       "parameters": {
@@ -118,17 +146,23 @@
       "name": "Use Fallback Summary",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [40, 110]
+      "position": [
+        40,
+        110
+      ]
     },
     {
       "parameters": {
-        "jsCode": "// Builds the full CEO-style HTML infographic email: KPI cards with day-over-day deltas,\n// an embedded trend chart (via QuickChart.io's free image API — no key required),\n// an anomaly banner, the executive summary, and the 3 recommended actions.\nconst m = items[0].json;\n\nconst chartConfig = {\n  type: 'line',\n  data: {\n    labels: m.trend.map(t => t.date.slice(5)),\n    datasets: [\n      { label: 'Spend (₹)', data: m.trend.map(t => t.spend), borderColor: '#D5493F', backgroundColor: 'rgba(213,73,63,0.08)', fill: false, tension: 0.3 },\n      { label: 'Revenue (₹)', data: m.trend.map(t => t.revenue), borderColor: '#2F6FED', backgroundColor: 'rgba(47,111,237,0.08)', fill: false, tension: 0.3 }\n    ]\n  },\n  options: { plugins: { legend: { position: 'bottom' } } }\n};\nconst chartUrl = 'https://quickchart.io/chart?width=560&height=260&backgroundColor=white&version=4&c=' + encodeURIComponent(JSON.stringify(chartConfig));\n\nfunction fmtInr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }\nfunction deltaBadge(pct) {\n  const flat = pct === 0;\n  const up = pct > 0;\n  const color = flat ? '#5B6068' : (up ? '#1E9E6B' : '#D5493F');\n  const arrow = flat ? '\\u2192' : (up ? '\\u25B2' : '\\u25BC');\n  return `<span style=\"color:${color};font-weight:600;font-size:12px;\">${arrow} ${Math.abs(pct)}%</span>`;\n}\nfunction kpiCard(label, value, pct) {\n  return `<td width=\"50%\" style=\"padding:14px 10px;background:#F8F7F4;border:1px solid #E4E3DD;border-radius:8px;text-align:center;\">` +\n    `<div style=\"font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#90959D;margin-bottom:6px;\">${label}</div>` +\n    `<div style=\"font-family:Georgia,serif;font-size:20px;font-weight:700;color:#16181C;\">${value}</div>` +\n    `<div style=\"margin-top:4px;font-size:11px;color:#5B6068;\">${deltaBadge(pct)} vs yesterday</div></td>`;\n}\n\nconst anomalyHtml = m.anomalies.length\n  ? `<tr><td style=\"padding:14px 18px;background:#FBEFE9;border-left:3px solid #C68A1E;border-radius:6px;font-size:13px;color:#5B6068;\">` +\n    `<strong style=\"color:#16181C;\">\\u26A0 ${m.anomalies.length} channel(s) below the 2.2x ROAS floor:</strong> ${m.anomalies.map(a => a.channel + ' (' + a.roas + 'x)').join(', ')}</td></tr>`\n  : `<tr><td style=\"padding:14px 18px;background:#EAF7F1;border-left:3px solid #1E9E6B;border-radius:6px;font-size:13px;color:#5B6068;\">` +\n    `<strong style=\"color:#16181C;\">\\u2713 All channels healthy</strong> — nothing below the 2.2x ROAS floor today.</td></tr>`;\n\nconst actionsHtml = m.actions.map(a => `<li style=\"margin-bottom:8px;\">${a}</li>`).join('');\nconst summaryLabel = m.summary_source === 'gemini' ? 'Executive Summary (AI-written)' : 'Executive Summary (auto-generated)';\n\nconst html = `<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head><body style=\"margin:0;padding:0;\">` +\n  `<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;background:#FFFFFF;\">` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#16181C;border-radius:10px 10px 0 0;\">` +\n  `<tr><td style=\"padding:20px 24px;\">` +\n  `<div style=\"font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#6E9CFF;font-weight:700;\">MarkOS AI &middot; Daily Morning Brief</div>` +\n  `<div style=\"font-family:Georgia,serif;font-size:22px;color:#FFFFFF;font-weight:700;margin-top:4px;\">${m.date}</div>` +\n  `</td></tr></table>` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border:1px solid #E4E3DD;border-top:none;border-radius:0 0 10px 10px;\">` +\n  `<tr><td style=\"padding:20px;\">` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"8\"><tr>${kpiCard('Revenue', fmtInr(m.revenue), m.deltas.revenue)}${kpiCard('Spend', fmtInr(m.spend), m.deltas.spend)}</tr>` +\n  `<tr>${kpiCard('Blended ROAS', m.roas + 'x', m.deltas.roas)}${kpiCard('Leads', m.leads, m.deltas.leads)}</tr></table>` +\n  `<div style=\"margin-top:20px;padding:12px 16px;background:#F1F0EC;border-radius:8px;font-size:13px;color:#5B6068;\">` +\n  `<strong style=\"color:#16181C;\">Budget pacing:</strong> ${m.budget_pacing_pct}% of the expected month-to-date rate (₹${Math.round(m.mtd_spend).toLocaleString('en-IN')} spent of a ₹${(m.monthly_budget/100000).toFixed(1)}L monthly budget).</div>` +\n  `<div style=\"margin-top:20px;\"><img src=\"${chartUrl}\" width=\"560\" alt=\"8-day spend vs revenue trend\" style=\"width:100%;max-width:560px;border-radius:8px;border:1px solid #E4E3DD;\"></div>` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-top:20px;\">${anomalyHtml}</table>` +\n  `<div style=\"margin-top:22px;\"><div style=\"font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#90959D;margin-bottom:8px;\">${summaryLabel}</div>` +\n  `<p style=\"font-size:14px;line-height:1.7;color:#16181C;margin:0;\">${m.summary_text}</p></div>` +\n  `<div style=\"margin-top:22px;\"><div style=\"font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#90959D;margin-bottom:8px;\">Recommended Actions</div>` +\n  `<ol style=\"margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:#16181C;\">${actionsHtml}</ol></div>` +\n  `<div style=\"margin-top:26px;padding-top:14px;border-top:1px solid #E4E3DD;font-size:11px;color:#90959D;\">Generated automatically by the MarkOS AI n8n workflow. Sample/demo data — not a real business's figures.</div>` +\n  `</td></tr></table></div></body></html>`;\n\nreturn [{ json: { html, date: m.date } }];"
+        "jsCode": "// Builds the full CEO-style HTML infographic email: KPI cards with day-over-day deltas,\n// 4 embedded charts (trend, spend-by-channel, revenue-by-product, campaign ROAS leaderboard)\n// via QuickChart.io's free image API — no key required — an anomaly banner, the executive\n// summary, and the 3 recommended actions.\nconst m = items[0].json;\n\nconst CHANNEL_COLORS = { 'Google Ads': '#4285F4', 'Facebook': '#1877F2', 'Instagram': '#E1306C', 'LinkedIn': '#0A66C2' };\nconst PRODUCT_COLORS = { 'Vantage CRM': '#2F6FED', 'Lumiere Skincare': '#FF6FA5', 'Solara Fitband': '#17B890', 'Aurelia Jewellery': '#C6A15B' };\n\nfunction quickChart(config, w, h) {\n  return 'https://quickchart.io/chart?width=' + w + '&height=' + h + '&backgroundColor=white&version=4&c=' + encodeURIComponent(JSON.stringify(config));\n}\n\nconst trendUrl = quickChart({\n  type: 'line',\n  data: {\n    labels: m.trend.map(t => t.date.slice(5)),\n    datasets: [\n      { label: 'Spend (₹)', data: m.trend.map(t => t.spend), borderColor: '#D5493F', backgroundColor: 'rgba(213,73,63,0.08)', fill: false, tension: 0.3 },\n      { label: 'Revenue (₹)', data: m.trend.map(t => t.revenue), borderColor: '#2F6FED', backgroundColor: 'rgba(47,111,237,0.08)', fill: false, tension: 0.3 }\n    ]\n  },\n  options: { plugins: { legend: { position: 'bottom' } } }\n}, 560, 230);\n\nconst channelUrl = quickChart({\n  type: 'doughnut',\n  data: { labels: m.spendByChannel.map(c => c.key), datasets: [{ data: m.spendByChannel.map(c => c.spend), backgroundColor: m.spendByChannel.map(c => CHANNEL_COLORS[c.key] || '#999') }] },\n  options: { plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } }, title: { display: true, text: 'Spend by Channel' } } }\n}, 270, 220);\n\nconst productUrl = quickChart({\n  type: 'doughnut',\n  data: { labels: m.revenueByProduct.map(p => p.key), datasets: [{ data: m.revenueByProduct.map(p => p.revenue), backgroundColor: m.revenueByProduct.map(p => PRODUCT_COLORS[p.key] || '#999') }] },\n  options: { plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } }, title: { display: true, text: 'Revenue by Product' } } }\n}, 270, 220);\n\nfunction threshColor(roas) { return roas >= 3.5 ? '#1E9E6B' : roas >= 2.2 ? '#C68A1E' : '#D5493F'; }\nconst leaderboardUrl = quickChart({\n  type: 'bar',\n  data: {\n    labels: m.campaignPerformance.map(c => [c.product, c.campaign]),\n    datasets: [{ label: 'ROAS', data: m.campaignPerformance.map(c => c.roas), backgroundColor: m.campaignPerformance.map(c => threshColor(c.roas)) }]\n  },\n  options: { indexAxis: 'y', plugins: { legend: { display: false }, title: { display: true, text: 'Campaign ROAS Leaderboard' } } }\n}, 560, 280);\n\nfunction fmtInr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }\nfunction fmtInrShort(n) { return n >= 10000000 ? '₹' + (n / 10000000).toFixed(1) + 'Cr' : '₹' + (n / 100000).toFixed(1) + 'L'; }\nfunction deltaBadge(pct) {\n  const flat = pct === 0;\n  const up = pct > 0;\n  const color = flat ? '#5B6068' : (up ? '#1E9E6B' : '#D5493F');\n  const arrow = flat ? '\\u2192' : (up ? '\\u25B2' : '\\u25BC');\n  return `<span style=\"color:${color};font-weight:600;font-size:12px;\">${arrow} ${Math.abs(pct)}%</span>`;\n}\nfunction kpiCard(label, value, pct) {\n  return `<td width=\"50%\" style=\"padding:14px 10px;background:#F8F7F4;border:1px solid #E4E3DD;border-radius:8px;text-align:center;\">` +\n    `<div style=\"font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#90959D;margin-bottom:6px;\">${label}</div>` +\n    `<div style=\"font-family:Georgia,serif;font-size:20px;font-weight:700;color:#16181C;\">${value}</div>` +\n    `<div style=\"margin-top:4px;font-size:11px;color:#5B6068;\">${deltaBadge(pct)} vs yesterday</div></td>`;\n}\n\nconst anomalyHtml = m.anomalies.length\n  ? `<tr><td style=\"padding:14px 18px;background:#FBEFE9;border-left:3px solid #C68A1E;border-radius:6px;font-size:13px;color:#5B6068;\">` +\n    `<strong style=\"color:#16181C;\">\\u26A0 ${m.anomalies.length} campaign(s) below the 2.2x ROAS floor:</strong> ${m.anomalies.map(a => a.product + ' — ' + a.campaign + ' (' + a.roas + 'x)').join(', ')}</td></tr>`\n  : `<tr><td style=\"padding:14px 18px;background:#EAF7F1;border-left:3px solid #1E9E6B;border-radius:6px;font-size:13px;color:#5B6068;\">` +\n    `<strong style=\"color:#16181C;\">\\u2713 All campaigns healthy</strong> — nothing below the 2.2x ROAS floor today.</td></tr>`;\n\nconst actionsHtml = m.actions.map(a => `<li style=\"margin-bottom:8px;\">${a}</li>`).join('');\nconst summaryLabel = m.summary_source === 'gemini' ? 'Executive Summary (AI-written)' : 'Executive Summary (auto-generated)';\n\nconst html = `<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head><body style=\"margin:0;padding:0;\">` +\n  `<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;background:#FFFFFF;\">` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#16181C;border-radius:10px 10px 0 0;\">` +\n  `<tr><td style=\"padding:20px 24px;\">` +\n  `<div style=\"font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#6E9CFF;font-weight:700;\">MarkOS AI &middot; Daily Morning Brief</div>` +\n  `<div style=\"font-family:Georgia,serif;font-size:22px;color:#FFFFFF;font-weight:700;margin-top:4px;\">${m.date}</div>` +\n  `<div style=\"font-size:11px;color:#9DA2AA;margin-top:4px;\">${m.product_count} product lines &middot; ${m.channel_count} channels &middot; ${m.campaign_count} active campaigns</div>` +\n  `</td></tr></table>` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border:1px solid #E4E3DD;border-top:none;border-radius:0 0 10px 10px;\">` +\n  `<tr><td style=\"padding:20px;\">` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"8\"><tr>${kpiCard('Revenue', fmtInr(m.revenue), m.deltas.revenue)}${kpiCard('Spend', fmtInr(m.spend), m.deltas.spend)}</tr>` +\n  `<tr>${kpiCard('Blended ROAS', m.roas + 'x', m.deltas.roas)}${kpiCard('Leads', m.leads, m.deltas.leads)}</tr></table>` +\n  `<div style=\"margin-top:20px;padding:12px 16px;background:#F1F0EC;border-radius:8px;font-size:13px;color:#5B6068;\">` +\n  `<strong style=\"color:#16181C;\">Budget pacing:</strong> ${m.budget_pacing_pct}% of the expected month-to-date rate (${fmtInrShort(m.mtd_spend)} spent of a ${fmtInrShort(m.monthly_budget)} monthly budget).</div>` +\n  `<div style=\"margin-top:20px;\"><img src=\"${trendUrl}\" width=\"560\" alt=\"8-day spend vs revenue trend\" style=\"width:100%;max-width:560px;border-radius:8px;border:1px solid #E4E3DD;\"></div>` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"8\" style=\"margin-top:16px;\"><tr>` +\n  `<td width=\"50%\" style=\"vertical-align:top;\"><img src=\"${channelUrl}\" width=\"270\" alt=\"Spend by channel\" style=\"width:100%;max-width:270px;border-radius:8px;border:1px solid #E4E3DD;\"></td>` +\n  `<td width=\"50%\" style=\"vertical-align:top;\"><img src=\"${productUrl}\" width=\"270\" alt=\"Revenue by product\" style=\"width:100%;max-width:270px;border-radius:8px;border:1px solid #E4E3DD;\"></td>` +\n  `</tr></table>` +\n  `<div style=\"margin-top:16px;\"><img src=\"${leaderboardUrl}\" width=\"560\" alt=\"Campaign ROAS leaderboard\" style=\"width:100%;max-width:560px;border-radius:8px;border:1px solid #E4E3DD;\"></div>` +\n  `<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-top:20px;\">${anomalyHtml}</table>` +\n  `<div style=\"margin-top:22px;\"><div style=\"font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#90959D;margin-bottom:8px;\">${summaryLabel}</div>` +\n  `<p style=\"font-size:14px;line-height:1.7;color:#16181C;margin:0;\">${m.summary_text}</p></div>` +\n  `<div style=\"margin-top:22px;\"><div style=\"font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#90959D;margin-bottom:8px;\">Recommended Actions</div>` +\n  `<ol style=\"margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:#16181C;\">${actionsHtml}</ol></div>` +\n  `<div style=\"margin-top:26px;padding-top:14px;border-top:1px solid #E4E3DD;font-size:11px;color:#90959D;\">Generated automatically by the MarkOS AI n8n workflow. Sample/demo data — not a real business's figures.</div>` +\n  `</td></tr></table></div></body></html>`;\n\nreturn [{ json: { html, date: m.date } }];"
       },
       "id": "8b1f0f2a-0009-4a11-9c2e-000000000009",
       "name": "Build Email HTML",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [280, 0],
+      "position": [
+        280,
+        0
+      ],
       "notes": "The chart image is fetched live from quickchart.io (free, no key) when the recipient opens the email — mention this in SETUP_GUIDE."
     },
     {
@@ -143,40 +177,119 @@
       "name": "Send Morning Brief Email",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [520, 0],
+      "position": [
+        520,
+        0
+      ],
       "notes": "Confirm the Email Type field shows 'HTML' after import — set it manually if the import doesn't carry it over cleanly."
     }
   ],
   "connections": {
     "Daily 7AM Trigger": {
-      "main": [[{ "node": "Read Mock Marketing Data", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Read Mock Marketing Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Read Mock Marketing Data": {
-      "main": [[{ "node": "Compute Metrics", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Compute Metrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Compute Metrics": {
-      "main": [[{ "node": "Build Fallback Narrative", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Build Fallback Narrative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Build Fallback Narrative": {
-      "main": [[{ "node": "Ask Gemini for AI Narrative", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Ask Gemini for AI Narrative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Ask Gemini for AI Narrative": {
-      "main": [[{ "node": "Gemini Call Succeeded?", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Gemini Call Succeeded?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Gemini Call Succeeded?": {
       "main": [
-        [{ "node": "Use AI Summary", "type": "main", "index": 0 }],
-        [{ "node": "Use Fallback Summary", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Use AI Summary",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Use Fallback Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Use AI Summary": {
-      "main": [[{ "node": "Build Email HTML", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Build Email HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Use Fallback Summary": {
-      "main": [[{ "node": "Build Email HTML", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Build Email HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Build Email HTML": {
-      "main": [[{ "node": "Send Morning Brief Email", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Send Morning Brief Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -184,6 +297,6 @@
     "executionOrder": "v1"
   },
   "meta": {
-    "description": "MarkOS AI Module 11 (Reporting & Dashboard Engine) — daily automated morning brief. Pulls sample marketing data (104 rows / 26 days), computes KPI deltas and an 8-day trend, asks Gemini's free-tier API for an executive summary (falling back to a rule-based one if that call fails), and emails a CEO-style HTML infographic with an embedded chart."
+    "description": "MarkOS AI Module 11 (Reporting & Dashboard Engine) — daily automated morning brief. Pulls sample marketing data (512 rows: 4 products x 4 channels x 2 campaigns x 16 days), computes KPI deltas, product/channel/campaign breakdowns, and an 8-day trend, asks Gemini's free-tier API for an executive summary (falling back to a rule-based one if that call fails), and emails a CEO-style HTML infographic with 4 embedded charts."
   }
 }

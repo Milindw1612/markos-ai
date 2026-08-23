@@ -1,105 +1,513 @@
-date,channel,spend,revenue,leads,roas
-2026-07-20,Search,72000,309356,18,4.3
-2026-07-20,Social,49100,184467,21,3.76
-2026-07-20,Video,32400,95315,9,2.94
-2026-07-20,Influencer,21700,48699,5,2.24
-2026-07-21,Search,63600,281489,17,4.43
-2026-07-21,Social,52600,181895,22,3.46
-2026-07-21,Video,32000,92841,10,2.9
-2026-07-21,Influencer,25000,57248,5,2.29
-2026-07-22,Search,76900,348236,18,4.53
-2026-07-22,Social,48100,183803,20,3.82
-2026-07-22,Video,32000,104505,9,3.27
-2026-07-22,Influencer,26400,60834,6,2.3
-2026-07-23,Search,75300,356785,21,4.74
-2026-07-23,Social,53300,199261,19,3.74
-2026-07-23,Video,28600,87054,7,3.04
-2026-07-23,Influencer,22900,50379,5,2.2
-2026-07-24,Search,72800,331199,18,4.55
-2026-07-24,Social,49600,172858,22,3.49
-2026-07-24,Video,31300,100317,8,3.21
-2026-07-24,Influencer,25400,56475,5,2.22
-2026-07-25,Search,66300,315201,17,4.75
-2026-07-25,Social,46500,177564,20,3.82
-2026-07-25,Video,24500,71397,7,2.91
-2026-07-25,Influencer,19800,44378,5,2.24
-2026-07-26,Search,65200,294190,18,4.51
-2026-07-26,Social,44100,170231,18,3.86
-2026-07-26,Video,24700,74651,7,3.02
-2026-07-26,Influencer,19800,47160,5,2.38
-2026-07-27,Search,70100,311326,20,4.44
-2026-07-27,Social,53200,179979,19,3.38
-2026-07-27,Video,28300,90963,9,3.21
-2026-07-27,Influencer,24100,52680,5,2.19
-2026-07-28,Search,78800,368127,23,4.67
-2026-07-28,Social,57100,190546,25,3.34
-2026-07-28,Video,31900,101079,9,3.17
-2026-07-28,Influencer,25300,55760,5,2.2
-2026-07-29,Search,71300,355619,20,4.99
-2026-07-29,Social,50900,184275,19,3.62
-2026-07-29,Video,33400,111447,9,3.34
-2026-07-29,Influencer,25400,60731,5,2.39
-2026-07-30,Search,75900,355159,21,4.68
-2026-07-30,Social,53900,179526,21,3.33
-2026-07-30,Video,28000,94255,9,3.37
-2026-07-30,Influencer,26400,60129,5,2.28
-2026-07-31,Search,77800,387641,18,4.98
-2026-07-31,Social,53600,180658,23,3.37
-2026-07-31,Video,32700,96881,9,2.96
-2026-07-31,Influencer,25100,56768,6,2.26
-2026-08-01,Search,60700,269240,16,4.44
-2026-08-01,Social,47900,165107,19,3.45
-2026-08-01,Video,29100,93863,8,3.23
-2026-08-01,Influencer,21200,46799,4,2.21
-2026-08-02,Search,59900,282471,15,4.72
-2026-08-02,Social,43400,146324,18,3.37
-2026-08-02,Video,25100,84194,8,3.35
-2026-08-02,Influencer,19400,43679,4,2.25
-2026-08-03,Search,68800,301099,20,4.38
-2026-08-03,Social,55000,198229,24,3.6
-2026-08-03,Video,33200,99400,9,2.99
-2026-08-03,Influencer,24700,57335,5,2.32
-2026-08-04,Search,76600,366070,22,4.78
-2026-08-04,Social,50000,178180,20,3.56
-2026-08-04,Video,33700,101886,9,3.02
-2026-08-04,Influencer,24800,57552,5,2.32
-2026-08-05,Search,69800,346551,18,4.96
-2026-08-05,Social,58500,213475,21,3.65
-2026-08-05,Video,34600,114850,11,3.32
-2026-08-05,Influencer,27300,67734,6,2.48
-2026-08-06,Search,73400,325678,19,4.44
-2026-08-06,Social,49900,177140,23,3.55
-2026-08-06,Video,30100,99124,9,3.29
-2026-08-06,Influencer,24900,62797,6,2.52
-2026-08-07,Search,74700,359493,18,4.81
-2026-08-07,Social,52600,204692,22,3.89
-2026-08-07,Video,31900,104472,8,3.27
-2026-08-07,Influencer,25800,60658,6,2.35
-2026-08-08,Search,58700,293079,14,4.99
-2026-08-08,Social,43800,160967,19,3.68
-2026-08-08,Video,25600,75736,8,2.96
-2026-08-08,Influencer,20500,48904,5,2.39
-2026-08-09,Search,62100,292631,16,4.71
-2026-08-09,Social,51000,175884,22,3.45
-2026-08-09,Video,25700,79605,8,3.1
-2026-08-09,Influencer,20800,47442,5,2.28
-2026-08-10,Search,68200,315013,20,4.62
-2026-08-10,Social,60900,205406,23,3.37
-2026-08-10,Video,30400,102398,10,3.37
-2026-08-10,Influencer,27500,63276,6,2.3
-2026-08-11,Search,79700,382674,21,4.8
-2026-08-11,Social,60900,225889,22,3.71
-2026-08-11,Video,34100,103967,10,3.05
-2026-08-11,Influencer,27900,56173,6,2.01
-2026-08-12,Search,69100,324051,17,4.69
-2026-08-12,Social,56800,212775,22,3.75
-2026-08-12,Video,33000,100025,10,3.03
-2026-08-12,Influencer,27800,56537,6,2.03
-2026-08-13,Search,74000,331805,17,4.48
-2026-08-13,Social,58900,217896,23,3.7
-2026-08-13,Video,33800,107350,10,3.18
-2026-08-13,Influencer,23200,37095,6,1.6
-2026-08-14,Search,81500,381739,23,4.68
-2026-08-14,Social,56900,194380,21,3.42
-2026-08-14,Video,31100,104219,10,3.35
-2026-08-14,Influencer,27700,44320,6,1.6
+date,product,campaign,channel,spend,revenue,leads,roas
+2026-07-30,Vantage CRM,Campaign 1,Google Ads,20800,66769,2,3.21
+2026-07-30,Vantage CRM,Campaign 1,Facebook,8900,24168,1,2.72
+2026-07-30,Vantage CRM,Campaign 1,Instagram,3400,7829,1,2.3
+2026-07-30,Vantage CRM,Campaign 1,LinkedIn,18600,57156,1,3.07
+2026-07-30,Vantage CRM,Campaign 2,Google Ads,14200,50805,1,3.58
+2026-07-30,Vantage CRM,Campaign 2,Facebook,6100,16806,1,2.76
+2026-07-30,Vantage CRM,Campaign 2,Instagram,2600,5881,1,2.26
+2026-07-30,Vantage CRM,Campaign 2,LinkedIn,11500,40127,1,3.49
+2026-07-30,Lumiere Skincare,Campaign 1,Google Ads,6300,21293,8,3.38
+2026-07-30,Lumiere Skincare,Campaign 1,Facebook,18200,70808,29,3.89
+2026-07-30,Lumiere Skincare,Campaign 1,Instagram,19400,81717,33,4.21
+2026-07-30,Lumiere Skincare,Campaign 1,LinkedIn,2100,5466,2,2.6
+2026-07-30,Lumiere Skincare,Campaign 2,Google Ads,4700,16724,6,3.56
+2026-07-30,Lumiere Skincare,Campaign 2,Facebook,11600,47204,18,4.07
+2026-07-30,Lumiere Skincare,Campaign 2,Instagram,13300,59011,22,4.44
+2026-07-30,Lumiere Skincare,Campaign 2,LinkedIn,1500,4217,2,2.81
+2026-07-30,Solara Fitband,Campaign 1,Google Ads,15400,56534,18,3.67
+2026-07-30,Solara Fitband,Campaign 1,Facebook,8900,28107,9,3.16
+2026-07-30,Solara Fitband,Campaign 1,Instagram,12500,44921,11,3.59
+2026-07-30,Solara Fitband,Campaign 1,LinkedIn,4300,11653,3,2.71
+2026-07-30,Solara Fitband,Campaign 2,Google Ads,10500,38711,12,3.69
+2026-07-30,Solara Fitband,Campaign 2,Facebook,6600,21390,6,3.24
+2026-07-30,Solara Fitband,Campaign 2,Instagram,9600,37019,10,3.86
+2026-07-30,Solara Fitband,Campaign 2,LinkedIn,2900,7010,2,2.42
+2026-07-30,Aurelia Jewellery,Campaign 1,Google Ads,8000,25893,5,3.24
+2026-07-30,Aurelia Jewellery,Campaign 1,Facebook,11900,39721,7,3.34
+2026-07-30,Aurelia Jewellery,Campaign 1,Instagram,14100,50449,8,3.58
+2026-07-30,Aurelia Jewellery,Campaign 1,LinkedIn,2900,6738,1,2.32
+2026-07-30,Aurelia Jewellery,Campaign 2,Google Ads,4800,13819,2,2.88
+2026-07-30,Aurelia Jewellery,Campaign 2,Facebook,8900,28229,5,3.17
+2026-07-30,Aurelia Jewellery,Campaign 2,Instagram,10500,40119,7,3.82
+2026-07-30,Aurelia Jewellery,Campaign 2,LinkedIn,2200,5305,1,2.41
+2026-07-31,Vantage CRM,Campaign 1,Google Ads,21100,76150,2,3.61
+2026-07-31,Vantage CRM,Campaign 1,Facebook,9100,23297,1,2.56
+2026-07-31,Vantage CRM,Campaign 1,Instagram,3600,8260,1,2.29
+2026-07-31,Vantage CRM,Campaign 1,LinkedIn,18100,54991,1,3.04
+2026-07-31,Vantage CRM,Campaign 2,Google Ads,14100,48449,1,3.44
+2026-07-31,Vantage CRM,Campaign 2,Facebook,6800,18406,1,2.71
+2026-07-31,Vantage CRM,Campaign 2,Instagram,2600,5553,1,2.14
+2026-07-31,Vantage CRM,Campaign 2,LinkedIn,13400,46870,1,3.5
+2026-07-31,Lumiere Skincare,Campaign 1,Google Ads,6600,23376,8,3.54
+2026-07-31,Lumiere Skincare,Campaign 1,Facebook,17600,67106,23,3.81
+2026-07-31,Lumiere Skincare,Campaign 1,Instagram,17900,72811,28,4.07
+2026-07-31,Lumiere Skincare,Campaign 1,LinkedIn,2100,5410,2,2.58
+2026-07-31,Lumiere Skincare,Campaign 2,Google Ads,4200,14790,5,3.52
+2026-07-31,Lumiere Skincare,Campaign 2,Facebook,12300,51350,18,4.17
+2026-07-31,Lumiere Skincare,Campaign 2,Instagram,12000,50340,19,4.2
+2026-07-31,Lumiere Skincare,Campaign 2,LinkedIn,1400,4139,2,2.96
+2026-07-31,Solara Fitband,Campaign 1,Google Ads,14700,55716,14,3.79
+2026-07-31,Solara Fitband,Campaign 1,Facebook,8900,27763,7,3.12
+2026-07-31,Solara Fitband,Campaign 1,Instagram,14400,49032,12,3.4
+2026-07-31,Solara Fitband,Campaign 1,LinkedIn,4600,12014,3,2.61
+2026-07-31,Solara Fitband,Campaign 2,Google Ads,9900,34773,10,3.51
+2026-07-31,Solara Fitband,Campaign 2,Facebook,7100,24041,7,3.39
+2026-07-31,Solara Fitband,Campaign 2,Instagram,8600,30300,8,3.52
+2026-07-31,Solara Fitband,Campaign 2,LinkedIn,3000,7841,2,2.61
+2026-07-31,Aurelia Jewellery,Campaign 1,Google Ads,7600,21790,4,2.87
+2026-07-31,Aurelia Jewellery,Campaign 1,Facebook,13700,49208,9,3.59
+2026-07-31,Aurelia Jewellery,Campaign 1,Instagram,16700,62427,10,3.74
+2026-07-31,Aurelia Jewellery,Campaign 1,LinkedIn,3100,7571,1,2.44
+2026-07-31,Aurelia Jewellery,Campaign 2,Google Ads,4700,13602,2,2.89
+2026-07-31,Aurelia Jewellery,Campaign 2,Facebook,8700,31741,5,3.65
+2026-07-31,Aurelia Jewellery,Campaign 2,Instagram,11400,44245,8,3.88
+2026-07-31,Aurelia Jewellery,Campaign 2,LinkedIn,2000,4776,1,2.39
+2026-08-01,Vantage CRM,Campaign 1,Google Ads,17800,57657,1,3.24
+2026-08-01,Vantage CRM,Campaign 1,Facebook,9200,26193,1,2.85
+2026-08-01,Vantage CRM,Campaign 1,Instagram,3400,8195,1,2.41
+2026-08-01,Vantage CRM,Campaign 1,LinkedIn,17100,60130,1,3.52
+2026-08-01,Vantage CRM,Campaign 2,Google Ads,13300,45061,1,3.39
+2026-08-01,Vantage CRM,Campaign 2,Facebook,6000,15766,1,2.63
+2026-08-01,Vantage CRM,Campaign 2,Instagram,2400,5428,1,2.26
+2026-08-01,Vantage CRM,Campaign 2,LinkedIn,12000,41024,1,3.42
+2026-08-01,Lumiere Skincare,Campaign 1,Google Ads,5500,18695,8,3.4
+2026-08-01,Lumiere Skincare,Campaign 1,Facebook,15900,61499,27,3.87
+2026-08-01,Lumiere Skincare,Campaign 1,Instagram,18200,80229,31,4.41
+2026-08-01,Lumiere Skincare,Campaign 1,LinkedIn,2000,5269,2,2.63
+2026-08-01,Lumiere Skincare,Campaign 2,Google Ads,4300,15851,6,3.69
+2026-08-01,Lumiere Skincare,Campaign 2,Facebook,10900,44217,20,4.06
+2026-08-01,Lumiere Skincare,Campaign 2,Instagram,11800,48394,18,4.1
+2026-08-01,Lumiere Skincare,Campaign 2,LinkedIn,1300,3489,1,2.68
+2026-08-01,Solara Fitband,Campaign 1,Google Ads,12300,46134,12,3.75
+2026-08-01,Solara Fitband,Campaign 1,Facebook,9200,28751,8,3.13
+2026-08-01,Solara Fitband,Campaign 1,Instagram,12000,45994,13,3.83
+2026-08-01,Solara Fitband,Campaign 1,LinkedIn,4000,10403,3,2.6
+2026-08-01,Solara Fitband,Campaign 2,Google Ads,8600,30163,8,3.51
+2026-08-01,Solara Fitband,Campaign 2,Facebook,5300,15614,5,2.95
+2026-08-01,Solara Fitband,Campaign 2,Instagram,7300,26169,8,3.58
+2026-08-01,Solara Fitband,Campaign 2,LinkedIn,2500,6319,2,2.53
+2026-08-01,Aurelia Jewellery,Campaign 1,Google Ads,6900,21642,3,3.14
+2026-08-01,Aurelia Jewellery,Campaign 1,Facebook,11100,36221,6,3.26
+2026-08-01,Aurelia Jewellery,Campaign 1,Instagram,14400,51904,9,3.6
+2026-08-01,Aurelia Jewellery,Campaign 1,LinkedIn,2900,7728,1,2.66
+2026-08-01,Aurelia Jewellery,Campaign 2,Google Ads,4700,14113,2,3.0
+2026-08-01,Aurelia Jewellery,Campaign 2,Facebook,7600,25643,4,3.37
+2026-08-01,Aurelia Jewellery,Campaign 2,Instagram,9100,35074,6,3.85
+2026-08-01,Aurelia Jewellery,Campaign 2,LinkedIn,2000,5354,1,2.68
+2026-08-02,Vantage CRM,Campaign 1,Google Ads,19200,69910,2,3.64
+2026-08-02,Vantage CRM,Campaign 1,Facebook,7900,20039,1,2.54
+2026-08-02,Vantage CRM,Campaign 1,Instagram,3000,6614,1,2.2
+2026-08-02,Vantage CRM,Campaign 1,LinkedIn,17200,59339,1,3.45
+2026-08-02,Vantage CRM,Campaign 2,Google Ads,11800,41507,1,3.52
+2026-08-02,Vantage CRM,Campaign 2,Facebook,5300,15187,1,2.87
+2026-08-02,Vantage CRM,Campaign 2,Instagram,2100,5180,1,2.47
+2026-08-02,Vantage CRM,Campaign 2,LinkedIn,11100,39501,1,3.56
+2026-08-02,Lumiere Skincare,Campaign 1,Google Ads,5500,19583,8,3.56
+2026-08-02,Lumiere Skincare,Campaign 1,Facebook,14600,56946,22,3.9
+2026-08-02,Lumiere Skincare,Campaign 1,Instagram,17400,69068,28,3.97
+2026-08-02,Lumiere Skincare,Campaign 1,LinkedIn,2000,5168,2,2.58
+2026-08-02,Lumiere Skincare,Campaign 2,Google Ads,4100,14789,5,3.61
+2026-08-02,Lumiere Skincare,Campaign 2,Facebook,11000,47181,22,4.29
+2026-08-02,Lumiere Skincare,Campaign 2,Instagram,10200,42215,15,4.14
+2026-08-02,Lumiere Skincare,Campaign 2,LinkedIn,1400,3776,1,2.7
+2026-08-02,Solara Fitband,Campaign 1,Google Ads,12700,51437,16,4.05
+2026-08-02,Solara Fitband,Campaign 1,Facebook,8100,24466,8,3.02
+2026-08-02,Solara Fitband,Campaign 1,Instagram,12000,44585,11,3.72
+2026-08-02,Solara Fitband,Campaign 1,LinkedIn,3400,9106,3,2.68
+2026-08-02,Solara Fitband,Campaign 2,Google Ads,7900,32125,10,4.07
+2026-08-02,Solara Fitband,Campaign 2,Facebook,6000,17921,6,2.99
+2026-08-02,Solara Fitband,Campaign 2,Instagram,7200,27425,8,3.81
+2026-08-02,Solara Fitband,Campaign 2,LinkedIn,2400,6293,2,2.62
+2026-08-02,Aurelia Jewellery,Campaign 1,Google Ads,6500,18343,3,2.82
+2026-08-02,Aurelia Jewellery,Campaign 1,Facebook,10400,33150,5,3.19
+2026-08-02,Aurelia Jewellery,Campaign 1,Instagram,12500,42853,7,3.43
+2026-08-02,Aurelia Jewellery,Campaign 1,LinkedIn,2600,6770,1,2.6
+2026-08-02,Aurelia Jewellery,Campaign 2,Google Ads,4600,13089,2,2.85
+2026-08-02,Aurelia Jewellery,Campaign 2,Facebook,6600,21544,3,3.26
+2026-08-02,Aurelia Jewellery,Campaign 2,Instagram,9600,34842,5,3.63
+2026-08-02,Aurelia Jewellery,Campaign 2,LinkedIn,1800,4813,1,2.67
+2026-08-03,Vantage CRM,Campaign 1,Google Ads,23300,78360,2,3.36
+2026-08-03,Vantage CRM,Campaign 1,Facebook,10500,27865,1,2.65
+2026-08-03,Vantage CRM,Campaign 1,Instagram,4000,9910,1,2.48
+2026-08-03,Vantage CRM,Campaign 1,LinkedIn,20500,69888,2,3.41
+2026-08-03,Vantage CRM,Campaign 2,Google Ads,14300,47434,1,3.32
+2026-08-03,Vantage CRM,Campaign 2,Facebook,6100,15339,1,2.51
+2026-08-03,Vantage CRM,Campaign 2,Instagram,2400,5223,1,2.18
+2026-08-03,Vantage CRM,Campaign 2,LinkedIn,13700,47890,1,3.5
+2026-08-03,Lumiere Skincare,Campaign 1,Google Ads,6600,22780,9,3.45
+2026-08-03,Lumiere Skincare,Campaign 1,Facebook,17200,66656,26,3.88
+2026-08-03,Lumiere Skincare,Campaign 1,Instagram,18300,84504,39,4.62
+2026-08-03,Lumiere Skincare,Campaign 1,LinkedIn,2300,6177,3,2.69
+2026-08-03,Lumiere Skincare,Campaign 2,Google Ads,4400,15477,5,3.52
+2026-08-03,Lumiere Skincare,Campaign 2,Facebook,11300,46142,18,4.08
+2026-08-03,Lumiere Skincare,Campaign 2,Instagram,12000,51639,18,4.3
+2026-08-03,Lumiere Skincare,Campaign 2,LinkedIn,1500,3924,2,2.62
+2026-08-03,Solara Fitband,Campaign 1,Google Ads,13600,47732,13,3.51
+2026-08-03,Solara Fitband,Campaign 1,Facebook,9300,30168,9,3.24
+2026-08-03,Solara Fitband,Campaign 1,Instagram,14300,52778,16,3.69
+2026-08-03,Solara Fitband,Campaign 1,LinkedIn,4600,11749,3,2.55
+2026-08-03,Solara Fitband,Campaign 2,Google Ads,10900,39097,12,3.59
+2026-08-03,Solara Fitband,Campaign 2,Facebook,6700,19875,6,2.97
+2026-08-03,Solara Fitband,Campaign 2,Instagram,9800,35999,11,3.67
+2026-08-03,Solara Fitband,Campaign 2,LinkedIn,3000,7350,2,2.45
+2026-08-03,Aurelia Jewellery,Campaign 1,Google Ads,7900,24970,5,3.16
+2026-08-03,Aurelia Jewellery,Campaign 1,Facebook,13500,46517,9,3.45
+2026-08-03,Aurelia Jewellery,Campaign 1,Instagram,16400,60866,9,3.71
+2026-08-03,Aurelia Jewellery,Campaign 1,LinkedIn,2900,6824,1,2.35
+2026-08-03,Aurelia Jewellery,Campaign 2,Google Ads,4900,15490,3,3.16
+2026-08-03,Aurelia Jewellery,Campaign 2,Facebook,8700,30177,5,3.47
+2026-08-03,Aurelia Jewellery,Campaign 2,Instagram,10500,34796,6,3.31
+2026-08-03,Aurelia Jewellery,Campaign 2,LinkedIn,2200,5503,1,2.5
+2026-08-04,Vantage CRM,Campaign 1,Google Ads,22700,71821,2,3.16
+2026-08-04,Vantage CRM,Campaign 1,Facebook,9400,23652,1,2.52
+2026-08-04,Vantage CRM,Campaign 1,Instagram,4000,8766,1,2.19
+2026-08-04,Vantage CRM,Campaign 1,LinkedIn,21100,69563,1,3.3
+2026-08-04,Vantage CRM,Campaign 2,Google Ads,14600,51099,1,3.5
+2026-08-04,Vantage CRM,Campaign 2,Facebook,6800,18779,1,2.76
+2026-08-04,Vantage CRM,Campaign 2,Instagram,2400,5303,1,2.21
+2026-08-04,Vantage CRM,Campaign 2,LinkedIn,12300,41030,1,3.34
+2026-08-04,Lumiere Skincare,Campaign 1,Google Ads,6300,21841,9,3.47
+2026-08-04,Lumiere Skincare,Campaign 1,Facebook,18100,76296,29,4.22
+2026-08-04,Lumiere Skincare,Campaign 1,Instagram,19300,82521,33,4.28
+2026-08-04,Lumiere Skincare,Campaign 1,LinkedIn,2100,6250,2,2.98
+2026-08-04,Lumiere Skincare,Campaign 2,Google Ads,5000,19256,7,3.85
+2026-08-04,Lumiere Skincare,Campaign 2,Facebook,11500,49563,23,4.31
+2026-08-04,Lumiere Skincare,Campaign 2,Instagram,12700,52589,19,4.14
+2026-08-04,Lumiere Skincare,Campaign 2,LinkedIn,1700,4540,2,2.67
+2026-08-04,Solara Fitband,Campaign 1,Google Ads,13900,53023,17,3.81
+2026-08-04,Solara Fitband,Campaign 1,Facebook,9100,30612,9,3.36
+2026-08-04,Solara Fitband,Campaign 1,Instagram,14800,55013,14,3.72
+2026-08-04,Solara Fitband,Campaign 1,LinkedIn,4600,11933,3,2.59
+2026-08-04,Solara Fitband,Campaign 2,Google Ads,9000,34155,10,3.79
+2026-08-04,Solara Fitband,Campaign 2,Facebook,6300,19001,5,3.02
+2026-08-04,Solara Fitband,Campaign 2,Instagram,8800,33405,8,3.8
+2026-08-04,Solara Fitband,Campaign 2,LinkedIn,3000,8223,2,2.74
+2026-08-04,Aurelia Jewellery,Campaign 1,Google Ads,8600,26679,5,3.1
+2026-08-04,Aurelia Jewellery,Campaign 1,Facebook,12200,40632,7,3.33
+2026-08-04,Aurelia Jewellery,Campaign 1,Instagram,17500,63899,10,3.65
+2026-08-04,Aurelia Jewellery,Campaign 1,LinkedIn,3100,7471,1,2.41
+2026-08-04,Aurelia Jewellery,Campaign 2,Google Ads,4900,15487,2,3.16
+2026-08-04,Aurelia Jewellery,Campaign 2,Facebook,9200,30025,5,3.26
+2026-08-04,Aurelia Jewellery,Campaign 2,Instagram,10600,36266,6,3.42
+2026-08-04,Aurelia Jewellery,Campaign 2,LinkedIn,2300,6104,1,2.65
+2026-08-05,Vantage CRM,Campaign 1,Google Ads,22700,82285,2,3.62
+2026-08-05,Vantage CRM,Campaign 1,Facebook,10000,27949,1,2.79
+2026-08-05,Vantage CRM,Campaign 1,Instagram,4000,9128,1,2.28
+2026-08-05,Vantage CRM,Campaign 1,LinkedIn,19900,63424,1,3.19
+2026-08-05,Vantage CRM,Campaign 2,Google Ads,16000,51156,1,3.2
+2026-08-05,Vantage CRM,Campaign 2,Facebook,6400,16721,1,2.61
+2026-08-05,Vantage CRM,Campaign 2,Instagram,2800,6193,1,2.21
+2026-08-05,Vantage CRM,Campaign 2,LinkedIn,12400,41295,1,3.33
+2026-08-05,Lumiere Skincare,Campaign 1,Google Ads,6400,21793,8,3.41
+2026-08-05,Lumiere Skincare,Campaign 1,Facebook,18900,77454,28,4.1
+2026-08-05,Lumiere Skincare,Campaign 1,Instagram,20900,97009,38,4.64
+2026-08-05,Lumiere Skincare,Campaign 1,LinkedIn,2100,5591,2,2.66
+2026-08-05,Lumiere Skincare,Campaign 2,Google Ads,4500,15140,6,3.36
+2026-08-05,Lumiere Skincare,Campaign 2,Facebook,11100,46017,21,4.15
+2026-08-05,Lumiere Skincare,Campaign 2,Instagram,13500,57240,22,4.24
+2026-08-05,Lumiere Skincare,Campaign 2,LinkedIn,1500,4117,2,2.74
+2026-08-05,Solara Fitband,Campaign 1,Google Ads,13700,50207,16,3.66
+2026-08-05,Solara Fitband,Campaign 1,Facebook,9100,29136,9,3.2
+2026-08-05,Solara Fitband,Campaign 1,Instagram,14700,50515,13,3.44
+2026-08-05,Solara Fitband,Campaign 1,LinkedIn,4100,10489,3,2.56
+2026-08-05,Solara Fitband,Campaign 2,Google Ads,10900,43731,14,4.01
+2026-08-05,Solara Fitband,Campaign 2,Facebook,6000,17763,5,2.96
+2026-08-05,Solara Fitband,Campaign 2,Instagram,9900,35488,10,3.58
+2026-08-05,Solara Fitband,Campaign 2,LinkedIn,2600,6643,2,2.55
+2026-08-05,Aurelia Jewellery,Campaign 1,Google Ads,8500,26950,5,3.17
+2026-08-05,Aurelia Jewellery,Campaign 1,Facebook,12100,38567,6,3.19
+2026-08-05,Aurelia Jewellery,Campaign 1,Instagram,16000,59278,11,3.7
+2026-08-05,Aurelia Jewellery,Campaign 1,LinkedIn,3300,8444,2,2.56
+2026-08-05,Aurelia Jewellery,Campaign 2,Google Ads,5300,16031,2,3.02
+2026-08-05,Aurelia Jewellery,Campaign 2,Facebook,9000,29291,5,3.25
+2026-08-05,Aurelia Jewellery,Campaign 2,Instagram,10900,38008,6,3.49
+2026-08-05,Aurelia Jewellery,Campaign 2,LinkedIn,2000,5109,1,2.55
+2026-08-06,Vantage CRM,Campaign 1,Google Ads,20400,64592,1,3.17
+2026-08-06,Vantage CRM,Campaign 1,Facebook,10100,26782,1,2.65
+2026-08-06,Vantage CRM,Campaign 1,Instagram,4000,8479,1,2.12
+2026-08-06,Vantage CRM,Campaign 1,LinkedIn,19200,68013,2,3.54
+2026-08-06,Vantage CRM,Campaign 2,Google Ads,15900,53846,1,3.39
+2026-08-06,Vantage CRM,Campaign 2,Facebook,6300,18264,1,2.9
+2026-08-06,Vantage CRM,Campaign 2,Instagram,2500,5310,1,2.12
+2026-08-06,Vantage CRM,Campaign 2,LinkedIn,13400,43654,1,3.26
+2026-08-06,Lumiere Skincare,Campaign 1,Google Ads,7200,27683,10,3.84
+2026-08-06,Lumiere Skincare,Campaign 1,Facebook,15900,63501,25,3.99
+2026-08-06,Lumiere Skincare,Campaign 1,Instagram,20100,82255,36,4.09
+2026-08-06,Lumiere Skincare,Campaign 1,LinkedIn,2400,6725,2,2.8
+2026-08-06,Lumiere Skincare,Campaign 2,Google Ads,5100,17807,8,3.49
+2026-08-06,Lumiere Skincare,Campaign 2,Facebook,11100,43482,19,3.92
+2026-08-06,Lumiere Skincare,Campaign 2,Instagram,12400,57175,23,4.61
+2026-08-06,Lumiere Skincare,Campaign 2,LinkedIn,1400,3746,1,2.68
+2026-08-06,Solara Fitband,Campaign 1,Google Ads,15600,63536,16,4.07
+2026-08-06,Solara Fitband,Campaign 1,Facebook,9700,29614,10,3.05
+2026-08-06,Solara Fitband,Campaign 1,Instagram,12800,42776,11,3.34
+2026-08-06,Solara Fitband,Campaign 1,LinkedIn,4200,11616,4,2.77
+2026-08-06,Solara Fitband,Campaign 2,Google Ads,10500,43076,14,4.1
+2026-08-06,Solara Fitband,Campaign 2,Facebook,6400,19449,6,3.04
+2026-08-06,Solara Fitband,Campaign 2,Instagram,9600,31972,10,3.33
+2026-08-06,Solara Fitband,Campaign 2,LinkedIn,2800,7133,2,2.55
+2026-08-06,Aurelia Jewellery,Campaign 1,Google Ads,7500,20710,3,2.76
+2026-08-06,Aurelia Jewellery,Campaign 1,Facebook,12400,45233,7,3.65
+2026-08-06,Aurelia Jewellery,Campaign 1,Instagram,17500,60051,10,3.43
+2026-08-06,Aurelia Jewellery,Campaign 1,LinkedIn,3400,8938,1,2.63
+2026-08-06,Aurelia Jewellery,Campaign 2,Google Ads,4900,14638,2,2.99
+2026-08-06,Aurelia Jewellery,Campaign 2,Facebook,9300,30067,5,3.23
+2026-08-06,Aurelia Jewellery,Campaign 2,Instagram,11500,38289,6,3.33
+2026-08-06,Aurelia Jewellery,Campaign 2,LinkedIn,2300,5995,1,2.61
+2026-08-07,Vantage CRM,Campaign 1,Google Ads,20200,63873,2,3.16
+2026-08-07,Vantage CRM,Campaign 1,Facebook,9500,26665,1,2.81
+2026-08-07,Vantage CRM,Campaign 1,Instagram,3800,8422,1,2.22
+2026-08-07,Vantage CRM,Campaign 1,LinkedIn,19900,63171,1,3.17
+2026-08-07,Vantage CRM,Campaign 2,Google Ads,14300,46875,1,3.28
+2026-08-07,Vantage CRM,Campaign 2,Facebook,7000,20159,1,2.88
+2026-08-07,Vantage CRM,Campaign 2,Instagram,2800,5950,1,2.12
+2026-08-07,Vantage CRM,Campaign 2,LinkedIn,12900,45681,1,3.54
+2026-08-07,Lumiere Skincare,Campaign 1,Google Ads,6800,23505,9,3.46
+2026-08-07,Lumiere Skincare,Campaign 1,Facebook,17600,77103,28,4.38
+2026-08-07,Lumiere Skincare,Campaign 1,Instagram,20600,91960,40,4.46
+2026-08-07,Lumiere Skincare,Campaign 1,LinkedIn,2400,6835,3,2.85
+2026-08-07,Lumiere Skincare,Campaign 2,Google Ads,4500,15842,7,3.52
+2026-08-07,Lumiere Skincare,Campaign 2,Facebook,10800,42136,18,3.9
+2026-08-07,Lumiere Skincare,Campaign 2,Instagram,12300,49207,17,4.0
+2026-08-07,Lumiere Skincare,Campaign 2,LinkedIn,1600,4355,2,2.72
+2026-08-07,Solara Fitband,Campaign 1,Google Ads,16300,66775,18,4.1
+2026-08-07,Solara Fitband,Campaign 1,Facebook,9100,27240,8,2.99
+2026-08-07,Solara Fitband,Campaign 1,Instagram,14400,51400,14,3.57
+2026-08-07,Solara Fitband,Campaign 1,LinkedIn,4300,11395,3,2.65
+2026-08-07,Solara Fitband,Campaign 2,Google Ads,10600,42516,13,4.01
+2026-08-07,Solara Fitband,Campaign 2,Facebook,6100,20585,6,3.37
+2026-08-07,Solara Fitband,Campaign 2,Instagram,9400,33152,10,3.53
+2026-08-07,Solara Fitband,Campaign 2,LinkedIn,2700,6736,2,2.49
+2026-08-07,Aurelia Jewellery,Campaign 1,Google Ads,7500,23883,4,3.18
+2026-08-07,Aurelia Jewellery,Campaign 1,Facebook,12400,41459,8,3.34
+2026-08-07,Aurelia Jewellery,Campaign 1,Instagram,16100,55469,10,3.45
+2026-08-07,Aurelia Jewellery,Campaign 1,LinkedIn,3300,8898,1,2.7
+2026-08-07,Aurelia Jewellery,Campaign 2,Google Ads,5300,16712,3,3.15
+2026-08-07,Aurelia Jewellery,Campaign 2,Facebook,9300,29295,5,3.15
+2026-08-07,Aurelia Jewellery,Campaign 2,Instagram,9900,33870,6,3.42
+2026-08-07,Aurelia Jewellery,Campaign 2,LinkedIn,2200,5879,1,2.67
+2026-08-08,Vantage CRM,Campaign 1,Google Ads,20800,70144,1,3.37
+2026-08-08,Vantage CRM,Campaign 1,Facebook,9200,26611,1,2.89
+2026-08-08,Vantage CRM,Campaign 1,Instagram,3500,8204,1,2.34
+2026-08-08,Vantage CRM,Campaign 1,LinkedIn,16600,51637,1,3.11
+2026-08-08,Vantage CRM,Campaign 2,Google Ads,12300,42485,1,3.45
+2026-08-08,Vantage CRM,Campaign 2,Facebook,5500,13689,1,2.49
+2026-08-08,Vantage CRM,Campaign 2,Instagram,2300,5024,1,2.18
+2026-08-08,Vantage CRM,Campaign 2,LinkedIn,10700,36978,1,3.46
+2026-08-08,Lumiere Skincare,Campaign 1,Google Ads,5500,18537,7,3.37
+2026-08-08,Lumiere Skincare,Campaign 1,Facebook,15500,64965,23,4.19
+2026-08-08,Lumiere Skincare,Campaign 1,Instagram,15900,70508,27,4.43
+2026-08-08,Lumiere Skincare,Campaign 1,LinkedIn,1900,5156,2,2.71
+2026-08-08,Lumiere Skincare,Campaign 2,Google Ads,3900,14189,5,3.64
+2026-08-08,Lumiere Skincare,Campaign 2,Facebook,10100,43823,20,4.34
+2026-08-08,Lumiere Skincare,Campaign 2,Instagram,11000,45008,19,4.09
+2026-08-08,Lumiere Skincare,Campaign 2,LinkedIn,1300,3352,2,2.58
+2026-08-08,Solara Fitband,Campaign 1,Google Ads,13000,51932,14,3.99
+2026-08-08,Solara Fitband,Campaign 1,Facebook,9400,29892,8,3.18
+2026-08-08,Solara Fitband,Campaign 1,Instagram,10900,39564,12,3.63
+2026-08-08,Solara Fitband,Campaign 1,LinkedIn,4100,9959,3,2.43
+2026-08-08,Solara Fitband,Campaign 2,Google Ads,8600,32703,8,3.8
+2026-08-08,Solara Fitband,Campaign 2,Facebook,5500,17660,6,3.21
+2026-08-08,Solara Fitband,Campaign 2,Instagram,7400,26600,8,3.59
+2026-08-08,Solara Fitband,Campaign 2,LinkedIn,2800,6927,2,2.47
+2026-08-08,Aurelia Jewellery,Campaign 1,Google Ads,7600,24535,4,3.23
+2026-08-08,Aurelia Jewellery,Campaign 1,Facebook,10200,37045,6,3.63
+2026-08-08,Aurelia Jewellery,Campaign 1,Instagram,15200,55774,10,3.67
+2026-08-08,Aurelia Jewellery,Campaign 1,LinkedIn,2600,6797,1,2.61
+2026-08-08,Aurelia Jewellery,Campaign 2,Google Ads,4600,14565,3,3.17
+2026-08-08,Aurelia Jewellery,Campaign 2,Facebook,7000,22727,4,3.25
+2026-08-08,Aurelia Jewellery,Campaign 2,Instagram,9400,33210,5,3.53
+2026-08-08,Aurelia Jewellery,Campaign 2,LinkedIn,1800,4662,1,2.59
+2026-08-09,Vantage CRM,Campaign 1,Google Ads,17700,60780,1,3.43
+2026-08-09,Vantage CRM,Campaign 1,Facebook,8000,22769,1,2.85
+2026-08-09,Vantage CRM,Campaign 1,Instagram,3500,8114,1,2.32
+2026-08-09,Vantage CRM,Campaign 1,LinkedIn,16400,53428,1,3.26
+2026-08-09,Vantage CRM,Campaign 2,Google Ads,12800,44626,1,3.49
+2026-08-09,Vantage CRM,Campaign 2,Facebook,5800,14466,1,2.49
+2026-08-09,Vantage CRM,Campaign 2,Instagram,2300,5066,1,2.2
+2026-08-09,Vantage CRM,Campaign 2,LinkedIn,12000,39336,1,3.28
+2026-08-09,Lumiere Skincare,Campaign 1,Google Ads,6100,20579,7,3.37
+2026-08-09,Lumiere Skincare,Campaign 1,Facebook,15200,58249,23,3.83
+2026-08-09,Lumiere Skincare,Campaign 1,Instagram,17100,68127,28,3.98
+2026-08-09,Lumiere Skincare,Campaign 1,LinkedIn,1900,5519,2,2.9
+2026-08-09,Lumiere Skincare,Campaign 2,Google Ads,4100,13707,5,3.34
+2026-08-09,Lumiere Skincare,Campaign 2,Facebook,10000,43958,16,4.4
+2026-08-09,Lumiere Skincare,Campaign 2,Instagram,12200,56624,24,4.64
+2026-08-09,Lumiere Skincare,Campaign 2,LinkedIn,1400,3728,2,2.66
+2026-08-09,Solara Fitband,Campaign 1,Google Ads,13200,53825,17,4.08
+2026-08-09,Solara Fitband,Campaign 1,Facebook,8100,27116,9,3.35
+2026-08-09,Solara Fitband,Campaign 1,Instagram,11100,39007,12,3.51
+2026-08-09,Solara Fitband,Campaign 1,LinkedIn,3500,9677,3,2.76
+2026-08-09,Solara Fitband,Campaign 2,Google Ads,9400,33683,10,3.58
+2026-08-09,Solara Fitband,Campaign 2,Facebook,6300,19219,5,3.05
+2026-08-09,Solara Fitband,Campaign 2,Instagram,8100,28316,7,3.5
+2026-08-09,Solara Fitband,Campaign 2,LinkedIn,2400,5902,2,2.46
+2026-08-09,Aurelia Jewellery,Campaign 1,Google Ads,7300,23286,3,3.19
+2026-08-09,Aurelia Jewellery,Campaign 1,Facebook,11900,37968,6,3.19
+2026-08-09,Aurelia Jewellery,Campaign 1,Instagram,14500,51029,9,3.52
+2026-08-09,Aurelia Jewellery,Campaign 1,LinkedIn,2800,7090,1,2.53
+2026-08-09,Aurelia Jewellery,Campaign 2,Google Ads,4300,13917,2,3.24
+2026-08-09,Aurelia Jewellery,Campaign 2,Facebook,7400,26358,4,3.56
+2026-08-09,Aurelia Jewellery,Campaign 2,Instagram,10300,37539,6,3.64
+2026-08-09,Aurelia Jewellery,Campaign 2,LinkedIn,2000,4954,1,2.48
+2026-08-10,Vantage CRM,Campaign 1,Google Ads,23600,74441,2,3.15
+2026-08-10,Vantage CRM,Campaign 1,Facebook,9600,26497,1,2.76
+2026-08-10,Vantage CRM,Campaign 1,Instagram,4000,9441,1,2.36
+2026-08-10,Vantage CRM,Campaign 1,LinkedIn,17700,54053,1,3.05
+2026-08-10,Vantage CRM,Campaign 2,Google Ads,15300,51456,1,3.36
+2026-08-10,Vantage CRM,Campaign 2,Facebook,7300,18550,1,2.54
+2026-08-10,Vantage CRM,Campaign 2,Instagram,2700,5735,1,2.12
+2026-08-10,Vantage CRM,Campaign 2,LinkedIn,12700,39270,1,3.09
+2026-08-10,Lumiere Skincare,Campaign 1,Google Ads,6600,24078,10,3.65
+2026-08-10,Lumiere Skincare,Campaign 1,Facebook,16800,70246,28,4.18
+2026-08-10,Lumiere Skincare,Campaign 1,Instagram,18200,83727,31,4.6
+2026-08-10,Lumiere Skincare,Campaign 1,LinkedIn,2200,5762,2,2.62
+2026-08-10,Lumiere Skincare,Campaign 2,Google Ads,5000,18813,7,3.76
+2026-08-10,Lumiere Skincare,Campaign 2,Facebook,11300,42709,18,3.78
+2026-08-10,Lumiere Skincare,Campaign 2,Instagram,13300,55820,23,4.2
+2026-08-10,Lumiere Skincare,Campaign 2,LinkedIn,1500,4494,2,3.0
+2026-08-10,Solara Fitband,Campaign 1,Google Ads,14500,58657,14,4.05
+2026-08-10,Solara Fitband,Campaign 1,Facebook,10100,31834,8,3.15
+2026-08-10,Solara Fitband,Campaign 1,Instagram,12800,48136,12,3.76
+2026-08-10,Solara Fitband,Campaign 1,LinkedIn,4400,12247,3,2.78
+2026-08-10,Solara Fitband,Campaign 2,Google Ads,9600,37111,11,3.87
+2026-08-10,Solara Fitband,Campaign 2,Facebook,6900,23187,6,3.36
+2026-08-10,Solara Fitband,Campaign 2,Instagram,9000,31365,8,3.48
+2026-08-10,Solara Fitband,Campaign 2,LinkedIn,3100,8425,3,2.72
+2026-08-10,Aurelia Jewellery,Campaign 1,Google Ads,7300,23107,4,3.17
+2026-08-10,Aurelia Jewellery,Campaign 1,Facebook,12900,45557,7,3.53
+2026-08-10,Aurelia Jewellery,Campaign 1,Instagram,15400,51939,8,3.37
+2026-08-10,Aurelia Jewellery,Campaign 1,LinkedIn,2900,7059,1,2.43
+2026-08-10,Aurelia Jewellery,Campaign 2,Google Ads,5600,17728,3,3.17
+2026-08-10,Aurelia Jewellery,Campaign 2,Facebook,8300,28463,5,3.43
+2026-08-10,Aurelia Jewellery,Campaign 2,Instagram,11500,41554,6,3.61
+2026-08-10,Aurelia Jewellery,Campaign 2,LinkedIn,2200,5909,1,2.69
+2026-08-11,Vantage CRM,Campaign 1,Google Ads,24300,76212,2,3.14
+2026-08-11,Vantage CRM,Campaign 1,Facebook,9600,26931,1,2.81
+2026-08-11,Vantage CRM,Campaign 1,Instagram,4100,9169,1,2.24
+2026-08-11,Vantage CRM,Campaign 1,LinkedIn,19100,60400,2,3.16
+2026-08-11,Vantage CRM,Campaign 2,Google Ads,15400,53976,1,3.5
+2026-08-11,Vantage CRM,Campaign 2,Facebook,7400,19882,1,2.69
+2026-08-11,Vantage CRM,Campaign 2,Instagram,2700,6565,1,2.43
+2026-08-11,Vantage CRM,Campaign 2,LinkedIn,13800,46053,1,3.34
+2026-08-11,Lumiere Skincare,Campaign 1,Google Ads,6600,24226,8,3.67
+2026-08-11,Lumiere Skincare,Campaign 1,Facebook,19300,74630,26,3.87
+2026-08-11,Lumiere Skincare,Campaign 1,Instagram,18200,83631,32,4.6
+2026-08-11,Lumiere Skincare,Campaign 1,LinkedIn,2200,5696,2,2.59
+2026-08-11,Lumiere Skincare,Campaign 2,Google Ads,4900,18018,8,3.68
+2026-08-11,Lumiere Skincare,Campaign 2,Facebook,12500,47689,20,3.82
+2026-08-11,Lumiere Skincare,Campaign 2,Instagram,12800,57837,25,4.52
+2026-08-11,Lumiere Skincare,Campaign 2,LinkedIn,1700,4429,2,2.61
+2026-08-11,Solara Fitband,Campaign 1,Google Ads,16600,67564,17,4.07
+2026-08-11,Solara Fitband,Campaign 1,Facebook,9500,28513,7,3.0
+2026-08-11,Solara Fitband,Campaign 1,Instagram,15000,56696,17,3.78
+2026-08-11,Solara Fitband,Campaign 1,LinkedIn,4700,12477,3,2.65
+2026-08-11,Solara Fitband,Campaign 2,Google Ads,9400,33422,10,3.56
+2026-08-11,Solara Fitband,Campaign 2,Facebook,6300,19577,5,3.11
+2026-08-11,Solara Fitband,Campaign 2,Instagram,8500,29409,8,3.46
+2026-08-11,Solara Fitband,Campaign 2,LinkedIn,3100,7890,2,2.55
+2026-08-11,Aurelia Jewellery,Campaign 1,Google Ads,8900,26716,5,3.0
+2026-08-11,Aurelia Jewellery,Campaign 1,Facebook,13400,42141,7,3.14
+2026-08-11,Aurelia Jewellery,Campaign 1,Instagram,16100,60492,10,3.76
+2026-08-11,Aurelia Jewellery,Campaign 1,LinkedIn,3400,8552,1,2.52
+2026-08-11,Aurelia Jewellery,Campaign 2,Google Ads,5800,13659,2,2.36
+2026-08-11,Aurelia Jewellery,Campaign 2,Facebook,8100,21288,3,2.63
+2026-08-11,Aurelia Jewellery,Campaign 2,Instagram,11400,37109,5,3.26
+2026-08-11,Aurelia Jewellery,Campaign 2,LinkedIn,2200,4614,1,2.1
+2026-08-12,Vantage CRM,Campaign 1,Google Ads,21200,72018,2,3.4
+2026-08-12,Vantage CRM,Campaign 1,Facebook,10900,28303,1,2.6
+2026-08-12,Vantage CRM,Campaign 1,Instagram,3800,8341,1,2.2
+2026-08-12,Vantage CRM,Campaign 1,LinkedIn,19800,61262,1,3.09
+2026-08-12,Vantage CRM,Campaign 2,Google Ads,13800,49081,1,3.56
+2026-08-12,Vantage CRM,Campaign 2,Facebook,7200,19838,1,2.76
+2026-08-12,Vantage CRM,Campaign 2,Instagram,2600,5879,1,2.26
+2026-08-12,Vantage CRM,Campaign 2,LinkedIn,12100,42412,1,3.51
+2026-08-12,Lumiere Skincare,Campaign 1,Google Ads,6700,23206,10,3.46
+2026-08-12,Lumiere Skincare,Campaign 1,Facebook,17900,71973,32,4.02
+2026-08-12,Lumiere Skincare,Campaign 1,Instagram,18800,80334,32,4.27
+2026-08-12,Lumiere Skincare,Campaign 1,LinkedIn,2500,7283,3,2.91
+2026-08-12,Lumiere Skincare,Campaign 2,Google Ads,4600,16101,6,3.5
+2026-08-12,Lumiere Skincare,Campaign 2,Facebook,12800,53841,23,4.21
+2026-08-12,Lumiere Skincare,Campaign 2,Instagram,12300,52372,23,4.26
+2026-08-12,Lumiere Skincare,Campaign 2,LinkedIn,1600,4212,2,2.63
+2026-08-12,Solara Fitband,Campaign 1,Google Ads,16600,60435,16,3.64
+2026-08-12,Solara Fitband,Campaign 1,Facebook,9700,32049,10,3.3
+2026-08-12,Solara Fitband,Campaign 1,Instagram,13100,44564,12,3.4
+2026-08-12,Solara Fitband,Campaign 1,LinkedIn,4300,11220,3,2.61
+2026-08-12,Solara Fitband,Campaign 2,Google Ads,9900,35750,12,3.61
+2026-08-12,Solara Fitband,Campaign 2,Facebook,7100,21272,7,3.0
+2026-08-12,Solara Fitband,Campaign 2,Instagram,8600,30387,10,3.53
+2026-08-12,Solara Fitband,Campaign 2,LinkedIn,3100,8361,2,2.7
+2026-08-12,Aurelia Jewellery,Campaign 1,Google Ads,7700,23610,3,3.07
+2026-08-12,Aurelia Jewellery,Campaign 1,Facebook,12300,41073,6,3.34
+2026-08-12,Aurelia Jewellery,Campaign 1,Instagram,16000,60282,11,3.77
+2026-08-12,Aurelia Jewellery,Campaign 1,LinkedIn,3300,8425,1,2.55
+2026-08-12,Aurelia Jewellery,Campaign 2,Google Ads,5100,10577,2,2.07
+2026-08-12,Aurelia Jewellery,Campaign 2,Facebook,9100,22413,4,2.46
+2026-08-12,Aurelia Jewellery,Campaign 2,Instagram,11100,28256,5,2.55
+2026-08-12,Aurelia Jewellery,Campaign 2,LinkedIn,2100,3697,1,1.76
+2026-08-13,Vantage CRM,Campaign 1,Google Ads,24000,84212,2,3.51
+2026-08-13,Vantage CRM,Campaign 1,Facebook,10600,29268,1,2.76
+2026-08-13,Vantage CRM,Campaign 1,Instagram,3800,8919,1,2.35
+2026-08-13,Vantage CRM,Campaign 1,LinkedIn,19600,67602,2,3.45
+2026-08-13,Vantage CRM,Campaign 2,Google Ads,15500,50593,1,3.26
+2026-08-13,Vantage CRM,Campaign 2,Facebook,6800,18717,1,2.75
+2026-08-13,Vantage CRM,Campaign 2,Instagram,2700,6637,1,2.46
+2026-08-13,Vantage CRM,Campaign 2,LinkedIn,13700,47222,1,3.45
+2026-08-13,Lumiere Skincare,Campaign 1,Google Ads,7100,27501,9,3.87
+2026-08-13,Lumiere Skincare,Campaign 1,Facebook,18200,70571,31,3.88
+2026-08-13,Lumiere Skincare,Campaign 1,Instagram,21600,93166,33,4.31
+2026-08-13,Lumiere Skincare,Campaign 1,LinkedIn,2400,6764,3,2.82
+2026-08-13,Lumiere Skincare,Campaign 2,Google Ads,4700,17297,8,3.68
+2026-08-13,Lumiere Skincare,Campaign 2,Facebook,12100,48898,22,4.04
+2026-08-13,Lumiere Skincare,Campaign 2,Instagram,12500,55335,21,4.43
+2026-08-13,Lumiere Skincare,Campaign 2,LinkedIn,1700,4472,2,2.63
+2026-08-13,Solara Fitband,Campaign 1,Google Ads,15000,52956,14,3.53
+2026-08-13,Solara Fitband,Campaign 1,Facebook,10000,29508,8,2.95
+2026-08-13,Solara Fitband,Campaign 1,Instagram,13900,51627,14,3.71
+2026-08-13,Solara Fitband,Campaign 1,LinkedIn,4200,10439,3,2.49
+2026-08-13,Solara Fitband,Campaign 2,Google Ads,11200,42744,11,3.82
+2026-08-13,Solara Fitband,Campaign 2,Facebook,7200,22642,6,3.14
+2026-08-13,Solara Fitband,Campaign 2,Instagram,8700,32706,10,3.76
+2026-08-13,Solara Fitband,Campaign 2,LinkedIn,3000,7762,2,2.59
+2026-08-13,Aurelia Jewellery,Campaign 1,Google Ads,7800,25137,4,3.22
+2026-08-13,Aurelia Jewellery,Campaign 1,Facebook,13500,48241,9,3.57
+2026-08-13,Aurelia Jewellery,Campaign 1,Instagram,16300,56749,10,3.48
+2026-08-13,Aurelia Jewellery,Campaign 1,LinkedIn,3000,7900,1,2.63
+2026-08-13,Aurelia Jewellery,Campaign 2,Google Ads,5900,8861,1,1.5
+2026-08-13,Aurelia Jewellery,Campaign 2,Facebook,8300,14501,2,1.75
+2026-08-13,Aurelia Jewellery,Campaign 2,Instagram,9900,19190,3,1.94
+2026-08-13,Aurelia Jewellery,Campaign 2,LinkedIn,2100,2643,1,1.26
+2026-08-14,Vantage CRM,Campaign 1,Google Ads,22500,78181,2,3.47
+2026-08-14,Vantage CRM,Campaign 1,Facebook,10000,28852,1,2.89
+2026-08-14,Vantage CRM,Campaign 1,Instagram,3600,8714,1,2.42
+2026-08-14,Vantage CRM,Campaign 1,LinkedIn,21100,65624,2,3.11
+2026-08-14,Vantage CRM,Campaign 2,Google Ads,15600,48924,1,3.14
+2026-08-14,Vantage CRM,Campaign 2,Facebook,7500,20755,1,2.77
+2026-08-14,Vantage CRM,Campaign 2,Instagram,2400,5204,1,2.17
+2026-08-14,Vantage CRM,Campaign 2,LinkedIn,14000,45065,1,3.22
+2026-08-14,Lumiere Skincare,Campaign 1,Google Ads,7700,29014,10,3.77
+2026-08-14,Lumiere Skincare,Campaign 1,Facebook,19500,81336,35,4.17
+2026-08-14,Lumiere Skincare,Campaign 1,Instagram,20600,94163,41,4.57
+2026-08-14,Lumiere Skincare,Campaign 1,LinkedIn,2500,6661,3,2.66
+2026-08-14,Lumiere Skincare,Campaign 2,Google Ads,4800,17949,7,3.74
+2026-08-14,Lumiere Skincare,Campaign 2,Facebook,13000,53770,20,4.14
+2026-08-14,Lumiere Skincare,Campaign 2,Instagram,12600,51053,20,4.05
+2026-08-14,Lumiere Skincare,Campaign 2,LinkedIn,1400,3899,1,2.79
+2026-08-14,Solara Fitband,Campaign 1,Google Ads,15500,58883,17,3.8
+2026-08-14,Solara Fitband,Campaign 1,Facebook,10900,32126,10,2.95
+2026-08-14,Solara Fitband,Campaign 1,Instagram,14100,51268,15,3.64
+2026-08-14,Solara Fitband,Campaign 1,LinkedIn,4700,11976,3,2.55
+2026-08-14,Solara Fitband,Campaign 2,Google Ads,11300,40023,12,3.54
+2026-08-14,Solara Fitband,Campaign 2,Facebook,7000,20710,6,2.96
+2026-08-14,Solara Fitband,Campaign 2,Instagram,9800,37716,10,3.85
+2026-08-14,Solara Fitband,Campaign 2,LinkedIn,3200,8334,2,2.6
+2026-08-14,Aurelia Jewellery,Campaign 1,Google Ads,8900,24709,4,2.78
+2026-08-14,Aurelia Jewellery,Campaign 1,Facebook,13500,44715,8,3.31
+2026-08-14,Aurelia Jewellery,Campaign 1,Instagram,16000,57365,10,3.59
+2026-08-14,Aurelia Jewellery,Campaign 1,LinkedIn,3500,8345,1,2.38
+2026-08-14,Aurelia Jewellery,Campaign 2,Google Ads,5400,5882,1,1.09
+2026-08-14,Aurelia Jewellery,Campaign 2,Facebook,8400,10821,2,1.29
+2026-08-14,Aurelia Jewellery,Campaign 2,Instagram,11000,13735,2,1.25
+2026-08-14,Aurelia Jewellery,Campaign 2,LinkedIn,2400,2213,1,0.92
