@@ -16,7 +16,7 @@
       "name": "Daily 7AM Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [-800, 0]
+      "position": [-1040, 0]
     },
     {
       "parameters": {
@@ -37,7 +37,7 @@
       "name": "Read Mock Marketing Data",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
-      "position": [-560, 0],
+      "position": [-800, 0],
       "notes": "Point this at your own copy of automation/mock-marketing-data-template.csv imported into Google Sheets. See SETUP_GUIDE.md."
     },
     {
@@ -48,31 +48,83 @@
       "name": "Compute Metrics",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-320, 0]
+      "position": [-560, 0]
     },
     {
       "parameters": {
-        "jsCode": "// Builds the morning brief text from the computed metrics — no external API,\n// no API key, no cost. Rule-based narrative instead of an LLM call.\nconst m = items[0].json;\n\nconst roasTrend = m.roas_delta_pct > 0 ? `up ${m.roas_delta_pct}%` : m.roas_delta_pct < 0 ? `down ${Math.abs(m.roas_delta_pct)}%` : 'flat';\nconst pacingWord = m.budget_pacing_pct > 110 ? 'ahead of pace' : m.budget_pacing_pct < 90 ? 'behind pace' : 'on pace';\n\nlet summary = `Yesterday (${m.date}): spend ₹${m.spend.toLocaleString('en-IN')}, revenue ₹${m.revenue.toLocaleString('en-IN')}, blended ROAS ${m.roas}x (${roasTrend} vs. the day before), ${m.leads} leads. Budget is ${pacingWord} at ${m.budget_pacing_pct}% of the expected monthly rate.`;\n\nif (m.anomalies.length) {\n  const names = m.anomalies.map(a => `${a.channel} (${a.roas}x)`).join(', ');\n  summary += ` ${m.anomalies.length} channel(s) below the 2.2x ROAS floor: ${names}.`;\n} else {\n  summary += ' No channels are below the ROAS floor today.';\n}\n\n// Build exactly 3 recommended actions, prioritized by what's actually flagged.\nconst candidates = [];\nif (m.anomalies.length) {\n  candidates.push(`Review or pause: ${m.anomalies.map(a => a.channel).join(', ')} — currently below the 2.2x ROAS floor.`);\n}\nif (m.budget_pacing_pct > 110) {\n  candidates.push('Budget is overpacing — rebalance excess spend toward the highest-ROAS channel today.');\n} else if (m.budget_pacing_pct < 90) {\n  candidates.push('Budget is underpacing — consider increasing spend on the best-performing channel to stay on track for the month.');\n}\nif (m.roas_delta_pct < -5) {\n  candidates.push('Blended ROAS dropped more than 5% day-over-day — check for a creative fatigue or audience saturation signal before scaling anything.');\n}\ncandidates.push('No anomalies beyond the above — hold current allocation and re-check tomorrow morning.');\ncandidates.push('Review the top 3 recommendation cards in the AI Recommendation Engine before 10 AM.');\ncandidates.push('Confirm yesterday\\'s leads have been picked up by Sales within SLA.');\n\nconst actions = candidates.slice(0, 3);\nconst actionsText = actions.map((a, i) => `${i + 1}. ${a}`).join('\\n');\n\nconst narrative = `${summary}\\n\\nRecommended actions:\\n${actionsText}`;\n\nreturn [{ json: { ...m, narrative } }];"
+        "jsCode": "// Builds a guaranteed fallback brief from the metrics — no external API, no cost.\n// Used as the email body if the Gemini call below fails or is rate-limited.\nconst m = items[0].json;\n\nconst roasTrend = m.roas_delta_pct > 0 ? `up ${m.roas_delta_pct}%` : m.roas_delta_pct < 0 ? `down ${Math.abs(m.roas_delta_pct)}%` : 'flat';\nconst pacingWord = m.budget_pacing_pct > 110 ? 'ahead of pace' : m.budget_pacing_pct < 90 ? 'behind pace' : 'on pace';\n\nlet summary = `Yesterday (${m.date}): spend ₹${m.spend.toLocaleString('en-IN')}, revenue ₹${m.revenue.toLocaleString('en-IN')}, blended ROAS ${m.roas}x (${roasTrend} vs. the day before), ${m.leads} leads. Budget is ${pacingWord} at ${m.budget_pacing_pct}% of the expected monthly rate.`;\n\nif (m.anomalies.length) {\n  const names = m.anomalies.map(a => `${a.channel} (${a.roas}x)`).join(', ');\n  summary += ` ${m.anomalies.length} channel(s) below the 2.2x ROAS floor: ${names}.`;\n} else {\n  summary += ' No channels are below the ROAS floor today.';\n}\n\nconst candidates = [];\nif (m.anomalies.length) {\n  candidates.push(`Review or pause: ${m.anomalies.map(a => a.channel).join(', ')} — currently below the 2.2x ROAS floor.`);\n}\nif (m.budget_pacing_pct > 110) {\n  candidates.push('Budget is overpacing — rebalance excess spend toward the highest-ROAS channel today.');\n} else if (m.budget_pacing_pct < 90) {\n  candidates.push('Budget is underpacing — consider increasing spend on the best-performing channel to stay on track for the month.');\n}\nif (m.roas_delta_pct < -5) {\n  candidates.push('Blended ROAS dropped more than 5% day-over-day — check for a creative fatigue or audience saturation signal before scaling anything.');\n}\ncandidates.push('No anomalies beyond the above — hold current allocation and re-check tomorrow morning.');\ncandidates.push('Review the top 3 recommendation cards in the AI Recommendation Engine before 10 AM.');\ncandidates.push('Confirm yesterday\\'s leads have been picked up by Sales within SLA.');\n\nconst actions = candidates.slice(0, 3);\nconst actionsText = actions.map((a, i) => `${i + 1}. ${a}`).join('\\n');\n\nconst fallbackNarrative = `${summary}\\n\\nRecommended actions:\\n${actionsText}`;\n\nreturn [{ json: { ...m, fallback_narrative: fallbackNarrative } }];"
       },
       "id": "8b1f0f2a-0004-4a11-9c2e-000000000004",
-      "name": "Generate Narrative (Template)",
+      "name": "Build Fallback Narrative",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
+      "position": [-320, 0],
+      "notes": "Always runs, always produces a usable brief with zero external dependency — the safety net if the free Gemini API call fails or rate-limits."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: `Write a short (120-160 word) morning marketing brief for a Digital Marketing Director, in a direct, confident tone. Today's metrics: spend ₹${$json.spend}, revenue ₹${$json.revenue}, blended ROAS ${$json.roas}x (${$json.roas_delta_pct}% vs yesterday), ${$json.leads} leads, budget pacing at ${$json.budget_pacing_pct}% of plan. Anomalies: ${$json.anomalies.length ? $json.anomalies.map(a => a.channel + ' at ' + a.roas + 'x').join('; ') : 'none detected'}. End with exactly 3 numbered recommended actions.` } ] } ], generationConfig: { maxOutputTokens: 400 } }) }}",
+        "options": {}
+      },
+      "id": "8b1f0f2a-0005-4a11-9c2e-000000000005",
+      "name": "Ask Gemini for AI Narrative",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [-80, 0],
-      "notes": "Free, rule-based narrative generation — no external API, no API key required. See SETUP_GUIDE.md for how to swap in a real LLM call later if you want more natural phrasing."
+      "notes": "Free tier — requires a Gemini API key from Google AI Studio (aistudio.google.com/apikey), no payment method needed. Requires an HTTP Query Auth credential named 'Gemini API' with query param name 'key' = your Gemini API key. If this call fails or is rate-limited, the IF node below falls back to the free template narrative — see SETUP_GUIDE.md."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "cond-1",
+              "leftValue": "={{ $json.candidates ? $json.candidates[0].content.parts[0].text : '' }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "8b1f0f2a-0006-4a11-9c2e-000000000006",
+      "name": "Gemini Call Succeeded?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [160, 0]
     },
     {
       "parameters": {
         "sendTo": "REPLACE_WITH_YOUR_EMAIL@example.com",
-        "subject": "=MarkOS Morning Brief — {{ $json.date }}",
-        "message": "={{ $json.narrative }}",
+        "subject": "=MarkOS Morning Brief — {{ $('Build Fallback Narrative').item.json.date }}",
+        "message": "={{ $json.candidates[0].content.parts[0].text }}",
         "options": {}
       },
-      "id": "8b1f0f2a-0006-4a11-9c2e-000000000006",
-      "name": "Send Morning Brief Email",
+      "id": "8b1f0f2a-0007-4a11-9c2e-000000000007",
+      "name": "Send Morning Brief Email (AI)",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [160, 0]
+      "position": [400, -100]
+    },
+    {
+      "parameters": {
+        "sendTo": "REPLACE_WITH_YOUR_EMAIL@example.com",
+        "subject": "=MarkOS Morning Brief — {{ $('Build Fallback Narrative').item.json.date }}",
+        "message": "={{ $('Build Fallback Narrative').item.json.fallback_narrative }}",
+        "options": {}
+      },
+      "id": "8b1f0f2a-0008-4a11-9c2e-000000000008",
+      "name": "Send Morning Brief Email (Fallback)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [400, 120]
     }
   ],
   "connections": {
@@ -83,10 +135,19 @@
       "main": [[{ "node": "Compute Metrics", "type": "main", "index": 0 }]]
     },
     "Compute Metrics": {
-      "main": [[{ "node": "Generate Narrative (Template)", "type": "main", "index": 0 }]]
+      "main": [[{ "node": "Build Fallback Narrative", "type": "main", "index": 0 }]]
     },
-    "Generate Narrative (Template)": {
-      "main": [[{ "node": "Send Morning Brief Email", "type": "main", "index": 0 }]]
+    "Build Fallback Narrative": {
+      "main": [[{ "node": "Ask Gemini for AI Narrative", "type": "main", "index": 0 }]]
+    },
+    "Ask Gemini for AI Narrative": {
+      "main": [[{ "node": "Gemini Call Succeeded?", "type": "main", "index": 0 }]]
+    },
+    "Gemini Call Succeeded?": {
+      "main": [
+        [{ "node": "Send Morning Brief Email (AI)", "type": "main", "index": 0 }],
+        [{ "node": "Send Morning Brief Email (Fallback)", "type": "main", "index": 0 }]
+      ]
     }
   },
   "active": false,
@@ -94,6 +155,6 @@
     "executionOrder": "v1"
   },
   "meta": {
-    "description": "MarkOS AI Module 11 (Reporting & Dashboard Engine) — daily automated morning brief. Pulls sample marketing data, computes metrics, generates a rule-based narrative (no external API/cost), and emails it. A real, importable n8n workflow accompanying the MarkOS AI portfolio project."
+    "description": "MarkOS AI Module 11 (Reporting & Dashboard Engine) — daily automated morning brief. Pulls sample marketing data, computes metrics, asks Gemini's free-tier API to write the narrative, and falls back to a rule-based narrative if that call fails. A real, importable n8n workflow accompanying the MarkOS AI portfolio project."
   }
 }
