@@ -61,7 +61,10 @@
       </div>
 
       <div style="margin-top:26px;border-top:1px dashed var(--rule);padding-top:22px;">
-        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Ask MarkOS</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+          <div style="font-size:13px;font-weight:600;">Ask MarkOS</div>
+          <span class="pill" style="font-size:9.5px;">Powered by Claude + Julius AI</span>
+        </div>
         <select id="askSelect" style="width:100%;max-width:420px;padding:9px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);color:var(--text-1);font-size:13px;margin-bottom:14px;">
           <option value="0">Show me ROAS by channel for July</option>
           <option value="1">Compare Q2 vs Q1 MQL volume by product line</option>
@@ -151,10 +154,11 @@
       </div>
 
       <div style="margin-top:28px;border-top:1px dashed var(--rule);padding-top:22px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:10px;">
           <div style="font-size:13px;font-weight:600;">Weekly AI Competitive Brief</div>
           <button class="btn btn-ghost" style="cursor:pointer;" id="regenBrief">Regenerate ↻</button>
         </div>
+        <div style="margin-bottom:10px;"><span class="pill" style="font-size:9.5px;">Powered by Claude</span></div>
         <div id="briefText" style="background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;font-size:13px;color:var(--text-2);line-height:1.7;"></div>
       </div>
     </div>
