@@ -65,6 +65,7 @@
       <li><strong>Sales or another functional team</strong> — jump straight to <a href="#convert-retain" style="color:var(--accent);">Convert &amp; Retain</a> below; that's the CRM, funnel, and competitive-intel slice that's actually relevant to you.</li>
     </ul>
     <div class="cluster-jump">
+      <a href="#holistic-view">Holistic View</a>
       <a href="#plan-create">Plan &amp; Create</a>
       <a href="#measure-optimise">Measure &amp; Optimise</a>
       <a href="#convert-retain">Convert &amp; Retain</a>
@@ -72,6 +73,95 @@
       <a href="#ai-layer">AI Assistant Layer</a>
     </div>
   </div>
+</section>
+
+<!-- ═══ HOLISTIC VIEW ═══ -->
+<section class="section" id="holistic-view" style="padding-top:0;">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--text-2);">Putting It All Together</div>
+    <h2 class="section-title">How the five pieces connect</h2>
+    <p class="section-sub">Each section below shows one cluster in isolation. This is the same data, wired into a single loop — so it's clear how a post going live turns into spend data, how a recommendation card becomes a line in a board report, and where the AI layer actually sits in that chain.</p>
+  </div>
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1400 520" role="img" aria-label="Holistic data flow: a campaign brief from the Director and normalised data from the Gateway feed the Plan and Create, Measure and Optimise, and Convert and Retain clusters. Plan and Create's scheduled posts go live externally and generate performance data that flows into Measure and Optimise. All three clusters feed Report and Lead, which exchanges computed metrics and narrative with the AI Assistant Layer, then sends a combined dashboard and report package to the Director, who continues into the CXO reporting cascade shown on the Helicopter View.">
+      <defs>
+        <marker id="hv-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--text-3);"/></marker>
+        <marker id="hv-ar-dash" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent);"/></marker>
+      </defs>
+
+      <!-- Inputs -->
+      <rect x="90" y="20" width="280" height="60" rx="6" class="node-io" stroke="var(--rule)"/>
+      <text x="230" y="45" text-anchor="middle" class="node-sub" font-size="10.5">Campaign brief</text>
+      <text x="230" y="61" text-anchor="middle" class="node-sub" font-size="10.5">(Director)</text>
+
+      <rect x="795" y="20" width="280" height="60" rx="6" class="node-io" stroke="var(--rule)"/>
+      <text x="935" y="45" text-anchor="middle" class="node-sub" font-size="10.5">Gateway</text>
+      <text x="935" y="61" text-anchor="middle" class="node-sub" font-size="10.5">normalised external data</text>
+
+      <line x1="230" y1="80" x2="230" y2="120" class="edge" stroke-width="1.6" marker-end="url(#hv-ar)"/>
+      <path d="M935,80 L935,96 L700,96 L700,120" class="edge" stroke-width="1.6" fill="none" marker-end="url(#hv-ar)"/>
+      <path d="M935,80 L935,96 L1170,96 L1170,120" class="edge" stroke-width="1.6" fill="none" marker-end="url(#hv-ar)"/>
+
+      <!-- Cluster row -->
+      <rect x="40" y="120" width="380" height="80" rx="8" class="node-box" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="230" y="150" text-anchor="middle" class="node-title" font-size="12">Plan &amp; Create</text>
+      <text x="230" y="168" text-anchor="middle" class="node-sub" font-size="9.5">Creative assets, video,</text>
+      <text x="230" y="182" text-anchor="middle" class="node-sub" font-size="9.5">decks, scheduled posts</text>
+
+      <rect x="510" y="120" width="380" height="80" rx="8" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+      <text x="700" y="150" text-anchor="middle" class="node-title" font-size="12">Measure &amp; Optimise</text>
+      <text x="700" y="168" text-anchor="middle" class="node-sub" font-size="9.5">Bid automation, MMM,</text>
+      <text x="700" y="182" text-anchor="middle" class="node-sub" font-size="9.5">incrementality, rec. engine</text>
+
+      <rect x="980" y="120" width="380" height="80" rx="8" class="node-box" stroke="var(--good)" stroke-width="1.6"/>
+      <text x="1170" y="150" text-anchor="middle" class="node-title" font-size="12">Convert &amp; Retain</text>
+      <text x="1170" y="168" text-anchor="middle" class="node-sub" font-size="9.5">CRM sync, lead scoring,</text>
+      <text x="1170" y="182" text-anchor="middle" class="node-sub" font-size="9.5">pipeline, listening</text>
+
+      <!-- Feedback loop: posts go live -> spend data -->
+      <path d="M420,160 L510,160" class="edge" style="stroke:var(--accent);" stroke-width="1.6" stroke-dasharray="4,3" fill="none" marker-end="url(#hv-ar-dash)"/>
+      <text x="465" y="150" text-anchor="middle" class="node-mono" font-size="7.5">live → spend data</text>
+
+      <!-- Down arrows into Report & Lead -->
+      <path d="M230,200 L230,240 L620,240 L620,280" class="edge" stroke-width="1.6" fill="none" marker-end="url(#hv-ar)"/>
+      <text x="330" y="234" text-anchor="middle" class="node-mono" font-size="7.5">posting status</text>
+
+      <line x1="700" y1="200" x2="700" y2="280" class="edge" stroke-width="1.6" marker-end="url(#hv-ar)"/>
+      <text x="700" y="242" text-anchor="middle" class="node-mono" font-size="7.5">recommendation cards</text>
+
+      <path d="M1170,200 L1170,240 L780,240 L780,280" class="edge" stroke-width="1.6" fill="none" marker-end="url(#hv-ar)"/>
+      <text x="1070" y="234" text-anchor="middle" class="node-mono" font-size="7.5">scores + forecast</text>
+
+      <!-- Report & Lead -->
+      <rect x="460" y="280" width="480" height="90" rx="8" class="node-box" stroke="var(--warn)" stroke-width="1.6"/>
+      <text x="700" y="312" text-anchor="middle" class="node-title" font-size="12">Report &amp; Lead</text>
+      <text x="700" y="330" text-anchor="middle" class="node-sub" font-size="9.5">Databox, Whatagraph, Notion AI,</text>
+      <text x="700" y="345" text-anchor="middle" class="node-sub" font-size="9.5">Module 14 Live Dashboard</text>
+      <text x="700" y="360" text-anchor="middle" class="node-sub" font-size="9.5">— the aggregation hub</text>
+
+      <!-- Bidirectional to AI layer -->
+      <line x1="940" y1="325" x2="978" y2="325" class="edge" stroke-width="1.6" marker-end="url(#hv-ar)"/>
+      <line x1="978" y1="340" x2="940" y2="340" class="edge" stroke-width="1.6" marker-end="url(#hv-ar)"/>
+      <text x="959" y="316" text-anchor="middle" class="node-mono" font-size="7">metrics /</text>
+      <text x="959" y="352" text-anchor="middle" class="node-mono" font-size="7">narrative</text>
+
+      <rect x="980" y="280" width="380" height="90" rx="8" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+      <text x="1170" y="312" text-anchor="middle" class="node-title" font-size="12">AI Assistant Layer</text>
+      <text x="1170" y="330" text-anchor="middle" class="node-sub" font-size="9.5">Claude · Claude Cowork ·</text>
+      <text x="1170" y="345" text-anchor="middle" class="node-sub" font-size="9.5">Julius AI</text>
+      <text x="1170" y="360" text-anchor="middle" class="node-sub" font-size="9.5">— narrative &amp; ad-hoc analysis</text>
+
+      <!-- Down to Director -->
+      <line x1="700" y1="370" x2="700" y2="420" class="edge" stroke-width="1.8" marker-end="url(#hv-ar)"/>
+      <text x="700" y="400" text-anchor="middle" class="node-mono" font-size="8">dashboard + report package</text>
+
+      <rect x="550" y="420" width="300" height="80" rx="8" class="node-box" stroke="var(--text-2)" stroke-width="1.6"/>
+      <text x="700" y="452" text-anchor="middle" class="node-title" font-size="12">The Director</text>
+      <text x="700" y="470" text-anchor="middle" class="node-sub" font-size="9.5">→ continues into the CXO</text>
+      <text x="700" y="484" text-anchor="middle" class="node-sub" font-size="9.5">cascade on the Helicopter View</text>
+    </svg>
+  </div>
+  <p class="section-sub" style="margin-top:10px;">Read left to right, top to bottom: <strong style="color:var(--text-1);">Plan &amp; Create</strong> turns a brief into creative and scheduled posts; once those go live the resulting spend and performance data is exactly what feeds <strong style="color:var(--text-1);">Measure &amp; Optimise</strong>'s bid and MMM tools. <strong style="color:var(--text-1);">Convert &amp; Retain</strong> runs in parallel off the same Gateway feed. All three report into <strong style="color:var(--text-1);">Report &amp; Lead</strong>, which trades computed metrics for narrative with the <strong style="color:var(--text-1);">AI Assistant Layer</strong> before the combined dashboard and report package reaches the Director — who takes it from there into the CMO → CEO → Board cascade on the <a href="helicopter.html" style="color:var(--accent);">Helicopter View</a>.</p>
 </section>
 
 <!-- ═══ PLAN & CREATE ═══ -->
