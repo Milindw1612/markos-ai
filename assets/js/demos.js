@@ -302,33 +302,70 @@ function initAgentExecution() {
       node: 'nodeTool1', edge: 'edgeTool1', tool: 'read_spend_data', badge: 'badgeTool1',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
       result: 'Scope: product=Aurelia Jewellery, campaign=Campaign 2, channel=all\nDate range: 2026-07-30 to 2026-08-14 (16 days)\nTotals: spend=417100, revenue=1244385, leads=204, blended ROAS=2.98\nROAS trend: first-half avg=3.31, second-half avg=2.68\nLast 5 days (date, spend, revenue, roas):\n  2026-08-10  spend=27600  revenue=93654  roas=3.39\n  2026-08-11  spend=27500  revenue=76670  roas=2.79\n  2026-08-12  spend=27400  revenue=64943  roas=2.37\n  2026-08-13  spend=26200  revenue=45195  roas=1.72\n  2026-08-14  spend=27200  revenue=32651  roas=1.2',
-      figure: '2.98 → 1.20 ROAS'
+      figure: '4 channels, 16 days'
     },
     {
       node: 'nodeTool2', edge: 'edgeTool2', tool: 'call_mmm_model', badge: 'badgeTool2',
       args: 'channel="Instagram", product="Aurelia Jewellery"',
       result: "Channel: Instagram | Channel ROAS: 3.45 | Blended account ROAS: 3.19\nEstimated incremental lift vs. blended average: +8.0%\nVerdict: Instagram is performing above the account's blended average.",
-      figure: 'Instagram +8.0%'
+      figure: 'Instagram +8% (best)'
     },
     {
       node: 'nodeTool3', edge: 'edgeTool3', tool: 'run_incrementality_test', badge: 'badgeTool3',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
       result: 'Earlier-window ROAS (2026-07-30 to 2026-08-06): 3.31\nLater-window ROAS (2026-08-07 to 2026-08-14): 2.66\nChange: -19.7%\nVerdict: SUSTAINED DECLINE — consistent across multiple days, not single-day noise',
-      figure: '-19.7% sustained'
+      figure: 'Campaign: -19.7% sustained'
     },
     {
       node: 'nodeTool4', edge: 'edgeTool4', tool: 'adjust_bid', badge: 'badgeTool4',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2", channel="Google Ads"',
       result: 'Recent 3-day ROAS: 1.54 (target: 3.0)\nProposed action: decrease | Suggested bid multiplier: 0.7x\n(Proposal only — requires human approval before execution.)',
-      figure: '×0.7 decrease'
+      figure: '3× decrease, 1× pause'
     }
+  ];
+
+  var channelScorecard = [
+    { channel: 'Instagram', spend: '₹1.69L', revenue: '₹5.46L', leads: 88, leadsChange: -24.0, roas: 3.24, vsAvg: 8.0, recentRoas: 1.91, action: 'decrease', actionLabel: 'DECREASE 0.7x', note: 'still the strongest channel' },
+    { channel: 'Facebook', spend: '₹1.34L', revenue: '₹4.03L', leads: 66, leadsChange: -21.6, roas: 3.01, vsAvg: 1.1, recentRoas: 1.85, action: 'decrease', actionLabel: 'DECREASE 0.7x', note: 'in line with account average' },
+    { channel: 'Google Ads', spend: '₹0.81L', revenue: '₹2.18L', leads: 34, leadsChange: 0.0, roas: 2.70, vsAvg: -8.5, recentRoas: 1.54, action: 'decrease', actionLabel: 'DECREASE 0.7x', note: 'below account average' },
+    { channel: 'LinkedIn', spend: '₹0.34L', revenue: '₹0.78L', leads: 16, leadsChange: 0.0, roas: 2.29, vsAvg: -24.0, recentRoas: 1.30, action: 'pause', actionLabel: 'PAUSE 0.0x', note: 'weakest channel — recommend stopping' }
   ];
 
   var playBtn = document.getElementById('execPlayBtn');
   var resetBtn = document.getElementById('execResetBtn');
   var log = document.getElementById('execLog');
   var recCard = document.getElementById('execRecCard');
-  if (!playBtn || !resetBtn || !log || !recCard) return;
+  var scorecardWrap = document.getElementById('execScorecardWrap');
+  var scorecardBody = document.getElementById('execScorecardBody');
+  var verdictBox = document.getElementById('execVerdict');
+  if (!playBtn || !resetBtn || !log || !recCard || !scorecardWrap) return;
+
+  function fmtPct(n) {
+    var sign = n > 0 ? '+' : '';
+    return sign + n.toFixed(1) + '%';
+  }
+
+  function renderScorecard() {
+    scorecardBody.innerHTML = channelScorecard.map(function (row) {
+      var pillClass = row.action === 'pause' ? 'pause' : 'decrease';
+      return '<tr>' +
+        '<td>' + row.channel + '</td>' +
+        '<td>' + row.spend + '</td>' +
+        '<td>' + row.revenue + '</td>' +
+        '<td>' + row.leads + ' (' + fmtPct(row.leadsChange) + ')</td>' +
+        '<td>' + row.roas.toFixed(2) + '</td>' +
+        '<td>' + fmtPct(row.vsAvg) + '</td>' +
+        '<td>' + row.recentRoas.toFixed(2) + '</td>' +
+        '<td><span class="exec-verdict-pill ' + pillClass + '">' + row.actionLabel + '</span></td>' +
+        '</tr>';
+    }).join('');
+
+    verdictBox.innerHTML =
+      '<strong>Reading the scorecard:</strong> Instagram is the strongest channel (ROAS 3.24, +8.0% above the account average) and LinkedIn is the weakest (ROAS 2.29, -24.0% below average) — the only channel the bid tool proposes pausing entirely rather than just reducing. ' +
+      'All four channels are declining together, matching the campaign-level -19.7% sustained drop the incrementality test already confirmed — this reads as the whole campaign fatiguing, not one bad channel dragging the rest down.';
+
+    scorecardWrap.style.display = 'block';
+  }
 
   var allNodeIds = ['nodeReasoning', 'nodeTool1', 'nodeTool2', 'nodeTool3', 'nodeTool4', 'nodeApproval'];
   var allEdgeIds = ['edgeTool1', 'edgeTool2', 'edgeTool3', 'edgeTool4', 'edgeApproval'];
@@ -367,6 +404,7 @@ function initAgentExecution() {
     allBadgeIds.forEach(hideBadge);
     log.innerHTML = '<span class="exec-log-empty">Press Play to replay the captured run — real tool output from the actual dataset.</span>';
     recCard.style.display = 'none';
+    scorecardWrap.style.display = 'none';
     playing = false;
   }
 
@@ -423,6 +461,7 @@ function initAgentExecution() {
     schedule(function () {
       setState('nodeApproval', 'active');
       appendLog('<span class="exec-log-tool">&gt;&gt; Reasoning complete — routing to human approval</span>');
+      renderScorecard();
       recCard.style.display = 'flex';
       playing = false;
     }, delay);

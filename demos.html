@@ -30,6 +30,11 @@
   .exec-log{background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--text-2);max-height:260px;overflow-y:auto;white-space:pre-wrap;}
   .exec-log .exec-log-tool{color:var(--accent-2);font-weight:600;}
   .exec-log .exec-log-empty{color:var(--text-3);font-style:italic;}
+  .exec-verdict-pill{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
+  .exec-verdict-pill.decrease{background:rgba(198,138,30,0.14);color:var(--warn);}
+  .exec-verdict-pill.pause{background:#E5484D;color:#fff;}
+  .exec-verdict{background:var(--surface-2);border:1px solid var(--rule);border-left:3px solid var(--accent-2);border-radius:6px;padding:14px 16px;margin-top:14px;font-size:12.5px;color:var(--text-2);line-height:1.65;}
+  .exec-verdict strong{color:var(--text-1);}
 </style>
 </head>
 <body>
@@ -201,7 +206,12 @@
         <span class="pill" id="execStatusPill">Real trace — captured run</span>
       </div>
 
-      <p style="font-size:12.5px;color:var(--text-3);margin-bottom:6px;">Scenario: Aurelia Jewellery — Campaign 2 (a genuine, sustained ROAS decline already present in the mock dataset)</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
+        <span class="pill">Product: Aurelia Jewellery</span>
+        <span class="pill">Campaign: Campaign 2</span>
+        <span class="pill">4 channels</span>
+        <span class="pill">16-day window</span>
+      </div>
 
       <div style="display:flex;gap:10px;margin-bottom:6px;">
         <button class="btn btn-primary" style="border:none;cursor:pointer;" id="execPlayBtn">▶ Play execution</button>
@@ -281,13 +291,34 @@
       <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:18px;margin-bottom:8px;">Execution trace</div>
       <div class="exec-log" id="execLog"><span class="exec-log-empty">Press Play to replay the captured run — real tool output from the actual dataset.</span></div>
 
+      <div id="execScorecardWrap" style="display:none;margin-top:22px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;">Channel scorecard — real data, all 4 channels</div>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="execScorecardTable">
+            <thead><tr><th>Channel</th><th>Spend</th><th>Revenue</th><th>Leads (Δ)</th><th>Blended ROAS</th><th>vs. account avg</th><th>Recent 3-day ROAS</th><th>Verdict</th></tr></thead>
+            <tbody id="execScorecardBody"></tbody>
+          </table>
+        </div>
+        <div class="exec-verdict" id="execVerdict"></div>
+      </div>
+
       <div style="margin-top:18px;">
         <div class="rec-card" id="execRecCard" style="display:none;">
           <div>
             <div class="rec-title" id="execRecTitle">Recommendation card — pending first live run</div>
-            <div class="rec-desc" id="execRecDesc">The four tool results above are real, captured directly from the agent's actual functions running against the dataset. This card — Claude's synthesized SCALE/PAUSE/SHIFT/BID recommendation — is the one piece that requires a live, billed Anthropic API call, and will be swapped in from a real run as soon as that's active.</div>
+            <div class="rec-desc" id="execRecDesc">The scorecard above is real — captured directly from the agent's actual functions running against the dataset for all four channels. This card — Claude's synthesized SCALE/PAUSE/SHIFT/BID narrative, written from that same real data — is the one piece that requires a live, billed Anthropic API call, and will be swapped in from a real run as soon as that's active.</div>
             <div class="rec-meta">Check the <a href="https://github.com/Milindw1612/markos-ai-agent" target="_blank" style="color:var(--accent);">open-source repo</a> — run it yourself to see this step live.</div>
           </div>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;border-top:1px dashed var(--rule);padding-top:22px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">How this works — a ready reference</div>
+        <div style="font-size:12.5px;color:var(--text-2);line-height:1.75;">
+          <p style="margin-bottom:10px;"><strong>The loop:</strong> a reasoning step (Claude) decides which tool to call next, the tool executes and returns real evidence, and control passes back to reasoning — this repeats until enough evidence exists to produce a recommendation. Nothing is pre-scripted; the sequence above is what one real run actually did.</p>
+          <p style="margin-bottom:10px;"><strong>What each tool stands in for:</strong> these are canonical functions, not one-vendor integrations — <code>read_spend_data</code> could call Supermetrics or Funnel.io behind the scenes, <code>call_mmm_model</code> could call Google Meridian or Meta Robyn, depending on which vendor a real deployment is wired to. Swapping the vendor means changing what's inside the function, not the agent or the graph around it.</p>
+          <p style="margin-bottom:10px;"><strong>Why LinkedIn gets PAUSE and the others get DECREASE:</strong> the bid tool compares each channel's most recent 3-day ROAS against a 3.0x target. LinkedIn's recent ROAS (1.30) is furthest below target and its blended performance is worst overall (-24% vs. the account average) — the tool's own threshold logic proposes a full pause rather than a partial cut. The other three are also underperforming their recent target, hence DECREASE, but none has fallen as far as LinkedIn.</p>
+          <p style="margin-bottom:0;"><strong>What's real vs. pending:</strong> every number in the scorecard and every tool call in the trace above is a genuine function output, run against the actual mock dataset — nothing there is written or guessed. The one thing not yet real is the final recommendation card's narrative text, which needs an actual Claude API call to generate; it's marked pending rather than faked, and this page will be updated with the real output the first time that run happens.</p>
         </div>
       </div>
     </div>
