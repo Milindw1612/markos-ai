@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarkOS AI — Data Flow Deep Dive</title>
+<meta name="description" content="Tool-by-tool data flow: exactly what each tool in the MarkOS AI stack receives and outputs, one cluster at a time.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/theme.css">
+<style>
+  .diagram-frame{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px 8px;overflow-x:auto;margin:18px 0;}
+  .diagram-frame svg{display:block;margin:0 auto;min-width:1180px;}
+  .node-box{fill:var(--surface);}
+  .node-io{fill:var(--surface-2);}
+  .node-title{font-family:var(--sans);font-weight:700;fill:var(--text-1);}
+  .node-sub{font-family:var(--sans);fill:var(--text-2);}
+  .node-mono{font-family:var(--mono);fill:var(--text-3);}
+  .col-label{font-family:var(--sans);font-weight:700;fill:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;}
+  .edge{stroke:var(--text-3);fill:none;}
+
+  .audience-note{background:var(--accent-lo);border:1px solid var(--accent);border-left:3px solid var(--accent);border-radius:6px;padding:16px 20px;margin-bottom:8px;}
+  .audience-note ul{margin:8px 0 0 20px;font-size:13px;color:var(--text-2);line-height:1.8;}
+  .audience-note li strong{color:var(--text-1);}
+
+  .cluster-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .cluster-jump a{font-size:12.5px;font-weight:600;color:var(--accent);background:var(--surface);border:1px solid var(--rule);padding:6px 14px;border-radius:20px;text-decoration:none;}
+  .cluster-jump a:hover{border-color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">MarkOS<span class="dot">.</span>AI</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="tools.html">Tool Stack</a>
+      <a href="helicopter.html">Helicopter View</a>
+      <a href="data-flow.html" class="active">Data Flow Deep Dive</a>
+      <a href="demos.html">Live Demos</a>
+      <a href="automation/SETUP_GUIDE.md" target="_blank">Automation</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+      <button class="theme-toggle">● Dark</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding:56px 0 24px;">
+  <div class="wrap">
+    <div class="eyebrow">One Level Deeper Than the Helicopter View</div>
+    <h1 style="font-size:clamp(28px,4.5vw,42px);">What each tool actually receives and sends back</h1>
+    <p class="lede">The <a href="helicopter.html" style="color:var(--accent);">Helicopter View</a> stops at the module-cluster level. This page zooms into 17 representative tools across the 4 clusters plus the AI Assistant Layer — exactly what data goes in, and exactly what comes back out.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section class="section" style="padding-top:0;">
+  <div class="audience-note">
+    <strong style="color:var(--text-1);">How to read this, depending on who you are:</strong>
+    <ul>
+      <li><strong>Director explaining the system to the CEO/Board or a peer team</strong> — you don't need this page; the <a href="helicopter.html" style="color:var(--accent);">Helicopter View</a> is the right altitude.</li>
+      <li><strong>Digital Marketing team / a technical stakeholder</strong> — this whole page is for you: every tool's actual input/output.</li>
+      <li><strong>Sales or another functional team</strong> — jump straight to <a href="#convert-retain" style="color:var(--accent);">Convert &amp; Retain</a> below; that's the CRM, funnel, and competitive-intel slice that's actually relevant to you.</li>
+    </ul>
+    <div class="cluster-jump">
+      <a href="#plan-create">Plan &amp; Create</a>
+      <a href="#measure-optimise">Measure &amp; Optimise</a>
+      <a href="#convert-retain">Convert &amp; Retain</a>
+      <a href="#report-lead">Report &amp; Lead</a>
+      <a href="#ai-layer">AI Assistant Layer</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PLAN & CREATE ═══ -->
+<section class="section" id="plan-create">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--accent);">Plan &amp; Create Cluster</div>
+    <h2 class="section-title">Modules 01, 05, 06, 09</h2>
+    <p class="section-sub">Full tool list on <a href="tools.html" style="color:var(--accent);">Tool Stack</a>. Four representative tools shown here.</p>
+  </div>
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1240 380" role="img" aria-label="Plan and Create cluster: campaign briefs go into AI image and video generation tools producing creative assets; presentation briefs go into Gamma.app producing decks; approved creative and copy go into social scheduling tools producing scheduled posts to social platforms.">
+      <defs><marker id="pc-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent);"/></marker></defs>
+      <text x="200" y="14" text-anchor="middle" class="col-label" font-size="9">Data In</text>
+      <text x="600" y="14" text-anchor="middle" class="col-label" font-size="9">Tool</text>
+      <text x="1000" y="14" text-anchor="middle" class="col-label" font-size="9">Data Out</text>
+
+      <g>
+        <rect x="20" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="50" text-anchor="middle" class="node-sub" font-size="11">Campaign brief</text>
+        <text x="200" y="66" text-anchor="middle" class="node-sub" font-size="11">(Module 01)</text>
+        <line x1="380" y1="55" x2="420" y2="55" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="420" y="20" width="360" height="70" rx="6" class="node-box" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="600" y="48" text-anchor="middle" class="node-title" font-size="11.5">Recraft / Ideogram / Flux Pro</text>
+        <text x="600" y="65" text-anchor="middle" class="node-mono" font-size="9">AI Image Generation</text>
+        <line x1="780" y1="55" x2="820" y2="55" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="820" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="50" text-anchor="middle" class="node-sub" font-size="11">Brand assets,</text>
+        <text x="1000" y="66" text-anchor="middle" class="node-sub" font-size="11">ad creatives</text>
+      </g>
+
+      <g>
+        <rect x="20" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="134" text-anchor="middle" class="node-sub" font-size="11">Video brief +</text>
+        <text x="200" y="150" text-anchor="middle" class="node-sub" font-size="11">brand assets</text>
+        <line x1="380" y1="139" x2="420" y2="139" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="420" y="104" width="360" height="70" rx="6" class="node-box" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="600" y="132" text-anchor="middle" class="node-title" font-size="11.5">Kling / Sora / Pika</text>
+        <text x="600" y="149" text-anchor="middle" class="node-mono" font-size="9">AI Video</text>
+        <line x1="780" y1="139" x2="820" y2="139" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="820" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="134" text-anchor="middle" class="node-sub" font-size="11">Video ads, Reels,</text>
+        <text x="1000" y="150" text-anchor="middle" class="node-sub" font-size="11">brand films</text>
+      </g>
+
+      <g>
+        <rect x="20" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="228" text-anchor="middle" class="node-sub" font-size="11">Weekly update brief</text>
+        <line x1="380" y1="223" x2="420" y2="223" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="420" y="188" width="360" height="70" rx="6" class="node-box" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="600" y="228" text-anchor="middle" class="node-title" font-size="11.5">Gamma.app</text>
+        <line x1="780" y1="223" x2="820" y2="223" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="820" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="228" text-anchor="middle" class="node-sub" font-size="11">Deck (PPTX/PDF)</text>
+      </g>
+
+      <g>
+        <rect x="20" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="302" text-anchor="middle" class="node-sub" font-size="11">Approved creative +</text>
+        <text x="200" y="318" text-anchor="middle" class="node-sub" font-size="11">post copy</text>
+        <line x1="380" y1="307" x2="420" y2="307" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="420" y="272" width="360" height="70" rx="6" class="node-box" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="600" y="302" text-anchor="middle" class="node-title" font-size="11.5">Hootsuite / Buffer /</text>
+        <text x="600" y="319" text-anchor="middle" class="node-title" font-size="11.5">Predis.ai</text>
+        <line x1="780" y1="307" x2="820" y2="307" class="edge" stroke-width="1.6" marker-end="url(#pc-ar)"/>
+        <rect x="820" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="302" text-anchor="middle" class="node-sub" font-size="11">Scheduled posts →</text>
+        <text x="1000" y="318" text-anchor="middle" class="node-sub" font-size="11">social platforms</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══ MEASURE & OPTIMISE ═══ -->
+<section class="section" id="measure-optimise">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--accent-2);">Measure &amp; Optimise Cluster</div>
+    <h2 class="section-title">Modules 02, 03, 08, 12</h2>
+  </div>
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1240 380" role="img" aria-label="Measure and Optimise cluster: normalised spend and bid rules go into Skai and Optmyzr producing bid adjustments; historical spend and revenue by channel go into Google Meridian and Meta Robyn producing incremental attribution and reallocation recommendations; a candidate channel and holdout design go into Measured producing an incrementality verdict; MMM and incrementality output feed the AI Recommendation Engine producing scale pause shift bid cards for the Director.">
+      <defs><marker id="mo-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent-2);"/></marker></defs>
+      <text x="200" y="14" text-anchor="middle" class="col-label" font-size="9">Data In</text>
+      <text x="600" y="14" text-anchor="middle" class="col-label" font-size="9">Tool</text>
+      <text x="1000" y="14" text-anchor="middle" class="col-label" font-size="9">Data Out</text>
+
+      <g>
+        <rect x="20" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="50" text-anchor="middle" class="node-sub" font-size="11">Normalised spend +</text>
+        <text x="200" y="66" text-anchor="middle" class="node-sub" font-size="11">bid rules</text>
+        <line x1="380" y1="55" x2="420" y2="55" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="420" y="20" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="55" text-anchor="middle" class="node-title" font-size="11.5">Skai / Optmyzr</text>
+        <line x1="780" y1="55" x2="820" y2="55" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="820" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="50" text-anchor="middle" class="node-sub" font-size="11">Bid adjustments →</text>
+        <text x="1000" y="66" text-anchor="middle" class="node-sub" font-size="11">ad platforms</text>
+      </g>
+
+      <g>
+        <rect x="20" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="134" text-anchor="middle" class="node-sub" font-size="11">Historical spend + revenue</text>
+        <text x="200" y="150" text-anchor="middle" class="node-sub" font-size="11">by channel</text>
+        <line x1="380" y1="139" x2="420" y2="139" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="420" y="104" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="132" text-anchor="middle" class="node-title" font-size="11">Google Meridian /</text>
+        <text x="600" y="149" text-anchor="middle" class="node-title" font-size="11">Meta Robyn (MMM)</text>
+        <line x1="780" y1="139" x2="820" y2="139" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="820" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="128" text-anchor="middle" class="node-sub" font-size="10.5">Incremental attribution %,</text>
+        <text x="1000" y="144" text-anchor="middle" class="node-sub" font-size="10.5">reallocation recommendation</text>
+      </g>
+
+      <g>
+        <rect x="20" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="218" text-anchor="middle" class="node-sub" font-size="11">Candidate channel +</text>
+        <text x="200" y="234" text-anchor="middle" class="node-sub" font-size="11">holdout design</text>
+        <line x1="380" y1="223" x2="420" y2="223" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="420" y="188" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="228" text-anchor="middle" class="node-title" font-size="11.5">Measured</text>
+        <line x1="780" y1="223" x2="820" y2="223" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="820" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="228" text-anchor="middle" class="node-sub" font-size="11">True incrementality verdict</text>
+      </g>
+
+      <g>
+        <rect x="20" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="302" text-anchor="middle" class="node-sub" font-size="11">MMM + incrementality</text>
+        <text x="200" y="318" text-anchor="middle" class="node-sub" font-size="11">output</text>
+        <line x1="380" y1="307" x2="420" y2="307" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="420" y="272" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="298" text-anchor="middle" class="node-title" font-size="10.5">Module 08 AI</text>
+        <text x="600" y="314" text-anchor="middle" class="node-title" font-size="10.5">Recommendation Engine</text>
+        <line x1="780" y1="307" x2="820" y2="307" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="820" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="298" text-anchor="middle" class="node-sub" font-size="10.5">SCALE / PAUSE / SHIFT / BID</text>
+        <text x="1000" y="314" text-anchor="middle" class="node-sub" font-size="10.5">cards → Director</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══ CONVERT & RETAIN ═══ -->
+<section class="section" id="convert-retain">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--good);">Convert &amp; Retain Cluster</div>
+    <h2 class="section-title">Modules 04, 10, 13 <span style="font-weight:400;color:var(--text-3);">— the Sales-relevant slice</span></h2>
+  </div>
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1240 380" role="img" aria-label="Convert and Retain cluster: leads and deal stage data go into HubSpot and Salesforce producing a synced lead record shared with Sales and Marketing; lead engagement signals go into MadKudu producing an MQL SQL score; CRM activity signals go into Clari producing a pipeline forecast; brand and competitor mentions go into Brandwatch and Sprinklr producing a sentiment score for the competitive intelligence brief.">
+      <defs><marker id="cr-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--good);"/></marker></defs>
+      <text x="200" y="14" text-anchor="middle" class="col-label" font-size="9">Data In</text>
+      <text x="600" y="14" text-anchor="middle" class="col-label" font-size="9">Tool</text>
+      <text x="1000" y="14" text-anchor="middle" class="col-label" font-size="9">Data Out</text>
+
+      <g>
+        <rect x="20" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="50" text-anchor="middle" class="node-sub" font-size="11">Leads, deal stage</text>
+        <text x="200" y="66" text-anchor="middle" class="node-sub" font-size="11">(from CRM source)</text>
+        <line x1="380" y1="55" x2="420" y2="55" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="420" y="20" width="360" height="70" rx="6" class="node-box" stroke="var(--good)" stroke-width="1.6"/>
+        <text x="600" y="55" text-anchor="middle" class="node-title" font-size="11.5">HubSpot / Salesforce</text>
+        <line x1="780" y1="55" x2="820" y2="55" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="820" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="50" text-anchor="middle" class="node-sub" font-size="11">Synced lead record →</text>
+        <text x="1000" y="66" text-anchor="middle" class="node-sub" font-size="11">Sales + Marketing</text>
+      </g>
+
+      <g>
+        <rect x="20" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="134" text-anchor="middle" class="node-sub" font-size="11">Lead engagement +</text>
+        <text x="200" y="150" text-anchor="middle" class="node-sub" font-size="11">firmographic signals</text>
+        <line x1="380" y1="139" x2="420" y2="139" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="420" y="104" width="360" height="70" rx="6" class="node-box" stroke="var(--good)" stroke-width="1.6"/>
+        <text x="600" y="139" text-anchor="middle" class="node-title" font-size="11.5">MadKudu</text>
+        <line x1="780" y1="139" x2="820" y2="139" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="820" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="139" text-anchor="middle" class="node-sub" font-size="11">0–100 MQL / SQL score</text>
+      </g>
+
+      <g>
+        <rect x="20" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="223" text-anchor="middle" class="node-sub" font-size="11">CRM activity signals</text>
+        <line x1="380" y1="223" x2="420" y2="223" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="420" y="188" width="360" height="70" rx="6" class="node-box" stroke="var(--good)" stroke-width="1.6"/>
+        <text x="600" y="223" text-anchor="middle" class="node-title" font-size="11.5">Clari</text>
+        <line x1="780" y1="223" x2="820" y2="223" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="820" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="218" text-anchor="middle" class="node-sub" font-size="11">Pipeline forecast,</text>
+        <text x="1000" y="234" text-anchor="middle" class="node-sub" font-size="11">deal-health flag</text>
+      </g>
+
+      <g>
+        <rect x="20" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="302" text-anchor="middle" class="node-sub" font-size="11">Brand + competitor</text>
+        <text x="200" y="318" text-anchor="middle" class="node-sub" font-size="11">mentions</text>
+        <line x1="380" y1="307" x2="420" y2="307" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="420" y="272" width="360" height="70" rx="6" class="node-box" stroke="var(--good)" stroke-width="1.6"/>
+        <text x="600" y="302" text-anchor="middle" class="node-title" font-size="11.5">Brandwatch /</text>
+        <text x="600" y="319" text-anchor="middle" class="node-title" font-size="11.5">Sprinklr</text>
+        <line x1="780" y1="307" x2="820" y2="307" class="edge" stroke-width="1.6" marker-end="url(#cr-ar)"/>
+        <rect x="820" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="302" text-anchor="middle" class="node-sub" font-size="11">Sentiment score →</text>
+        <text x="1000" y="318" text-anchor="middle" class="node-sub" font-size="11">Module 10 brief</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══ REPORT & LEAD ═══ -->
+<section class="section" id="report-lead">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--warn);">Report &amp; Lead Cluster</div>
+    <h2 class="section-title">Modules 07, 11, 14</h2>
+  </div>
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1240 380" role="img" aria-label="Report and Lead cluster: all cluster KPIs go into Databox producing live dashboard tiles; a scheduled report request goes into Whatagraph and AgencyAnalytics producing a branded PDF report to stakeholders; a campaign brief and OKR targets go into Notion AI and Monday.com producing a task board; the Module 11 aggregated view goes into the Module 14 Live Campaign Dashboard producing a real-time command centre for the Director.">
+      <defs><marker id="rl-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--warn);"/></marker></defs>
+      <text x="200" y="14" text-anchor="middle" class="col-label" font-size="9">Data In</text>
+      <text x="600" y="14" text-anchor="middle" class="col-label" font-size="9">Tool</text>
+      <text x="1000" y="14" text-anchor="middle" class="col-label" font-size="9">Data Out</text>
+
+      <g>
+        <rect x="20" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="50" text-anchor="middle" class="node-sub" font-size="11">All cluster KPIs</text>
+        <text x="200" y="66" text-anchor="middle" class="node-sub" font-size="11">(from Gateway)</text>
+        <line x1="380" y1="55" x2="420" y2="55" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="420" y="20" width="360" height="70" rx="6" class="node-box" stroke="var(--warn)" stroke-width="1.6"/>
+        <text x="600" y="55" text-anchor="middle" class="node-title" font-size="11.5">Databox</text>
+        <line x1="780" y1="55" x2="820" y2="55" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="820" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="55" text-anchor="middle" class="node-sub" font-size="11">Live dashboard tiles</text>
+      </g>
+
+      <g>
+        <rect x="20" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="139" text-anchor="middle" class="node-sub" font-size="11">Scheduled report request</text>
+        <line x1="380" y1="139" x2="420" y2="139" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="420" y="104" width="360" height="70" rx="6" class="node-box" stroke="var(--warn)" stroke-width="1.6"/>
+        <text x="600" y="132" text-anchor="middle" class="node-title" font-size="11">Whatagraph /</text>
+        <text x="600" y="149" text-anchor="middle" class="node-title" font-size="11">AgencyAnalytics</text>
+        <line x1="780" y1="139" x2="820" y2="139" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="820" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="134" text-anchor="middle" class="node-sub" font-size="11">Branded PDF report →</text>
+        <text x="1000" y="150" text-anchor="middle" class="node-sub" font-size="11">stakeholders</text>
+      </g>
+
+      <g>
+        <rect x="20" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="218" text-anchor="middle" class="node-sub" font-size="11">Campaign brief +</text>
+        <text x="200" y="234" text-anchor="middle" class="node-sub" font-size="11">OKR targets</text>
+        <line x1="380" y1="223" x2="420" y2="223" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="420" y="188" width="360" height="70" rx="6" class="node-box" stroke="var(--warn)" stroke-width="1.6"/>
+        <text x="600" y="218" text-anchor="middle" class="node-title" font-size="11">Notion AI /</text>
+        <text x="600" y="234" text-anchor="middle" class="node-title" font-size="11">Monday.com</text>
+        <line x1="780" y1="223" x2="820" y2="223" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="820" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="223" text-anchor="middle" class="node-sub" font-size="11">Task board, workload view</text>
+      </g>
+
+      <g>
+        <rect x="20" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="302" text-anchor="middle" class="node-sub" font-size="11">Module 11 aggregated</text>
+        <text x="200" y="318" text-anchor="middle" class="node-sub" font-size="11">view</text>
+        <line x1="380" y1="307" x2="420" y2="307" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="420" y="272" width="360" height="70" rx="6" class="node-box" stroke="var(--warn)" stroke-width="1.6"/>
+        <text x="600" y="298" text-anchor="middle" class="node-title" font-size="10.5">Module 14 Live</text>
+        <text x="600" y="314" text-anchor="middle" class="node-title" font-size="10.5">Campaign Dashboard</text>
+        <line x1="780" y1="307" x2="820" y2="307" class="edge" stroke-width="1.6" marker-end="url(#rl-ar)"/>
+        <rect x="820" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="298" text-anchor="middle" class="node-sub" font-size="10.5">Real-time command centre</text>
+        <text x="1000" y="314" text-anchor="middle" class="node-sub" font-size="10.5">→ Director</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══ AI ASSISTANT LAYER ═══ -->
+<section class="section" id="ai-layer">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--accent-2);">AI Assistant Layer</div>
+    <h2 class="section-title">Claude, Claude Cowork, Julius AI</h2>
+  </div>
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1240 296" role="img" aria-label="AI Assistant layer: computed metrics go into Claude producing narrative text and a generated deck or report file; a task instruction with Drive, Gmail, and Slack access goes into Claude Cowork producing a compiled draft with citations; a plain-English data question goes into Julius AI producing a chart and statistical answer.">
+      <defs><marker id="ai-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent-2);"/></marker></defs>
+      <text x="200" y="14" text-anchor="middle" class="col-label" font-size="9">Data In</text>
+      <text x="600" y="14" text-anchor="middle" class="col-label" font-size="9">Tool</text>
+      <text x="1000" y="14" text-anchor="middle" class="col-label" font-size="9">Data Out</text>
+
+      <g>
+        <rect x="20" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="50" text-anchor="middle" class="node-sub" font-size="11">Computed metrics</text>
+        <text x="200" y="66" text-anchor="middle" class="node-sub" font-size="11">(Modules 08 / 11)</text>
+        <line x1="380" y1="55" x2="420" y2="55" class="edge" stroke-width="1.6" marker-end="url(#ai-ar)"/>
+        <rect x="420" y="20" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="55" text-anchor="middle" class="node-title" font-size="11.5">Claude</text>
+        <line x1="780" y1="55" x2="820" y2="55" class="edge" stroke-width="1.6" marker-end="url(#ai-ar)"/>
+        <rect x="820" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="50" text-anchor="middle" class="node-sub" font-size="11">Narrative text, generated</text>
+        <text x="1000" y="66" text-anchor="middle" class="node-sub" font-size="11">deck/report file</text>
+      </g>
+
+      <g>
+        <rect x="20" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="128" text-anchor="middle" class="node-sub" font-size="10.5">Task instruction +</text>
+        <text x="200" y="144" text-anchor="middle" class="node-sub" font-size="10.5">Drive/Gmail/Slack access</text>
+        <line x1="380" y1="139" x2="420" y2="139" class="edge" stroke-width="1.6" marker-end="url(#ai-ar)"/>
+        <rect x="420" y="104" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="139" text-anchor="middle" class="node-title" font-size="11.5">Claude Cowork</text>
+        <line x1="780" y1="139" x2="820" y2="139" class="edge" stroke-width="1.6" marker-end="url(#ai-ar)"/>
+        <rect x="820" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="139" text-anchor="middle" class="node-sub" font-size="11">Compiled draft with citations</text>
+      </g>
+
+      <g>
+        <rect x="20" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="223" text-anchor="middle" class="node-sub" font-size="11">Plain-English data question</text>
+        <line x1="380" y1="223" x2="420" y2="223" class="edge" stroke-width="1.6" marker-end="url(#ai-ar)"/>
+        <rect x="420" y="188" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="223" text-anchor="middle" class="node-title" font-size="11.5">Julius AI</text>
+        <line x1="780" y1="223" x2="820" y2="223" class="edge" stroke-width="1.6" marker-end="url(#ai-ar)"/>
+        <rect x="820" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="223" text-anchor="middle" class="node-sub" font-size="11">Chart + statistical answer</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-note">MarkOS AI — a specification &amp; prototype, designed and built by Milind W.</div>
+    <div class="footer-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="tools.html">Tool Stack</a>
+      <a href="helicopter.html">Helicopter</a>
+      <a href="demos.html">Demos</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+</body>
+</html>
