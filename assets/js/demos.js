@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initRoi();
   initRecommendations();
   initCompetitive();
+  initAgentExecution();
 });
 
 /* ---------- shared: toast + tabs ---------- */
@@ -287,4 +288,123 @@ function initCompetitive() {
     idx = (idx + 1) % briefs.length;
     renderBrief();
   });
+}
+
+/* ---------- (e) Agent Execution replay ----------
+   The four tool results below are real: captured directly from the actual
+   markos-ai-agent LangGraph tools, run against the real mock dataset
+   (see github.com/Milindw1612/markos-ai-agent). Only the final recommendation
+   card is not yet real — that step needs a live, billed Anthropic API call
+   and is honestly marked as pending rather than faked. */
+function initAgentExecution() {
+  var steps = [
+    {
+      node: 'nodeTool1', edge: 'edgeTool1', tool: 'read_spend_data',
+      args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
+      result: 'Scope: product=Aurelia Jewellery, campaign=Campaign 2, channel=all\nDate range: 2026-07-30 to 2026-08-14 (16 days)\nTotals: spend=417100, revenue=1244385, leads=204, blended ROAS=2.98\nROAS trend: first-half avg=3.31, second-half avg=2.68\nLast 5 days (date, spend, revenue, roas):\n  2026-08-10  spend=27600  revenue=93654  roas=3.39\n  2026-08-11  spend=27500  revenue=76670  roas=2.79\n  2026-08-12  spend=27400  revenue=64943  roas=2.37\n  2026-08-13  spend=26200  revenue=45195  roas=1.72\n  2026-08-14  spend=27200  revenue=32651  roas=1.2'
+    },
+    {
+      node: 'nodeTool2', edge: 'edgeTool2', tool: 'call_mmm_model',
+      args: 'channel="Instagram", product="Aurelia Jewellery"',
+      result: "Channel: Instagram | Channel ROAS: 3.45 | Blended account ROAS: 3.19\nEstimated incremental lift vs. blended average: +8.0%\nVerdict: Instagram is performing above the account's blended average."
+    },
+    {
+      node: 'nodeTool3', edge: 'edgeTool3', tool: 'run_incrementality_test',
+      args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
+      result: 'Earlier-window ROAS (2026-07-30 to 2026-08-06): 3.31\nLater-window ROAS (2026-08-07 to 2026-08-14): 2.66\nChange: -19.7%\nVerdict: SUSTAINED DECLINE — consistent across multiple days, not single-day noise'
+    },
+    {
+      node: 'nodeTool4', edge: 'edgeTool4', tool: 'adjust_bid',
+      args: 'product="Aurelia Jewellery", campaign="Campaign 2", channel="Google Ads"',
+      result: 'Recent 3-day ROAS: 1.54 (target: 3.0)\nProposed action: decrease | Suggested bid multiplier: 0.7x\n(Proposal only — requires human approval before execution.)'
+    }
+  ];
+
+  var playBtn = document.getElementById('execPlayBtn');
+  var resetBtn = document.getElementById('execResetBtn');
+  var log = document.getElementById('execLog');
+  var recCard = document.getElementById('execRecCard');
+  if (!playBtn || !resetBtn || !log || !recCard) return;
+
+  var allNodeIds = ['nodeReasoning', 'nodeTool1', 'nodeTool2', 'nodeTool3', 'nodeTool4', 'nodeApproval'];
+  var allEdgeIds = ['edgeTool1', 'edgeTool2', 'edgeTool3', 'edgeTool4', 'edgeApproval'];
+  var playing = false;
+  var timers = [];
+
+  function setState(id, state) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('active', 'done');
+    if (state) el.classList.add(state);
+  }
+
+  function reset() {
+    timers.forEach(function (t) { clearTimeout(t); });
+    timers = [];
+    allNodeIds.forEach(function (id) { setState(id, null); });
+    allEdgeIds.forEach(function (id) { setState(id, null); });
+    log.innerHTML = '<span class="exec-log-empty">Press Play to replay the captured run — real tool output from the actual dataset.</span>';
+    recCard.style.display = 'none';
+    playing = false;
+  }
+
+  function appendLog(html) {
+    if (log.querySelector('.exec-log-empty')) log.innerHTML = '';
+    var line = document.createElement('div');
+    line.style.marginBottom = '10px';
+    line.innerHTML = html;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function schedule(fn, delay) {
+    timers.push(setTimeout(fn, delay));
+  }
+
+  function play() {
+    if (playing) return;
+    reset();
+    playing = true;
+
+    var delay = 0;
+    var STEP_GAP = 1500;
+
+    steps.forEach(function (step, i) {
+      schedule(function () {
+        setState('nodeReasoning', 'active');
+        setState(step.edge, 'active');
+      }, delay);
+      delay += 500;
+
+      schedule(function () {
+        setState(step.node, 'active');
+        appendLog('<span class="exec-log-tool">&gt;&gt; ' + step.tool + '(' + step.args + ')</span>');
+      }, delay);
+      delay += 700;
+
+      schedule(function () {
+        appendLog(step.result.replace(/\n/g, '<br>'));
+        setState(step.node, 'done');
+        setState(step.edge, 'done');
+        setState('nodeReasoning', i === steps.length - 1 ? 'active' : null);
+      }, delay);
+      delay += STEP_GAP;
+    });
+
+    schedule(function () {
+      setState('nodeReasoning', 'done');
+      setState('edgeApproval', 'active');
+    }, delay);
+    delay += 600;
+
+    schedule(function () {
+      setState('nodeApproval', 'active');
+      appendLog('<span class="exec-log-tool">&gt;&gt; Reasoning complete — routing to human approval</span>');
+      recCard.style.display = 'flex';
+      playing = false;
+    }, delay);
+  }
+
+  playBtn.addEventListener('click', play);
+  resetBtn.addEventListener('click', reset);
 }

@@ -8,6 +8,24 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/theme.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  .exec-frame{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px 8px;overflow-x:auto;margin:18px 0;}
+  .exec-frame svg{display:block;margin:0 auto;min-width:640px;}
+  .exec-node rect{fill:var(--surface);stroke:var(--rule);stroke-width:1.6;transition:stroke .3s, fill .3s, fill-opacity .3s;}
+  .exec-node text{transition:fill .3s;}
+  .exec-node .exec-title{fill:var(--text-1);font-weight:700;}
+  .exec-node .exec-sub{fill:var(--text-3);}
+  .exec-node.active rect{stroke:var(--accent-2);stroke-width:2.2;fill:var(--accent-2);fill-opacity:.1;}
+  .exec-node.active .exec-title{fill:var(--accent-2);}
+  .exec-node.done rect{stroke:var(--good);}
+  .exec-node.done .exec-title{fill:var(--good);}
+  .exec-edge{stroke:var(--rule);stroke-width:1.6;fill:none;transition:stroke .3s, stroke-width .3s;}
+  .exec-edge.active{stroke:var(--accent-2);stroke-width:2.4;}
+  .exec-edge.done{stroke:var(--good);}
+  .exec-log{background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--text-2);max-height:260px;overflow-y:auto;white-space:pre-wrap;}
+  .exec-log .exec-log-tool{color:var(--accent-2);font-weight:600;}
+  .exec-log .exec-log-empty{color:var(--text-3);font-style:italic;}
+</style>
 </head>
 <body>
 
@@ -43,6 +61,7 @@
     <button class="demo-tab" data-target="roi">💰 ROI / ROAS / MMM</button>
     <button class="demo-tab" data-target="recommendations">🤖 AI Recommendations</button>
     <button class="demo-tab" data-target="competitive">🕵️ Competitive Intelligence</button>
+    <button class="demo-tab" data-target="agent-execution">⚙️ Agent Execution</button>
   </div>
 
   <!-- (a) DASHBOARD / REPORTING -->
@@ -162,6 +181,93 @@
         </div>
         <div style="margin-bottom:10px;"><span class="pill" style="font-size:9.5px;">Powered by Claude</span></div>
         <div id="briefText" style="background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;font-size:13px;color:var(--text-2);line-height:1.7;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- (e) AGENT EXECUTION -->
+  <div class="demo-view" id="agent-execution">
+    <div class="demo-panel">
+      <div class="demo-panel-head">
+        <div>
+          <h3>Watch the Measure &amp; Optimise Agent Think</h3>
+          <p>This is not illustrative sample data like the four panels above — it's a real, captured execution trace from the actual open-source agent, replayed here. <a href="https://github.com/Milindw1612/markos-ai-agent" target="_blank" style="color:var(--accent);">See the real code →</a></p>
+        </div>
+        <span class="pill" id="execStatusPill">Real trace — captured run</span>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--text-3);margin-bottom:6px;">Scenario: Aurelia Jewellery — Campaign 2 (a genuine, sustained ROAS decline already present in the mock dataset)</p>
+
+      <div style="display:flex;gap:10px;margin-bottom:6px;">
+        <button class="btn btn-primary" style="border:none;cursor:pointer;" id="execPlayBtn">▶ Play execution</button>
+        <button class="btn btn-ghost" style="cursor:pointer;" id="execResetBtn">Restart</button>
+      </div>
+
+      <div class="exec-frame">
+        <svg viewBox="0 0 700 340" role="img" aria-label="Agent execution graph: Claude's reasoning node calls four tools in sequence — read spend data, call MMM model, run incrementality test, adjust bid — then reaches a human approval node before any recommendation is final.">
+          <defs>
+            <marker id="execAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--rule);"/></marker>
+          </defs>
+
+          <path id="edgeApproval" class="exec-edge" d="M350,76 L350,250" marker-end="url(#execAr)"/>
+          <path id="edgeTool1" class="exec-edge" d="M350,76 L350,90 L90,90 L90,130" fill="none" marker-end="url(#execAr)"/>
+          <path id="edgeTool2" class="exec-edge" d="M350,76 L350,98 L265,98 L265,130" fill="none" marker-end="url(#execAr)"/>
+          <path id="edgeTool3" class="exec-edge" d="M350,76 L350,106 L440,106 L440,130" fill="none" marker-end="url(#execAr)"/>
+          <path id="edgeTool4" class="exec-edge" d="M350,76 L350,114 L610,114 L610,130" fill="none" marker-end="url(#execAr)"/>
+
+          <g class="exec-node" id="nodeReasoning">
+            <rect x="270" y="20" width="160" height="56" rx="8"/>
+            <text x="350" y="42" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Claude reasoning</text>
+            <text x="350" y="58" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Decides the next tool call</text>
+          </g>
+
+          <g class="exec-node" id="nodeTool1">
+            <rect x="10" y="130" width="160" height="70" rx="8"/>
+            <text x="90" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">read_spend_data</text>
+            <text x="90" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Pull real performance</text>
+            <text x="90" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">numbers</text>
+          </g>
+
+          <g class="exec-node" id="nodeTool2">
+            <rect x="185" y="130" width="160" height="70" rx="8"/>
+            <text x="265" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">call_mmm_model</text>
+            <text x="265" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Check channel vs.</text>
+            <text x="265" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">account average</text>
+          </g>
+
+          <g class="exec-node" id="nodeTool3">
+            <rect x="360" y="130" width="160" height="70" rx="8"/>
+            <text x="440" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="8.5">run_incrementality_test</text>
+            <text x="440" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Confirm the decline</text>
+            <text x="440" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">isn't just noise</text>
+          </g>
+
+          <g class="exec-node" id="nodeTool4">
+            <rect x="530" y="130" width="160" height="70" rx="8"/>
+            <text x="610" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">adjust_bid</text>
+            <text x="610" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Propose a bid</text>
+            <text x="610" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">multiplier change</text>
+          </g>
+
+          <g class="exec-node" id="nodeApproval">
+            <rect x="270" y="250" width="160" height="56" rx="8"/>
+            <text x="350" y="272" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Human approval</text>
+            <text x="350" y="288" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Nothing executes without you</text>
+          </g>
+        </svg>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:18px;margin-bottom:8px;">Execution trace</div>
+      <div class="exec-log" id="execLog"><span class="exec-log-empty">Press Play to replay the captured run — real tool output from the actual dataset.</span></div>
+
+      <div style="margin-top:18px;">
+        <div class="rec-card" id="execRecCard" style="display:none;">
+          <div>
+            <div class="rec-title" id="execRecTitle">Recommendation card — pending first live run</div>
+            <div class="rec-desc" id="execRecDesc">The four tool results above are real, captured directly from the agent's actual functions running against the dataset. This card — Claude's synthesized SCALE/PAUSE/SHIFT/BID recommendation — is the one piece that requires a live, billed Anthropic API call, and will be swapped in from a real run as soon as that's active.</div>
+            <div class="rec-meta">Check the <a href="https://github.com/Milindw1612/markos-ai-agent" target="_blank" style="color:var(--accent);">open-source repo</a> — run it yourself to see this step live.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
