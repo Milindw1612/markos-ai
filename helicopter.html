@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarkOS AI — Helicopter View</title>
+<meta name="description" content="End-to-end architecture: how data flows from external platforms through MarkOS AI's 14 modules and 60-tool stack to the Director, and back.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/theme.css">
+<style>
+  .kpi-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;}
+  .kpi{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 24px;text-align:center;}
+  .kpi-val{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--accent);}
+  .kpi-lbl{font-size:10px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px;}
+
+  .layer-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+  .layer-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);padding:8px 12px;border-bottom:1.5px solid var(--rule);}
+  .layer-table td{padding:12px;border-bottom:1px solid var(--rule);color:var(--text-2);vertical-align:top;line-height:1.55;}
+  .layer-table tr:last-child td{border-bottom:none;}
+  .layer-name{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--text-1);white-space:nowrap;}
+  .layer-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+  .layer-tools{font-family:var(--mono);font-size:11px;color:var(--text-3);}
+
+  .diagram-frame{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:20px 8px;overflow-x:auto;margin:24px 0;}
+  .diagram-frame svg{display:block;margin:0 auto;min-width:1400px;}
+  .node-box{fill:var(--surface);}
+  .node-title{font-family:var(--sans);font-weight:700;fill:var(--text-1);}
+  .node-sub{font-family:var(--sans);fill:var(--text-2);}
+  .node-mono{font-family:var(--mono);fill:var(--text-3);}
+  .band-label{font-family:var(--sans);font-weight:700;fill:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;}
+  .edge{stroke:var(--text-3);fill:none;}
+  .edge-label{font-family:var(--sans);fill:var(--text-3);}
+
+  .legend{display:flex;flex-wrap:wrap;gap:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;margin-top:20px;}
+  .li{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-2);}
+  .lb{width:16px;height:10px;border-radius:2px;flex-shrink:0;}
+  .ldsh{width:24px;height:0;border-top:2px dashed var(--text-3);flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">MarkOS<span class="dot">.</span>AI</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="tools.html">Tool Stack</a>
+      <a href="helicopter.html" class="active">Helicopter View</a>
+      <a href="demos.html">Live Demos</a>
+      <a href="automation/SETUP_GUIDE.md" target="_blank">Automation</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+      <button class="theme-toggle">● Dark</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding:56px 0 24px;">
+  <div class="wrap">
+    <div class="eyebrow">50,000-ft View</div>
+    <h1 style="font-size:clamp(28px,4.5vw,42px);">How data actually flows through MarkOS AI</h1>
+    <p class="lede">Every module and every tool in isolation, on their own pages. This page is the opposite view — one diagram tracing data from the platforms it originates on, through the 14 modules, to the Director's desk, and back again as the actions that close the loop.</p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-val">14</div><div class="kpi-lbl">Modules</div></div>
+      <div class="kpi"><div class="kpi-val">60</div><div class="kpi-lbl">Tools</div></div>
+      <div class="kpi"><div class="kpi-val">5</div><div class="kpi-lbl">Data Source Categories</div></div>
+      <div class="kpi"><div class="kpi-val">4</div><div class="kpi-lbl">Functional Clusters</div></div>
+      <div class="kpi"><div class="kpi-val">1</div><div class="kpi-lbl">Feedback Loop</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <div class="section-eye">Read Before the Diagram</div>
+    <h2 class="section-title">The 8-layer architecture, in plain language</h2>
+  </div>
+  <div style="overflow-x:auto;">
+    <table class="layer-table">
+      <thead><tr><th>Layer</th><th>What lives here</th><th>Representative tools</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--text-3);"></span>Data Sources</td>
+          <td>Ad platforms, CRM, e-commerce, web analytics, and social listening — the raw signal MarkOS ingests every few hours, before any module touches it.</td>
+          <td class="layer-tools">Google Ads, Meta, LinkedIn, HubSpot, Shopify, GA4, Brandwatch</td>
+        </tr>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--text-3);"></span>Aggregation Gateway</td>
+          <td>Normalises every source into one warehouse first, so every downstream number — a KPI tile, a chart, an AI recommendation — traces back to the same ground truth.</td>
+          <td class="layer-tools">Supermetrics, Funnel.io, Improvado</td>
+        </tr>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--accent);"></span>Plan &amp; Create</td>
+          <td>Where campaigns, content, and channel strategy get built. Modules <a href="modules.html#m01" style="color:var(--accent);">01</a>, <a href="modules.html#m05" style="color:var(--accent);">05</a>, <a href="modules.html#m06" style="color:var(--accent);">06</a>, <a href="modules.html#m09" style="color:var(--accent);">09</a>.</td>
+          <td class="layer-tools">Recraft, Ideogram, Kling, Sora, Gamma.app, Hootsuite/Buffer</td>
+        </tr>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--accent-2);"></span>Measure &amp; Optimise</td>
+          <td>Where spend turns into a verdict — and a recommendation. Modules <a href="modules.html#m02" style="color:var(--accent);">02</a>, <a href="modules.html#m03" style="color:var(--accent);">03</a>, <a href="modules.html#m08" style="color:var(--accent);">08</a>, <a href="modules.html#m12" style="color:var(--accent);">12</a>.</td>
+          <td class="layer-tools">Skai, Optmyzr, Google Meridian, Meta Robyn, Albert.ai</td>
+        </tr>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--good);"></span>Convert &amp; Retain</td>
+          <td>Where leads become pipeline and pipeline becomes revenue. Modules <a href="modules.html#m04" style="color:var(--accent);">04</a>, <a href="modules.html#m10" style="color:var(--accent);">10</a>, <a href="modules.html#m13" style="color:var(--accent);">13</a>.</td>
+          <td class="layer-tools">HubSpot/Salesforce, MadKudu, Clari, Sprinklr</td>
+        </tr>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--warn);"></span>Report &amp; Lead</td>
+          <td>Where the Director actually sees the business, and the team gets managed. Modules <a href="modules.html#m07" style="color:var(--accent);">07</a>, <a href="modules.html#m11" style="color:var(--accent);">11</a>, <a href="modules.html#m14" style="color:var(--accent);">14</a>.</td>
+          <td class="layer-tools">Databox, Whatagraph, Notion AI/Monday.com</td>
+        </tr>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--accent-2);"></span>AI Assistant Layer</td>
+          <td>The conversational and delegation layer sitting across reporting and recommendations, not owned by any single module.</td>
+          <td class="layer-tools">Claude, Claude Cowork, Julius AI</td>
+        </tr>
+        <tr>
+          <td class="layer-name"><span class="layer-dot" style="background:var(--text-1);"></span>Director / Feedback Loop</td>
+          <td>Every approval writes back down into live campaigns, budget, and CRM — the system doesn't just report, it closes the loop.</td>
+          <td class="layer-tools">Human-in-the-loop, every action</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <div class="section-eye">The Full Picture</div>
+    <h2 class="section-title">Data flow, source to Director and back</h2>
+    <p class="section-sub">The ~20 dependencies that actually matter — not a fully-connected graph of all 14 modules and 60 tools, which would be unreadable. Full per-tool detail lives on the <a href="tools.html" style="color:var(--accent);">Tool Stack</a> page.</p>
+  </div>
+
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1500 950" role="img" aria-label="Data flows from five external source categories into a data aggregation gateway, which feeds four functional module clusters: Plan and Create, Measure and Optimise, Convert and Retain, and Report and Lead. These clusters feed an AI Assistant layer of Claude, Claude Cowork, and Julius AI, which together with a direct dashboard feed reach the Director. The Director's approvals then write back down through a feedback loop into the Plan and Create, Measure and Optimise, and Convert and Retain clusters.">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--text-3);"/></marker>
+        <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent);"/></marker>
+        <marker id="arFb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--warn);"/></marker>
+      </defs>
+
+      <!-- ═══ ROW A: DATA SOURCES ═══ -->
+      <text x="750" y="14" text-anchor="middle" class="band-label" font-size="10">External Data Sources</text>
+      <g>
+        <rect x="170" y="20" width="220" height="100" rx="8" class="node-box" stroke="var(--rule)" stroke-width="1.3"/>
+        <text x="280" y="42" text-anchor="middle" class="node-title" font-size="12">Ad Platforms</text>
+        <text x="280" y="62" text-anchor="middle" class="node-sub" font-size="10">Google Ads · Meta (FB/IG)</text>
+        <text x="280" y="76" text-anchor="middle" class="node-sub" font-size="10">LinkedIn Ads</text>
+        <text x="280" y="98" text-anchor="middle" class="node-mono" font-size="8.5">→ spend, impressions, clicks</text>
+
+        <rect x="405" y="20" width="220" height="100" rx="8" class="node-box" stroke="var(--rule)" stroke-width="1.3"/>
+        <text x="515" y="42" text-anchor="middle" class="node-title" font-size="12">CRM / Sales</text>
+        <text x="515" y="62" text-anchor="middle" class="node-sub" font-size="10">HubSpot · Salesforce</text>
+        <text x="515" y="98" text-anchor="middle" class="node-mono" font-size="8.5">→ leads, pipeline, deal stage</text>
+
+        <rect x="640" y="20" width="220" height="100" rx="8" class="node-box" stroke="var(--rule)" stroke-width="1.3"/>
+        <text x="750" y="42" text-anchor="middle" class="node-title" font-size="12">E-commerce</text>
+        <text x="750" y="62" text-anchor="middle" class="node-sub" font-size="10">Shopify · Amazon Seller</text>
+        <text x="750" y="76" text-anchor="middle" class="node-sub" font-size="10">Nykaa Seller</text>
+        <text x="750" y="98" text-anchor="middle" class="node-mono" font-size="8.5">→ orders, real revenue</text>
+
+        <rect x="875" y="20" width="220" height="100" rx="8" class="node-box" stroke="var(--rule)" stroke-width="1.3"/>
+        <text x="985" y="42" text-anchor="middle" class="node-title" font-size="12">Web &amp; Product Analytics</text>
+        <text x="985" y="62" text-anchor="middle" class="node-sub" font-size="10">GA4 · Mixpanel</text>
+        <text x="985" y="76" text-anchor="middle" class="node-sub" font-size="10">Amplitude</text>
+        <text x="985" y="98" text-anchor="middle" class="node-mono" font-size="8.5">→ sessions, funnel events</text>
+
+        <rect x="1110" y="20" width="220" height="100" rx="8" class="node-box" stroke="var(--rule)" stroke-width="1.3"/>
+        <text x="1220" y="42" text-anchor="middle" class="node-title" font-size="12">Social &amp; Listening</text>
+        <text x="1220" y="62" text-anchor="middle" class="node-sub" font-size="10">Brandwatch · Sprinklr</text>
+        <text x="1220" y="98" text-anchor="middle" class="node-mono" font-size="8.5">→ sentiment, mentions</text>
+      </g>
+
+      <!-- sources -> gateway -->
+      <line x1="280" y1="120" x2="280" y2="150" class="edge" stroke-width="1.6" marker-end="url(#ar)"/>
+      <line x1="515" y1="120" x2="515" y2="150" class="edge" stroke-width="1.6" marker-end="url(#ar)"/>
+      <line x1="750" y1="120" x2="750" y2="150" class="edge" stroke-width="1.6" marker-end="url(#ar)"/>
+      <line x1="985" y1="120" x2="985" y2="150" class="edge" stroke-width="1.6" marker-end="url(#ar)"/>
+      <line x1="1220" y1="120" x2="1220" y2="150" class="edge" stroke-width="1.6" marker-end="url(#ar)"/>
+
+      <!-- ═══ GATEWAY ═══ -->
+      <rect x="170" y="150" width="1160" height="70" rx="8" fill="var(--accent-lo)" stroke="var(--accent)" stroke-width="1.8"/>
+      <text x="750" y="177" text-anchor="middle" class="node-title" font-size="13" style="fill:var(--accent);">Data Aggregation Gateway</text>
+      <text x="750" y="196" text-anchor="middle" class="node-sub" font-size="10.5">Supermetrics · Funnel.io · Improvado — one normalised warehouse before any module touches the data</text>
+
+      <!-- gateway -> clusters -->
+      <line x1="315" y1="220" x2="315" y2="280" class="edge" stroke-width="1.8" marker-end="url(#arA)"/>
+      <line x1="605" y1="220" x2="605" y2="280" class="edge" stroke-width="1.8" marker-end="url(#arA)"/>
+      <line x1="895" y1="220" x2="895" y2="280" class="edge" stroke-width="1.8" marker-end="url(#arA)"/>
+      <line x1="1185" y1="220" x2="1185" y2="280" class="edge" stroke-width="1.8" marker-end="url(#arA)"/>
+
+      <!-- feedback rail (drawn behind clusters, above them) -->
+      <path d="M985,705 Q1420,705 1420,265 L250,265" class="edge" style="stroke:var(--warn);" stroke-width="1.6" stroke-dasharray="6,4" fill="none"/>
+      <line x1="315" y1="265" x2="315" y2="280" style="stroke:var(--warn);" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arFb)"/>
+      <line x1="605" y1="265" x2="605" y2="280" style="stroke:var(--warn);" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arFb)"/>
+      <line x1="895" y1="265" x2="895" y2="280" style="stroke:var(--warn);" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arFb)"/>
+      <text x="1420" y="480" text-anchor="middle" class="edge-label" font-size="9" style="fill:var(--warn);font-weight:600;" transform="rotate(90,1420,480)">Feedback: approvals write back</text>
+
+      <!-- ═══ ROW B: CLUSTERS ═══ -->
+      <text x="750" y="274" text-anchor="middle" class="band-label" font-size="10">Core Modules — 4 Functional Clusters</text>
+      <g>
+        <rect x="180" y="280" width="270" height="220" rx="8" class="node-box" stroke="var(--accent)" stroke-width="1.8"/>
+        <rect x="180" y="280" width="270" height="30" rx="8" fill="var(--accent)"/>
+        <text x="315" y="300" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">Plan &amp; Create</text>
+        <text x="196" y="326" class="node-sub" font-size="10">01 · Campaign Intelligence</text>
+        <text x="196" y="345" class="node-sub" font-size="10">05 · AI Content Studio</text>
+        <text x="196" y="364" class="node-sub" font-size="10">06 · Social Automation</text>
+        <text x="196" y="383" class="node-sub" font-size="10">09 · Channel Intelligence</text>
+        <text x="196" y="410" class="node-mono" font-size="8.5">Recraft · Ideogram · Kling</text>
+        <text x="196" y="422" class="node-mono" font-size="8.5">Sora · Gamma · Hootsuite</text>
+
+        <rect x="470" y="280" width="270" height="220" rx="8" class="node-box" stroke="var(--accent-2)" stroke-width="1.8"/>
+        <rect x="470" y="280" width="270" height="30" rx="8" fill="var(--accent-2)"/>
+        <text x="605" y="300" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">Measure &amp; Optimise</text>
+        <text x="486" y="326" class="node-sub" font-size="10">02 · Performance Hub</text>
+        <text x="486" y="345" class="node-sub" font-size="10">03 · Budget Control</text>
+        <text x="486" y="364" class="node-sub" font-size="10">08 · AI Recommendation Engine</text>
+        <text x="486" y="383" class="node-sub" font-size="10">12 · ROI / ROAS / MMM</text>
+        <text x="486" y="410" class="node-mono" font-size="8.5">Skai · Optmyzr · Meridian</text>
+        <text x="486" y="422" class="node-mono" font-size="8.5">Meta Robyn · Albert.ai</text>
+
+        <rect x="760" y="280" width="270" height="220" rx="8" class="node-box" stroke="var(--good)" stroke-width="1.8"/>
+        <rect x="760" y="280" width="270" height="30" rx="8" fill="var(--good)"/>
+        <text x="895" y="300" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">Convert &amp; Retain</text>
+        <text x="776" y="326" class="node-sub" font-size="10">04 · CRM + CDP</text>
+        <text x="776" y="345" class="node-sub" font-size="10">10 · Competitive Intelligence</text>
+        <text x="776" y="364" class="node-sub" font-size="10">13 · Sales Funnel Analytics</text>
+        <text x="776" y="410" class="node-mono" font-size="8.5">HubSpot · Salesforce</text>
+        <text x="776" y="422" class="node-mono" font-size="8.5">MadKudu · Clari · Sprinklr</text>
+
+        <rect x="1050" y="280" width="270" height="220" rx="8" class="node-box" stroke="var(--warn)" stroke-width="1.8"/>
+        <rect x="1050" y="280" width="270" height="30" rx="8" fill="var(--warn)"/>
+        <text x="1185" y="300" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">Report &amp; Lead</text>
+        <text x="1066" y="326" class="node-sub" font-size="10">07 · Team &amp; Resource Mgmt</text>
+        <text x="1066" y="345" class="node-sub" font-size="10">11 · Reporting &amp; Dashboard</text>
+        <text x="1066" y="364" class="node-sub" font-size="10">14 · Live Campaign Dashboard</text>
+        <text x="1066" y="410" class="node-mono" font-size="8.5">Databox · Whatagraph</text>
+        <text x="1066" y="422" class="node-mono" font-size="8.5">Notion AI · Monday.com</text>
+      </g>
+
+      <!-- clusters -> AI layer (curved) -->
+      <path d="M605,500 Q500,520 420,540" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <path d="M1185,500 Q800,525 420,540" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <path d="M1185,500 Q950,520 750,540" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <path d="M605,500 Q900,520 1080,540" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <path d="M895,500 Q990,520 1080,540" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <text x="480" y="527" class="edge-label" font-size="8">Mod 08 recs</text>
+      <text x="820" y="527" class="edge-label" font-size="8">Mod 11 data</text>
+      <text x="960" y="518" class="edge-label" font-size="8">Mod 07 tasks</text>
+      <text x="930" y="527" class="edge-label" font-size="8">Mod 02/13 queries</text>
+
+      <!-- ═══ ROW C: AI LAYER ═══ -->
+      <text x="750" y="534" text-anchor="middle" class="band-label" font-size="10">AI Assistant Layer</text>
+      <g>
+        <rect x="270" y="540" width="300" height="80" rx="8" fill="var(--accent-lo)" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="420" y="565" text-anchor="middle" class="node-title" font-size="12">Claude</text>
+        <text x="420" y="583" text-anchor="middle" class="node-sub" font-size="9.5">Narrative generation, plain-English</text>
+        <text x="420" y="596" text-anchor="middle" class="node-sub" font-size="9.5">queries, deck/report drafting</text>
+
+        <rect x="600" y="540" width="300" height="80" rx="8" fill="var(--accent-lo)" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="750" y="565" text-anchor="middle" class="node-title" font-size="12">Claude Cowork</text>
+        <text x="750" y="583" text-anchor="middle" class="node-sub" font-size="9.5">Multi-app task delegation —</text>
+        <text x="750" y="596" text-anchor="middle" class="node-sub" font-size="9.5">compiling reports, chasing blockers</text>
+
+        <rect x="930" y="540" width="300" height="80" rx="8" fill="var(--accent-lo)" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="1080" y="565" text-anchor="middle" class="node-title" font-size="12">Julius AI</text>
+        <text x="1080" y="583" text-anchor="middle" class="node-sub" font-size="9.5">Ad-hoc statistical analysis</text>
+        <text x="1080" y="596" text-anchor="middle" class="node-sub" font-size="9.5">outside the pre-built dashboards</text>
+      </g>
+
+      <!-- AI layer + direct dashboard -> Director -->
+      <path d="M420,620 Q550,645 620,660" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <path d="M750,620 L750,660" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <path d="M1080,620 Q950,645 880,660" class="edge" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <path d="M1185,500 Q1150,590 950,660" class="edge" style="stroke:var(--warn);" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+      <text x="1010" y="600" class="edge-label" font-size="8" style="fill:var(--warn);">Mod 14 live dashboard (raw)</text>
+
+      <!-- ═══ ROW D: DIRECTOR ═══ -->
+      <rect x="515" y="660" width="470" height="90" rx="10" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="2"/>
+      <text x="750" y="690" text-anchor="middle" font-size="14" font-weight="700" fill="var(--text-1)">The Digital Marketing Director</text>
+      <text x="750" y="710" text-anchor="middle" class="node-sub" font-size="10.5">Reviews the dashboard and recommendations</text>
+      <text x="750" y="726" text-anchor="middle" class="node-sub" font-size="10.5">Approves, adjusts, or snoozes — every action feeds back below</text>
+
+    </svg>
+  </div>
+
+  <div class="legend">
+    <div class="li"><div class="lb" style="background:var(--text-3);"></div>Data sources &amp; aggregation</div>
+    <div class="li"><div class="lb" style="background:var(--accent);"></div>Plan &amp; Create</div>
+    <div class="li"><div class="lb" style="background:var(--accent-2);"></div>Measure &amp; Optimise / AI Assistant Layer</div>
+    <div class="li"><div class="lb" style="background:var(--good);"></div>Convert &amp; Retain</div>
+    <div class="li"><div class="lb" style="background:var(--warn);"></div>Report &amp; Lead / Feedback loop</div>
+    <div class="li"><div class="ldsh" style="border-top-color:var(--warn);"></div>Director's approvals writing back into live execution</div>
+  </div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-note">MarkOS AI — a specification &amp; prototype, designed and built by Milind W.</div>
+    <div class="footer-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="tools.html">Tool Stack</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+</body>
+</html>
