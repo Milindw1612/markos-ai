@@ -299,24 +299,28 @@ function initCompetitive() {
 function initAgentExecution() {
   var steps = [
     {
-      node: 'nodeTool1', edge: 'edgeTool1', tool: 'read_spend_data',
+      node: 'nodeTool1', edge: 'edgeTool1', tool: 'read_spend_data', badge: 'badgeTool1',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
-      result: 'Scope: product=Aurelia Jewellery, campaign=Campaign 2, channel=all\nDate range: 2026-07-30 to 2026-08-14 (16 days)\nTotals: spend=417100, revenue=1244385, leads=204, blended ROAS=2.98\nROAS trend: first-half avg=3.31, second-half avg=2.68\nLast 5 days (date, spend, revenue, roas):\n  2026-08-10  spend=27600  revenue=93654  roas=3.39\n  2026-08-11  spend=27500  revenue=76670  roas=2.79\n  2026-08-12  spend=27400  revenue=64943  roas=2.37\n  2026-08-13  spend=26200  revenue=45195  roas=1.72\n  2026-08-14  spend=27200  revenue=32651  roas=1.2'
+      result: 'Scope: product=Aurelia Jewellery, campaign=Campaign 2, channel=all\nDate range: 2026-07-30 to 2026-08-14 (16 days)\nTotals: spend=417100, revenue=1244385, leads=204, blended ROAS=2.98\nROAS trend: first-half avg=3.31, second-half avg=2.68\nLast 5 days (date, spend, revenue, roas):\n  2026-08-10  spend=27600  revenue=93654  roas=3.39\n  2026-08-11  spend=27500  revenue=76670  roas=2.79\n  2026-08-12  spend=27400  revenue=64943  roas=2.37\n  2026-08-13  spend=26200  revenue=45195  roas=1.72\n  2026-08-14  spend=27200  revenue=32651  roas=1.2',
+      figure: '2.98 → 1.20 ROAS'
     },
     {
-      node: 'nodeTool2', edge: 'edgeTool2', tool: 'call_mmm_model',
+      node: 'nodeTool2', edge: 'edgeTool2', tool: 'call_mmm_model', badge: 'badgeTool2',
       args: 'channel="Instagram", product="Aurelia Jewellery"',
-      result: "Channel: Instagram | Channel ROAS: 3.45 | Blended account ROAS: 3.19\nEstimated incremental lift vs. blended average: +8.0%\nVerdict: Instagram is performing above the account's blended average."
+      result: "Channel: Instagram | Channel ROAS: 3.45 | Blended account ROAS: 3.19\nEstimated incremental lift vs. blended average: +8.0%\nVerdict: Instagram is performing above the account's blended average.",
+      figure: 'Instagram +8.0%'
     },
     {
-      node: 'nodeTool3', edge: 'edgeTool3', tool: 'run_incrementality_test',
+      node: 'nodeTool3', edge: 'edgeTool3', tool: 'run_incrementality_test', badge: 'badgeTool3',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
-      result: 'Earlier-window ROAS (2026-07-30 to 2026-08-06): 3.31\nLater-window ROAS (2026-08-07 to 2026-08-14): 2.66\nChange: -19.7%\nVerdict: SUSTAINED DECLINE — consistent across multiple days, not single-day noise'
+      result: 'Earlier-window ROAS (2026-07-30 to 2026-08-06): 3.31\nLater-window ROAS (2026-08-07 to 2026-08-14): 2.66\nChange: -19.7%\nVerdict: SUSTAINED DECLINE — consistent across multiple days, not single-day noise',
+      figure: '-19.7% sustained'
     },
     {
-      node: 'nodeTool4', edge: 'edgeTool4', tool: 'adjust_bid',
+      node: 'nodeTool4', edge: 'edgeTool4', tool: 'adjust_bid', badge: 'badgeTool4',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2", channel="Google Ads"',
-      result: 'Recent 3-day ROAS: 1.54 (target: 3.0)\nProposed action: decrease | Suggested bid multiplier: 0.7x\n(Proposal only — requires human approval before execution.)'
+      result: 'Recent 3-day ROAS: 1.54 (target: 3.0)\nProposed action: decrease | Suggested bid multiplier: 0.7x\n(Proposal only — requires human approval before execution.)',
+      figure: '×0.7 decrease'
     }
   ];
 
@@ -328,6 +332,7 @@ function initAgentExecution() {
 
   var allNodeIds = ['nodeReasoning', 'nodeTool1', 'nodeTool2', 'nodeTool3', 'nodeTool4', 'nodeApproval'];
   var allEdgeIds = ['edgeTool1', 'edgeTool2', 'edgeTool3', 'edgeTool4', 'edgeApproval'];
+  var allBadgeIds = ['badgeTool1', 'badgeTool2', 'badgeTool3', 'badgeTool4'];
   var playing = false;
   var timers = [];
 
@@ -338,11 +343,28 @@ function initAgentExecution() {
     if (state) el.classList.add(state);
   }
 
+  function showBadge(badgeId, figureText) {
+    var badge = document.getElementById(badgeId);
+    var text = document.getElementById(badgeId + 'Text');
+    if (!badge || !text) return;
+    text.textContent = figureText;
+    badge.classList.add('shown');
+  }
+
+  function hideBadge(badgeId) {
+    var badge = document.getElementById(badgeId);
+    var text = document.getElementById(badgeId + 'Text');
+    if (!badge || !text) return;
+    badge.classList.remove('shown');
+    text.textContent = '';
+  }
+
   function reset() {
     timers.forEach(function (t) { clearTimeout(t); });
     timers = [];
     allNodeIds.forEach(function (id) { setState(id, null); });
     allEdgeIds.forEach(function (id) { setState(id, null); });
+    allBadgeIds.forEach(hideBadge);
     log.innerHTML = '<span class="exec-log-empty">Press Play to replay the captured run — real tool output from the actual dataset.</span>';
     recCard.style.display = 'none';
     playing = false;
@@ -386,6 +408,7 @@ function initAgentExecution() {
         appendLog(step.result.replace(/\n/g, '<br>'));
         setState(step.node, 'done');
         setState(step.edge, 'done');
+        showBadge(step.badge, step.figure);
         setState('nodeReasoning', i === steps.length - 1 ? 'active' : null);
       }, delay);
       delay += STEP_GAP;

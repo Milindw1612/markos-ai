@@ -15,10 +15,15 @@
   .exec-node text{transition:fill .3s;}
   .exec-node .exec-title{fill:var(--text-1);font-weight:700;}
   .exec-node .exec-sub{fill:var(--text-3);}
+  .exec-node .exec-vendor{fill:var(--accent-2);font-weight:600;}
   .exec-node.active rect{stroke:var(--accent-2);stroke-width:2.2;fill:var(--accent-2);fill-opacity:.1;}
   .exec-node.active .exec-title{fill:var(--accent-2);}
   .exec-node.done rect{stroke:var(--good);}
   .exec-node.done .exec-title{fill:var(--good);}
+  .exec-badge{opacity:0;transition:opacity .4s;}
+  .exec-badge.shown{opacity:1;}
+  .exec-badge rect{fill:var(--accent-2);fill-opacity:.12;stroke:var(--accent-2);stroke-width:1.2;}
+  .exec-badge text{fill:var(--accent-2);font-weight:700;font-family:var(--mono);font-size:10px;}
   .exec-edge{stroke:var(--rule);stroke-width:1.6;fill:none;transition:stroke .3s, stroke-width .3s;}
   .exec-edge.active{stroke:var(--accent-2);stroke-width:2.4;}
   .exec-edge.done{stroke:var(--good);}
@@ -223,30 +228,46 @@
 
           <g class="exec-node" id="nodeTool1">
             <rect x="10" y="130" width="160" height="70" rx="8"/>
-            <text x="90" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">read_spend_data</text>
-            <text x="90" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Pull real performance</text>
-            <text x="90" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">numbers</text>
+            <text x="90" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">read_spend_data</text>
+            <text x="90" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Supermetrics style</text>
+            <text x="90" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Real spend &amp; revenue</text>
+          </g>
+          <g class="exec-badge" id="badgeTool1">
+            <rect x="10" y="206" width="160" height="26" rx="13"/>
+            <text x="90" y="223" text-anchor="middle" id="badgeTool1Text"></text>
           </g>
 
           <g class="exec-node" id="nodeTool2">
             <rect x="185" y="130" width="160" height="70" rx="8"/>
-            <text x="265" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">call_mmm_model</text>
-            <text x="265" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Check channel vs.</text>
-            <text x="265" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">account average</text>
+            <text x="265" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">call_mmm_model</text>
+            <text x="265" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Meridian / Robyn style</text>
+            <text x="265" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Channel vs. account avg</text>
+          </g>
+          <g class="exec-badge" id="badgeTool2">
+            <rect x="185" y="206" width="160" height="26" rx="13"/>
+            <text x="265" y="223" text-anchor="middle" id="badgeTool2Text"></text>
           </g>
 
           <g class="exec-node" id="nodeTool3">
             <rect x="360" y="130" width="160" height="70" rx="8"/>
-            <text x="440" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="8.5">run_incrementality_test</text>
-            <text x="440" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Confirm the decline</text>
-            <text x="440" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">isn't just noise</text>
+            <text x="440" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="8">run_incrementality_test</text>
+            <text x="440" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Measured style</text>
+            <text x="440" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Confirms decline is real</text>
+          </g>
+          <g class="exec-badge" id="badgeTool3">
+            <rect x="360" y="206" width="160" height="26" rx="13"/>
+            <text x="440" y="223" text-anchor="middle" id="badgeTool3Text"></text>
           </g>
 
           <g class="exec-node" id="nodeTool4">
             <rect x="530" y="130" width="160" height="70" rx="8"/>
-            <text x="610" y="152" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">adjust_bid</text>
-            <text x="610" y="168" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">Propose a bid</text>
-            <text x="610" y="180" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8.5">multiplier change</text>
+            <text x="610" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">adjust_bid</text>
+            <text x="610" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Skai / Optmyzr style</text>
+            <text x="610" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Proposes a bid change</text>
+          </g>
+          <g class="exec-badge" id="badgeTool4">
+            <rect x="530" y="206" width="160" height="26" rx="13"/>
+            <text x="610" y="223" text-anchor="middle" id="badgeTool4Text"></text>
           </g>
 
           <g class="exec-node" id="nodeApproval">
