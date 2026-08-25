@@ -67,6 +67,7 @@
       <div class="kpi"><div class="kpi-val">46</div><div class="kpi-lbl">Tools</div></div>
       <div class="kpi"><div class="kpi-val">5</div><div class="kpi-lbl">Data Source Categories</div></div>
       <div class="kpi"><div class="kpi-val">4</div><div class="kpi-lbl">Functional Clusters</div></div>
+      <div class="kpi"><div class="kpi-val">5</div><div class="kpi-lbl">AI Agents — 1 Orchestrator + 4 Specialists</div></div>
       <div class="kpi"><div class="kpi-val">4</div><div class="kpi-lbl">Org Tiers, One Report Each</div></div>
     </div>
   </div>
@@ -95,27 +96,27 @@
         </tr>
         <tr>
           <td class="layer-name"><span class="layer-dot" style="background:var(--accent);"></span>Plan &amp; Create</td>
-          <td>Where campaigns, content, and channel strategy get built. Modules <a href="modules.html#m01" style="color:var(--accent);">01</a>, <a href="modules.html#m05" style="color:var(--accent);">05</a>, <a href="modules.html#m06" style="color:var(--accent);">06</a>, <a href="modules.html#m09" style="color:var(--accent);">09</a>.</td>
+          <td>Where campaigns, content, and channel strategy get built, run by the <strong style="color:var(--text-1);">Plan &amp; Create Agent</strong>. Modules <a href="modules.html#m01" style="color:var(--accent);">01</a>, <a href="modules.html#m05" style="color:var(--accent);">05</a>, <a href="modules.html#m06" style="color:var(--accent);">06</a>, <a href="modules.html#m09" style="color:var(--accent);">09</a>.</td>
           <td class="layer-tools">Recraft, Ideogram, Kling, Sora, Gamma.app, Hootsuite/Buffer</td>
         </tr>
         <tr>
           <td class="layer-name"><span class="layer-dot" style="background:var(--accent-2);"></span>Measure &amp; Optimise</td>
-          <td>Where spend turns into a verdict — and a recommendation. Modules <a href="modules.html#m02" style="color:var(--accent);">02</a>, <a href="modules.html#m03" style="color:var(--accent);">03</a>, <a href="modules.html#m08" style="color:var(--accent);">08</a>, <a href="modules.html#m12" style="color:var(--accent);">12</a>.</td>
+          <td>Where spend turns into a verdict — and a recommendation — run by the <strong style="color:var(--text-1);">Measure &amp; Optimise Agent</strong>, the one of the five actually built and <a href="https://github.com/Milindw1612/markos-ai-agent" style="color:var(--accent);">public</a>. Modules <a href="modules.html#m02" style="color:var(--accent);">02</a>, <a href="modules.html#m03" style="color:var(--accent);">03</a>, <a href="modules.html#m08" style="color:var(--accent);">08</a>, <a href="modules.html#m12" style="color:var(--accent);">12</a>.</td>
           <td class="layer-tools">Skai, Optmyzr, Google Meridian, Meta Robyn, Albert.ai</td>
         </tr>
         <tr>
           <td class="layer-name"><span class="layer-dot" style="background:var(--good);"></span>Convert &amp; Retain</td>
-          <td>Where leads become pipeline and pipeline becomes revenue. Modules <a href="modules.html#m04" style="color:var(--accent);">04</a>, <a href="modules.html#m10" style="color:var(--accent);">10</a>, <a href="modules.html#m13" style="color:var(--accent);">13</a>.</td>
+          <td>Where leads become pipeline and pipeline becomes revenue, run by the <strong style="color:var(--text-1);">Convert &amp; Retain Agent</strong>. Modules <a href="modules.html#m04" style="color:var(--accent);">04</a>, <a href="modules.html#m10" style="color:var(--accent);">10</a>, <a href="modules.html#m13" style="color:var(--accent);">13</a>.</td>
           <td class="layer-tools">HubSpot/Salesforce, MadKudu, Clari, Sprinklr</td>
         </tr>
         <tr>
           <td class="layer-name"><span class="layer-dot" style="background:var(--warn);"></span>Report &amp; Lead</td>
-          <td>Where the Director actually sees the business, and the team gets managed. Modules <a href="modules.html#m07" style="color:var(--accent);">07</a>, <a href="modules.html#m11" style="color:var(--accent);">11</a>, <a href="modules.html#m14" style="color:var(--accent);">14</a>.</td>
+          <td>Where the Director actually sees the business, and the team gets managed, run by the <strong style="color:var(--text-1);">Report &amp; Lead Agent</strong>. Modules <a href="modules.html#m07" style="color:var(--accent);">07</a>, <a href="modules.html#m11" style="color:var(--accent);">11</a>, <a href="modules.html#m14" style="color:var(--accent);">14</a>.</td>
           <td class="layer-tools">Databox, Whatagraph, Notion AI/Monday.com</td>
         </tr>
         <tr>
           <td class="layer-name"><span class="layer-dot" style="background:var(--accent-2);"></span>AI Assistant Layer</td>
-          <td>The conversational and delegation layer sitting across reporting and recommendations, not owned by any single module.</td>
+          <td>The conversational and delegation layer sitting across reporting and recommendations, not owned by any single module — this is the <strong style="color:var(--text-1);">Orchestrator Agent</strong>, routing requests to the four specialist agents above and owning the conversational interface.</td>
           <td class="layer-tools">Claude, Claude Cowork, Julius AI</td>
         </tr>
         <tr>
@@ -141,7 +142,7 @@
   </div>
 
   <div class="diagram-frame">
-    <svg viewBox="0 0 1500 1030" role="img" aria-label="Data flows from five external source categories into a data aggregation gateway, which feeds four functional module clusters: Plan and Create, Measure and Optimise, Convert and Retain, and Report and Lead. These clusters feed an AI Assistant layer of Claude, Claude Cowork, and Julius AI, which together with a direct dashboard feed reach the Director. From the Director, an executive reporting cascade continues upward through the CMO's weekly view, the CEO's monthly board report, and the Board of Directors' quarterly summary, each more condensed than the last. The Director's approvals then write back down through a feedback loop into the Plan and Create, Measure and Optimise, and Convert and Retain clusters.">
+    <svg viewBox="0 0 1500 1030" role="img" aria-label="Data flows from five external source categories into a data aggregation gateway, which feeds four functional module clusters, each run by its own specialist AI agent: the Plan and Create Agent, the Measure and Optimise Agent (the one of the five actually built and public), the Convert and Retain Agent, and the Report and Lead Agent. These four clusters feed the Orchestrator Agent, shown as the AI Assistant Layer of Claude, Claude Cowork, and Julius AI, which together with a direct dashboard feed reach the Director. From the Director, an executive reporting cascade continues upward through the CMO's weekly view, the CEO's monthly board report, and the Board of Directors' quarterly summary, each more condensed than the last. The Director's approvals then write back down through a feedback loop into the Plan and Create, Measure and Optimise, and Convert and Retain clusters.">
       <defs>
         <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--text-3);"/></marker>
         <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent);"/></marker>
@@ -215,6 +216,7 @@
         <text x="196" y="345" class="node-sub" font-size="10">05 · AI Content Studio</text>
         <text x="196" y="364" class="node-sub" font-size="10">06 · Social Automation</text>
         <text x="196" y="383" class="node-sub" font-size="10">09 · Channel Intelligence</text>
+        <text x="196" y="399" class="node-mono" font-size="8.5" font-weight="700" fill="var(--accent)">Agent: Plan &amp; Create</text>
         <text x="196" y="410" class="node-mono" font-size="8.5">Recraft · Ideogram · Kling</text>
         <text x="196" y="422" class="node-mono" font-size="8.5">Sora · Gamma · Hootsuite</text>
 
@@ -225,6 +227,7 @@
         <text x="486" y="345" class="node-sub" font-size="10">03 · Budget Control</text>
         <text x="486" y="364" class="node-sub" font-size="10">08 · AI Recommendation Engine</text>
         <text x="486" y="383" class="node-sub" font-size="10">12 · ROI / ROAS / MMM</text>
+        <text x="486" y="399" class="node-mono" font-size="8.5" font-weight="700" fill="var(--accent-2)">Agent: Measure &amp; Optimise (built)</text>
         <text x="486" y="410" class="node-mono" font-size="8.5">Skai · Optmyzr · Meridian</text>
         <text x="486" y="422" class="node-mono" font-size="8.5">Meta Robyn · Albert.ai</text>
 
@@ -234,6 +237,7 @@
         <text x="776" y="326" class="node-sub" font-size="10">04 · CRM + CDP</text>
         <text x="776" y="345" class="node-sub" font-size="10">10 · Competitive Intelligence</text>
         <text x="776" y="364" class="node-sub" font-size="10">13 · Sales Funnel Analytics</text>
+        <text x="776" y="399" class="node-mono" font-size="8.5" font-weight="700" fill="var(--good)">Agent: Convert &amp; Retain</text>
         <text x="776" y="410" class="node-mono" font-size="8.5">HubSpot · Salesforce</text>
         <text x="776" y="422" class="node-mono" font-size="8.5">MadKudu · Clari · Sprinklr</text>
 
@@ -243,6 +247,7 @@
         <text x="1066" y="326" class="node-sub" font-size="10">07 · Team &amp; Resource Mgmt</text>
         <text x="1066" y="345" class="node-sub" font-size="10">11 · Reporting &amp; Dashboard</text>
         <text x="1066" y="364" class="node-sub" font-size="10">14 · Live Campaign Dashboard</text>
+        <text x="1066" y="399" class="node-mono" font-size="8.5" font-weight="700" fill="var(--warn)">Agent: Report &amp; Lead</text>
         <text x="1066" y="410" class="node-mono" font-size="8.5">Databox · Whatagraph</text>
         <text x="1066" y="422" class="node-mono" font-size="8.5">Notion AI · Monday.com</text>
       </g>
@@ -259,7 +264,7 @@
       <text x="930" y="527" class="edge-label" font-size="8">Mod 02/13 queries</text>
 
       <!-- ═══ ROW C: AI LAYER ═══ -->
-      <text x="750" y="534" text-anchor="middle" class="band-label" font-size="10">AI Assistant Layer</text>
+      <text x="750" y="534" text-anchor="middle" class="band-label" font-size="10">AI Assistant Layer — The Orchestrator Agent</text>
       <g>
         <rect x="270" y="540" width="300" height="80" rx="8" fill="var(--accent-lo)" stroke="var(--accent-2)" stroke-width="1.6"/>
         <text x="420" y="565" text-anchor="middle" class="node-title" font-size="12">Claude</text>
