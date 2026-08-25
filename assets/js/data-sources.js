@@ -44,6 +44,29 @@ function platformHeaderHtml(cfg, tool) {
   );
 }
 
+var CAMPAIGN_COLORS = ['#2F6FED', '#D5493F', '#1E9E6B', '#7C5CFF'];
+
+// A platform can carry more than one campaign at once (e.g. Facebook runs
+// both Lumiere Skincare's and Solara Fitband's campaigns simultaneously).
+// This makes that explicit right under the platform header, instead of
+// leaving it to be inferred from a table further down the page.
+function campaignsLineHtml(campaigns) {
+  if (!campaigns || !campaigns.length) return '';
+  var multi = campaigns.length > 1;
+  var html = '<div style="margin:10px 0 4px;padding:10px 14px;background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;">';
+  html += '<div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px;">' +
+    (multi ? campaigns.length + ' campaigns running on this platform right now' : 'Campaign') + '</div>';
+  campaigns.forEach(function (c, i) {
+    html += '<div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-1);font-weight:600;margin-bottom:3px;">' +
+      '<span style="width:9px;height:9px;border-radius:50%;background:' + CAMPAIGN_COLORS[i % 4] + ';flex-shrink:0;"></span>' + c + '</div>';
+  });
+  if (multi) {
+    html += '<div style="font-size:11.5px;color:var(--text-3);margin-top:6px;">The totals below are combined across all ' + campaigns.length + ' — see "By Product / Campaign" for each one\'s individual numbers, and the chart below for each one\'s own trend.</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
 // Simple horizontal bar-list for a breakdown object like {label: pct, ...}
 function breakdownBars(breakdown, barColor) {
   var html = '<div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">';
@@ -65,6 +88,7 @@ function sectionLabel(text) {
 function renderChannelTab(cfg, block) {
   var t = block.totals;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
+  html += campaignsLineHtml(block.campaigns);
   html += '<div class="kpi-grid" style="margin-top:16px;">';
   html += kpiTile('Spend', fmtInr(t.spend));
   html += kpiTile('Impressions', fmtNum(t.impressions));
@@ -76,7 +100,8 @@ function renderChannelTab(cfg, block) {
   html += kpiTile('ROAS', t.roas + 'x');
   html += '</div>';
 
-  html += '<div style="margin-top:24px;"><canvas id="chart-' + cfg.key.replace(/\s/g, '') + '" height="80"></canvas></div>';
+  html += sectionLabel('Daily Revenue, By Campaign');
+  html += '<div><canvas id="chart-' + cfg.key.replace(/\s/g, '') + '" height="80"></canvas></div>';
 
   // Platform-specific native insights section
   if (block.meta) {
@@ -141,6 +166,7 @@ function renderChannelTab(cfg, block) {
 function renderGaTab(cfg, block) {
   var t = block.totals;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
+  html += campaignsLineHtml(block.campaigns);
   html += '<div class="kpi-grid" style="margin-top:16px;">';
   html += kpiTile('Sessions', fmtNum(t.sessions));
   html += kpiTile('Users', fmtNum(t.users));
@@ -150,7 +176,8 @@ function renderGaTab(cfg, block) {
   html += kpiTile('Attributed Revenue', fmtInr(t.revenue));
   html += '</div>';
 
-  html += '<div style="margin-top:24px;"><canvas id="chart-googleAnalytics" height="80"></canvas></div>';
+  html += sectionLabel('Daily Website Visits, By Campaign');
+  html += '<div><canvas id="chart-googleAnalytics" height="80"></canvas></div>';
 
   html += sectionLabel('Traffic Source (% of Sessions)');
   html += breakdownBars(t.trafficSource, cfg.color);
@@ -170,6 +197,7 @@ function renderGaTab(cfg, block) {
 function renderYoutubeTab(cfg, block) {
   var t = block.totals;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
+  html += campaignsLineHtml(block.campaigns);
   html += '<p style="font-size:12.5px;color:var(--text-3);margin:8px 0 4px;">' + block.note + '</p>';
   html += '<div class="kpi-grid" style="margin-top:12px;">';
   html += kpiTile('Total Views', fmtNum(t.views));
@@ -193,18 +221,31 @@ function renderYoutubeTab(cfg, block) {
   return html;
 }
 
+// One line per campaign, labeled by product name -- never a blended line
+// nobody can attribute to a specific campaign. Falls back to a single
+// Spend/Revenue pair only if a platform somehow has no per-product split.
 function drawChannelChart(cfg, block) {
   var canvas = document.getElementById('chart-' + cfg.key.replace(/\s/g, ''));
   if (!canvas) return;
+  var byProd = block.dailyByProduct;
+  var labels = block.daily.map(function (d) { return d.date.slice(5); });
+  var datasets;
+  if (byProd && Object.keys(byProd).length) {
+    datasets = Object.keys(byProd).map(function (prod, i) {
+      return {
+        label: prod + ' — Revenue', data: byProd[prod].map(function (d) { return d.revenue; }),
+        borderColor: CAMPAIGN_COLORS[i % 4], backgroundColor: 'transparent', tension: 0.3, pointRadius: 0
+      };
+    });
+  } else {
+    datasets = [
+      { label: 'Spend', data: block.daily.map(function (d) { return d.spend; }), borderColor: '#D5493F', backgroundColor: 'transparent', tension: 0.3, pointRadius: 0 },
+      { label: 'Revenue', data: block.daily.map(function (d) { return d.revenue; }), borderColor: cfg.color, backgroundColor: 'transparent', tension: 0.3, pointRadius: 0 }
+    ];
+  }
   new Chart(canvas, {
     type: 'line',
-    data: {
-      labels: block.daily.map(function (d) { return d.date.slice(5); }),
-      datasets: [
-        { label: 'Spend', data: block.daily.map(function (d) { return d.spend; }), borderColor: '#D5493F', backgroundColor: 'transparent', tension: 0.3, pointRadius: 0 },
-        { label: 'Revenue', data: block.daily.map(function (d) { return d.revenue; }), borderColor: cfg.color, backgroundColor: 'transparent', tension: 0.3, pointRadius: 0 }
-      ]
-    },
+    data: { labels: labels, datasets: datasets },
     options: {
       responsive: true,
       interaction: { mode: 'index', intersect: false },
@@ -220,15 +261,21 @@ function drawChannelChart(cfg, block) {
 function drawGaChart(block) {
   var canvas = document.getElementById('chart-googleAnalytics');
   if (!canvas) return;
+  var byProd = block.dailyByProduct;
+  var labels = block.daily.map(function (d) { return d.date.slice(5); });
+  var datasets = Object.keys(byProd).map(function (prod, i) {
+    return {
+      label: prod + ' — Visits', data: byProd[prod].map(function (d) { return d.visits; }),
+      borderColor: CAMPAIGN_COLORS[i % 4], backgroundColor: 'transparent', tension: 0.3, pointRadius: 0
+    };
+  });
   new Chart(canvas, {
-    type: 'bar',
-    data: {
-      labels: block.daily.map(function (d) { return d.date.slice(5); }),
-      datasets: [{ label: 'Website Visits', data: block.daily.map(function (d) { return d.visits; }), backgroundColor: '#F9AB00' }]
-    },
+    type: 'line',
+    data: { labels: labels, datasets: datasets },
     options: {
       responsive: true,
-      plugins: { legend: { display: false } },
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } } },
       scales: {
         x: { ticks: { maxTicksLimit: 8, font: { size: 9 } }, grid: { display: false } },
         y: { ticks: { font: { size: 9 } } }

@@ -21,6 +21,9 @@
   "channels": {
     "LinkedIn": {
       "tool": "Supermetrics / Funnel.io (LinkedIn Marketing API)",
+      "campaigns": [
+        "Vantage CRM \u2014 Enterprise Growth Sprint"
+      ],
       "totals": {
         "spend": 112265,
         "impressions": 89800,
@@ -44,6 +47,165 @@
           "roas": 2.24,
           "campaign": "Vantage CRM \u2014 Enterprise Growth Sprint"
         }
+      },
+      "dailyByProduct": {
+        "Vantage CRM": [
+          {
+            "date": "2026-08-01",
+            "spend": 3677,
+            "revenue": 45090.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 3338,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 3789,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 3837,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 3108,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 3272,
+            "revenue": 45559.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 3632,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 3520,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 3596,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 3385,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 3822,
+            "revenue": 40960.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 3796,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 3617,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 3884,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 3718,
+            "revenue": 40808.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 3383,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 3693,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 3358,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 3821,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 3587,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 3553,
+            "revenue": 78547.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 3428,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 3908,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 3561,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 3492,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 3511,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 3734,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 3692,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 3704,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 3709,
+            "revenue": 0.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 4140,
+            "revenue": 0.0
+          }
+        ]
       },
       "daily": [
         {
@@ -342,6 +504,10 @@
     },
     "Instagram": {
       "tool": "Supermetrics / Funnel.io (Meta Marketing API)",
+      "campaigns": [
+        "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
+        "Lumiere Skincare \u2014 Radiance Reset Campaign"
+      ],
       "totals": {
         "spend": 311468,
         "impressions": 764402,
@@ -374,6 +540,322 @@
           "roas": 3.72,
           "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
         }
+      },
+      "dailyByProduct": {
+        "Aurelia Jewellery": [
+          {
+            "date": "2026-08-01",
+            "spend": 5238,
+            "revenue": 25000.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 6173,
+            "revenue": 23061.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 5711,
+            "revenue": 26446.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 5901,
+            "revenue": 26686.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 5153,
+            "revenue": 22792.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 5161,
+            "revenue": 24927.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 5776,
+            "revenue": 26107.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 5623,
+            "revenue": 25713.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 5815,
+            "revenue": 26290.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 5526,
+            "revenue": 24160.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 5709,
+            "revenue": 18846.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 5662,
+            "revenue": 24019.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 5905,
+            "revenue": 23145.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 5916,
+            "revenue": 21032.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 4965,
+            "revenue": 25062.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 4719,
+            "revenue": 23932.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 5993,
+            "revenue": 29275.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 6066,
+            "revenue": 26256.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 5200,
+            "revenue": 25379.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 4871,
+            "revenue": 20488.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 5639,
+            "revenue": 24259.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 5965,
+            "revenue": 21765.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 6305,
+            "revenue": 27741.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 5802,
+            "revenue": 24547.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 5454,
+            "revenue": 19327.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 5250,
+            "revenue": 21914.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 5604,
+            "revenue": 23314.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 5483,
+            "revenue": 27994.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 5202,
+            "revenue": 24193.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 6403,
+            "revenue": 26930.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 6300,
+            "revenue": 27249.0
+          }
+        ],
+        "Lumiere Skincare": [
+          {
+            "date": "2026-08-01",
+            "spend": 4229,
+            "revenue": 14792.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 4545,
+            "revenue": 16709.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 4712,
+            "revenue": 17565.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 4448,
+            "revenue": 15298.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 4508,
+            "revenue": 12809.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 4416,
+            "revenue": 16525.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 4400,
+            "revenue": 19123.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 4178,
+            "revenue": 12272.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 4497,
+            "revenue": 17869.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 4370,
+            "revenue": 15112.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 5045,
+            "revenue": 18027.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 4885,
+            "revenue": 15363.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 4519,
+            "revenue": 15615.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 4165,
+            "revenue": 17333.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 4057,
+            "revenue": 15628.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 4767,
+            "revenue": 20728.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 4481,
+            "revenue": 18411.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 4548,
+            "revenue": 17235.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 3863,
+            "revenue": 16816.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 4686,
+            "revenue": 17757.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 4540,
+            "revenue": 17968.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 4058,
+            "revenue": 14089.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 4255,
+            "revenue": 15439.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 4481,
+            "revenue": 14782.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 4416,
+            "revenue": 17786.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 4310,
+            "revenue": 13322.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 4368,
+            "revenue": 17202.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 4322,
+            "revenue": 15205.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 4447,
+            "revenue": 18259.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 4853,
+            "revenue": 19046.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 3609,
+            "revenue": 15833.0
+          }
+        ]
       },
       "daily": [
         {
@@ -672,6 +1154,10 @@
     },
     "Facebook": {
       "tool": "Supermetrics / Funnel.io (Meta Marketing API)",
+      "campaigns": [
+        "Lumiere Skincare \u2014 Radiance Reset Campaign",
+        "Solara Fitband \u2014 Reach Your Goals Push"
+      ],
       "totals": {
         "spend": 254854,
         "impressions": 832326,
@@ -704,6 +1190,322 @@
           "roas": 2.89,
           "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
         }
+      },
+      "dailyByProduct": {
+        "Lumiere Skincare": [
+          {
+            "date": "2026-08-01",
+            "spend": 3659,
+            "revenue": 10014.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 3659,
+            "revenue": 10112.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 3668,
+            "revenue": 9853.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 3382,
+            "revenue": 7303.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 3563,
+            "revenue": 6695.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 3562,
+            "revenue": 9320.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 3697,
+            "revenue": 9067.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 3852,
+            "revenue": 10567.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 3333,
+            "revenue": 9396.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 3568,
+            "revenue": 9432.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 3973,
+            "revenue": 11273.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 3413,
+            "revenue": 9117.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 3393,
+            "revenue": 9382.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 3651,
+            "revenue": 8690.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 3813,
+            "revenue": 9700.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 3603,
+            "revenue": 9589.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 3935,
+            "revenue": 11238.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 3816,
+            "revenue": 9453.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 3812,
+            "revenue": 10531.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 3740,
+            "revenue": 9413.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 4187,
+            "revenue": 10732.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 3548,
+            "revenue": 10144.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 3095,
+            "revenue": 6123.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 4004,
+            "revenue": 8791.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 3485,
+            "revenue": 7449.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 3627,
+            "revenue": 6790.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 3930,
+            "revenue": 9386.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 3196,
+            "revenue": 9058.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 3285,
+            "revenue": 8248.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 3196,
+            "revenue": 8508.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 3400,
+            "revenue": 9995.0
+          }
+        ],
+        "Solara Fitband": [
+          {
+            "date": "2026-08-01",
+            "spend": 5421,
+            "revenue": 14018.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 4470,
+            "revenue": 12429.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 3976,
+            "revenue": 11418.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 4500,
+            "revenue": 10379.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 4508,
+            "revenue": 10538.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 4539,
+            "revenue": 13924.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 4241,
+            "revenue": 11529.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 4787,
+            "revenue": 9609.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 4769,
+            "revenue": 15132.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 4119,
+            "revenue": 12335.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 4825,
+            "revenue": 12794.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 5261,
+            "revenue": 12846.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 4655,
+            "revenue": 14855.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 4491,
+            "revenue": 13571.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 4554,
+            "revenue": 16984.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 4798,
+            "revenue": 14616.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 4043,
+            "revenue": 12269.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 4653,
+            "revenue": 13223.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 4474,
+            "revenue": 14247.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 5195,
+            "revenue": 16196.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 4544,
+            "revenue": 15157.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 5137,
+            "revenue": 13966.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 4245,
+            "revenue": 11666.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 4789,
+            "revenue": 13090.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 4703,
+            "revenue": 14932.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 4320,
+            "revenue": 14781.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 4657,
+            "revenue": 12762.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 4990,
+            "revenue": 13735.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 4496,
+            "revenue": 13529.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 4055,
+            "revenue": 11413.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 4594,
+            "revenue": 14846.0
+          }
+        ]
       },
       "daily": [
         {
@@ -1002,6 +1804,10 @@
     },
     "Pinterest": {
       "tool": "Supermetrics / Funnel.io (Pinterest Ads API)",
+      "campaigns": [
+        "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
+        "Lumiere Skincare \u2014 Radiance Reset Campaign"
+      ],
       "totals": {
         "spend": 187065,
         "impressions": 744754,
@@ -1034,6 +1840,322 @@
           "roas": 3.89,
           "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
         }
+      },
+      "dailyByProduct": {
+        "Aurelia Jewellery": [
+          {
+            "date": "2026-08-01",
+            "spend": 2950,
+            "revenue": 10257.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 2955,
+            "revenue": 12537.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 2669,
+            "revenue": 9701.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 2802,
+            "revenue": 10023.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 3192,
+            "revenue": 13452.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 2664,
+            "revenue": 10161.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 2470,
+            "revenue": 9701.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 2522,
+            "revenue": 9600.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 2906,
+            "revenue": 11488.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 2906,
+            "revenue": 11607.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 2876,
+            "revenue": 8389.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 3146,
+            "revenue": 12913.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 2357,
+            "revenue": 7903.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 2980,
+            "revenue": 9365.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 3217,
+            "revenue": 12139.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 2671,
+            "revenue": 10252.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 2823,
+            "revenue": 9834.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 2747,
+            "revenue": 11480.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 2718,
+            "revenue": 8666.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 2834,
+            "revenue": 10242.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 3190,
+            "revenue": 11270.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 3273,
+            "revenue": 12368.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 2832,
+            "revenue": 11121.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 3287,
+            "revenue": 10979.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 2907,
+            "revenue": 12008.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 3256,
+            "revenue": 12466.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 2881,
+            "revenue": 8462.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 2927,
+            "revenue": 8507.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 2974,
+            "revenue": 11285.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 3545,
+            "revenue": 13115.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 3073,
+            "revenue": 11532.0
+          }
+        ],
+        "Lumiere Skincare": [
+          {
+            "date": "2026-08-01",
+            "spend": 2780,
+            "revenue": 12224.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 3332,
+            "revenue": 11213.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 3028,
+            "revenue": 11818.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 3342,
+            "revenue": 17096.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 3183,
+            "revenue": 12747.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 3072,
+            "revenue": 14039.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 3176,
+            "revenue": 12521.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 3523,
+            "revenue": 14699.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 3551,
+            "revenue": 13753.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 3115,
+            "revenue": 11900.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 3135,
+            "revenue": 11082.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 3334,
+            "revenue": 13672.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 2916,
+            "revenue": 10212.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 3172,
+            "revenue": 13360.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 3094,
+            "revenue": 13640.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 3168,
+            "revenue": 12899.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 2919,
+            "revenue": 10994.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 2755,
+            "revenue": 11330.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 2650,
+            "revenue": 9953.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 2858,
+            "revenue": 12395.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 3000,
+            "revenue": 9130.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 3036,
+            "revenue": 11365.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 3520,
+            "revenue": 10450.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 3340,
+            "revenue": 10689.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 2891,
+            "revenue": 13121.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 3175,
+            "revenue": 13715.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 3012,
+            "revenue": 10731.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 3038,
+            "revenue": 9713.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 3140,
+            "revenue": 7890.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 3234,
+            "revenue": 11791.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 3026,
+            "revenue": 15231.0
+          }
+        ]
       },
       "daily": [
         {
@@ -1325,6 +2447,10 @@
     },
     "Google Ads": {
       "tool": "Supermetrics / Funnel.io (Google Ads API)",
+      "campaigns": [
+        "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
+        "Solara Fitband \u2014 Reach Your Goals Push"
+      ],
       "totals": {
         "spend": 275626,
         "impressions": 212359,
@@ -1357,6 +2483,322 @@
           "roas": 3.7,
           "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
         }
+      },
+      "dailyByProduct": {
+        "Aurelia Jewellery": [
+          {
+            "date": "2026-08-01",
+            "spend": 3126,
+            "revenue": 15219.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 3392,
+            "revenue": 15802.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 3428,
+            "revenue": 17257.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 3156,
+            "revenue": 14370.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 3528,
+            "revenue": 14861.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 3567,
+            "revenue": 16329.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 3632,
+            "revenue": 10360.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 3422,
+            "revenue": 15750.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 3615,
+            "revenue": 8942.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 2866,
+            "revenue": 10001.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 3227,
+            "revenue": 14967.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 3100,
+            "revenue": 14420.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 3328,
+            "revenue": 12599.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 3168,
+            "revenue": 12748.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 3262,
+            "revenue": 16711.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 3735,
+            "revenue": 15479.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 3261,
+            "revenue": 18209.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 3396,
+            "revenue": 14937.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 3246,
+            "revenue": 14983.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 3317,
+            "revenue": 17429.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 3301,
+            "revenue": 14755.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 3404,
+            "revenue": 13174.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 3569,
+            "revenue": 15498.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 3681,
+            "revenue": 16125.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 3372,
+            "revenue": 12405.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 3436,
+            "revenue": 14655.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 3034,
+            "revenue": 12161.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 3280,
+            "revenue": 16031.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 3517,
+            "revenue": 15540.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 3500,
+            "revenue": 14878.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 3349,
+            "revenue": 14547.0
+          }
+        ],
+        "Solara Fitband": [
+          {
+            "date": "2026-08-01",
+            "spend": 4661,
+            "revenue": 18113.0
+          },
+          {
+            "date": "2026-08-02",
+            "spend": 5292,
+            "revenue": 16614.0
+          },
+          {
+            "date": "2026-08-03",
+            "spend": 4939,
+            "revenue": 18615.0
+          },
+          {
+            "date": "2026-08-04",
+            "spend": 5276,
+            "revenue": 20680.0
+          },
+          {
+            "date": "2026-08-05",
+            "spend": 5697,
+            "revenue": 19312.0
+          },
+          {
+            "date": "2026-08-06",
+            "spend": 5530,
+            "revenue": 21492.0
+          },
+          {
+            "date": "2026-08-07",
+            "spend": 5501,
+            "revenue": 17253.0
+          },
+          {
+            "date": "2026-08-08",
+            "spend": 5538,
+            "revenue": 24417.0
+          },
+          {
+            "date": "2026-08-09",
+            "spend": 5680,
+            "revenue": 24815.0
+          },
+          {
+            "date": "2026-08-10",
+            "spend": 5205,
+            "revenue": 19178.0
+          },
+          {
+            "date": "2026-08-11",
+            "spend": 5877,
+            "revenue": 23307.0
+          },
+          {
+            "date": "2026-08-12",
+            "spend": 5860,
+            "revenue": 15828.0
+          },
+          {
+            "date": "2026-08-13",
+            "spend": 5751,
+            "revenue": 18821.0
+          },
+          {
+            "date": "2026-08-14",
+            "spend": 5818,
+            "revenue": 21330.0
+          },
+          {
+            "date": "2026-08-15",
+            "spend": 5716,
+            "revenue": 18927.0
+          },
+          {
+            "date": "2026-08-16",
+            "spend": 6398,
+            "revenue": 26396.0
+          },
+          {
+            "date": "2026-08-17",
+            "spend": 5566,
+            "revenue": 26219.0
+          },
+          {
+            "date": "2026-08-18",
+            "spend": 5480,
+            "revenue": 17883.0
+          },
+          {
+            "date": "2026-08-19",
+            "spend": 5305,
+            "revenue": 18132.0
+          },
+          {
+            "date": "2026-08-20",
+            "spend": 5195,
+            "revenue": 20300.0
+          },
+          {
+            "date": "2026-08-21",
+            "spend": 5112,
+            "revenue": 23182.0
+          },
+          {
+            "date": "2026-08-22",
+            "spend": 5252,
+            "revenue": 17029.0
+          },
+          {
+            "date": "2026-08-23",
+            "spend": 5572,
+            "revenue": 21808.0
+          },
+          {
+            "date": "2026-08-24",
+            "spend": 5731,
+            "revenue": 26538.0
+          },
+          {
+            "date": "2026-08-25",
+            "spend": 5620,
+            "revenue": 17123.0
+          },
+          {
+            "date": "2026-08-26",
+            "spend": 5300,
+            "revenue": 17044.0
+          },
+          {
+            "date": "2026-08-27",
+            "spend": 5953,
+            "revenue": 21471.0
+          },
+          {
+            "date": "2026-08-28",
+            "spend": 5890,
+            "revenue": 20983.0
+          },
+          {
+            "date": "2026-08-29",
+            "spend": 5537,
+            "revenue": 23094.0
+          },
+          {
+            "date": "2026-08-30",
+            "spend": 5344,
+            "revenue": 20896.0
+          },
+          {
+            "date": "2026-08-31",
+            "spend": 5815,
+            "revenue": 17390.0
+          }
+        ]
       },
       "daily": [
         {
@@ -1676,6 +3118,12 @@
   },
   "googleAnalytics": {
     "tool": "GA4 + AI Insights",
+    "campaigns": [
+      "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
+      "Lumiere Skincare \u2014 Radiance Reset Campaign",
+      "Solara Fitband \u2014 Reach Your Goals Push",
+      "Vantage CRM \u2014 Enterprise Growth Sprint"
+    ],
     "totals": {
       "sessions": 48034,
       "users": 41934,
@@ -1720,6 +3168,512 @@
         "convRate": 3.88,
         "campaign": "Vantage CRM \u2014 Enterprise Growth Sprint"
       }
+    },
+    "dailyByProduct": {
+      "Aurelia Jewellery": [
+        {
+          "date": "2026-08-01",
+          "visits": 115
+        },
+        {
+          "date": "2026-08-02",
+          "visits": 115
+        },
+        {
+          "date": "2026-08-03",
+          "visits": 118
+        },
+        {
+          "date": "2026-08-04",
+          "visits": 113
+        },
+        {
+          "date": "2026-08-05",
+          "visits": 110
+        },
+        {
+          "date": "2026-08-06",
+          "visits": 112
+        },
+        {
+          "date": "2026-08-07",
+          "visits": 102
+        },
+        {
+          "date": "2026-08-08",
+          "visits": 113
+        },
+        {
+          "date": "2026-08-09",
+          "visits": 110
+        },
+        {
+          "date": "2026-08-10",
+          "visits": 96
+        },
+        {
+          "date": "2026-08-11",
+          "visits": 91
+        },
+        {
+          "date": "2026-08-12",
+          "visits": 111
+        },
+        {
+          "date": "2026-08-13",
+          "visits": 101
+        },
+        {
+          "date": "2026-08-14",
+          "visits": 90
+        },
+        {
+          "date": "2026-08-15",
+          "visits": 118
+        },
+        {
+          "date": "2026-08-16",
+          "visits": 110
+        },
+        {
+          "date": "2026-08-17",
+          "visits": 127
+        },
+        {
+          "date": "2026-08-18",
+          "visits": 120
+        },
+        {
+          "date": "2026-08-19",
+          "visits": 111
+        },
+        {
+          "date": "2026-08-20",
+          "visits": 104
+        },
+        {
+          "date": "2026-08-21",
+          "visits": 112
+        },
+        {
+          "date": "2026-08-22",
+          "visits": 108
+        },
+        {
+          "date": "2026-08-23",
+          "visits": 120
+        },
+        {
+          "date": "2026-08-24",
+          "visits": 115
+        },
+        {
+          "date": "2026-08-25",
+          "visits": 91
+        },
+        {
+          "date": "2026-08-26",
+          "visits": 110
+        },
+        {
+          "date": "2026-08-27",
+          "visits": 97
+        },
+        {
+          "date": "2026-08-28",
+          "visits": 116
+        },
+        {
+          "date": "2026-08-29",
+          "visits": 108
+        },
+        {
+          "date": "2026-08-30",
+          "visits": 123
+        },
+        {
+          "date": "2026-08-31",
+          "visits": 118
+        }
+      ],
+      "Lumiere Skincare": [
+        {
+          "date": "2026-08-01",
+          "visits": 950
+        },
+        {
+          "date": "2026-08-02",
+          "visits": 970
+        },
+        {
+          "date": "2026-08-03",
+          "visits": 972
+        },
+        {
+          "date": "2026-08-04",
+          "visits": 1014
+        },
+        {
+          "date": "2026-08-05",
+          "visits": 818
+        },
+        {
+          "date": "2026-08-06",
+          "visits": 1031
+        },
+        {
+          "date": "2026-08-07",
+          "visits": 1032
+        },
+        {
+          "date": "2026-08-08",
+          "visits": 972
+        },
+        {
+          "date": "2026-08-09",
+          "visits": 1053
+        },
+        {
+          "date": "2026-08-10",
+          "visits": 912
+        },
+        {
+          "date": "2026-08-11",
+          "visits": 1014
+        },
+        {
+          "date": "2026-08-12",
+          "visits": 951
+        },
+        {
+          "date": "2026-08-13",
+          "visits": 930
+        },
+        {
+          "date": "2026-08-14",
+          "visits": 995
+        },
+        {
+          "date": "2026-08-15",
+          "visits": 1013
+        },
+        {
+          "date": "2026-08-16",
+          "visits": 1100
+        },
+        {
+          "date": "2026-08-17",
+          "visits": 1032
+        },
+        {
+          "date": "2026-08-18",
+          "visits": 949
+        },
+        {
+          "date": "2026-08-19",
+          "visits": 986
+        },
+        {
+          "date": "2026-08-20",
+          "visits": 1012
+        },
+        {
+          "date": "2026-08-21",
+          "visits": 964
+        },
+        {
+          "date": "2026-08-22",
+          "visits": 897
+        },
+        {
+          "date": "2026-08-23",
+          "visits": 817
+        },
+        {
+          "date": "2026-08-24",
+          "visits": 858
+        },
+        {
+          "date": "2026-08-25",
+          "visits": 924
+        },
+        {
+          "date": "2026-08-26",
+          "visits": 855
+        },
+        {
+          "date": "2026-08-27",
+          "visits": 950
+        },
+        {
+          "date": "2026-08-28",
+          "visits": 858
+        },
+        {
+          "date": "2026-08-29",
+          "visits": 874
+        },
+        {
+          "date": "2026-08-30",
+          "visits": 1020
+        },
+        {
+          "date": "2026-08-31",
+          "visits": 1027
+        }
+      ],
+      "Solara Fitband": [
+        {
+          "date": "2026-08-01",
+          "visits": 228
+        },
+        {
+          "date": "2026-08-02",
+          "visits": 198
+        },
+        {
+          "date": "2026-08-03",
+          "visits": 191
+        },
+        {
+          "date": "2026-08-04",
+          "visits": 205
+        },
+        {
+          "date": "2026-08-05",
+          "visits": 200
+        },
+        {
+          "date": "2026-08-06",
+          "visits": 248
+        },
+        {
+          "date": "2026-08-07",
+          "visits": 202
+        },
+        {
+          "date": "2026-08-08",
+          "visits": 212
+        },
+        {
+          "date": "2026-08-09",
+          "visits": 260
+        },
+        {
+          "date": "2026-08-10",
+          "visits": 202
+        },
+        {
+          "date": "2026-08-11",
+          "visits": 233
+        },
+        {
+          "date": "2026-08-12",
+          "visits": 195
+        },
+        {
+          "date": "2026-08-13",
+          "visits": 239
+        },
+        {
+          "date": "2026-08-14",
+          "visits": 238
+        },
+        {
+          "date": "2026-08-15",
+          "visits": 253
+        },
+        {
+          "date": "2026-08-16",
+          "visits": 279
+        },
+        {
+          "date": "2026-08-17",
+          "visits": 260
+        },
+        {
+          "date": "2026-08-18",
+          "visits": 200
+        },
+        {
+          "date": "2026-08-19",
+          "visits": 213
+        },
+        {
+          "date": "2026-08-20",
+          "visits": 262
+        },
+        {
+          "date": "2026-08-21",
+          "visits": 259
+        },
+        {
+          "date": "2026-08-22",
+          "visits": 208
+        },
+        {
+          "date": "2026-08-23",
+          "visits": 225
+        },
+        {
+          "date": "2026-08-24",
+          "visits": 266
+        },
+        {
+          "date": "2026-08-25",
+          "visits": 215
+        },
+        {
+          "date": "2026-08-26",
+          "visits": 225
+        },
+        {
+          "date": "2026-08-27",
+          "visits": 244
+        },
+        {
+          "date": "2026-08-28",
+          "visits": 236
+        },
+        {
+          "date": "2026-08-29",
+          "visits": 239
+        },
+        {
+          "date": "2026-08-30",
+          "visits": 220
+        },
+        {
+          "date": "2026-08-31",
+          "visits": 221
+        }
+      ],
+      "Vantage CRM": [
+        {
+          "date": "2026-08-01",
+          "visits": 82
+        },
+        {
+          "date": "2026-08-02",
+          "visits": 0
+        },
+        {
+          "date": "2026-08-03",
+          "visits": 26
+        },
+        {
+          "date": "2026-08-04",
+          "visits": 80
+        },
+        {
+          "date": "2026-08-05",
+          "visits": 28
+        },
+        {
+          "date": "2026-08-06",
+          "visits": 106
+        },
+        {
+          "date": "2026-08-07",
+          "visits": 52
+        },
+        {
+          "date": "2026-08-08",
+          "visits": 0
+        },
+        {
+          "date": "2026-08-09",
+          "visits": 52
+        },
+        {
+          "date": "2026-08-10",
+          "visits": 27
+        },
+        {
+          "date": "2026-08-11",
+          "visits": 83
+        },
+        {
+          "date": "2026-08-12",
+          "visits": 52
+        },
+        {
+          "date": "2026-08-13",
+          "visits": 76
+        },
+        {
+          "date": "2026-08-14",
+          "visits": 101
+        },
+        {
+          "date": "2026-08-15",
+          "visits": 27
+        },
+        {
+          "date": "2026-08-16",
+          "visits": 82
+        },
+        {
+          "date": "2026-08-17",
+          "visits": 74
+        },
+        {
+          "date": "2026-08-18",
+          "visits": 98
+        },
+        {
+          "date": "2026-08-19",
+          "visits": 26
+        },
+        {
+          "date": "2026-08-20",
+          "visits": 0
+        },
+        {
+          "date": "2026-08-21",
+          "visits": 55
+        },
+        {
+          "date": "2026-08-22",
+          "visits": 0
+        },
+        {
+          "date": "2026-08-23",
+          "visits": 74
+        },
+        {
+          "date": "2026-08-24",
+          "visits": 55
+        },
+        {
+          "date": "2026-08-25",
+          "visits": 75
+        },
+        {
+          "date": "2026-08-26",
+          "visits": 101
+        },
+        {
+          "date": "2026-08-27",
+          "visits": 50
+        },
+        {
+          "date": "2026-08-28",
+          "visits": 25
+        },
+        {
+          "date": "2026-08-29",
+          "visits": 97
+        },
+        {
+          "date": "2026-08-30",
+          "visits": 49
+        },
+        {
+          "date": "2026-08-31",
+          "visits": 50
+        }
+      ]
     },
     "daily": [
       {
@@ -1912,6 +3866,12 @@
   },
   "youtube": {
     "tool": "YouTube Data API (organic)",
+    "campaigns": [
+      "Vantage CRM \u2014 Enterprise Growth Sprint",
+      "Lumiere Skincare \u2014 Radiance Reset Campaign",
+      "Solara Fitband \u2014 Reach Your Goals Push",
+      "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
+    ],
     "note": "Organic video analytics only -- no paid YouTube spend in this campaign. Scaled off the real video-creative impression share already reported for each product on its paid channels.",
     "byProduct": {
       "Vantage CRM": {
