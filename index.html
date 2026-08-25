@@ -7,6 +7,14 @@
 <meta name="description" content="A 14-module specification and working prototype for an AI-native digital marketing operating system — designed to demonstrate strategy depth and AI-build capability.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/theme.css">
+<style>
+  .reading-order{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:18px;counter-reset:ro;}
+  .reading-order li{counter-increment:ro;display:flex;align-items:baseline;gap:14px;padding:13px 16px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);}
+  .reading-order li::before{content:counter(ro);flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--accent-lo);color:var(--accent);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .reading-order a{font-weight:600;color:var(--text-1);text-decoration:none;}
+  .reading-order a:hover{color:var(--accent);}
+  .reading-order .ro-desc{color:var(--text-3);font-size:13px;}
+</style>
 </head>
 <body>
 
@@ -19,7 +27,7 @@
       <a href="tools.html">Tool Stack</a>
       <a href="helicopter.html">Helicopter View</a>
       <a href="data-flow.html">Data Flow Deep Dive</a>
-      <a href="data-sources.html">Data Sources</a>
+      <a href="campaign-analytics.html">Campaign Analytics</a>
       <a href="demos.html">Live Demos</a>
       <a href="automation/SETUP_GUIDE.md" target="_blank">Automation</a>
       <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
@@ -42,6 +50,24 @@
     </div>
   </div>
 </header>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eye">First Time Here?</div>
+      <h2 class="section-title">Suggested reading order</h2>
+      <p class="section-sub">7 pages, each answering a different question. Read them in this order, or jump straight to whichever question you have.</p>
+    </div>
+    <ol class="reading-order">
+      <li><div><a href="modules.html">Modules</a> <span class="ro-desc">— the full 14-module specification, what each one does and why</span></div></li>
+      <li><div><a href="helicopter.html">Helicopter View</a> <span class="ro-desc">— how the 14 modules group into 4 agent clusters, plus the org/CXO reporting cascade</span></div></li>
+      <li><div><a href="tools.html">Tool Stack</a> <span class="ro-desc">— the 46 real vendor tools each module natively replaces or integrates with</span></div></li>
+      <li><div><a href="data-flow.html">Data Flow Deep Dive</a> <span class="ro-desc">— tool-level data in/out, one diagram per cluster</span></div></li>
+      <li><div><a href="campaign-analytics.html">Campaign Analytics</a> <span class="ro-desc">— where the campaign numbers actually come from, platform by platform, with AI recommendations</span></div></li>
+      <li><div><a href="demos.html">Live Demos</a> <span class="ro-desc">— 4 interactive panels, plus a real captured run of the open-source agent</span></div></li>
+    </ol>
+  </div>
+</section>
 
 <section class="section" id="why">
   <div class="wrap">
@@ -148,7 +174,7 @@
     <div class="section-head">
       <div class="section-eye">Platform Architecture</div>
       <h2 class="section-title">14 modules, one command centre</h2>
-      <p class="section-sub">The four marked <span class="badge" style="margin:0 4px;">flagship</span> below have a working interactive demo on the <a href="demos.html" style="color:var(--accent);text-decoration:none;font-weight:600;">Live Demos</a> page. The rest are specified in full on the <a href="modules.html" style="color:var(--accent);text-decoration:none;font-weight:600;">Modules</a> page, and the ~40 named tools each one integrates or replaces are on the <a href="tools.html" style="color:var(--accent);text-decoration:none;font-weight:600;">Tool Stack</a> page.</p>
+      <p class="section-sub">The four marked <span class="badge" style="margin:0 4px;">flagship</span> below have a working interactive demo on the <a href="demos.html" style="color:var(--accent);text-decoration:none;font-weight:600;">Live Demos</a> page. The rest are specified in full on the <a href="modules.html" style="color:var(--accent);text-decoration:none;font-weight:600;">Modules</a> page, and the 46 named tools each one integrates or replaces are on the <a href="tools.html" style="color:var(--accent);text-decoration:none;font-weight:600;">Tool Stack</a> page.</p>
     </div>
     <div class="module-grid">
       <a class="module-card" href="modules.html#m01"><div class="module-num">01</div><div class="module-name">Campaign Intelligence Engine</div><div class="module-cap">Plan, launch, schedule &amp; optimise</div></a>
@@ -218,7 +244,7 @@
       <a href="tools.html">Tool Stack</a>
       <a href="helicopter.html">Helicopter</a>
       <a href="data-flow.html">Data Flow</a>
-      <a href="data-sources.html">Data Sources</a>
+      <a href="campaign-analytics.html">Campaign Analytics</a>
       <a href="demos.html">Demos</a>
       <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
     </div>
