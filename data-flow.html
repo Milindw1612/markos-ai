@@ -317,7 +317,7 @@
     <h2 class="section-title">Modules 02, 03, 08, 12</h2>
   </div>
   <div class="diagram-frame">
-    <svg viewBox="0 0 1240 380" role="img" aria-label="Measure and Optimise cluster: normalised spend and bid rules go into Skai and Optmyzr producing bid adjustments; historical spend and revenue by channel go into Google Meridian and Meta Robyn producing incremental attribution and reallocation recommendations; a candidate channel and holdout design go into Measured producing an incrementality verdict; MMM and incrementality output feed the AI Recommendation Engine producing scale pause shift bid cards for the Director.">
+    <svg viewBox="0 0 1240 460" role="img" aria-label="Measure and Optimise cluster: ad platform APIs for Meta, Google, LinkedIn and Pinterest go into the agent's own read_spend_data integration, no vendor aggregator in between, producing normalised spend and revenue by channel; normalised spend and bid rules go into Skai and Optmyzr producing bid adjustments; historical spend and revenue by channel go into Google Meridian and Meta Robyn producing incremental attribution and reallocation recommendations; a candidate channel and holdout design go into Measured producing an incrementality verdict; MMM and incrementality output feed the AI Recommendation Engine producing scale pause shift bid cards for the Director.">
       <defs><marker id="mo-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent-2);"/></marker></defs>
       <text x="200" y="14" text-anchor="middle" class="col-label" font-size="9">Data In</text>
       <text x="600" y="14" text-anchor="middle" class="col-label" font-size="9">Tool</text>
@@ -325,55 +325,69 @@
 
       <g>
         <rect x="20" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="200" y="50" text-anchor="middle" class="node-sub" font-size="11">Normalised spend +</text>
-        <text x="200" y="66" text-anchor="middle" class="node-sub" font-size="11">bid rules</text>
+        <text x="200" y="46" text-anchor="middle" class="node-sub" font-size="10.5">Ad platform APIs — Meta,</text>
+        <text x="200" y="62" text-anchor="middle" class="node-sub" font-size="10.5">Google, LinkedIn, Pinterest</text>
         <line x1="380" y1="55" x2="420" y2="55" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="420" y="20" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
-        <text x="600" y="55" text-anchor="middle" class="node-title" font-size="11.5">Skai / Optmyzr</text>
+        <text x="600" y="49" text-anchor="middle" class="node-title" font-size="11">Agent-native integration</text>
+        <text x="600" y="66" text-anchor="middle" class="node-mono" font-size="9.5">read_spend_data()</text>
         <line x1="780" y1="55" x2="820" y2="55" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="820" y="20" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="1000" y="50" text-anchor="middle" class="node-sub" font-size="11">Bid adjustments →</text>
-        <text x="1000" y="66" text-anchor="middle" class="node-sub" font-size="11">ad platforms</text>
+        <text x="1000" y="50" text-anchor="middle" class="node-sub" font-size="11">Normalised spend + revenue</text>
+        <text x="1000" y="66" text-anchor="middle" class="node-sub" font-size="11">by channel</text>
       </g>
 
       <g>
         <rect x="20" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="200" y="134" text-anchor="middle" class="node-sub" font-size="11">Historical spend + revenue</text>
-        <text x="200" y="150" text-anchor="middle" class="node-sub" font-size="11">by channel</text>
+        <text x="200" y="134" text-anchor="middle" class="node-sub" font-size="11">Normalised spend +</text>
+        <text x="200" y="150" text-anchor="middle" class="node-sub" font-size="11">bid rules</text>
         <line x1="380" y1="139" x2="420" y2="139" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="420" y="104" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
-        <text x="600" y="132" text-anchor="middle" class="node-title" font-size="11">Google Meridian /</text>
-        <text x="600" y="149" text-anchor="middle" class="node-title" font-size="11">Meta Robyn (MMM)</text>
+        <text x="600" y="139" text-anchor="middle" class="node-title" font-size="11.5">Skai / Optmyzr</text>
         <line x1="780" y1="139" x2="820" y2="139" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="820" y="104" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="1000" y="128" text-anchor="middle" class="node-sub" font-size="10.5">Incremental attribution %,</text>
-        <text x="1000" y="144" text-anchor="middle" class="node-sub" font-size="10.5">reallocation recommendation</text>
+        <text x="1000" y="134" text-anchor="middle" class="node-sub" font-size="11">Bid adjustments →</text>
+        <text x="1000" y="150" text-anchor="middle" class="node-sub" font-size="11">ad platforms</text>
       </g>
 
       <g>
         <rect x="20" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="200" y="218" text-anchor="middle" class="node-sub" font-size="11">Candidate channel +</text>
-        <text x="200" y="234" text-anchor="middle" class="node-sub" font-size="11">holdout design</text>
+        <text x="200" y="218" text-anchor="middle" class="node-sub" font-size="11">Historical spend + revenue</text>
+        <text x="200" y="234" text-anchor="middle" class="node-sub" font-size="11">by channel</text>
         <line x1="380" y1="223" x2="420" y2="223" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="420" y="188" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
-        <text x="600" y="228" text-anchor="middle" class="node-title" font-size="11.5">Measured</text>
+        <text x="600" y="216" text-anchor="middle" class="node-title" font-size="11">Google Meridian /</text>
+        <text x="600" y="233" text-anchor="middle" class="node-title" font-size="11">Meta Robyn (MMM)</text>
         <line x1="780" y1="223" x2="820" y2="223" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="820" y="188" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="1000" y="228" text-anchor="middle" class="node-sub" font-size="11">True incrementality verdict</text>
+        <text x="1000" y="212" text-anchor="middle" class="node-sub" font-size="10.5">Incremental attribution %,</text>
+        <text x="1000" y="228" text-anchor="middle" class="node-sub" font-size="10.5">reallocation recommendation</text>
       </g>
 
       <g>
         <rect x="20" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="200" y="302" text-anchor="middle" class="node-sub" font-size="11">MMM + incrementality</text>
-        <text x="200" y="318" text-anchor="middle" class="node-sub" font-size="11">output</text>
+        <text x="200" y="302" text-anchor="middle" class="node-sub" font-size="11">Candidate channel +</text>
+        <text x="200" y="318" text-anchor="middle" class="node-sub" font-size="11">holdout design</text>
         <line x1="380" y1="307" x2="420" y2="307" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="420" y="272" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
-        <text x="600" y="298" text-anchor="middle" class="node-title" font-size="10.5">Module 08 AI</text>
-        <text x="600" y="314" text-anchor="middle" class="node-title" font-size="10.5">Recommendation Engine</text>
+        <text x="600" y="312" text-anchor="middle" class="node-title" font-size="11.5">Measured</text>
         <line x1="780" y1="307" x2="820" y2="307" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
         <rect x="820" y="272" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
-        <text x="1000" y="298" text-anchor="middle" class="node-sub" font-size="10.5">SCALE / PAUSE / SHIFT / BID</text>
-        <text x="1000" y="314" text-anchor="middle" class="node-sub" font-size="10.5">cards → Director</text>
+        <text x="1000" y="312" text-anchor="middle" class="node-sub" font-size="11">True incrementality verdict</text>
+      </g>
+
+      <g>
+        <rect x="20" y="356" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="200" y="386" text-anchor="middle" class="node-sub" font-size="11">MMM + incrementality</text>
+        <text x="200" y="402" text-anchor="middle" class="node-sub" font-size="11">output</text>
+        <line x1="380" y1="391" x2="420" y2="391" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="420" y="356" width="360" height="70" rx="6" class="node-box" stroke="var(--accent-2)" stroke-width="1.6"/>
+        <text x="600" y="382" text-anchor="middle" class="node-title" font-size="10.5">Module 08 AI</text>
+        <text x="600" y="398" text-anchor="middle" class="node-title" font-size="10.5">Recommendation Engine</text>
+        <line x1="780" y1="391" x2="820" y2="391" class="edge" stroke-width="1.6" marker-end="url(#mo-ar)"/>
+        <rect x="820" y="356" width="360" height="70" rx="6" class="node-io" stroke="var(--rule)"/>
+        <text x="1000" y="382" text-anchor="middle" class="node-sub" font-size="10.5">SCALE / PAUSE / SHIFT / BID</text>
+        <text x="1000" y="398" text-anchor="middle" class="node-sub" font-size="10.5">cards → Director</text>
       </g>
     </svg>
   </div>

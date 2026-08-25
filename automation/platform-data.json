@@ -20,7 +20,7 @@
   },
   "channels": {
     "LinkedIn": {
-      "tool": "Supermetrics / Funnel.io (LinkedIn Marketing API)",
+      "tool": "Agent-native integration \u2014 LinkedIn Marketing API (direct)",
       "campaigns": [
         "Vantage CRM \u2014 Enterprise Growth Sprint"
       ],
@@ -515,7 +515,7 @@
       }
     },
     "Instagram": {
-      "tool": "Supermetrics / Funnel.io (Meta Marketing API)",
+      "tool": "Agent-native integration \u2014 Meta Marketing API (direct)",
       "campaigns": [
         "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
         "Lumiere Skincare \u2014 Radiance Reset Campaign"
@@ -1189,7 +1189,7 @@
       }
     },
     "Facebook": {
-      "tool": "Supermetrics / Funnel.io (Meta Marketing API)",
+      "tool": "Agent-native integration \u2014 Meta Marketing API (direct)",
       "campaigns": [
         "Lumiere Skincare \u2014 Radiance Reset Campaign",
         "Solara Fitband \u2014 Reach Your Goals Push"
@@ -1863,7 +1863,7 @@
       }
     },
     "Pinterest": {
-      "tool": "Supermetrics / Funnel.io (Pinterest Ads API)",
+      "tool": "Agent-native integration \u2014 Pinterest Ads API (direct)",
       "campaigns": [
         "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
         "Lumiere Skincare \u2014 Radiance Reset Campaign"
@@ -2530,7 +2530,7 @@
       }
     },
     "Google Ads": {
-      "tool": "Supermetrics / Funnel.io (Google Ads API)",
+      "tool": "Agent-native integration \u2014 Google Ads API (direct)",
       "campaigns": [
         "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
         "Solara Fitband \u2014 Reach Your Goals Push"
