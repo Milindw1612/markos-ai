@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarkOS AI — Data Sources</title>
+<meta name="description" content="Simulated platform-level analytics for the MarkOS AI campaign data — where each number came from, and which real tool extracted it.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/theme.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  .src-flow-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px;}
+  .src-flow-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);padding:8px 10px;border-bottom:1.5px solid var(--rule);}
+  .src-flow-table td{padding:9px 10px;border-bottom:1px solid var(--rule);color:var(--text-2);}
+  .src-flow-table td:first-child{font-weight:600;color:var(--text-1);}
+  .platform-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap;}
+  .platform-badge{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0;}
+  .platform-title{font-size:19px;font-weight:700;color:var(--text-1);}
+  .platform-tool-line{font-size:12px;color:var(--text-3);margin-top:2px;}
+  .platform-tool-line strong{color:var(--text-2);}
+  .sim-pill{font-size:9.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:var(--tag-bg);color:var(--tag-text);white-space:nowrap;}
+  .src-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px;}
+  .src-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-3);padding:7px 9px;border-bottom:1.5px solid var(--rule);}
+  .src-table td{padding:8px 9px;border-bottom:1px solid var(--rule);color:var(--text-2);}
+  .src-table td:first-child{font-weight:600;color:var(--text-1);}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">MarkOS<span class="dot">.</span>AI</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="tools.html">Tool Stack</a>
+      <a href="helicopter.html">Helicopter View</a>
+      <a href="data-flow.html">Data Flow Deep Dive</a>
+      <a href="data-sources.html" class="active">Data Sources</a>
+      <a href="demos.html">Live Demos</a>
+      <a href="automation/SETUP_GUIDE.md" target="_blank">Automation</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+      <button class="theme-toggle">● Dark</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding:56px 0 24px;">
+  <div class="wrap">
+    <div class="eyebrow">Where The Numbers Actually Come From</div>
+    <h1 style="font-size:clamp(28px,4.5vw,42px);">Simulated platform-level source data</h1>
+    <p class="lede">Every number in the <a href="https://github.com/Milindw1612/markos-ai/tree/main/automation" style="color:var(--accent);">campaign workbook</a> and the <a href="demos.html" style="color:var(--accent);">Agent Execution demo</a> reconciles back to one of these 7 platforms. This page simulates what each platform's own native analytics view would show — the "before" picture, ahead of any AI tool touching it.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--accent);">How The Data Actually Flows</div>
+    <h2 class="section-title">Platform → Extraction Tool → This Dataset</h2>
+    <p class="section-sub">An AI agent — the same canonical <code style="font-family:var(--mono);font-size:12px;">read_spend_data()</code> tool function from the <a href="https://github.com/Milindw1612/markos-ai-agent" style="color:var(--accent);">Measure &amp; Optimise agent</a> — visits each platform below, and the correct real tool for that platform's API pulls the raw numbers into one normalised layer, matching how the <a href="helicopter.html" style="color:var(--accent);">Data Aggregation Gateway</a> is described on the Helicopter View. Note: the sheet these land in is a <strong style="color:var(--text-1);">reporting layer</strong>, not a CRM — HubSpot/Salesforce (see the <a href="tools.html" style="color:var(--accent);">Tool Stack</a>) is the actual downstream CRM for leads and contacts, a separate system.</p>
+  </div>
+  <table class="src-flow-table">
+    <thead><tr><th>Platform</th><th>Real Tool That Extracts It</th><th>Lands In</th></tr></thead>
+    <tbody>
+      <tr><td>Facebook</td><td>Supermetrics / Funnel.io, via Meta Marketing API</td><td>Daily Performance sheet — Lumiere Skincare, Solara Fitband</td></tr>
+      <tr><td>Instagram</td><td>Supermetrics / Funnel.io, via Meta Marketing API</td><td>Daily Performance sheet — Lumiere Skincare, Aurelia Jewellery</td></tr>
+      <tr><td>LinkedIn</td><td>Supermetrics / Funnel.io, via LinkedIn Marketing API</td><td>Daily Performance sheet — Vantage CRM (its only channel)</td></tr>
+      <tr><td>Pinterest</td><td>Supermetrics / Funnel.io, via Pinterest Ads API</td><td>Daily Performance sheet — Lumiere Skincare, Aurelia Jewellery</td></tr>
+      <tr><td>Google Ads</td><td>Supermetrics / Funnel.io, via Google Ads API</td><td>Daily Performance sheet — Solara Fitband, Aurelia Jewellery</td></tr>
+      <tr><td>Google Analytics</td><td>GA4 + AI Insights</td><td>Website Visits column, all 4 products</td></tr>
+      <tr><td>YouTube</td><td>YouTube Data API (organic, read-only)</td><td>Presentation only — not in the workbook; tied to the video creatives already in the Creative Performance sheet</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="demo-tabs" id="srcTabs"></div>
+  <div id="srcViews"></div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-note">MarkOS AI — a specification &amp; prototype, designed and built by Milind W. All platform views on this page are original, illustrative dashboard designs — not screenshots of any real platform's interface.</div>
+    <div class="footer-links">
+      <a href="index.html">Overview</a>
+      <a href="modules.html">Modules</a>
+      <a href="tools.html">Tool Stack</a>
+      <a href="helicopter.html">Helicopter</a>
+      <a href="data-flow.html">Data Flow</a>
+      <a href="demos.html">Demos</a>
+      <a href="https://github.com/Milindw1612/markos-ai" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/data-sources.js"></script>
+</body>
+</html>

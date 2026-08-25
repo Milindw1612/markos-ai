@@ -1,0 +1,1817 @@
+{
+  "generatedFrom": "markos-ai-campaign-data.xlsx (Daily Performance - Current, Aug 2026)",
+  "channels": {
+    "LinkedIn": {
+      "totals": {
+        "spend": 112265,
+        "impressions": 89800,
+        "clicks": 1888,
+        "visits": 1703,
+        "leads": 66,
+        "revenue": 250964.0,
+        "ctr": 2.1,
+        "cac": 1701.0,
+        "roas": 2.24
+      },
+      "byProduct": {
+        "Vantage CRM": {
+          "spend": 112265,
+          "impressions": 89800,
+          "clicks": 1888,
+          "leads": 66,
+          "revenue": 250964.0,
+          "roas": 2.24
+        }
+      },
+      "daily": [
+        {
+          "date": "2026-08-01",
+          "spend": 3677,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 82,
+          "leads": 3,
+          "revenue": 45090.0
+        },
+        {
+          "date": "2026-08-02",
+          "spend": 3338,
+          "impressions": 0,
+          "clicks": 0,
+          "visits": 0,
+          "leads": 0,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-03",
+          "spend": 3789,
+          "impressions": 1361,
+          "clicks": 29,
+          "visits": 26,
+          "leads": 1,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-04",
+          "spend": 3837,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 80,
+          "leads": 3,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-05",
+          "spend": 3108,
+          "impressions": 1361,
+          "clicks": 29,
+          "visits": 28,
+          "leads": 1,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-06",
+          "spend": 3272,
+          "impressions": 5442,
+          "clicks": 114,
+          "visits": 106,
+          "leads": 4,
+          "revenue": 45559.0
+        },
+        {
+          "date": "2026-08-07",
+          "spend": 3632,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 52,
+          "leads": 2,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-08",
+          "spend": 3520,
+          "impressions": 0,
+          "clicks": 0,
+          "visits": 0,
+          "leads": 0,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-09",
+          "spend": 3596,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 52,
+          "leads": 2,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-10",
+          "spend": 3385,
+          "impressions": 1361,
+          "clicks": 29,
+          "visits": 27,
+          "leads": 1,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-11",
+          "spend": 3822,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 83,
+          "leads": 3,
+          "revenue": 40960.0
+        },
+        {
+          "date": "2026-08-12",
+          "spend": 3796,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 52,
+          "leads": 2,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-13",
+          "spend": 3617,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 76,
+          "leads": 3,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-14",
+          "spend": 3884,
+          "impressions": 5442,
+          "clicks": 114,
+          "visits": 101,
+          "leads": 4,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-15",
+          "spend": 3718,
+          "impressions": 1361,
+          "clicks": 29,
+          "visits": 27,
+          "leads": 1,
+          "revenue": 40808.0
+        },
+        {
+          "date": "2026-08-16",
+          "spend": 3383,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 82,
+          "leads": 3,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-17",
+          "spend": 3693,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 74,
+          "leads": 3,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-18",
+          "spend": 3358,
+          "impressions": 5442,
+          "clicks": 114,
+          "visits": 98,
+          "leads": 4,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-19",
+          "spend": 3821,
+          "impressions": 1361,
+          "clicks": 29,
+          "visits": 26,
+          "leads": 1,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-20",
+          "spend": 3587,
+          "impressions": 0,
+          "clicks": 0,
+          "visits": 0,
+          "leads": 0,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-21",
+          "spend": 3553,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 55,
+          "leads": 2,
+          "revenue": 78547.0
+        },
+        {
+          "date": "2026-08-22",
+          "spend": 3428,
+          "impressions": 0,
+          "clicks": 0,
+          "visits": 0,
+          "leads": 0,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-23",
+          "spend": 3908,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 74,
+          "leads": 3,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-24",
+          "spend": 3561,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 55,
+          "leads": 2,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-25",
+          "spend": 3492,
+          "impressions": 4082,
+          "clicks": 86,
+          "visits": 75,
+          "leads": 3,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "spend": 3511,
+          "impressions": 5442,
+          "clicks": 114,
+          "visits": 101,
+          "leads": 4,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "spend": 3734,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 50,
+          "leads": 2,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "spend": 3692,
+          "impressions": 1361,
+          "clicks": 29,
+          "visits": 25,
+          "leads": 1,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-29",
+          "spend": 3704,
+          "impressions": 5442,
+          "clicks": 114,
+          "visits": 97,
+          "leads": 4,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-30",
+          "spend": 3709,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 49,
+          "leads": 2,
+          "revenue": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "spend": 4140,
+          "impressions": 2721,
+          "clicks": 57,
+          "visits": 50,
+          "leads": 2,
+          "revenue": 0.0
+        }
+      ]
+    },
+    "Instagram": {
+      "totals": {
+        "spend": 311468,
+        "impressions": 764402,
+        "clicks": 15571,
+        "visits": 14321,
+        "leads": 382,
+        "revenue": 1267767.0,
+        "ctr": 2.04,
+        "cac": 815.0,
+        "roas": 4.07
+      },
+      "byProduct": {
+        "Aurelia Jewellery": {
+          "spend": 174490,
+          "impressions": 120323,
+          "clicks": 2045,
+          "leads": 31,
+          "revenue": 757849.0,
+          "roas": 4.34
+        },
+        "Lumiere Skincare": {
+          "spend": 136978,
+          "impressions": 644079,
+          "clicks": 13526,
+          "leads": 351,
+          "revenue": 509918.0,
+          "roas": 3.72
+        }
+      },
+      "daily": [
+        {
+          "date": "2026-08-01",
+          "spend": 9467,
+          "impressions": 22652,
+          "clicks": 459,
+          "visits": 403,
+          "leads": 11,
+          "revenue": 39792.0
+        },
+        {
+          "date": "2026-08-02",
+          "spend": 10718,
+          "impressions": 24767,
+          "clicks": 505,
+          "visits": 488,
+          "leads": 13,
+          "revenue": 39770.0
+        },
+        {
+          "date": "2026-08-03",
+          "spend": 10423,
+          "impressions": 26386,
+          "clicks": 537,
+          "visits": 470,
+          "leads": 13,
+          "revenue": 44011.0
+        },
+        {
+          "date": "2026-08-04",
+          "spend": 10349,
+          "impressions": 23560,
+          "clicks": 478,
+          "visits": 459,
+          "leads": 12,
+          "revenue": 41984.0
+        },
+        {
+          "date": "2026-08-05",
+          "spend": 9661,
+          "impressions": 19798,
+          "clicks": 402,
+          "visits": 377,
+          "leads": 10,
+          "revenue": 35601.0
+        },
+        {
+          "date": "2026-08-06",
+          "spend": 9577,
+          "impressions": 24830,
+          "clicks": 505,
+          "visits": 468,
+          "leads": 12,
+          "revenue": 41452.0
+        },
+        {
+          "date": "2026-08-07",
+          "spend": 10176,
+          "impressions": 28300,
+          "clicks": 577,
+          "visits": 546,
+          "leads": 14,
+          "revenue": 45230.0
+        },
+        {
+          "date": "2026-08-08",
+          "spend": 9801,
+          "impressions": 19582,
+          "clicks": 395,
+          "visits": 375,
+          "leads": 9,
+          "revenue": 37985.0
+        },
+        {
+          "date": "2026-08-09",
+          "spend": 10312,
+          "impressions": 26745,
+          "clicks": 545,
+          "visits": 529,
+          "leads": 13,
+          "revenue": 44159.0
+        },
+        {
+          "date": "2026-08-10",
+          "spend": 9896,
+          "impressions": 22924,
+          "clicks": 466,
+          "visits": 410,
+          "leads": 11,
+          "revenue": 39272.0
+        },
+        {
+          "date": "2026-08-11",
+          "spend": 10754,
+          "impressions": 25762,
+          "clicks": 529,
+          "visits": 490,
+          "leads": 13,
+          "revenue": 36873.0
+        },
+        {
+          "date": "2026-08-12",
+          "spend": 10547,
+          "impressions": 23218,
+          "clicks": 473,
+          "visits": 408,
+          "leads": 12,
+          "revenue": 39382.0
+        },
+        {
+          "date": "2026-08-13",
+          "spend": 10424,
+          "impressions": 23398,
+          "clicks": 476,
+          "visits": 445,
+          "leads": 12,
+          "revenue": 38760.0
+        },
+        {
+          "date": "2026-08-14",
+          "spend": 10081,
+          "impressions": 25232,
+          "clicks": 517,
+          "visits": 451,
+          "leads": 13,
+          "revenue": 38365.0
+        },
+        {
+          "date": "2026-08-15",
+          "spend": 9022,
+          "impressions": 23719,
+          "clicks": 483,
+          "visits": 446,
+          "leads": 12,
+          "revenue": 40690.0
+        },
+        {
+          "date": "2026-08-16",
+          "spend": 9486,
+          "impressions": 29982,
+          "clicks": 615,
+          "visits": 568,
+          "leads": 15,
+          "revenue": 44660.0
+        },
+        {
+          "date": "2026-08-17",
+          "spend": 10474,
+          "impressions": 27902,
+          "clicks": 567,
+          "visits": 516,
+          "leads": 14,
+          "revenue": 47686.0
+        },
+        {
+          "date": "2026-08-18",
+          "spend": 10614,
+          "impressions": 25939,
+          "clicks": 528,
+          "visits": 486,
+          "leads": 13,
+          "revenue": 43491.0
+        },
+        {
+          "date": "2026-08-19",
+          "spend": 9063,
+          "impressions": 25269,
+          "clicks": 515,
+          "visits": 488,
+          "leads": 13,
+          "revenue": 42195.0
+        },
+        {
+          "date": "2026-08-20",
+          "spend": 9557,
+          "impressions": 25682,
+          "clicks": 526,
+          "visits": 500,
+          "leads": 13,
+          "revenue": 38245.0
+        },
+        {
+          "date": "2026-08-21",
+          "spend": 10179,
+          "impressions": 26547,
+          "clicks": 542,
+          "visits": 498,
+          "leads": 13,
+          "revenue": 42227.0
+        },
+        {
+          "date": "2026-08-22",
+          "spend": 10023,
+          "impressions": 21252,
+          "clicks": 433,
+          "visits": 404,
+          "leads": 11,
+          "revenue": 35854.0
+        },
+        {
+          "date": "2026-08-23",
+          "spend": 10560,
+          "impressions": 23906,
+          "clicks": 485,
+          "visits": 466,
+          "leads": 12,
+          "revenue": 43180.0
+        },
+        {
+          "date": "2026-08-24",
+          "spend": 10283,
+          "impressions": 22569,
+          "clicks": 458,
+          "visits": 400,
+          "leads": 11,
+          "revenue": 39329.0
+        },
+        {
+          "date": "2026-08-25",
+          "spend": 9870,
+          "impressions": 25535,
+          "clicks": 524,
+          "visits": 452,
+          "leads": 13,
+          "revenue": 37113.0
+        },
+        {
+          "date": "2026-08-26",
+          "spend": 9560,
+          "impressions": 20306,
+          "clicks": 412,
+          "visits": 360,
+          "leads": 10,
+          "revenue": 35236.0
+        },
+        {
+          "date": "2026-08-27",
+          "spend": 9972,
+          "impressions": 25428,
+          "clicks": 519,
+          "visits": 485,
+          "leads": 13,
+          "revenue": 40516.0
+        },
+        {
+          "date": "2026-08-28",
+          "spend": 9805,
+          "impressions": 23650,
+          "clicks": 479,
+          "visits": 433,
+          "leads": 11,
+          "revenue": 43199.0
+        },
+        {
+          "date": "2026-08-29",
+          "spend": 9649,
+          "impressions": 26904,
+          "clicks": 549,
+          "visits": 516,
+          "leads": 14,
+          "revenue": 42452.0
+        },
+        {
+          "date": "2026-08-30",
+          "spend": 11256,
+          "impressions": 28333,
+          "clicks": 578,
+          "visits": 543,
+          "leads": 14,
+          "revenue": 45976.0
+        },
+        {
+          "date": "2026-08-31",
+          "spend": 9909,
+          "impressions": 24325,
+          "clicks": 494,
+          "visits": 441,
+          "leads": 12,
+          "revenue": 43082.0
+        }
+      ]
+    },
+    "Facebook": {
+      "totals": {
+        "spend": 254854,
+        "impressions": 832326,
+        "clicks": 13069,
+        "visits": 11880,
+        "leads": 260,
+        "revenue": 698158.0,
+        "ctr": 1.57,
+        "cac": 980.0,
+        "roas": 2.74
+      },
+      "byProduct": {
+        "Lumiere Skincare": {
+          "spend": 112045,
+          "impressions": 585736,
+          "clicks": 9371,
+          "leads": 196,
+          "revenue": 285369.0,
+          "roas": 2.55
+        },
+        "Solara Fitband": {
+          "spend": 142809,
+          "impressions": 246590,
+          "clicks": 3698,
+          "leads": 64,
+          "revenue": 412789.0,
+          "roas": 2.89
+        }
+      },
+      "daily": [
+        {
+          "date": "2026-08-01",
+          "spend": 9080,
+          "impressions": 28929,
+          "clicks": 455,
+          "visits": 437,
+          "leads": 9,
+          "revenue": 24032.0
+        },
+        {
+          "date": "2026-08-02",
+          "spend": 8129,
+          "impressions": 28180,
+          "clicks": 443,
+          "visits": 380,
+          "leads": 9,
+          "revenue": 22541.0
+        },
+        {
+          "date": "2026-08-03",
+          "spend": 7644,
+          "impressions": 27045,
+          "clicks": 426,
+          "visits": 372,
+          "leads": 9,
+          "revenue": 21271.0
+        },
+        {
+          "date": "2026-08-04",
+          "spend": 7882,
+          "impressions": 21191,
+          "clicks": 333,
+          "visits": 290,
+          "leads": 7,
+          "revenue": 17682.0
+        },
+        {
+          "date": "2026-08-05",
+          "spend": 8071,
+          "impressions": 20038,
+          "clicks": 314,
+          "visits": 282,
+          "leads": 7,
+          "revenue": 17233.0
+        },
+        {
+          "date": "2026-08-06",
+          "spend": 8101,
+          "impressions": 27449,
+          "clicks": 431,
+          "visits": 403,
+          "leads": 8,
+          "revenue": 23244.0
+        },
+        {
+          "date": "2026-08-07",
+          "spend": 7938,
+          "impressions": 25498,
+          "clicks": 401,
+          "visits": 372,
+          "leads": 8,
+          "revenue": 20596.0
+        },
+        {
+          "date": "2026-08-08",
+          "spend": 8639,
+          "impressions": 27430,
+          "clicks": 433,
+          "visits": 410,
+          "leads": 9,
+          "revenue": 20176.0
+        },
+        {
+          "date": "2026-08-09",
+          "spend": 8102,
+          "impressions": 28327,
+          "clicks": 445,
+          "visits": 385,
+          "leads": 8,
+          "revenue": 24528.0
+        },
+        {
+          "date": "2026-08-10",
+          "spend": 7687,
+          "impressions": 26729,
+          "clicks": 421,
+          "visits": 389,
+          "leads": 9,
+          "revenue": 21767.0
+        },
+        {
+          "date": "2026-08-11",
+          "spend": 8798,
+          "impressions": 30781,
+          "clicks": 485,
+          "visits": 427,
+          "leads": 10,
+          "revenue": 24067.0
+        },
+        {
+          "date": "2026-08-12",
+          "spend": 8674,
+          "impressions": 26387,
+          "clicks": 414,
+          "visits": 364,
+          "leads": 8,
+          "revenue": 21963.0
+        },
+        {
+          "date": "2026-08-13",
+          "spend": 8048,
+          "impressions": 28132,
+          "clicks": 441,
+          "visits": 415,
+          "leads": 8,
+          "revenue": 24237.0
+        },
+        {
+          "date": "2026-08-14",
+          "spend": 8142,
+          "impressions": 25943,
+          "clicks": 407,
+          "visits": 386,
+          "leads": 8,
+          "revenue": 22261.0
+        },
+        {
+          "date": "2026-08-15",
+          "spend": 8367,
+          "impressions": 30054,
+          "clicks": 471,
+          "visits": 431,
+          "leads": 10,
+          "revenue": 26684.0
+        },
+        {
+          "date": "2026-08-16",
+          "spend": 8401,
+          "impressions": 28412,
+          "clicks": 446,
+          "visits": 388,
+          "leads": 9,
+          "revenue": 24205.0
+        },
+        {
+          "date": "2026-08-17",
+          "spend": 7978,
+          "impressions": 30396,
+          "clicks": 479,
+          "visits": 442,
+          "leads": 10,
+          "revenue": 23507.0
+        },
+        {
+          "date": "2026-08-18",
+          "spend": 8469,
+          "impressions": 27301,
+          "clicks": 428,
+          "visits": 367,
+          "leads": 9,
+          "revenue": 22676.0
+        },
+        {
+          "date": "2026-08-19",
+          "spend": 8286,
+          "impressions": 30127,
+          "clicks": 474,
+          "visits": 444,
+          "leads": 9,
+          "revenue": 24778.0
+        },
+        {
+          "date": "2026-08-20",
+          "spend": 8935,
+          "impressions": 28995,
+          "clicks": 454,
+          "visits": 431,
+          "leads": 9,
+          "revenue": 25609.0
+        },
+        {
+          "date": "2026-08-21",
+          "spend": 8731,
+          "impressions": 31081,
+          "clicks": 488,
+          "visits": 422,
+          "leads": 9,
+          "revenue": 25889.0
+        },
+        {
+          "date": "2026-08-22",
+          "spend": 8685,
+          "impressions": 29164,
+          "clicks": 458,
+          "visits": 402,
+          "leads": 9,
+          "revenue": 24110.0
+        },
+        {
+          "date": "2026-08-23",
+          "spend": 7340,
+          "impressions": 19536,
+          "clicks": 306,
+          "visits": 272,
+          "leads": 6,
+          "revenue": 17789.0
+        },
+        {
+          "date": "2026-08-24",
+          "spend": 8793,
+          "impressions": 25865,
+          "clicks": 406,
+          "visits": 387,
+          "leads": 8,
+          "revenue": 21881.0
+        },
+        {
+          "date": "2026-08-25",
+          "spend": 8188,
+          "impressions": 24209,
+          "clicks": 379,
+          "visits": 344,
+          "leads": 7,
+          "revenue": 22381.0
+        },
+        {
+          "date": "2026-08-26",
+          "spend": 7947,
+          "impressions": 22766,
+          "clicks": 355,
+          "visits": 338,
+          "leads": 7,
+          "revenue": 21571.0
+        },
+        {
+          "date": "2026-08-27",
+          "spend": 8587,
+          "impressions": 26890,
+          "clicks": 422,
+          "visits": 398,
+          "leads": 8,
+          "revenue": 22148.0
+        },
+        {
+          "date": "2026-08-28",
+          "spend": 8186,
+          "impressions": 26796,
+          "clicks": 420,
+          "visits": 384,
+          "leads": 8,
+          "revenue": 22793.0
+        },
+        {
+          "date": "2026-08-29",
+          "spend": 7781,
+          "impressions": 25011,
+          "clicks": 392,
+          "visits": 343,
+          "leads": 8,
+          "revenue": 21777.0
+        },
+        {
+          "date": "2026-08-30",
+          "spend": 7251,
+          "impressions": 24281,
+          "clicks": 381,
+          "visits": 362,
+          "leads": 8,
+          "revenue": 19921.0
+        },
+        {
+          "date": "2026-08-31",
+          "spend": 7994,
+          "impressions": 29383,
+          "clicks": 461,
+          "visits": 413,
+          "leads": 9,
+          "revenue": 24841.0
+        }
+      ]
+    },
+    "Pinterest": {
+      "totals": {
+        "spend": 187065,
+        "impressions": 744754,
+        "clicks": 10363,
+        "visits": 9458,
+        "leads": 258,
+        "revenue": 708196.0,
+        "ctr": 1.39,
+        "cac": 725.0,
+        "roas": 3.79
+      },
+      "byProduct": {
+        "Aurelia Jewellery": {
+          "spend": 90550,
+          "impressions": 59889,
+          "clicks": 777,
+          "leads": 0,
+          "revenue": 332823.0,
+          "roas": 3.68
+        },
+        "Lumiere Skincare": {
+          "spend": 96515,
+          "impressions": 684865,
+          "clicks": 9586,
+          "leads": 258,
+          "revenue": 375373.0,
+          "roas": 3.89
+        }
+      },
+      "daily": [
+        {
+          "date": "2026-08-01",
+          "spend": 5730,
+          "impressions": 24149,
+          "clicks": 336,
+          "visits": 320,
+          "leads": 8,
+          "revenue": 22481.0
+        },
+        {
+          "date": "2026-08-02",
+          "spend": 6287,
+          "impressions": 22713,
+          "clicks": 315,
+          "visits": 283,
+          "leads": 8,
+          "revenue": 23750.0
+        },
+        {
+          "date": "2026-08-03",
+          "spend": 5697,
+          "impressions": 23309,
+          "clicks": 325,
+          "visits": 306,
+          "leads": 8,
+          "revenue": 21519.0
+        },
+        {
+          "date": "2026-08-04",
+          "spend": 6144,
+          "impressions": 32994,
+          "clicks": 460,
+          "visits": 434,
+          "leads": 12,
+          "revenue": 27119.0
+        },
+        {
+          "date": "2026-08-05",
+          "spend": 6375,
+          "impressions": 25676,
+          "clicks": 357,
+          "visits": 324,
+          "leads": 9,
+          "revenue": 26199.0
+        },
+        {
+          "date": "2026-08-06",
+          "spend": 5736,
+          "impressions": 27442,
+          "clicks": 383,
+          "visits": 355,
+          "leads": 10,
+          "revenue": 24200.0
+        },
+        {
+          "date": "2026-08-07",
+          "spend": 5646,
+          "impressions": 24591,
+          "clicks": 343,
+          "visits": 292,
+          "leads": 9,
+          "revenue": 22222.0
+        },
+        {
+          "date": "2026-08-08",
+          "spend": 6045,
+          "impressions": 28545,
+          "clicks": 397,
+          "visits": 349,
+          "leads": 10,
+          "revenue": 24299.0
+        },
+        {
+          "date": "2026-08-09",
+          "spend": 6457,
+          "impressions": 27160,
+          "clicks": 378,
+          "visits": 348,
+          "leads": 9,
+          "revenue": 25241.0
+        },
+        {
+          "date": "2026-08-10",
+          "spend": 6021,
+          "impressions": 23801,
+          "clicks": 331,
+          "visits": 288,
+          "leads": 8,
+          "revenue": 23507.0
+        },
+        {
+          "date": "2026-08-11",
+          "spend": 6011,
+          "impressions": 21728,
+          "clicks": 303,
+          "visits": 266,
+          "leads": 8,
+          "revenue": 19471.0
+        },
+        {
+          "date": "2026-08-12",
+          "spend": 6480,
+          "impressions": 27269,
+          "clicks": 379,
+          "visits": 363,
+          "leads": 9,
+          "revenue": 26585.0
+        },
+        {
+          "date": "2026-08-13",
+          "spend": 5273,
+          "impressions": 20054,
+          "clicks": 279,
+          "visits": 272,
+          "leads": 7,
+          "revenue": 18115.0
+        },
+        {
+          "date": "2026-08-14",
+          "spend": 6152,
+          "impressions": 26060,
+          "clicks": 363,
+          "visits": 334,
+          "leads": 9,
+          "revenue": 22725.0
+        },
+        {
+          "date": "2026-08-15",
+          "spend": 6311,
+          "impressions": 27070,
+          "clicks": 376,
+          "visits": 359,
+          "leads": 9,
+          "revenue": 25779.0
+        },
+        {
+          "date": "2026-08-16",
+          "spend": 5839,
+          "impressions": 25379,
+          "clicks": 353,
+          "visits": 343,
+          "leads": 9,
+          "revenue": 23151.0
+        },
+        {
+          "date": "2026-08-17",
+          "spend": 5742,
+          "impressions": 21828,
+          "clicks": 304,
+          "visits": 266,
+          "leads": 8,
+          "revenue": 20828.0
+        },
+        {
+          "date": "2026-08-18",
+          "spend": 5502,
+          "impressions": 22738,
+          "clicks": 316,
+          "visits": 288,
+          "leads": 8,
+          "revenue": 22810.0
+        },
+        {
+          "date": "2026-08-19",
+          "spend": 5368,
+          "impressions": 19718,
+          "clicks": 274,
+          "visits": 248,
+          "leads": 7,
+          "revenue": 18619.0
+        },
+        {
+          "date": "2026-08-20",
+          "spend": 5692,
+          "impressions": 24458,
+          "clicks": 341,
+          "visits": 293,
+          "leads": 9,
+          "revenue": 22637.0
+        },
+        {
+          "date": "2026-08-21",
+          "spend": 6190,
+          "impressions": 18686,
+          "clicks": 259,
+          "visits": 245,
+          "leads": 6,
+          "revenue": 20400.0
+        },
+        {
+          "date": "2026-08-22",
+          "spend": 6309,
+          "impressions": 22960,
+          "clicks": 319,
+          "visits": 289,
+          "leads": 8,
+          "revenue": 23733.0
+        },
+        {
+          "date": "2026-08-23",
+          "spend": 6352,
+          "impressions": 21066,
+          "clicks": 293,
+          "visits": 268,
+          "leads": 7,
+          "revenue": 21571.0
+        },
+        {
+          "date": "2026-08-24",
+          "spend": 6627,
+          "impressions": 21478,
+          "clicks": 299,
+          "visits": 261,
+          "leads": 7,
+          "revenue": 21668.0
+        },
+        {
+          "date": "2026-08-25",
+          "spend": 5798,
+          "impressions": 26100,
+          "clicks": 363,
+          "visits": 318,
+          "leads": 9,
+          "revenue": 25129.0
+        },
+        {
+          "date": "2026-08-26",
+          "spend": 6431,
+          "impressions": 27265,
+          "clicks": 379,
+          "visits": 367,
+          "leads": 9,
+          "revenue": 26181.0
+        },
+        {
+          "date": "2026-08-27",
+          "spend": 5893,
+          "impressions": 21102,
+          "clicks": 294,
+          "visits": 252,
+          "leads": 7,
+          "revenue": 19193.0
+        },
+        {
+          "date": "2026-08-28",
+          "spend": 5965,
+          "impressions": 19252,
+          "clicks": 268,
+          "visits": 237,
+          "leads": 7,
+          "revenue": 18220.0
+        },
+        {
+          "date": "2026-08-29",
+          "spend": 6114,
+          "impressions": 16426,
+          "clicks": 228,
+          "visits": 202,
+          "leads": 5,
+          "revenue": 19175.0
+        },
+        {
+          "date": "2026-08-30",
+          "spend": 6779,
+          "impressions": 23873,
+          "clicks": 332,
+          "visits": 302,
+          "leads": 8,
+          "revenue": 24906.0
+        },
+        {
+          "date": "2026-08-31",
+          "spend": 6099,
+          "impressions": 29864,
+          "clicks": 416,
+          "visits": 386,
+          "leads": 11,
+          "revenue": 26763.0
+        }
+      ]
+    },
+    "Google Ads": {
+      "totals": {
+        "spend": 275626,
+        "impressions": 212359,
+        "clicks": 4970,
+        "visits": 4572,
+        "leads": 125,
+        "revenue": 1085332.0,
+        "ctr": 2.34,
+        "cac": 2205.0,
+        "roas": 3.94
+      },
+      "byProduct": {
+        "Aurelia Jewellery": {
+          "spend": 104215,
+          "impressions": 41878,
+          "clicks": 879,
+          "leads": 23,
+          "revenue": 451142.0,
+          "roas": 4.33
+        },
+        "Solara Fitband": {
+          "spend": 171411,
+          "impressions": 170481,
+          "clicks": 4091,
+          "leads": 102,
+          "revenue": 634190.0,
+          "roas": 3.7
+        }
+      },
+      "daily": [
+        {
+          "date": "2026-08-01",
+          "spend": 7787,
+          "impressions": 6282,
+          "clicks": 147,
+          "visits": 133,
+          "leads": 4,
+          "revenue": 33332.0
+        },
+        {
+          "date": "2026-08-02",
+          "spend": 8684,
+          "impressions": 5933,
+          "clicks": 138,
+          "visits": 132,
+          "leads": 4,
+          "revenue": 32416.0
+        },
+        {
+          "date": "2026-08-03",
+          "spend": 8367,
+          "impressions": 6606,
+          "clicks": 154,
+          "visits": 133,
+          "leads": 4,
+          "revenue": 35872.0
+        },
+        {
+          "date": "2026-08-04",
+          "spend": 8432,
+          "impressions": 6893,
+          "clicks": 161,
+          "visits": 149,
+          "leads": 4,
+          "revenue": 35050.0
+        },
+        {
+          "date": "2026-08-05",
+          "spend": 9225,
+          "impressions": 6570,
+          "clicks": 154,
+          "visits": 145,
+          "leads": 4,
+          "revenue": 34173.0
+        },
+        {
+          "date": "2026-08-06",
+          "spend": 9097,
+          "impressions": 7293,
+          "clicks": 171,
+          "visits": 165,
+          "leads": 4,
+          "revenue": 37821.0
+        },
+        {
+          "date": "2026-08-07",
+          "spend": 9133,
+          "impressions": 5600,
+          "clicks": 131,
+          "visits": 126,
+          "leads": 3,
+          "revenue": 27613.0
+        },
+        {
+          "date": "2026-08-08",
+          "spend": 8960,
+          "impressions": 8026,
+          "clicks": 189,
+          "visits": 163,
+          "leads": 5,
+          "revenue": 40167.0
+        },
+        {
+          "date": "2026-08-09",
+          "spend": 9295,
+          "impressions": 7501,
+          "clicks": 177,
+          "visits": 161,
+          "leads": 4,
+          "revenue": 33757.0
+        },
+        {
+          "date": "2026-08-10",
+          "spend": 8071,
+          "impressions": 6083,
+          "clicks": 143,
+          "visits": 123,
+          "leads": 3,
+          "revenue": 29179.0
+        },
+        {
+          "date": "2026-08-11",
+          "spend": 9104,
+          "impressions": 7654,
+          "clicks": 179,
+          "visits": 155,
+          "leads": 5,
+          "revenue": 38274.0
+        },
+        {
+          "date": "2026-08-12",
+          "spend": 8960,
+          "impressions": 5594,
+          "clicks": 130,
+          "visits": 122,
+          "leads": 4,
+          "revenue": 30248.0
+        },
+        {
+          "date": "2026-08-13",
+          "spend": 9079,
+          "impressions": 6228,
+          "clicks": 146,
+          "visits": 138,
+          "leads": 3,
+          "revenue": 31420.0
+        },
+        {
+          "date": "2026-08-14",
+          "spend": 8986,
+          "impressions": 6917,
+          "clicks": 163,
+          "visits": 152,
+          "leads": 3,
+          "revenue": 34078.0
+        },
+        {
+          "date": "2026-08-15",
+          "spend": 8978,
+          "impressions": 6639,
+          "clicks": 155,
+          "visits": 148,
+          "leads": 4,
+          "revenue": 35638.0
+        },
+        {
+          "date": "2026-08-16",
+          "spend": 10133,
+          "impressions": 8533,
+          "clicks": 200,
+          "visits": 190,
+          "leads": 5,
+          "revenue": 41875.0
+        },
+        {
+          "date": "2026-08-17",
+          "spend": 8827,
+          "impressions": 8738,
+          "clicks": 204,
+          "visits": 195,
+          "leads": 5,
+          "revenue": 44428.0
+        },
+        {
+          "date": "2026-08-18",
+          "spend": 8876,
+          "impressions": 6194,
+          "clicks": 144,
+          "visits": 128,
+          "leads": 4,
+          "revenue": 32820.0
+        },
+        {
+          "date": "2026-08-19",
+          "spend": 8551,
+          "impressions": 6265,
+          "clicks": 146,
+          "visits": 130,
+          "leads": 4,
+          "revenue": 33115.0
+        },
+        {
+          "date": "2026-08-20",
+          "spend": 8512,
+          "impressions": 7075,
+          "clicks": 165,
+          "visits": 154,
+          "leads": 4,
+          "revenue": 37729.0
+        },
+        {
+          "date": "2026-08-21",
+          "spend": 8413,
+          "impressions": 7602,
+          "clicks": 179,
+          "visits": 170,
+          "leads": 5,
+          "revenue": 37937.0
+        },
+        {
+          "date": "2026-08-22",
+          "spend": 8656,
+          "impressions": 5801,
+          "clicks": 136,
+          "visits": 118,
+          "leads": 3,
+          "revenue": 30203.0
+        },
+        {
+          "date": "2026-08-23",
+          "spend": 9141,
+          "impressions": 7301,
+          "clicks": 171,
+          "visits": 156,
+          "leads": 5,
+          "revenue": 37306.0
+        },
+        {
+          "date": "2026-08-24",
+          "spend": 9412,
+          "impressions": 8631,
+          "clicks": 202,
+          "visits": 191,
+          "leads": 5,
+          "revenue": 42663.0
+        },
+        {
+          "date": "2026-08-25",
+          "spend": 8992,
+          "impressions": 5755,
+          "clicks": 134,
+          "visits": 116,
+          "leads": 3,
+          "revenue": 29528.0
+        },
+        {
+          "date": "2026-08-26",
+          "spend": 8736,
+          "impressions": 5942,
+          "clicks": 139,
+          "visits": 125,
+          "leads": 4,
+          "revenue": 31699.0
+        },
+        {
+          "date": "2026-08-27",
+          "spend": 8987,
+          "impressions": 6901,
+          "clicks": 163,
+          "visits": 156,
+          "leads": 3,
+          "revenue": 33632.0
+        },
+        {
+          "date": "2026-08-28",
+          "spend": 9170,
+          "impressions": 7129,
+          "clicks": 166,
+          "visits": 156,
+          "leads": 4,
+          "revenue": 37014.0
+        },
+        {
+          "date": "2026-08-29",
+          "spend": 9054,
+          "impressions": 7650,
+          "clicks": 179,
+          "visits": 160,
+          "leads": 5,
+          "revenue": 38634.0
+        },
+        {
+          "date": "2026-08-30",
+          "spend": 8844,
+          "impressions": 6998,
+          "clicks": 164,
+          "visits": 156,
+          "leads": 4,
+          "revenue": 35774.0
+        },
+        {
+          "date": "2026-08-31",
+          "spend": 9164,
+          "impressions": 6025,
+          "clicks": 140,
+          "visits": 126,
+          "leads": 4,
+          "revenue": 31937.0
+        }
+      ]
+    }
+  },
+  "googleAnalytics": {
+    "totals": {
+      "visits": 41934,
+      "leads": 1091,
+      "revenue": 4010417.0
+    },
+    "byProduct": {
+      "Aurelia Jewellery": {
+        "visits": 3405,
+        "leads": 54,
+        "revenue": 1541814.0,
+        "convRate": 1.59
+      },
+      "Lumiere Skincare": {
+        "visits": 29750,
+        "leads": 805,
+        "revenue": 1170660.0,
+        "convRate": 2.71
+      },
+      "Solara Fitband": {
+        "visits": 7076,
+        "leads": 166,
+        "revenue": 1046979.0,
+        "convRate": 2.35
+      },
+      "Vantage CRM": {
+        "visits": 1703,
+        "leads": 66,
+        "revenue": 250964.0,
+        "convRate": 3.88
+      }
+    },
+    "daily": [
+      {
+        "date": "2026-08-01",
+        "visits": 1375,
+        "leads": 35,
+        "revenue": 164727.0
+      },
+      {
+        "date": "2026-08-02",
+        "visits": 1283,
+        "leads": 34,
+        "revenue": 118477.0
+      },
+      {
+        "date": "2026-08-03",
+        "visits": 1307,
+        "leads": 35,
+        "revenue": 122673.0
+      },
+      {
+        "date": "2026-08-04",
+        "visits": 1412,
+        "leads": 38,
+        "revenue": 121835.0
+      },
+      {
+        "date": "2026-08-05",
+        "visits": 1156,
+        "leads": 31,
+        "revenue": 113206.0
+      },
+      {
+        "date": "2026-08-06",
+        "visits": 1497,
+        "leads": 38,
+        "revenue": 172276.0
+      },
+      {
+        "date": "2026-08-07",
+        "visits": 1388,
+        "leads": 36,
+        "revenue": 115661.0
+      },
+      {
+        "date": "2026-08-08",
+        "visits": 1297,
+        "leads": 33,
+        "revenue": 122627.0
+      },
+      {
+        "date": "2026-08-09",
+        "visits": 1475,
+        "leads": 36,
+        "revenue": 127685.0
+      },
+      {
+        "date": "2026-08-10",
+        "visits": 1237,
+        "leads": 32,
+        "revenue": 113725.0
+      },
+      {
+        "date": "2026-08-11",
+        "visits": 1421,
+        "leads": 39,
+        "revenue": 159645.0
+      },
+      {
+        "date": "2026-08-12",
+        "visits": 1309,
+        "leads": 35,
+        "revenue": 118178.0
+      },
+      {
+        "date": "2026-08-13",
+        "visits": 1346,
+        "leads": 33,
+        "revenue": 112532.0
+      },
+      {
+        "date": "2026-08-14",
+        "visits": 1424,
+        "leads": 37,
+        "revenue": 117429.0
+      },
+      {
+        "date": "2026-08-15",
+        "visits": 1411,
+        "leads": 36,
+        "revenue": 169599.0
+      },
+      {
+        "date": "2026-08-16",
+        "visits": 1571,
+        "leads": 41,
+        "revenue": 133891.0
+      },
+      {
+        "date": "2026-08-17",
+        "visits": 1493,
+        "leads": 40,
+        "revenue": 136449.0
+      },
+      {
+        "date": "2026-08-18",
+        "visits": 1367,
+        "leads": 38,
+        "revenue": 121797.0
+      },
+      {
+        "date": "2026-08-19",
+        "visits": 1336,
+        "leads": 34,
+        "revenue": 118707.0
+      },
+      {
+        "date": "2026-08-20",
+        "visits": 1378,
+        "leads": 35,
+        "revenue": 124220.0
+      },
+      {
+        "date": "2026-08-21",
+        "visits": 1390,
+        "leads": 35,
+        "revenue": 205000.0
+      },
+      {
+        "date": "2026-08-22",
+        "visits": 1213,
+        "leads": 31,
+        "revenue": 113900.0
+      },
+      {
+        "date": "2026-08-23",
+        "visits": 1236,
+        "leads": 33,
+        "revenue": 119846.0
+      },
+      {
+        "date": "2026-08-24",
+        "visits": 1294,
+        "leads": 33,
+        "revenue": 125541.0
+      },
+      {
+        "date": "2026-08-25",
+        "visits": 1305,
+        "leads": 35,
+        "revenue": 114151.0
+      },
+      {
+        "date": "2026-08-26",
+        "visits": 1291,
+        "leads": 34,
+        "revenue": 114687.0
+      },
+      {
+        "date": "2026-08-27",
+        "visits": 1341,
+        "leads": 33,
+        "revenue": 115489.0
+      },
+      {
+        "date": "2026-08-28",
+        "visits": 1235,
+        "leads": 31,
+        "revenue": 121226.0
+      },
+      {
+        "date": "2026-08-29",
+        "visits": 1318,
+        "leads": 36,
+        "revenue": 122038.0
+      },
+      {
+        "date": "2026-08-30",
+        "visits": 1412,
+        "leads": 36,
+        "revenue": 126577.0
+      },
+      {
+        "date": "2026-08-31",
+        "visits": 1416,
+        "leads": 38,
+        "revenue": 126623.0
+      }
+    ]
+  },
+  "youtube": {
+    "note": "Organic video analytics only -- no paid YouTube spend in this campaign. Scaled off the real video-creative impression share already reported for each product on its paid channels.",
+    "byProduct": {
+      "Vantage CRM": {
+        "views": 6286,
+        "avgWatchPercent": 42,
+        "likes": 132,
+        "comments": 22,
+        "shares": 11
+      },
+      "Lumiere Skincare": {
+        "views": 268055,
+        "avgWatchPercent": 58,
+        "likes": 5629,
+        "comments": 938,
+        "shares": 482
+      },
+      "Solara Fitband": {
+        "views": 65688,
+        "avgWatchPercent": 61,
+        "likes": 1379,
+        "comments": 229,
+        "shares": 118
+      },
+      "Aurelia Jewellery": {
+        "views": 34979,
+        "avgWatchPercent": 71,
+        "likes": 734,
+        "comments": 122,
+        "shares": 62
+      }
+    },
+    "totals": {
+      "views": 375008,
+      "likes": 7874,
+      "comments": 1311,
+      "shares": 673
+    }
+  }
+}
