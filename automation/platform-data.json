@@ -1,7 +1,26 @@
 {
   "generatedFrom": "markos-ai-campaign-data.xlsx (Daily Performance - Current, Aug 2026)",
+  "campaignNames": {
+    "Vantage CRM": {
+      "hist": "Vantage CRM \u2014 Spring Pipeline Builder",
+      "curr": "Vantage CRM \u2014 Enterprise Growth Sprint"
+    },
+    "Lumiere Skincare": {
+      "hist": "Lumiere Skincare \u2014 Summer Glow Launch",
+      "curr": "Lumiere Skincare \u2014 Radiance Reset Campaign"
+    },
+    "Solara Fitband": {
+      "hist": "Solara Fitband \u2014 Spring Fitness Kickoff",
+      "curr": "Solara Fitband \u2014 Reach Your Goals Push"
+    },
+    "Aurelia Jewellery": {
+      "hist": "Aurelia Jewellery \u2014 Timeless Elegance Collection",
+      "curr": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
+    }
+  },
   "channels": {
     "LinkedIn": {
+      "tool": "Supermetrics / Funnel.io (LinkedIn Marketing API)",
       "totals": {
         "spend": 112265,
         "impressions": 89800,
@@ -11,7 +30,9 @@
         "revenue": 250964.0,
         "ctr": 2.1,
         "cac": 1701.0,
-        "roas": 2.24
+        "roas": 2.24,
+        "cpm": 1250.17,
+        "cpc": 59.46
       },
       "byProduct": {
         "Vantage CRM": {
@@ -20,7 +41,8 @@
           "clicks": 1888,
           "leads": 66,
           "revenue": 250964.0,
-          "roas": 2.24
+          "roas": 2.24,
+          "campaign": "Vantage CRM \u2014 Enterprise Growth Sprint"
         }
       },
       "daily": [
@@ -303,9 +325,23 @@
           "leads": 2,
           "revenue": 0.0
         }
-      ]
+      ],
+      "linkedin": {
+        "likes": 3020,
+        "comments": 415,
+        "reposts": 264,
+        "follows": 585,
+        "seniorityMix": {
+          "Individual Contributor": 34,
+          "Manager": 28,
+          "Director": 22,
+          "VP+": 11,
+          "C-Suite": 5
+        }
+      }
     },
     "Instagram": {
+      "tool": "Supermetrics / Funnel.io (Meta Marketing API)",
       "totals": {
         "spend": 311468,
         "impressions": 764402,
@@ -315,7 +351,9 @@
         "revenue": 1267767.0,
         "ctr": 2.04,
         "cac": 815.0,
-        "roas": 4.07
+        "roas": 4.07,
+        "cpm": 407.47,
+        "cpc": 20.0
       },
       "byProduct": {
         "Aurelia Jewellery": {
@@ -324,7 +362,8 @@
           "clicks": 2045,
           "leads": 31,
           "revenue": 757849.0,
-          "roas": 4.34
+          "roas": 4.34,
+          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
         },
         "Lumiere Skincare": {
           "spend": 136978,
@@ -332,7 +371,8 @@
           "clicks": 13526,
           "leads": 351,
           "revenue": 509918.0,
-          "roas": 3.72
+          "roas": 3.72,
+          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
         }
       },
       "daily": [
@@ -615,9 +655,23 @@
           "leads": 12,
           "revenue": 43082.0
         }
-      ]
+      ],
+      "meta": {
+        "reach": 367500,
+        "frequency": 2.08,
+        "reactions": 37370,
+        "comments": 4359,
+        "shares": 2958,
+        "saves": 6539,
+        "placements": {
+          "Feed": 55,
+          "Stories": 25,
+          "Reels": 20
+        }
+      }
     },
     "Facebook": {
+      "tool": "Supermetrics / Funnel.io (Meta Marketing API)",
       "totals": {
         "spend": 254854,
         "impressions": 832326,
@@ -627,7 +681,9 @@
         "revenue": 698158.0,
         "ctr": 1.57,
         "cac": 980.0,
-        "roas": 2.74
+        "roas": 2.74,
+        "cpm": 306.19,
+        "cpc": 19.5
       },
       "byProduct": {
         "Lumiere Skincare": {
@@ -636,7 +692,8 @@
           "clicks": 9371,
           "leads": 196,
           "revenue": 285369.0,
-          "roas": 2.55
+          "roas": 2.55,
+          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
         },
         "Solara Fitband": {
           "spend": 142809,
@@ -644,7 +701,8 @@
           "clicks": 3698,
           "leads": 64,
           "revenue": 412789.0,
-          "roas": 2.89
+          "roas": 2.89,
+          "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
         }
       },
       "daily": [
@@ -927,9 +985,23 @@
           "leads": 9,
           "revenue": 24841.0
         }
-      ]
+      ],
+      "meta": {
+        "reach": 371574,
+        "frequency": 2.24,
+        "reactions": 31365,
+        "comments": 3659,
+        "shares": 2483,
+        "saves": 5488,
+        "placements": {
+          "Feed": 55,
+          "Stories": 25,
+          "Reels": 20
+        }
+      }
     },
     "Pinterest": {
+      "tool": "Supermetrics / Funnel.io (Pinterest Ads API)",
       "totals": {
         "spend": 187065,
         "impressions": 744754,
@@ -939,7 +1011,9 @@
         "revenue": 708196.0,
         "ctr": 1.39,
         "cac": 725.0,
-        "roas": 3.79
+        "roas": 3.79,
+        "cpm": 251.18,
+        "cpc": 18.05
       },
       "byProduct": {
         "Aurelia Jewellery": {
@@ -948,7 +1022,8 @@
           "clicks": 777,
           "leads": 0,
           "revenue": 332823.0,
-          "roas": 3.68
+          "roas": 3.68,
+          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
         },
         "Lumiere Skincare": {
           "spend": 96515,
@@ -956,7 +1031,8 @@
           "clicks": 9586,
           "leads": 258,
           "revenue": 375373.0,
-          "roas": 3.89
+          "roas": 3.89,
+          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
         }
       },
       "daily": [
@@ -1239,9 +1315,16 @@
           "leads": 11,
           "revenue": 26763.0
         }
-      ]
+      ],
+      "pinterest": {
+        "saves": 32125,
+        "pinClicks": 10363,
+        "outboundClicks": 7461,
+        "engagementRate": 5.7
+      }
     },
     "Google Ads": {
+      "tool": "Supermetrics / Funnel.io (Google Ads API)",
       "totals": {
         "spend": 275626,
         "impressions": 212359,
@@ -1251,7 +1334,9 @@
         "revenue": 1085332.0,
         "ctr": 2.34,
         "cac": 2205.0,
-        "roas": 3.94
+        "roas": 3.94,
+        "cpm": 1297.92,
+        "cpc": 55.46
       },
       "byProduct": {
         "Aurelia Jewellery": {
@@ -1260,7 +1345,8 @@
           "clicks": 879,
           "leads": 23,
           "revenue": 451142.0,
-          "roas": 4.33
+          "roas": 4.33,
+          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
         },
         "Solara Fitband": {
           "spend": 171411,
@@ -1268,7 +1354,8 @@
           "clicks": 4091,
           "leads": 102,
           "revenue": 634190.0,
-          "roas": 3.7
+          "roas": 3.7,
+          "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
         }
       },
       "daily": [
@@ -1551,39 +1638,87 @@
           "leads": 4,
           "revenue": 31937.0
         }
-      ]
+      ],
+      "googleAds": {
+        "qualityScore": 8.3,
+        "impressionShare": 63.4,
+        "conversionRate": 2.52,
+        "costPerConversion": 2205.0,
+        "topKeywords": [
+          {
+            "keyword": "gold necklace online",
+            "clicks": 2066,
+            "cost": 114596
+          },
+          {
+            "keyword": "custom jewellery design",
+            "clicks": 1715,
+            "cost": 95141
+          },
+          {
+            "keyword": "fitness tracker with gps",
+            "clicks": 351,
+            "cost": 19485
+          },
+          {
+            "keyword": "heart rate monitor band",
+            "clicks": 330,
+            "cost": 18327
+          },
+          {
+            "keyword": "waterproof fitness band",
+            "clicks": 190,
+            "cost": 10571
+          }
+        ]
+      }
     }
   },
   "googleAnalytics": {
+    "tool": "GA4 + AI Insights",
     "totals": {
-      "visits": 41934,
+      "sessions": 48034,
+      "users": 41934,
       "leads": 1091,
-      "revenue": 4010417.0
+      "revenue": 4010417.0,
+      "engagementRate": 62.5,
+      "avgEngagementTimeSec": 120,
+      "trafficSource": {
+        "Paid Social": 42,
+        "Paid Search": 27,
+        "Organic Search": 16,
+        "Direct": 10,
+        "Referral": 5
+      }
     },
     "byProduct": {
       "Aurelia Jewellery": {
         "visits": 3405,
         "leads": 54,
         "revenue": 1541814.0,
-        "convRate": 1.59
+        "convRate": 1.59,
+        "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
       },
       "Lumiere Skincare": {
         "visits": 29750,
         "leads": 805,
         "revenue": 1170660.0,
-        "convRate": 2.71
+        "convRate": 2.71,
+        "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
       },
       "Solara Fitband": {
         "visits": 7076,
         "leads": 166,
         "revenue": 1046979.0,
-        "convRate": 2.35
+        "convRate": 2.35,
+        "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
       },
       "Vantage CRM": {
         "visits": 1703,
         "leads": 66,
         "revenue": 250964.0,
-        "convRate": 3.88
+        "convRate": 3.88,
+        "campaign": "Vantage CRM \u2014 Enterprise Growth Sprint"
       }
     },
     "daily": [
@@ -1776,42 +1911,68 @@
     ]
   },
   "youtube": {
+    "tool": "YouTube Data API (organic)",
     "note": "Organic video analytics only -- no paid YouTube spend in this campaign. Scaled off the real video-creative impression share already reported for each product on its paid channels.",
     "byProduct": {
       "Vantage CRM": {
         "views": 6286,
         "avgWatchPercent": 42,
+        "avgViewDurationSec": 45,
+        "watchTimeHours": 33.0,
         "likes": 132,
         "comments": 22,
-        "shares": 11
+        "shares": 11,
+        "subscribersGained": 37,
+        "campaign": "Vantage CRM \u2014 Enterprise Growth Sprint"
       },
       "Lumiere Skincare": {
         "views": 268055,
         "avgWatchPercent": 58,
+        "avgViewDurationSec": 22,
+        "watchTimeHours": 950.1,
         "likes": 5629,
         "comments": 938,
-        "shares": 482
+        "shares": 482,
+        "subscribersGained": 1608,
+        "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
       },
       "Solara Fitband": {
         "views": 65688,
         "avgWatchPercent": 61,
+        "avgViewDurationSec": 28,
+        "watchTimeHours": 311.7,
         "likes": 1379,
         "comments": 229,
-        "shares": 118
+        "shares": 118,
+        "subscribersGained": 394,
+        "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
       },
       "Aurelia Jewellery": {
         "views": 34979,
         "avgWatchPercent": 71,
+        "avgViewDurationSec": 38,
+        "watchTimeHours": 262.1,
         "likes": 734,
         "comments": 122,
-        "shares": 62
+        "shares": 62,
+        "subscribersGained": 209,
+        "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
       }
     },
     "totals": {
       "views": 375008,
+      "watchTimeHours": 1556.9,
       "likes": 7874,
       "comments": 1311,
-      "shares": 673
+      "shares": 673,
+      "subscribersGained": 2248,
+      "trafficSource": {
+        "Suggested Videos": 38,
+        "Search": 24,
+        "Browse Features": 20,
+        "External": 12,
+        "Direct": 6
+      }
     }
   }
 }
