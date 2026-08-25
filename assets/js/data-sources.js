@@ -70,7 +70,8 @@ function campaignsLineHtml(campaigns) {
 // One clearly-titled KPI block per campaign/product. `rows` is an array of
 // [label, value] pairs already formatted by the caller for that platform's
 // metric set (channel / GA / YouTube each have a different shape).
-function campaignKpiBlock(campaignName, productName, colorIdx, rows) {
+// `extraHtml`, when given, is appended after the KPI grid (the recommendation card).
+function campaignKpiBlock(campaignName, productName, colorIdx, rows, extraHtml) {
   var dot = CAMPAIGN_COLORS[colorIdx % 4];
   var html = '<div style="margin-top:18px;padding:14px 16px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);">';
   html += '<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px;">' +
@@ -79,7 +80,44 @@ function campaignKpiBlock(campaignName, productName, colorIdx, rows) {
     '<div style="font-size:11px;color:var(--text-3);">(' + productName + ')</div></div>';
   html += '<div class="kpi-grid">';
   rows.forEach(function (r) { html += kpiTile(r[0], r[1]); });
-  html += '</div></div>';
+  html += '</div>';
+  if (extraHtml) html += extraHtml;
+  html += '</div>';
+  return html;
+}
+
+// Recommendation verdicts -- the same 6 outcomes the "How The Recommendation
+// Engine Decides" diagram on the page walks through. Colors match the
+// existing exec-verdict-pill convention from the Agent Execution demo
+// (pause = solid red, decrease = amber) for a consistent visual language.
+var REC_META = {
+  SCALE: { label: 'Add More Funds', cls: 'scale' },
+  CONTINUE: { label: 'Continue', cls: 'continue' },
+  HOLD: { label: 'Hold', cls: 'hold' },
+  DECREASE_BID: { label: 'Decrease Bid', cls: 'decrease' },
+  PAUSE: { label: 'Withdraw / Pause', cls: 'pause' },
+  CHANGE_CREATIVE: { label: 'Change Creative', cls: 'creative' },
+};
+
+function fmtBidValue(raw, unit) {
+  return unit === 'pct' ? raw + '%' : fmtInr(raw);
+}
+
+// The recommendation card for one campaign x channel -- current bid strategy
+// & value, the verdict pill, why (rationale from real ROAS + trend numbers),
+// and the suggested next move. Nothing here is separately invented: every
+// number traces back to that same campaign's real spend/revenue/leads.
+function recommendationHtml(bp) {
+  var meta = REC_META[bp.recCode] || { label: bp.recLabel, cls: 'hold' };
+  var html = '<div class="rec-card">';
+  html += '<div class="rec-head">';
+  html += '<span class="rec-pill rec-' + meta.cls + '">' + meta.label + '</span>';
+  html += '<span class="rec-bid">Bid strategy: <strong>' + bp.bidStrategy + '</strong> &middot; Current: <strong>' + fmtBidValue(bp.bidValueRaw, bp.bidValueUnit) + '</strong>' +
+    ' &middot; ROAS trend: <strong>' + (bp.trendPct >= 0 ? '+' : '') + bp.trendPct + '%</strong></span>';
+  html += '</div>';
+  html += '<div class="rec-rationale">' + bp.rationale + '</div>';
+  html += '<div class="rec-action"><strong>Suggested next move:</strong> ' + bp.suggestedAction + '</div>';
+  html += '</div>';
   return html;
 }
 
@@ -120,7 +158,7 @@ function renderChannelTab(cfg, block) {
       ['CPC', fmtInr(bp.cpc)],
       ['Revenue', fmtInr(bp.revenue)],
       ['ROAS', bp.roas + 'x'],
-    ]);
+    ], recommendationHtml(bp));
   });
 
   if (multi) {
@@ -205,6 +243,7 @@ function renderGaTab(cfg, block) {
   var multi = products.length > 1;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
   html += campaignsLineHtml(block.campaigns);
+  html += '<p style="font-size:12px;color:var(--text-3);margin:8px 0 4px;">GA4 is a measurement layer, not a spend lever — no bid strategy or bid recommendation applies here. Bid/budget calls live on the 5 paid-channel tabs (Facebook, Instagram, LinkedIn, Pinterest, Google Ads).</p>';
 
   html += sectionLabel(multi ? 'Performance, Per Campaign / Website' : 'Performance');
   products.forEach(function (p, i) {
@@ -244,7 +283,7 @@ function renderYoutubeTab(cfg, block) {
   var multi = products.length > 1;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
   html += campaignsLineHtml(block.campaigns);
-  html += '<p style="font-size:12.5px;color:var(--text-3);margin:8px 0 4px;">' + block.note + '</p>';
+  html += '<p style="font-size:12.5px;color:var(--text-3);margin:8px 0 4px;">' + block.note + ' No bid strategy applies here — organic video has no spend or bid to adjust; the recommendation logic on this page only runs on the 5 paid-channel tabs.</p>';
 
   html += sectionLabel(multi ? 'Performance, Per Video Creative' : 'Performance');
   products.forEach(function (p, i) {

@@ -23,6 +23,38 @@
   .src-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-3);padding:7px 9px;border-bottom:1.5px solid var(--rule);}
   .src-table td{padding:8px 9px;border-bottom:1px solid var(--rule);color:var(--text-2);}
   .src-table td:first-child{font-weight:600;color:var(--text-1);}
+
+  /* Recommendation card + verdict pills -- reuses the exec-verdict-pill
+     color convention from the Agent Execution demo (pause=solid red,
+     decrease=amber) so the visual language stays consistent site-wide. */
+  .rec-card{margin-top:12px;padding:11px 13px;border-radius:8px;background:var(--surface-2);border:1px solid var(--rule);}
+  .rec-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px;}
+  .rec-pill{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:3px 10px;border-radius:4px;white-space:nowrap;}
+  .rec-pill.rec-scale{background:var(--good-bg);color:var(--good);}
+  .rec-pill.rec-continue{background:var(--accent-lo);color:var(--accent);}
+  .rec-pill.rec-hold{background:transparent;color:var(--text-2);border:1.3px solid var(--rule);}
+  .rec-pill.rec-decrease{background:var(--warn-bg);color:var(--warn);}
+  .rec-pill.rec-pause{background:#E5484D;color:#fff;}
+  .rec-pill.rec-creative{background:rgba(124,92,255,0.14);color:var(--accent-2);}
+  .rec-bid{font-size:11.5px;color:var(--text-3);}
+  .rec-bid strong{color:var(--text-1);font-weight:600;}
+  .rec-rationale{font-size:12.5px;color:var(--text-2);line-height:1.5;margin-bottom:6px;}
+  .rec-action{font-size:12.5px;color:var(--text-2);line-height:1.5;}
+  .rec-action strong{color:var(--text-1);}
+
+  /* Legend chips -- mirror the 6 rec-pill colors, used above the tabs so
+     the reader knows what each verdict on the page below means. */
+  .rec-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:14px;}
+  .rec-legend-item{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);}
+  .rec-legend-item .rec-pill{flex-shrink:0;margin-top:1px;}
+  .rec-legend-item span.rec-legend-desc{font-size:11.5px;color:var(--text-3);line-height:1.4;}
+
+  /* Decision-flow infographic -- same node-title/node-sub/node-mono/edge
+     convention as data-flow.html and helicopter.html's hand-authored SVGs. */
+  .node-title{font-family:var(--sans);font-weight:700;fill:var(--text-1);}
+  .node-sub{font-family:var(--sans);fill:var(--text-2);}
+  .node-mono{font-family:var(--mono);fill:var(--text-3);}
+  .edge{stroke:var(--text-3);fill:none;}
 </style>
 </head>
 <body>
@@ -73,6 +105,91 @@
       <tr><td>YouTube</td><td>YouTube Data API (organic, read-only)</td><td>Presentation only — not in the workbook; tied to the video creatives already in the Creative Performance sheet</td></tr>
     </tbody>
   </table>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <div class="section-eye" style="color:var(--accent-2);">From Data To A Decision</div>
+    <h2 class="section-title">How the recommendation engine decides</h2>
+    <p class="section-sub">Every campaign × channel block below carries a bid strategy, a current bid value, and one of 6 recommended actions — Continue, Hold, Add More Funds, Decrease Bid, Withdraw / Pause, or Change Creative. None of it is a separate AI call: it's one small, deterministic rule set running on the same real ROAS and trend numbers already reconciled with the workbook. This is the walkthrough of that rule set.</p>
+  </div>
+  <figure style="margin:18px 0 6px;">
+    <svg viewBox="0 0 1180 260" role="img" aria-label="Real channel data feeds ROAS and trend calculations, which are checked against decision rules to produce exactly one of six recommended actions." style="width:100%;height:auto;">
+      <defs>
+        <marker id="rec-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--text-3);"/></marker>
+      </defs>
+
+      <rect x="20" y="60" width="220" height="170" rx="10" fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1.3"/>
+      <text x="130" y="86" text-anchor="middle" class="node-mono" font-size="8" style="letter-spacing:.06em;">REAL CHANNEL DATA</text>
+      <text x="130" y="110" text-anchor="middle" class="node-title" font-size="12.5">Spend · Revenue · Leads</text>
+      <text x="130" y="136" text-anchor="middle" class="node-sub" font-size="9.5">ROAS = Revenue ÷ Spend</text>
+      <text x="130" y="156" text-anchor="middle" class="node-sub" font-size="9.5">Trend = 2nd-half ROAS vs.</text>
+      <text x="130" y="170" text-anchor="middle" class="node-sub" font-size="9.5">1st-half ROAS, same month</text>
+      <text x="130" y="200" text-anchor="middle" class="node-mono" font-size="8">Same numbers as the</text>
+      <text x="130" y="213" text-anchor="middle" class="node-mono" font-size="8">KPI blocks below</text>
+
+      <line x1="240" y1="145" x2="296" y2="145" class="edge" stroke-width="1.6" marker-end="url(#rec-ar)"/>
+
+      <rect x="300" y="40" width="260" height="200" rx="10" fill="var(--accent-2)" fill-opacity="0.06" stroke="var(--accent-2)" stroke-width="1.4"/>
+      <text x="430" y="64" text-anchor="middle" class="node-mono" font-size="8" fill="var(--accent-2)" style="letter-spacing:.06em;">DECISION RULES APPLIED</text>
+      <text x="430" y="88" text-anchor="middle" class="node-title" font-size="12">Two real signals, together</text>
+      <text x="430" y="110" text-anchor="middle" class="node-sub" font-size="9.5">ROAS vs. 2.0x / 2.5x / 3.5x</text>
+      <text x="430" y="126" text-anchor="middle" class="node-sub" font-size="9.5">Trend vs. −10% (risk) / +5%</text>
+      <text x="430" y="142" text-anchor="middle" class="node-sub" font-size="9.5">(momentum)</text>
+      <text x="430" y="168" text-anchor="middle" class="node-sub" font-size="9.5">Risk (pause / decrease) is</text>
+      <text x="430" y="184" text-anchor="middle" class="node-sub" font-size="9.5">checked before opportunity</text>
+      <text x="430" y="200" text-anchor="middle" class="node-sub" font-size="9.5">(scale) — one rule fires</text>
+      <text x="430" y="220" text-anchor="middle" class="node-mono" font-size="8" fill="var(--accent-2)">→ exactly one of 6 outcomes</text>
+
+      <line x1="560" y1="145" x2="601" y2="133" class="edge" stroke-width="1.6" marker-end="url(#rec-ar)"/>
+
+      <rect x="605" y="34" width="174" height="80" rx="8" fill="var(--good)" fill-opacity="0.08" stroke="var(--good)" stroke-width="1.4"/>
+      <text x="692" y="54" text-anchor="middle" class="node-title" font-size="11" fill="var(--good)">ADD MORE FUNDS</text>
+      <text x="692" y="72" text-anchor="middle" class="node-sub" font-size="8.7">ROAS ≥3.5x &amp; up ≥5%</text>
+      <text x="692" y="86" text-anchor="middle" class="node-sub" font-size="8.7">Raise bid/budget ~15–20%</text>
+      <text x="692" y="100" text-anchor="middle" class="node-mono" font-size="7.5">SCALE</text>
+
+      <rect x="795" y="34" width="174" height="80" rx="8" fill="var(--accent)" fill-opacity="0.08" stroke="var(--accent)" stroke-width="1.4"/>
+      <text x="882" y="54" text-anchor="middle" class="node-title" font-size="11" fill="var(--accent)">CONTINUE</text>
+      <text x="882" y="72" text-anchor="middle" class="node-sub" font-size="8.7">ROAS ≥2.5x, trend flat</text>
+      <text x="882" y="86" text-anchor="middle" class="node-sub" font-size="8.7">Hold current bid &amp; budget</text>
+      <text x="882" y="100" text-anchor="middle" class="node-mono" font-size="7.5">CONTINUE</text>
+
+      <rect x="985" y="34" width="174" height="80" rx="8" fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1.4"/>
+      <text x="1072" y="54" text-anchor="middle" class="node-title" font-size="11">HOLD</text>
+      <text x="1072" y="72" text-anchor="middle" class="node-sub" font-size="8.7">ROAS 2.0–2.5x, flat trend</text>
+      <text x="1072" y="86" text-anchor="middle" class="node-sub" font-size="8.7">Not enough signal — watch</text>
+      <text x="1072" y="100" text-anchor="middle" class="node-mono" font-size="7.5">HOLD</text>
+
+      <rect x="605" y="132" width="174" height="80" rx="8" fill="var(--accent-2)" fill-opacity="0.08" stroke="var(--accent-2)" stroke-width="1.4"/>
+      <text x="692" y="152" text-anchor="middle" class="node-title" font-size="11" fill="var(--accent-2)">CHANGE CREATIVE</text>
+      <text x="692" y="170" text-anchor="middle" class="node-sub" font-size="8.7">ROAS ≥2.5x but down ≥10%</text>
+      <text x="692" y="184" text-anchor="middle" class="node-sub" font-size="8.7">Refresh creative, not bid</text>
+      <text x="692" y="198" text-anchor="middle" class="node-mono" font-size="7.5">CHANGE_CREATIVE</text>
+
+      <rect x="795" y="132" width="174" height="80" rx="8" fill="var(--warn)" fill-opacity="0.08" stroke="var(--warn)" stroke-width="1.4"/>
+      <text x="882" y="152" text-anchor="middle" class="node-title" font-size="11" fill="var(--warn)">DECREASE BID</text>
+      <text x="882" y="170" text-anchor="middle" class="node-sub" font-size="8.7">ROAS 2.0–2.5x, down ≥10%</text>
+      <text x="882" y="184" text-anchor="middle" class="node-sub" font-size="8.7">Cut bid/budget ~15–20%</text>
+      <text x="882" y="198" text-anchor="middle" class="node-mono" font-size="7.5">DECREASE_BID</text>
+
+      <rect x="985" y="132" width="174" height="80" rx="8" fill="#E5484D" fill-opacity="0.10" stroke="#E5484D" stroke-width="1.4"/>
+      <text x="1072" y="152" text-anchor="middle" class="node-title" font-size="11" fill="#E5484D">WITHDRAW / PAUSE</text>
+      <text x="1072" y="170" text-anchor="middle" class="node-sub" font-size="8.7">ROAS &lt;2.0x, down ≥10%</text>
+      <text x="1072" y="184" text-anchor="middle" class="node-sub" font-size="8.7">Pull spend, reallocate it</text>
+      <text x="1072" y="198" text-anchor="middle" class="node-mono" font-size="7.5">PAUSE</text>
+    </svg>
+    <figcaption style="font-size:11.5px;color:var(--text-3);margin-top:4px;">Real spend/revenue/lead data feeds a ROAS + trend calculation, checked against fixed thresholds in priority order (risk first), landing on exactly one of 6 verdicts — never a blend of two.</figcaption>
+  </figure>
+
+  <div class="rec-legend">
+    <div class="rec-legend-item"><span class="rec-pill rec-scale">Add More Funds</span><span class="rec-legend-desc">Strong &amp; still improving — raise the bid or budget while it's working.</span></div>
+    <div class="rec-legend-item"><span class="rec-pill rec-continue">Continue</span><span class="rec-legend-desc">At or above target, stable — no change needed this cycle.</span></div>
+    <div class="rec-legend-item"><span class="rec-pill rec-hold">Hold</span><span class="rec-legend-desc">Borderline, flat trend — not enough signal yet either way.</span></div>
+    <div class="rec-legend-item"><span class="rec-pill rec-creative">Change Creative</span><span class="rec-legend-desc">Still healthy but declining — more likely fatigue than a bid problem.</span></div>
+    <div class="rec-legend-item"><span class="rec-pill rec-decrease">Decrease Bid</span><span class="rec-legend-desc">Below target and declining — pull back before it needs a pause.</span></div>
+    <div class="rec-legend-item"><span class="rec-pill rec-pause">Withdraw / Pause</span><span class="rec-legend-desc">Near or below breakeven and still falling — stop the spend now.</span></div>
+  </div>
 </section>
 
 <section class="section" style="padding-top:0;">

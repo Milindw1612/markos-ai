@@ -48,7 +48,16 @@
           "ctr": 2.1,
           "cpm": 1250.17,
           "cpc": 59.46,
-          "campaign": "Vantage CRM \u2014 Enterprise Growth Sprint"
+          "campaign": "Vantage CRM \u2014 Enterprise Growth Sprint",
+          "recCode": "DECREASE_BID",
+          "recLabel": "Decrease Bid",
+          "rationale": "ROAS at 2.24x sits below the 2.5x target and is down 58% \u2014 pull back before it slides into pause territory.",
+          "suggestedAction": "Cut the bid ~15\u201320%, toward roughly 48.",
+          "trendPct": -57.8,
+          "bidStrategy": "Manual CPC (enhanced)",
+          "bidValueRaw": 59,
+          "bidValueUnit": "inr",
+          "suggestedBidValueRaw": 48
         }
       },
       "dailyByProduct": {
@@ -535,7 +544,16 @@
           "ctr": 1.7,
           "cpm": 1450.18,
           "cpc": 85.33,
-          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
+          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
+          "recCode": "CONTINUE",
+          "recLabel": "Continue",
+          "rationale": "ROAS at 4.34x is at or above target with a flat trend (+1%) \u2014 performing at or above expectations, no change needed.",
+          "suggestedAction": "No bid change \u2014 hold the current budget and bid as-is.",
+          "trendPct": 1.4,
+          "bidStrategy": "Cost Cap (cost-per-result goal)",
+          "bidValueRaw": 5629,
+          "bidValueUnit": "inr",
+          "suggestedBidValueRaw": null
         },
         "Lumiere Skincare": {
           "spend": 136978,
@@ -547,7 +565,16 @@
           "ctr": 2.1,
           "cpm": 212.67,
           "cpc": 10.13,
-          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
+          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign",
+          "recCode": "SCALE",
+          "recLabel": "Add More Funds",
+          "rationale": "ROAS at 3.72x is well above target and up 8% \u2014 there's real room to push more budget behind what's already working.",
+          "suggestedAction": "Raise the bid ~15\u201320%, toward roughly 460, and/or lift the daily budget cap.",
+          "trendPct": 7.6,
+          "bidStrategy": "Cost Cap (cost-per-result goal)",
+          "bidValueRaw": 390,
+          "bidValueUnit": "inr",
+          "suggestedBidValueRaw": 460
         }
       },
       "dailyByProduct": {
@@ -1191,7 +1218,16 @@
           "ctr": 1.6,
           "cpm": 191.29,
           "cpc": 11.96,
-          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
+          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign",
+          "recCode": "CONTINUE",
+          "recLabel": "Continue",
+          "rationale": "ROAS at 2.55x is at or above target with a flat trend (-3%) \u2014 performing at or above expectations, no change needed.",
+          "suggestedAction": "No bid change \u2014 hold the current budget and bid as-is.",
+          "trendPct": -2.6,
+          "bidStrategy": "Cost Cap (cost-per-result goal)",
+          "bidValueRaw": 572,
+          "bidValueUnit": "inr",
+          "suggestedBidValueRaw": null
         },
         "Solara Fitband": {
           "spend": 142809,
@@ -1203,7 +1239,16 @@
           "ctr": 1.5,
           "cpm": 579.14,
           "cpc": 38.62,
-          "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
+          "campaign": "Solara Fitband \u2014 Reach Your Goals Push",
+          "recCode": "CONTINUE",
+          "recLabel": "Continue",
+          "rationale": "ROAS at 2.89x is at or above target with an improving trend (+7%) \u2014 performing at or above expectations, no change needed.",
+          "suggestedAction": "No bid change \u2014 hold the current budget and bid as-is.",
+          "trendPct": 7.5,
+          "bidStrategy": "Cost Cap (cost-per-result goal)",
+          "bidValueRaw": 2231,
+          "bidValueUnit": "inr",
+          "suggestedBidValueRaw": null
         }
       },
       "dailyByProduct": {
@@ -1847,7 +1892,16 @@
           "ctr": 1.3,
           "cpm": 1511.96,
           "cpc": 116.54,
-          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
+          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
+          "recCode": "CONTINUE",
+          "recLabel": "Continue",
+          "rationale": "ROAS at 3.68x is at or above target with a flat trend (-3%) \u2014 performing at or above expectations, no change needed.",
+          "suggestedAction": "No bid change \u2014 hold the current budget and bid as-is.",
+          "trendPct": -3.1,
+          "bidStrategy": "Automatic bidding",
+          "bidValueRaw": 117,
+          "bidValueUnit": "inr",
+          "suggestedBidValueRaw": null
         },
         "Lumiere Skincare": {
           "spend": 96515,
@@ -1859,7 +1913,16 @@
           "ctr": 1.4,
           "cpm": 140.93,
           "cpc": 10.07,
-          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign"
+          "campaign": "Lumiere Skincare \u2014 Radiance Reset Campaign",
+          "recCode": "CONTINUE",
+          "recLabel": "Continue",
+          "rationale": "ROAS at 3.89x is at or above target with a flat trend (-8%) \u2014 performing at or above expectations, no change needed.",
+          "suggestedAction": "No bid change \u2014 hold the current budget and bid as-is.",
+          "trendPct": -8.4,
+          "bidStrategy": "Automatic bidding",
+          "bidValueRaw": 10,
+          "bidValueUnit": "inr",
+          "suggestedBidValueRaw": null
         }
       },
       "dailyByProduct": {
@@ -2496,7 +2559,16 @@
           "ctr": 2.1,
           "cpm": 2488.54,
           "cpc": 118.56,
-          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch"
+          "campaign": "Aurelia Jewellery \u2014 Cinematic Craftsmanship Launch",
+          "recCode": "CONTINUE",
+          "recLabel": "Continue",
+          "rationale": "ROAS at 4.33x is at or above target with a flat trend (+5%) \u2014 performing at or above expectations, no change needed.",
+          "suggestedAction": "No bid change \u2014 hold the current budget and bid as-is.",
+          "trendPct": 4.8,
+          "bidStrategy": "Target ROAS (automated)",
+          "bidValueRaw": 433,
+          "bidValueUnit": "pct",
+          "suggestedBidValueRaw": null
         },
         "Solara Fitband": {
           "spend": 171411,
@@ -2508,7 +2580,16 @@
           "ctr": 2.4,
           "cpm": 1005.46,
           "cpc": 41.9,
-          "campaign": "Solara Fitband \u2014 Reach Your Goals Push"
+          "campaign": "Solara Fitband \u2014 Reach Your Goals Push",
+          "recCode": "CONTINUE",
+          "recLabel": "Continue",
+          "rationale": "ROAS at 3.7x is at or above target with a flat trend (+4%) \u2014 performing at or above expectations, no change needed.",
+          "suggestedAction": "No bid change \u2014 hold the current budget and bid as-is.",
+          "trendPct": 3.8,
+          "bidStrategy": "Target ROAS (automated)",
+          "bidValueRaw": 370,
+          "bidValueUnit": "pct",
+          "suggestedBidValueRaw": null
         }
       },
       "dailyByProduct": {
