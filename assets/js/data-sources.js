@@ -48,8 +48,8 @@ var CAMPAIGN_COLORS = ['#2F6FED', '#D5493F', '#1E9E6B', '#7C5CFF'];
 
 // A platform can carry more than one campaign at once (e.g. Facebook runs
 // both Lumiere Skincare's and Solara Fitband's campaigns simultaneously).
-// This makes that explicit right under the platform header, instead of
-// leaving it to be inferred from a table further down the page.
+// This box lists them; the actual numbers for each are never merged --
+// every KPI block below is titled with its own campaign name.
 function campaignsLineHtml(campaigns) {
   if (!campaigns || !campaigns.length) return '';
   var multi = campaigns.length > 1;
@@ -61,9 +61,25 @@ function campaignsLineHtml(campaigns) {
       '<span style="width:9px;height:9px;border-radius:50%;background:' + CAMPAIGN_COLORS[i % 4] + ';flex-shrink:0;"></span>' + c + '</div>';
   });
   if (multi) {
-    html += '<div style="font-size:11.5px;color:var(--text-3);margin-top:6px;">The totals below are combined across all ' + campaigns.length + ' — see "By Product / Campaign" for each one\'s individual numbers, and the chart below for each one\'s own trend.</div>';
+    html += '<div style="font-size:11.5px;color:var(--text-3);margin-top:6px;">Each campaign has its own full KPI block below — the numbers are never merged.</div>';
   }
   html += '</div>';
+  return html;
+}
+
+// One clearly-titled KPI block per campaign/product. `rows` is an array of
+// [label, value] pairs already formatted by the caller for that platform's
+// metric set (channel / GA / YouTube each have a different shape).
+function campaignKpiBlock(campaignName, productName, colorIdx, rows) {
+  var dot = CAMPAIGN_COLORS[colorIdx % 4];
+  var html = '<div style="margin-top:18px;padding:14px 16px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);">';
+  html += '<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px;">' +
+    '<span style="width:10px;height:10px;border-radius:50%;background:' + dot + ';flex-shrink:0;"></span>' +
+    '<div style="font-size:14px;font-weight:700;color:var(--text-1);">' + campaignName + '</div>' +
+    '<div style="font-size:11px;color:var(--text-3);">(' + productName + ')</div></div>';
+  html += '<div class="kpi-grid">';
+  rows.forEach(function (r) { html += kpiTile(r[0], r[1]); });
+  html += '</div></div>';
   return html;
 }
 
@@ -87,25 +103,49 @@ function sectionLabel(text) {
 
 function renderChannelTab(cfg, block) {
   var t = block.totals;
+  var multi = block.campaigns && block.campaigns.length > 1;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
   html += campaignsLineHtml(block.campaigns);
-  html += '<div class="kpi-grid" style="margin-top:16px;">';
-  html += kpiTile('Spend', fmtInr(t.spend));
-  html += kpiTile('Impressions', fmtNum(t.impressions));
-  html += kpiTile('Clicks', fmtNum(t.clicks));
-  html += kpiTile('CTR', t.ctr + '%');
-  html += kpiTile('CPM', fmtInr(t.cpm));
-  html += kpiTile('CPC', fmtInr(t.cpc));
-  html += kpiTile('Revenue', fmtInr(t.revenue));
-  html += kpiTile('ROAS', t.roas + 'x');
-  html += '</div>';
+
+  html += sectionLabel(multi ? 'Performance, Per Campaign' : 'Performance');
+  var products = Object.keys(block.byProduct);
+  products.forEach(function (p, i) {
+    var bp = block.byProduct[p];
+    html += campaignKpiBlock(bp.campaign, p, i, [
+      ['Spend', fmtInr(bp.spend)],
+      ['Impressions', fmtNum(bp.impressions)],
+      ['Clicks', fmtNum(bp.clicks)],
+      ['CTR', bp.ctr + '%'],
+      ['CPM', fmtInr(bp.cpm)],
+      ['CPC', fmtInr(bp.cpc)],
+      ['Revenue', fmtInr(bp.revenue)],
+      ['ROAS', bp.roas + 'x'],
+    ]);
+  });
+
+  if (multi) {
+    html += sectionLabel('Platform Total (combined across ' + products.length + ' campaigns)');
+    html += '<div class="kpi-grid">';
+    html += kpiTile('Spend', fmtInr(t.spend));
+    html += kpiTile('Impressions', fmtNum(t.impressions));
+    html += kpiTile('Clicks', fmtNum(t.clicks));
+    html += kpiTile('CTR', t.ctr + '%');
+    html += kpiTile('CPM', fmtInr(t.cpm));
+    html += kpiTile('CPC', fmtInr(t.cpc));
+    html += kpiTile('Revenue', fmtInr(t.revenue));
+    html += kpiTile('ROAS', t.roas + 'x');
+    html += '</div>';
+  }
 
   html += sectionLabel('Daily Revenue, By Campaign');
   html += '<div><canvas id="chart-' + cfg.key.replace(/\s/g, '') + '" height="80"></canvas></div>';
 
-  // Platform-specific native insights section
+  // Platform-specific native insights section -- these are genuinely
+  // account/platform-level concepts in real ad platforms (e.g. LinkedIn's
+  // seniority-mix report is a page-level demographic view, not a
+  // per-campaign one), so they stay platform-wide rather than being split.
   if (block.meta) {
-    html += sectionLabel('Reach & Engagement');
+    html += sectionLabel('Platform-Wide — Reach & Engagement');
     html += '<div class="kpi-grid">';
     html += kpiTile('Reach', fmtNum(block.meta.reach));
     html += kpiTile('Frequency', block.meta.frequency + 'x');
@@ -118,18 +158,18 @@ function renderChannelTab(cfg, block) {
     html += breakdownBars(block.meta.placements, cfg.color);
   }
   if (block.linkedin) {
-    html += sectionLabel('Social Actions');
+    html += sectionLabel('Platform-Wide — Social Actions');
     html += '<div class="kpi-grid">';
     html += kpiTile('Likes', fmtNum(block.linkedin.likes));
     html += kpiTile('Comments', fmtNum(block.linkedin.comments));
     html += kpiTile('Reposts', fmtNum(block.linkedin.reposts));
     html += kpiTile('Page Follows', fmtNum(block.linkedin.follows));
     html += '</div>';
-    html += sectionLabel('Audience by Seniority');
+    html += sectionLabel('Platform-Wide — Audience by Seniority');
     html += breakdownBars(block.linkedin.seniorityMix, cfg.color);
   }
   if (block.pinterest) {
-    html += sectionLabel('Pin Engagement');
+    html += sectionLabel('Platform-Wide — Pin Engagement');
     html += '<div class="kpi-grid">';
     html += kpiTile('Saves', fmtNum(block.pinterest.saves));
     html += kpiTile('Pin Clicks', fmtNum(block.pinterest.pinClicks));
@@ -138,14 +178,14 @@ function renderChannelTab(cfg, block) {
     html += '</div>';
   }
   if (block.googleAds) {
-    html += sectionLabel('Auction & Conversion Insights');
+    html += sectionLabel('Platform-Wide — Auction & Conversion Insights');
     html += '<div class="kpi-grid">';
     html += kpiTile('Quality Score', block.googleAds.qualityScore + ' / 10');
     html += kpiTile('Search Impr. Share', block.googleAds.impressionShare + '%');
     html += kpiTile('Conversion Rate', block.googleAds.conversionRate + '%');
     html += kpiTile('Cost / Conversion', fmtInr(block.googleAds.costPerConversion));
     html += '</div>';
-    html += sectionLabel('Top Search Terms');
+    html += sectionLabel('Platform-Wide — Top Search Terms');
     html += '<table class="src-table"><thead><tr><th>Keyword</th><th>Clicks</th><th>Cost</th></tr></thead><tbody>';
     block.googleAds.topKeywords.forEach(function (k) {
       html += '<tr><td>"' + k.keyword + '"</td><td>' + fmtNum(k.clicks) + '</td><td>' + fmtInr(k.cost) + '</td></tr>';
@@ -153,71 +193,89 @@ function renderChannelTab(cfg, block) {
     html += '</tbody></table>';
   }
 
-  html += sectionLabel('By Product / Campaign');
-  html += '<table class="src-table"><thead><tr><th>Product</th><th>Campaign</th><th>Spend</th><th>Leads</th><th>Revenue</th><th>ROAS</th></tr></thead><tbody>';
-  Object.keys(block.byProduct).forEach(function (p) {
-    var bp = block.byProduct[p];
-    html += '<tr><td>' + p + '</td><td style="font-size:11.5px;color:var(--text-3);">' + bp.campaign + '</td><td>' + fmtInr(bp.spend) + '</td><td>' + fmtNum(bp.leads) + '</td><td>' + fmtInr(bp.revenue) + '</td><td>' + bp.roas + 'x</td></tr>';
-  });
-  html += '</tbody></table></div>';
+  html += '</div>';
   return html;
 }
 
 function renderGaTab(cfg, block) {
   var t = block.totals;
+  var sites = { 'Vantage CRM': 'vantagecrm.example.com', 'Lumiere Skincare': 'lumiereskincare.example.com',
+    'Solara Fitband': 'solarafitband.example.com', 'Aurelia Jewellery': 'aureliajewellery.example.com' };
+  var products = Object.keys(block.byProduct);
+  var multi = products.length > 1;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
   html += campaignsLineHtml(block.campaigns);
-  html += '<div class="kpi-grid" style="margin-top:16px;">';
-  html += kpiTile('Sessions', fmtNum(t.sessions));
-  html += kpiTile('Users', fmtNum(t.users));
-  html += kpiTile('Engagement Rate', t.engagementRate + '%');
-  html += kpiTile('Avg. Engagement Time', t.avgEngagementTimeSec + 's');
-  html += kpiTile('Leads Generated', fmtNum(t.leads));
-  html += kpiTile('Attributed Revenue', fmtInr(t.revenue));
-  html += '</div>';
+
+  html += sectionLabel(multi ? 'Performance, Per Campaign / Website' : 'Performance');
+  products.forEach(function (p, i) {
+    var bp = block.byProduct[p];
+    html += campaignKpiBlock(bp.campaign, p + ' — ' + (sites[p] || p), i, [
+      ['Visits', fmtNum(bp.visits)],
+      ['Leads', fmtNum(bp.leads)],
+      ['Conv. Rate', bp.convRate + '%'],
+      ['Revenue', fmtInr(bp.revenue)],
+    ]);
+  });
+
+  if (multi) {
+    html += sectionLabel('Property Total (combined across ' + products.length + ' campaigns)');
+    html += '<div class="kpi-grid">';
+    html += kpiTile('Sessions', fmtNum(t.sessions));
+    html += kpiTile('Users', fmtNum(t.users));
+    html += kpiTile('Engagement Rate', t.engagementRate + '%');
+    html += kpiTile('Avg. Engagement Time', t.avgEngagementTimeSec + 's');
+    html += kpiTile('Leads Generated', fmtNum(t.leads));
+    html += kpiTile('Attributed Revenue', fmtInr(t.revenue));
+    html += '</div>';
+  }
 
   html += sectionLabel('Daily Website Visits, By Campaign');
   html += '<div><canvas id="chart-googleAnalytics" height="80"></canvas></div>';
 
-  html += sectionLabel('Traffic Source (% of Sessions)');
+  html += sectionLabel('Platform-Wide — Traffic Source (% of Sessions)');
   html += breakdownBars(t.trafficSource, cfg.color);
-
-  html += sectionLabel('Sessions by Product Website');
-  html += '<table class="src-table"><thead><tr><th>Website</th><th>Campaign</th><th>Visits</th><th>Leads</th><th>Conv. Rate</th><th>Revenue</th></tr></thead><tbody>';
-  var sites = { 'Vantage CRM': 'vantagecrm.example.com', 'Lumiere Skincare': 'lumiereskincare.example.com',
-    'Solara Fitband': 'solarafitband.example.com', 'Aurelia Jewellery': 'aureliajewellery.example.com' };
-  Object.keys(block.byProduct).forEach(function (p) {
-    var bp = block.byProduct[p];
-    html += '<tr><td>' + (sites[p] || p) + '</td><td style="font-size:11.5px;color:var(--text-3);">' + bp.campaign + '</td><td>' + fmtNum(bp.visits) + '</td><td>' + fmtNum(bp.leads) + '</td><td>' + bp.convRate + '%</td><td>' + fmtInr(bp.revenue) + '</td></tr>';
-  });
-  html += '</tbody></table></div>';
+  html += '</div>';
   return html;
 }
 
 function renderYoutubeTab(cfg, block) {
   var t = block.totals;
+  var products = Object.keys(block.byProduct);
+  var multi = products.length > 1;
   var html = '<div class="demo-panel">' + platformHeaderHtml(cfg, block.tool);
   html += campaignsLineHtml(block.campaigns);
   html += '<p style="font-size:12.5px;color:var(--text-3);margin:8px 0 4px;">' + block.note + '</p>';
-  html += '<div class="kpi-grid" style="margin-top:12px;">';
-  html += kpiTile('Total Views', fmtNum(t.views));
-  html += kpiTile('Watch Time', fmtNum(t.watchTimeHours) + ' hrs');
-  html += kpiTile('Subscribers Gained', '+' + fmtNum(t.subscribersGained));
-  html += kpiTile('Likes', fmtNum(t.likes));
-  html += kpiTile('Comments', fmtNum(t.comments));
-  html += kpiTile('Shares', fmtNum(t.shares));
-  html += '</div>';
 
-  html += sectionLabel('Traffic Source (% of Views)');
-  html += breakdownBars(t.trafficSource, cfg.color);
-
-  html += sectionLabel('By Product Video Creative');
-  html += '<table class="src-table"><thead><tr><th>Product</th><th>Campaign</th><th>Views</th><th>Avg. Watch %</th><th>Avg. Duration</th><th>Watch Time</th></tr></thead><tbody>';
-  Object.keys(block.byProduct).forEach(function (p) {
+  html += sectionLabel(multi ? 'Performance, Per Video Creative' : 'Performance');
+  products.forEach(function (p, i) {
     var bp = block.byProduct[p];
-    html += '<tr><td>' + p + '</td><td style="font-size:11.5px;color:var(--text-3);">' + bp.campaign + '</td><td>' + fmtNum(bp.views) + '</td><td>' + bp.avgWatchPercent + '%</td><td>' + bp.avgViewDurationSec + 's</td><td>' + fmtNum(bp.watchTimeHours) + ' hrs</td></tr>';
+    html += campaignKpiBlock(bp.campaign, p, i, [
+      ['Views', fmtNum(bp.views)],
+      ['Watch Time', fmtNum(bp.watchTimeHours) + ' hrs'],
+      ['Avg. Watch %', bp.avgWatchPercent + '%'],
+      ['Avg. Duration', bp.avgViewDurationSec + 's'],
+      ['Likes', fmtNum(bp.likes)],
+      ['Comments', fmtNum(bp.comments)],
+      ['Shares', fmtNum(bp.shares)],
+      ['Subscribers Gained', '+' + fmtNum(bp.subscribersGained)],
+    ]);
   });
-  html += '</tbody></table></div>';
+
+  if (multi) {
+    html += sectionLabel('Channel Total (combined across ' + products.length + ' video creatives)');
+    html += '<div class="kpi-grid">';
+    html += kpiTile('Total Views', fmtNum(t.views));
+    html += kpiTile('Watch Time', fmtNum(t.watchTimeHours) + ' hrs');
+    html += kpiTile('Subscribers Gained', '+' + fmtNum(t.subscribersGained));
+    html += kpiTile('Likes', fmtNum(t.likes));
+    html += kpiTile('Comments', fmtNum(t.comments));
+    html += kpiTile('Shares', fmtNum(t.shares));
+    html += '</div>';
+  }
+
+  html += sectionLabel('Platform-Wide — Traffic Source (% of Views)');
+  html += breakdownBars(t.trafficSource, cfg.color);
+  html += '</div>';
   return html;
 }
 
