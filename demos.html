@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
   .exec-frame{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px 8px;overflow-x:auto;margin:18px 0;}
+  .exec-frame svg{display:block;margin:0 auto;min-width:1100px;}
   .exec-frame svg{display:block;margin:0 auto;min-width:640px;}
   .exec-node rect{fill:var(--surface);stroke:var(--rule);stroke-width:1.6;transition:stroke .3s, fill .3s, fill-opacity .3s;}
   .exec-node text{transition:fill .3s;}
@@ -220,77 +221,135 @@
         <button class="btn btn-ghost" style="cursor:pointer;" id="execResetBtn">Restart</button>
       </div>
 
-      <p style="font-size:11.5px;color:var(--text-3);margin:2px 0 10px;">Each box is the real data that tool call returned; the pill below it states the one finding that mattered for the next step — read left to right, the four findings build on each other.</p>
+      <p style="font-size:11.5px;color:var(--text-3);margin:2px 0 10px;">Each box carries the real per-channel data that tool call returned — all 4 channels, every time, not just a summary. The pill below each box states the one finding that mattered for the next step.</p>
       <div class="exec-frame">
-        <svg viewBox="0 0 700 360" role="img" aria-label="Agent execution graph: Claude's reasoning node calls four tools in sequence — read spend data, call MMM model, run incrementality test, adjust bid — then reaches a human approval node before any recommendation is final.">
+        <svg viewBox="0 0 1300 452" role="img" aria-label="Agent execution graph: Claude's reasoning node calls four tools in sequence — read spend data, call MMM model, run incrementality test, adjust bid — each showing real Instagram, Facebook, Google Ads and LinkedIn figures — then reaches a human approval node before any recommendation is final.">
           <defs>
             <marker id="execAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--rule);"/></marker>
           </defs>
 
-          <path id="edgeApproval" class="exec-edge" d="M350,76 L350,280" marker-end="url(#execAr)"/>
-          <path id="edgeTool1" class="exec-edge" d="M350,76 L350,90 L90,90 L90,130" fill="none" marker-end="url(#execAr)"/>
-          <path id="edgeTool2" class="exec-edge" d="M350,76 L350,98 L265,98 L265,130" fill="none" marker-end="url(#execAr)"/>
-          <path id="edgeTool3" class="exec-edge" d="M350,76 L350,106 L440,106 L440,130" fill="none" marker-end="url(#execAr)"/>
-          <path id="edgeTool4" class="exec-edge" d="M350,76 L350,114 L610,114 L610,130" fill="none" marker-end="url(#execAr)"/>
+          <path id="edgeApproval" class="exec-edge" d="M650,76 L650,376" marker-end="url(#execAr)"/>
+          <path id="edgeTool1" class="exec-edge" d="M650,76 L650,90 L160,90 L160,130" fill="none" marker-end="url(#execAr)"/>
+          <path id="edgeTool2" class="exec-edge" d="M650,76 L650,98 L485,98 L485,130" fill="none" marker-end="url(#execAr)"/>
+          <path id="edgeTool3" class="exec-edge" d="M650,76 L650,106 L810,106 L810,130" fill="none" marker-end="url(#execAr)"/>
+          <path id="edgeTool4" class="exec-edge" d="M650,76 L650,114 L1135,114 L1135,130" fill="none" marker-end="url(#execAr)"/>
 
           <g class="exec-node" id="nodeReasoning">
-            <rect x="270" y="20" width="160" height="56" rx="8"/>
-            <text x="350" y="42" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Claude reasoning</text>
-            <text x="350" y="58" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Decides the next tool call</text>
+            <rect x="570" y="20" width="160" height="56" rx="8"/>
+            <text x="650" y="42" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Claude reasoning</text>
+            <text x="650" y="58" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Decides the next tool call</text>
           </g>
 
           <g class="exec-node" id="nodeTool1">
-            <rect x="10" y="130" width="160" height="82" rx="8"/>
-            <text x="90" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">read_spend_data</text>
-            <text x="90" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Supermetrics style</text>
-            <text x="90" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Spend, revenue, ROAS</text>
-            <text x="90" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">by channel, 16 days</text>
+            <rect x="10" y="130" width="300" height="178" rx="8"/>
+            <text x="160" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="10">read_spend_data</text>
+            <text x="160" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8.5">Supermetrics style</text>
+            <text x="24" y="184" font-family="var(--mono)" font-size="7" fill="var(--text-3)">CHANNEL</text>
+            <text x="215" y="184" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">SPEND</text>
+            <text x="296" y="184" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">REVENUE</text>
+            <text x="24" y="200" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Instagram</text>
+            <text x="215" y="200" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">₹1.69L</text>
+            <text x="296" y="200" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">₹5.46L</text>
+            <text x="24" y="215" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Facebook</text>
+            <text x="215" y="215" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">₹1.34L</text>
+            <text x="296" y="215" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">₹4.03L</text>
+            <text x="24" y="230" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Google Ads</text>
+            <text x="215" y="230" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">₹0.81L</text>
+            <text x="296" y="230" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">₹2.18L</text>
+            <text x="24" y="245" font-family="var(--sans)" font-size="8.5" font-weight="700" fill="var(--warn)">LinkedIn</text>
+            <text x="215" y="245" text-anchor="end" font-family="var(--mono)" font-size="8.5" font-weight="700" fill="var(--warn)">₹0.34L</text>
+            <text x="296" y="245" text-anchor="end" font-family="var(--mono)" font-size="8.5" font-weight="700" fill="var(--warn)">₹0.78L</text>
+            <text x="160" y="266" text-anchor="middle" font-family="var(--sans)" font-size="8.5" font-weight="700" fill="var(--accent-2)">Blended ROAS 2.98 — down from 3.31</text>
           </g>
           <g class="exec-badge" id="badgeTool1">
-            <rect x="10" y="222" width="160" height="38" rx="12"/>
-            <text x="90" y="237" text-anchor="middle"><tspan id="badgeTool1Text1" x="90" dy="0"></tspan><tspan id="badgeTool1Text2" x="90" dy="13"></tspan></text>
+            <rect x="10" y="318" width="300" height="38" rx="12"/>
+            <text x="160" y="333" text-anchor="middle"><tspan id="badgeTool1Text1" x="160" dy="0"></tspan><tspan id="badgeTool1Text2" x="160" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeTool2">
-            <rect x="185" y="130" width="160" height="82" rx="8"/>
-            <text x="265" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">call_mmm_model</text>
-            <text x="265" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Meridian / Robyn style</text>
-            <text x="265" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Ranks each channel's</text>
-            <text x="265" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">ROAS vs. account avg</text>
+            <rect x="335" y="130" width="300" height="178" rx="8"/>
+            <text x="485" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="10">call_mmm_model</text>
+            <text x="485" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8.5">Meridian / Robyn style</text>
+            <text x="349" y="184" font-family="var(--mono)" font-size="7" fill="var(--text-3)">CHANNEL</text>
+            <text x="540" y="184" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">ROAS</text>
+            <text x="621" y="184" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">VS AVG</text>
+            <text x="349" y="200" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Instagram</text>
+            <text x="540" y="200" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">3.45</text>
+            <text x="621" y="200" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--good)">+8.0%</text>
+            <text x="349" y="215" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Facebook</text>
+            <text x="540" y="215" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">3.23</text>
+            <text x="621" y="215" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">+1.1%</text>
+            <text x="349" y="230" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Google Ads</text>
+            <text x="540" y="230" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">2.92</text>
+            <text x="621" y="230" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">-8.5%</text>
+            <text x="349" y="245" font-family="var(--sans)" font-size="8.5" font-weight="700" fill="var(--warn)">LinkedIn</text>
+            <text x="540" y="245" text-anchor="end" font-family="var(--mono)" font-size="8.5" font-weight="700" fill="var(--warn)">2.43</text>
+            <text x="621" y="245" text-anchor="end" font-family="var(--mono)" font-size="8.5" font-weight="700" fill="var(--warn)">-24.0%</text>
+            <text x="485" y="266" text-anchor="middle" font-family="var(--sans)" font-size="8.5" font-weight="700" fill="var(--accent-2)">Instagram strongest, LinkedIn weakest</text>
           </g>
           <g class="exec-badge" id="badgeTool2">
-            <rect x="185" y="222" width="160" height="38" rx="12"/>
-            <text x="265" y="237" text-anchor="middle"><tspan id="badgeTool2Text1" x="265" dy="0"></tspan><tspan id="badgeTool2Text2" x="265" dy="13"></tspan></text>
+            <rect x="335" y="318" width="300" height="38" rx="12"/>
+            <text x="485" y="333" text-anchor="middle"><tspan id="badgeTool2Text1" x="485" dy="0"></tspan><tspan id="badgeTool2Text2" x="485" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeTool3">
-            <rect x="360" y="130" width="160" height="82" rx="8"/>
-            <text x="440" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="8">run_incrementality_test</text>
-            <text x="440" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Measured style</text>
-            <text x="440" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Rules out day-to-day</text>
-            <text x="440" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">noise vs. a real trend</text>
+            <rect x="660" y="130" width="300" height="178" rx="8"/>
+            <text x="810" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9">run_incrementality_test</text>
+            <text x="810" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8.5">Measured style</text>
+            <text x="810" y="181" text-anchor="middle" font-family="var(--sans)" font-size="9.5" font-weight="700" fill="var(--accent-2)">Campaign 2: -19.7% decline</text>
+            <text x="810" y="195" text-anchor="middle" font-family="var(--sans)" font-size="8" fill="var(--text-2)">3.31 → 2.66, SUSTAINED</text>
+            <text x="674" y="210" font-family="var(--sans)" font-size="7.5" fill="var(--text-3)">Campaign 1 (stable), for comparison:</text>
+            <text x="674" y="224" font-family="var(--mono)" font-size="7" fill="var(--text-3)">CHANNEL</text>
+            <text x="865" y="224" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">EARLY</text>
+            <text x="946" y="224" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">LATE</text>
+            <text x="674" y="238" font-family="var(--sans)" font-size="8" fill="var(--text-2)">Instagram</text>
+            <text x="865" y="238" text-anchor="end" font-family="var(--mono)" font-size="8" fill="var(--text-2)">3.61</text>
+            <text x="946" y="238" text-anchor="end" font-family="var(--mono)" font-size="8" fill="var(--text-2)">3.58</text>
+            <text x="674" y="251" font-family="var(--sans)" font-size="8" fill="var(--text-2)">Facebook</text>
+            <text x="865" y="251" text-anchor="end" font-family="var(--mono)" font-size="8" fill="var(--text-2)">3.38</text>
+            <text x="946" y="251" text-anchor="end" font-family="var(--mono)" font-size="8" fill="var(--text-2)">3.38</text>
+            <text x="674" y="264" font-family="var(--sans)" font-size="8" fill="var(--text-2)">Google Ads</text>
+            <text x="865" y="264" text-anchor="end" font-family="var(--mono)" font-size="8" fill="var(--text-2)">3.04</text>
+            <text x="946" y="264" text-anchor="end" font-family="var(--mono)" font-size="8" fill="var(--text-2)">3.09</text>
+            <text x="674" y="277" font-family="var(--sans)" font-size="8" font-weight="700" fill="var(--warn)">LinkedIn</text>
+            <text x="865" y="277" text-anchor="end" font-family="var(--mono)" font-size="8" font-weight="700" fill="var(--warn)">2.50</text>
+            <text x="946" y="277" text-anchor="end" font-family="var(--mono)" font-size="8" font-weight="700" fill="var(--warn)">2.54</text>
           </g>
           <g class="exec-badge" id="badgeTool3">
-            <rect x="360" y="222" width="160" height="38" rx="12"/>
-            <text x="440" y="237" text-anchor="middle"><tspan id="badgeTool3Text1" x="440" dy="0"></tspan><tspan id="badgeTool3Text2" x="440" dy="13"></tspan></text>
+            <rect x="660" y="318" width="300" height="38" rx="12"/>
+            <text x="810" y="333" text-anchor="middle"><tspan id="badgeTool3Text1" x="810" dy="0"></tspan><tspan id="badgeTool3Text2" x="810" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeTool4">
-            <rect x="530" y="130" width="160" height="82" rx="8"/>
-            <text x="610" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">adjust_bid</text>
-            <text x="610" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Skai / Optmyzr style</text>
-            <text x="610" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Bid multiplier per</text>
-            <text x="610" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">channel vs. target ROAS</text>
+            <rect x="985" y="130" width="300" height="178" rx="8"/>
+            <text x="1135" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="10">adjust_bid</text>
+            <text x="1135" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8.5">Skai / Optmyzr style</text>
+            <text x="999" y="184" font-family="var(--mono)" font-size="7" fill="var(--text-3)">CHANNEL</text>
+            <text x="1190" y="184" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">ROAS</text>
+            <text x="1271" y="184" text-anchor="end" font-family="var(--mono)" font-size="7" fill="var(--text-3)">ACTION</text>
+            <text x="999" y="200" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Instagram</text>
+            <text x="1190" y="200" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">1.91</text>
+            <text x="1271" y="200" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">-0.7x</text>
+            <text x="999" y="215" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Facebook</text>
+            <text x="1190" y="215" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">1.85</text>
+            <text x="1271" y="215" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">-0.7x</text>
+            <text x="999" y="230" font-family="var(--sans)" font-size="8.5" fill="var(--text-2)">Google Ads</text>
+            <text x="1190" y="230" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">1.54</text>
+            <text x="1271" y="230" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--text-2)">-0.7x</text>
+            <text x="999" y="245" font-family="var(--sans)" font-size="8.5" font-weight="700" fill="var(--warn)">LinkedIn</text>
+            <text x="1190" y="245" text-anchor="end" font-family="var(--mono)" font-size="8.5" font-weight="700" fill="var(--warn)">1.30</text>
+            <text x="1271" y="245" text-anchor="end" font-family="var(--mono)" font-size="8.5" font-weight="700" fill="var(--warn)">PAUSE</text>
+            <text x="1135" y="266" text-anchor="middle" font-family="var(--sans)" font-size="8.5" font-weight="700" fill="var(--accent-2)">Only LinkedIn recommended for full pause</text>
           </g>
           <g class="exec-badge" id="badgeTool4">
-            <rect x="530" y="222" width="160" height="38" rx="12"/>
-            <text x="610" y="237" text-anchor="middle"><tspan id="badgeTool4Text1" x="610" dy="0"></tspan><tspan id="badgeTool4Text2" x="610" dy="13"></tspan></text>
+            <rect x="985" y="318" width="300" height="38" rx="12"/>
+            <text x="1135" y="333" text-anchor="middle"><tspan id="badgeTool4Text1" x="1135" dy="0"></tspan><tspan id="badgeTool4Text2" x="1135" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeApproval">
-            <rect x="270" y="280" width="160" height="56" rx="8"/>
-            <text x="350" y="302" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Human approval</text>
-            <text x="350" y="318" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Nothing executes without you</text>
+            <rect x="570" y="376" width="160" height="56" rx="8"/>
+            <text x="650" y="398" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Human approval</text>
+            <text x="650" y="414" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Nothing executes without you</text>
           </g>
         </svg>
       </div>
