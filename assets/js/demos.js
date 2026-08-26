@@ -302,25 +302,25 @@ function initAgentExecution() {
       node: 'nodeTool1', edge: 'edgeTool1', tool: 'read_spend_data', badge: 'badgeTool1',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
       result: 'Scope: product=Aurelia Jewellery, campaign=Campaign 2 (of 2 campaigns running for this product), channel=all\nDate range: 2026-07-30 to 2026-08-14 (16 days)\nCampaign totals: spend=417100, revenue=1244385, leads=204, blended ROAS=2.98\nCampaign ROAS trend: first-half avg=3.31, second-half avg=2.68 (declining)\n\nPer-channel breakdown (spend / revenue / leads):\n  Google Ads   spend=80800   revenue=218170   leads=34\n  Facebook     spend=133900  revenue=402583   leads=66\n  Instagram    spend=168600  revenue=546102   leads=88\n  LinkedIn     spend=33800   revenue=77530    leads=16',
-      figure: '4 channels, 16 days'
+      figure: 'ROAS 2.98, declining\n3.31 → 2.68'
     },
     {
       node: 'nodeTool2', edge: 'edgeTool2', tool: 'call_mmm_model', badge: 'badgeTool2',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2", channel=[all 4]',
       result: 'Blended account ROAS (baseline for comparison): 3.19\n\nPer-channel MMM verdict (channel ROAS | lift vs. blended | verdict):\n  Instagram    3.45  |  +8.0%   |  ABOVE average — strongest channel\n  Facebook     3.23  |  +1.1%   |  in line with average\n  Google Ads   2.92  |  -8.5%   |  BELOW average\n  LinkedIn     2.43  |  -24.0%  |  BELOW average — weakest channel',
-      figure: 'Instagram +8% (best)'
+      figure: 'Instagram +8% (best)\nLinkedIn -24% (worst)'
     },
     {
       node: 'nodeTool3', edge: 'edgeTool3', tool: 'run_incrementality_test', badge: 'badgeTool3',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2"',
       result: 'Earlier-window ROAS (2026-07-30 to 2026-08-06): 3.31\nLater-window ROAS (2026-08-07 to 2026-08-14): 2.66\nChange: -19.7%\nVerdict: SUSTAINED DECLINE — consistent across multiple days, not single-day noise\n\nContext: this product runs 2 campaigns. Campaign 1 (same product, same window) shows stable ROAS across all 4 channels — Instagram 3.61→3.58, Facebook 3.38→3.38, Google Ads 3.04→3.09, LinkedIn 2.50→2.54 — confirming this decline is specific to Campaign 2, not the whole product line.',
-      figure: 'Campaign 2 only: -19.7%'
+      figure: '-19.7%, sustained\nCampaign 1 stable'
     },
     {
       node: 'nodeTool4', edge: 'edgeTool4', tool: 'adjust_bid', badge: 'badgeTool4',
       args: 'product="Aurelia Jewellery", campaign="Campaign 2", channel=[all 4], target_roas=3.0',
       result: 'Per-channel bid recommendation (recent 3-day ROAS | target | action):\n  LinkedIn     1.30  |  3.0  |  PAUSE — bid multiplier 0.0x (furthest below target)\n  Google Ads   1.54  |  3.0  |  DECREASE — bid multiplier 0.7x\n  Facebook     1.85  |  3.0  |  DECREASE — bid multiplier 0.7x\n  Instagram    1.91  |  3.0  |  DECREASE — bid multiplier 0.7x\n(Proposals only — every one requires human approval before execution.)',
-      figure: '3× decrease, 1× pause'
+      figure: 'LinkedIn: PAUSE\n3 others: -0.7x'
     }
   ];
 
@@ -382,18 +382,23 @@ function initAgentExecution() {
 
   function showBadge(badgeId, figureText) {
     var badge = document.getElementById(badgeId);
-    var text = document.getElementById(badgeId + 'Text');
-    if (!badge || !text) return;
-    text.textContent = figureText;
+    var line1 = document.getElementById(badgeId + 'Text1');
+    var line2 = document.getElementById(badgeId + 'Text2');
+    if (!badge || !line1 || !line2) return;
+    var lines = figureText.split('\n');
+    line1.textContent = lines[0] || '';
+    line2.textContent = lines[1] || '';
     badge.classList.add('shown');
   }
 
   function hideBadge(badgeId) {
     var badge = document.getElementById(badgeId);
-    var text = document.getElementById(badgeId + 'Text');
-    if (!badge || !text) return;
+    var line1 = document.getElementById(badgeId + 'Text1');
+    var line2 = document.getElementById(badgeId + 'Text2');
+    if (!badge || !line1 || !line2) return;
     badge.classList.remove('shown');
-    text.textContent = '';
+    line1.textContent = '';
+    line2.textContent = '';
   }
 
   function reset() {

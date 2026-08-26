@@ -23,7 +23,7 @@
   .exec-badge{opacity:0;transition:opacity .4s;}
   .exec-badge.shown{opacity:1;}
   .exec-badge rect{fill:var(--accent-2);fill-opacity:.12;stroke:var(--accent-2);stroke-width:1.2;}
-  .exec-badge text{fill:var(--accent-2);font-weight:700;font-family:var(--mono);font-size:10px;}
+  .exec-badge text{fill:var(--accent-2);font-weight:700;font-family:var(--mono);font-size:9.5px;}
   .exec-edge{stroke:var(--rule);stroke-width:1.6;fill:none;transition:stroke .3s, stroke-width .3s;}
   .exec-edge.active{stroke:var(--accent-2);stroke-width:2.4;}
   .exec-edge.done{stroke:var(--good);}
@@ -220,13 +220,14 @@
         <button class="btn btn-ghost" style="cursor:pointer;" id="execResetBtn">Restart</button>
       </div>
 
+      <p style="font-size:11.5px;color:var(--text-3);margin:2px 0 10px;">Each box is the real data that tool call returned; the pill below it states the one finding that mattered for the next step — read left to right, the four findings build on each other.</p>
       <div class="exec-frame">
-        <svg viewBox="0 0 700 340" role="img" aria-label="Agent execution graph: Claude's reasoning node calls four tools in sequence — read spend data, call MMM model, run incrementality test, adjust bid — then reaches a human approval node before any recommendation is final.">
+        <svg viewBox="0 0 700 360" role="img" aria-label="Agent execution graph: Claude's reasoning node calls four tools in sequence — read spend data, call MMM model, run incrementality test, adjust bid — then reaches a human approval node before any recommendation is final.">
           <defs>
             <marker id="execAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--rule);"/></marker>
           </defs>
 
-          <path id="edgeApproval" class="exec-edge" d="M350,76 L350,250" marker-end="url(#execAr)"/>
+          <path id="edgeApproval" class="exec-edge" d="M350,76 L350,280" marker-end="url(#execAr)"/>
           <path id="edgeTool1" class="exec-edge" d="M350,76 L350,90 L90,90 L90,130" fill="none" marker-end="url(#execAr)"/>
           <path id="edgeTool2" class="exec-edge" d="M350,76 L350,98 L265,98 L265,130" fill="none" marker-end="url(#execAr)"/>
           <path id="edgeTool3" class="exec-edge" d="M350,76 L350,106 L440,106 L440,130" fill="none" marker-end="url(#execAr)"/>
@@ -239,53 +240,57 @@
           </g>
 
           <g class="exec-node" id="nodeTool1">
-            <rect x="10" y="130" width="160" height="70" rx="8"/>
+            <rect x="10" y="130" width="160" height="82" rx="8"/>
             <text x="90" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">read_spend_data</text>
             <text x="90" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Supermetrics style</text>
-            <text x="90" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Real spend &amp; revenue</text>
+            <text x="90" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Spend, revenue, ROAS</text>
+            <text x="90" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">by channel, 16 days</text>
           </g>
           <g class="exec-badge" id="badgeTool1">
-            <rect x="10" y="206" width="160" height="26" rx="13"/>
-            <text x="90" y="223" text-anchor="middle" id="badgeTool1Text"></text>
+            <rect x="10" y="222" width="160" height="38" rx="12"/>
+            <text x="90" y="237" text-anchor="middle"><tspan id="badgeTool1Text1" x="90" dy="0"></tspan><tspan id="badgeTool1Text2" x="90" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeTool2">
-            <rect x="185" y="130" width="160" height="70" rx="8"/>
+            <rect x="185" y="130" width="160" height="82" rx="8"/>
             <text x="265" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">call_mmm_model</text>
             <text x="265" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Meridian / Robyn style</text>
-            <text x="265" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Channel vs. account avg</text>
+            <text x="265" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Ranks each channel's</text>
+            <text x="265" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">ROAS vs. account avg</text>
           </g>
           <g class="exec-badge" id="badgeTool2">
-            <rect x="185" y="206" width="160" height="26" rx="13"/>
-            <text x="265" y="223" text-anchor="middle" id="badgeTool2Text"></text>
+            <rect x="185" y="222" width="160" height="38" rx="12"/>
+            <text x="265" y="237" text-anchor="middle"><tspan id="badgeTool2Text1" x="265" dy="0"></tspan><tspan id="badgeTool2Text2" x="265" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeTool3">
-            <rect x="360" y="130" width="160" height="70" rx="8"/>
+            <rect x="360" y="130" width="160" height="82" rx="8"/>
             <text x="440" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="8">run_incrementality_test</text>
             <text x="440" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Measured style</text>
-            <text x="440" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Confirms decline is real</text>
+            <text x="440" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Rules out day-to-day</text>
+            <text x="440" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">noise vs. a real trend</text>
           </g>
           <g class="exec-badge" id="badgeTool3">
-            <rect x="360" y="206" width="160" height="26" rx="13"/>
-            <text x="440" y="223" text-anchor="middle" id="badgeTool3Text"></text>
+            <rect x="360" y="222" width="160" height="38" rx="12"/>
+            <text x="440" y="237" text-anchor="middle"><tspan id="badgeTool3Text1" x="440" dy="0"></tspan><tspan id="badgeTool3Text2" x="440" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeTool4">
-            <rect x="530" y="130" width="160" height="70" rx="8"/>
+            <rect x="530" y="130" width="160" height="82" rx="8"/>
             <text x="610" y="148" text-anchor="middle" class="exec-title" font-family="var(--mono)" font-size="9.5">adjust_bid</text>
             <text x="610" y="163" text-anchor="middle" class="exec-vendor" font-family="var(--sans)" font-size="8">Skai / Optmyzr style</text>
-            <text x="610" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Proposes a bid change</text>
+            <text x="610" y="177" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">Bid multiplier per</text>
+            <text x="610" y="191" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="8">channel vs. target ROAS</text>
           </g>
           <g class="exec-badge" id="badgeTool4">
-            <rect x="530" y="206" width="160" height="26" rx="13"/>
-            <text x="610" y="223" text-anchor="middle" id="badgeTool4Text"></text>
+            <rect x="530" y="222" width="160" height="38" rx="12"/>
+            <text x="610" y="237" text-anchor="middle"><tspan id="badgeTool4Text1" x="610" dy="0"></tspan><tspan id="badgeTool4Text2" x="610" dy="13"></tspan></text>
           </g>
 
           <g class="exec-node" id="nodeApproval">
-            <rect x="270" y="250" width="160" height="56" rx="8"/>
-            <text x="350" y="272" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Human approval</text>
-            <text x="350" y="288" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Nothing executes without you</text>
+            <rect x="270" y="280" width="160" height="56" rx="8"/>
+            <text x="350" y="302" text-anchor="middle" class="exec-title" font-family="var(--sans)" font-size="12">Human approval</text>
+            <text x="350" y="318" text-anchor="middle" class="exec-sub" font-family="var(--sans)" font-size="9">Nothing executes without you</text>
           </g>
         </svg>
       </div>
