@@ -35,6 +35,16 @@
   .li{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-2);}
   .lb{width:16px;height:10px;border-radius:2px;flex-shrink:0;}
   .ldsh{width:24px;height:0;border-top:2px dashed var(--text-3);flex-shrink:0;}
+
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:20px;}
+  .agent-card{border-top:3px solid var(--agent-color,var(--accent));}
+  .agent-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;}
+  .agent-role{font-size:9.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--agent-color,var(--accent));}
+  .agent-llm{font-family:var(--mono);font-size:9.5px;color:var(--text-3);white-space:nowrap;}
+  .agent-name{font-weight:700;font-size:14px;color:var(--text-1);margin-bottom:2px;}
+  .agent-built{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:var(--accent-lo);color:var(--agent-color,var(--accent));margin-bottom:8px;}
+  .agent-line{font-size:12px;color:var(--text-2);line-height:1.55;margin-top:8px;}
+  .agent-line strong{color:var(--text-1);font-weight:600;}
 </style>
 </head>
 <body>
@@ -342,6 +352,47 @@
     <div class="li"><div class="lb" style="background:var(--warn);"></div>Report &amp; Lead / Feedback loop</div>
     <div class="li"><div class="ldsh" style="border-top-color:var(--warn);"></div>Director's approvals writing back into live execution</div>
     <div class="li"><div class="lb" style="background:var(--text-2);"></div>Executive reporting cascade — CMO → CEO → Board</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="section-eye">The Agents Behind the Diagram</div>
+    <h2 class="section-title">5 agents — 1 Orchestrator + 4 Specialists</h2>
+    <p class="section-sub">The module clusters above aren't passive feature groupings — each is actively run by its own agent. Build order matters: start with one specialist agent proving the concept before paying multi-agent coordination overhead.</p>
+  </div>
+  <div class="agent-grid">
+    <div class="tool-card agent-card" style="--agent-color:var(--accent-2);">
+      <div class="agent-card-top"><div class="agent-role">Orchestrator</div><div class="agent-llm">Claude Opus 5</div></div>
+      <div class="agent-name">The Orchestrator Agent</div>
+      <div class="agent-line"><strong>Task:</strong> single conversational entry point — parses the Director's ask, routes it to the right specialist(s) below, synthesizes their outputs into one answer.</div>
+      <div class="agent-line"><strong>Output:</strong> a plain-English answer, a cross-cluster narrative, or a routed action.</div>
+    </div>
+    <div class="tool-card agent-card" style="--agent-color:var(--accent);">
+      <div class="agent-card-top"><div class="agent-role">Specialist</div><div class="agent-llm">Sonnet 5 / Opus 5</div></div>
+      <div class="agent-name">Plan &amp; Create Agent</div>
+      <div class="agent-line"><strong>Task:</strong> turns a brief into a channel plan, creative assets, and a scheduled/published post. Modules 01, 05, 06, 09.</div>
+      <div class="agent-line"><strong>Output:</strong> campaign brief, creative assets, channel plan, publish confirmation.</div>
+    </div>
+    <div class="tool-card agent-card" style="--agent-color:var(--accent-2);">
+      <div class="agent-card-top"><div class="agent-role">Specialist</div><div class="agent-llm">Sonnet 5 / Opus 5</div></div>
+      <div class="agent-name">Measure &amp; Optimise Agent</div>
+      <div class="agent-built">Built &amp; Public</div>
+      <div class="agent-line"><strong>Task:</strong> 5-function toolbelt — reads spend/revenue, models incrementality, decides the bid/budget action. Modules 02, 03, 08, 12. <a href="https://github.com/Milindw1612/markos-ai-agent" style="color:var(--accent);">See the repo →</a></div>
+      <div class="agent-line"><strong>Output:</strong> SCALE / PAUSE / SHIFT / BID / CHANGE_CREATIVE recommendation cards.</div>
+    </div>
+    <div class="tool-card agent-card" style="--agent-color:var(--good);">
+      <div class="agent-card-top"><div class="agent-role">Specialist</div><div class="agent-llm">Sonnet 5</div></div>
+      <div class="agent-name">Convert &amp; Retain Agent</div>
+      <div class="agent-line"><strong>Task:</strong> syncs leads with CRM, tracks competitor ad libraries, scores MQLs, forecasts pipeline. Modules 04, 10, 13.</div>
+      <div class="agent-line"><strong>Output:</strong> synced CRM record, weekly competitive brief, MQL/SQL score, funnel health score + leak diagnosis.</div>
+    </div>
+    <div class="tool-card agent-card" style="--agent-color:var(--warn);">
+      <div class="agent-card-top"><div class="agent-role">Specialist</div><div class="agent-llm">Opus 5 / Sonnet 5</div></div>
+      <div class="agent-name">Report &amp; Lead Agent</div>
+      <div class="agent-line"><strong>Task:</strong> scheduled reports, on-demand plain-English queries, live dashboards, team debriefs. Modules 07, 11, 14.</div>
+      <div class="agent-line"><strong>Output:</strong> PDF/PPTX/Excel reports, live dashboard refresh, AI weekly debrief.</div>
+    </div>
   </div>
 </section>
 
